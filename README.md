@@ -87,15 +87,125 @@ A social media app where users can post and share their favorite sites, restaura
 
 <img src="https://i.imgur.com/Mn9dx2N.jpg" width=600>
 
-### [BONUS] Digital Wireframes & Mockups
-
-### [BONUS] Interactive Prototype
-
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-[Add table of models]
+# User
+   | Property              | Type     | Description |
+   | --------------------- | -------- | ------------|
+   | objectID              | String   | unique id for the user (default)|
+   | username              | String   | Username for user |
+   | email                 | String   | email associated with user |
+   | password              | String   | email associated with user |
+   | name                  | String   | name that appears on profile |
+   | profilePic            | File     | picture that user selects as profile |
+   | backgroundPic         | File     | picture that user selects as background |
+   | followerCount         | Number   | total number of followers |
+   | followingCount        | Number   | Total number of following |
+   | countriesVisitedCount | Number   | Total number of countries visited |
+   | citiesVisitedCount    | Number   | Total number of cities visited |
+   | createdAt             | DateTime | date when user is created (default field) |
+   | updatedAt             | DateTime | date when user is last updated (default field) |
+   
+# Places
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the place (default field) |
+   | name          | String   | name of the place |
+   | address       | String   | address of the place |
+   | lat           | Float    | latitude of place |
+   | lng           | Float    | longitude of place |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+
+I will manually input places  and the user will be able to select a place when posting, but not add to the table
+   
+# Spots
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the spot (default field) |
+   | name          | String   | name of the place |
+   | address       | String   | address of the place |
+   | lat           | Float    | latitude of place |
+   | lng           | Float    | longitude of place |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+  
+# Posts
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | author        | Pointer to User| image author |
+   | place         | Pointer to Place | place that the post is of |
+   | spot          | Pointer to Spot | spot that the post is of |
+   | images        | Array of Files  | image that user posts |
+   | caption       | String   | image caption by author |
+   | savedCount    | Number   | number of saves to a post |
+   | likesCount    | Number   | number of likes for the post |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+
+
+# SpotsToPlaces
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the relationship (default field) |
+   | user          | Pointer to User | User who posted the spot to the place |
+   | spot          | Pointer to Spot | spot in relationship  |
+   | place         | Pointer to Place| place in relationship |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   
+# Liked
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the saved (default field) |
+   | user          | Pointer to User| person who liked the post |
+   | author        | Pointer to User| person who posted the post |
+   | post          | Pointer to Post| post that user saved |
+   | createdAt     | DateTime | date when save happens is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+
+# Saved
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the saved (default field) |
+   | user          | Pointer to User| person who saved the post |
+   | post          | Pointer to Post| post that user saved |
+   | createdAt     | DateTime | date when save happens is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+   
+# FollowingFollower
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the following/follower (default field) |
+   | user          | Pointer to User| person is being followed |
+   | follower      | Pointer to User| person who is following the user |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+* Timeline Feed Screen
+   * (Read/GET) Query all posts of the users logged in user follows
+   * (Create/POST) Create a new like on a post
+   * (Delete) Delete existing like
+   * (Create/POST) Create a new save on a post
+   * (Delete) Delete existing save
+* World Map Screen
+   * (Read/GET) Query all spots of the users logged in user follows
+* Search Screen
+   * (Read/GET) Query the Spots to Places and display all spots in the searched place
+* Post Screen
+   * (Create/POST) Create a new post object 
+* Notifications Screen
+   * (Read/GET) Query Liked to see the posts that the user has posted that others have liked
+* Profile Screen
+   * (Read/GET) Query logged in user object
+   * (Read/GET) Query UserPlaces to display places user has posted
+   * (Update/PUT) Update profile image
+   * (Update/PUT) Update background image
+   * (Read/GET) Query SpotsToPlaces to display spots within the place that the user has posted
+* User Map Screen
+   * (Read/GET) Query all spots the user has posted
+
