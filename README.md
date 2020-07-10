@@ -33,7 +33,7 @@ A social media app where users can post and share their favorite sites, restaura
     * number of people following, number of followers, number of countries they've visited, number of cities they've visited
     * their posts that they've posted
 * User can edit their profile 
-* A timeline where a user can see the posts from users they follow
+* A timeline where a user can see the posts from every user
     * When a user clicks on the profile pic of the person who posted, the user is taken to their profile
 * User can put in their address and become a "certified local." Whenever they post a place within a 20 mile radius of their address, the post will show to other users that it was posted by a "certified local"
 * Functionality to add a place (city or country) that they've been to, this is what shows up on the users profile
@@ -43,11 +43,12 @@ A social media app where users can post and share their favorite sites, restaura
     * Required to add spot: at least one picture and a location
     * Optional to add spot: a description, up to 10 pictures
 * User can search places and see spots from those places
-* User can search for other users and follow them
+* User can search for other users
 
 **Optional Nice-to-have Stories**
 
-
+* User can follow other users
+* Timeline just shows posts from users that the current user follows
 * User have a map on their profile mapping all of the places that they've posted about
 * User can see a map of spots all of the people they follow have been to
 * Users can like other users posts
