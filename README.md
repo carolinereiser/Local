@@ -146,6 +146,7 @@ I will manually input places  and the user will be able to select a place when p
    | caption       | String   | image caption by author |
    | savedCount    | Number   | number of saves to a post |
    | likesCount    | Number   | number of likes for the post |
+   | isCertified   | Bool     | if was posted by a certified local or not |
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
 
