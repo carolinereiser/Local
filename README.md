@@ -104,6 +104,8 @@ A social media app where users can post and share their favorite sites, restaura
    | followingCount        | Number   | Total number of following |
    | countriesVisitedCount | Number   | Total number of countries visited |
    | citiesVisitedCount    | Number   | Total number of cities visited |
+   | lat                   | Float    | Latitutde of user home address |
+   | lng                   | Float    | Longitude of user home address |
    | createdAt             | DateTime | date when user is created (default field) |
    | updatedAt             | DateTime | date when user is last updated (default field) |
    
