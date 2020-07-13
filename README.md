@@ -91,7 +91,7 @@ A social media app where users can post and share their favorite sites, restaura
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models
-# User
+#### User
    | Property              | Type     | Description |
    | --------------------- | -------- | ------------|
    | objectID              | String   | unique id for the user (default)|
@@ -110,32 +110,30 @@ A social media app where users can post and share their favorite sites, restaura
    | createdAt             | DateTime | date when user is created (default field) |
    | updatedAt             | DateTime | date when user is last updated (default field) |
    
-# Places
+#### Places
 
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the place (default field) |
-   | name          | String   | name of the place |
-   | address       | String   | address of the place |
+   | name          | String   | user given name of the place |
+   | placeId       | String   | place id from google Places api |
    | lat           | Float    | latitude of place |
    | lng           | Float    | longitude of place |
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
-
-I will manually input places  and the user will be able to select a place when posting, but not add to the table
    
-# Spots
+#### Spots
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the spot (default field) |
-   | name          | String   | name of the place |
-   | address       | String   | address of the place |
+   | name          | String   | user given name of the spot |
+   | placeId       | String   | place id from google Places api |
    | lat           | Float    | latitude of place |
    | lng           | Float    | longitude of place |
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
   
-# Posts
+#### Posts
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the user post (default field) |
@@ -151,7 +149,7 @@ I will manually input places  and the user will be able to select a place when p
    | updatedAt     | DateTime | date when post is last updated (default field) |
 
 
-# SpotsToPlaces
+#### SpotsToPlaces
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the relationship (default field) |
@@ -161,7 +159,7 @@ I will manually input places  and the user will be able to select a place when p
    | createdAt     | DateTime | date when post is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
    
-# Liked
+#### Liked
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the saved (default field) |
@@ -171,7 +169,7 @@ I will manually input places  and the user will be able to select a place when p
    | createdAt     | DateTime | date when save happens is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
 
-# Saved
+#### Saved
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the saved (default field) |
@@ -180,7 +178,7 @@ I will manually input places  and the user will be able to select a place when p
    | createdAt     | DateTime | date when save happens is created (default field) |
    | updatedAt     | DateTime | date when post is last updated (default field) |
    
-# FollowingFollower
+#### FollowingFollower
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the following/follower (default field) |
@@ -212,4 +210,14 @@ I will manually input places  and the user will be able to select a place when p
    * (Read/GET) Query SpotsToPlaces to display spots within the place that the user has posted
 * User Map Screen
    * (Read/GET) Query all spots the user has posted
+### Endpoints
+For places search...
+* types = (regions)
+   * save place ID
+For spots search...
+* types = address
+   * save place ID
+To get details (lat/lng etc) about a place or spot
+https://maps.googleapis.com/maps/api/place/details/json?placeid=PLACE_ID_HERE&key=API_KEY_HERE
+
 
