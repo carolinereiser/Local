@@ -218,6 +218,7 @@ For places search...
 For spots search...
 * types = address
    * save place ID
+   
 To get details (lat/lng etc) about a place or spot
 https://maps.googleapis.com/maps/api/place/details/json?placeid=PLACE_ID_HERE&key=API_KEY_HERE
 
