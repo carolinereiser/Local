@@ -214,6 +214,7 @@ A social media app where users can post and share their favorite sites, restaura
 For places search...
 * types = (regions)
    * save place ID
+ 
 For spots search...
 * types = address
    * save place ID
