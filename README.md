@@ -88,7 +88,12 @@ A social media app where users can post and share their favorite sites, restaura
 
 ## Wireframes
 
-<img src="https://i.imgur.com/Mn9dx2N.jpg" width=600>
+<img src="https://user-images.githubusercontent.com/49702878/87459914-e2578280-c5c0-11ea-8b5a-920c2ff20b56.png" width=639>
+<img width="417" src="https://user-images.githubusercontent.com/49702878/87459945-ee434480-c5c0-11ea-9f95-e26d93bcce58.png">
+
+
+
+
 
 ## Schema 
 [This section will be completed in Unit 9]
