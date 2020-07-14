@@ -33,7 +33,7 @@ A social media app where users can post and share their favorite sites, restaura
     * number of people following, number of followers, number of countries they've visited, number of cities they've visited
     * their posts that they've posted
 * User can edit their profile 
-* A timeline where a user can see the posts from every user
+* A timeline where a user can see the posts from every user (will be later changed to only users the person follows)
     * When a user clicks on the profile pic of the person who posted, the user is taken to their profile
 * User can put in their address and become a "certified local." Whenever they post a place within a 20 mile radius of their address, the post will show to other users that it was posted by a "certified local"
 * Functionality to add a place (city or country) that they've been to, this is what shows up on the users profile
@@ -55,6 +55,8 @@ A social media app where users can post and share their favorite sites, restaura
 * Users can save other users posts, these saved posts show up on a user's profile
 * Implement a button where a user can select a mile radius from their current location. When they press that button and be given a random spot to go to within that radius that one of the people they follow have posted. If there are no spots within that radius, the user is told to increase the mile radius
 * Users can share posts
+* Users can make their account private
+* When a user searches a place, only spots from public accounts and people they follow come up
 * When a user searches a place, the most liked/shared spots are displayed first
 * Notification tab where a user can see if other users liked their post
 
@@ -107,6 +109,7 @@ A social media app where users can post and share their favorite sites, restaura
    | citiesVisitedCount    | Number   | Total number of cities visited |
    | lat                   | Float    | Latitutde of user home address |
    | lng                   | Float    | Longitude of user home address |
+   | isPublic              | Bool     | whether or not the user is a public account |
    | createdAt             | DateTime | date when user is created (default field) |
    | updatedAt             | DateTime | date when user is last updated (default field) |
    
