@@ -114,6 +114,7 @@ A social media app where users can post and share their favorite sites, restaura
    | citiesVisitedCount    | Number   | Total number of cities visited |
    | lat                   | Float    | Latitutde of user home address |
    | lng                   | Float    | Longitude of user home address |
+   | placeID               | String   | placeID of user home address |
    | isPublic              | Bool     | whether or not the user is a public account |
    | createdAt             | DateTime | date when user is created (default field) |
    | updatedAt             | DateTime | date when user is last updated (default field) |
@@ -123,7 +124,8 @@ A social media app where users can post and share their favorite sites, restaura
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the place (default field) |
-   | name          | String   | user given name of the place |
+   | user          | Pointer to User | user who posted the place |
+   | name          | String   | name of the place |
    | placeId       | String   | place id from google Places api |
    | lat           | Float    | latitude of place |
    | lng           | Float    | longitude of place |
@@ -134,7 +136,7 @@ A social media app where users can post and share their favorite sites, restaura
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the spot (default field) |
-   | name          | String   | user given name of the spot |
+   | name          | String   | name of the spot |
    | placeId       | String   | place id from google Places api |
    | lat           | Float    | latitude of place |
    | lng           | Float    | longitude of place |
