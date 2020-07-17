@@ -32,7 +32,6 @@
     newPlace.placeID = placeID;
     newPlace.name = place;
     newPlace.user = [PFUser currentUser];
-    //TODO: FIGURE OUT WHY CITY AND COUNTRY AREN'T ALWAYS POSTING
     newPlace.city = city;
     newPlace.country = country;
     
