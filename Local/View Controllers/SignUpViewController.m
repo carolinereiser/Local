@@ -53,15 +53,12 @@
                 }];
                 // add the cancel action to the alertController
                 [alert addAction:okAction];
-
-                
                 [self presentViewController:alert animated:YES completion:^{
-                    // optional code for what happens after the alert controller has finished presenting
+                    // nothing happens when view controller is done presenting
                 }];
                 
             } else {
                 NSLog(@"User registered successfully");
-                
                 // manually segue to logged in view
                 [self performSegueWithIdentifier:@"timelineSegue" sender:nil];
             }
@@ -69,8 +66,7 @@
     }
 }
 
-- (BOOL)isEmptyFields
-{
+- (BOOL)isEmptyFields {
     //if the user hasn't filled in all of the fields, present an error
     if([self.usernameField.text isEqual:@""] || [self.passwordField.text isEqual:@""] || [self.emailField.text isEqual:@""] || [self.confirmPasswordField isEqual:@""])
     {
@@ -82,17 +78,15 @@
         // add the cancel action to the alertController
         [alert addAction:okAction];
 
-        
         [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
+            //nothing happens when done presenting
         }];
         return YES;
     }
     return NO;
 }
 
-- (BOOL)validFields
-{
+- (BOOL)validFields {
     if([self isValidEmail:self.emailField.text] && [self matchingPasswords])
     {
         return YES;
@@ -100,8 +94,7 @@
     return NO;
 }
 
-- (BOOL)isValidEmail:(NSString*) email
-{
+- (BOOL)isValidEmail:(NSString*)email {
     NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}";
     NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
 
@@ -121,16 +114,14 @@
         // add the cancel action to the alertController
         [alert addAction:okAction];
 
-        
         [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
+            // nothing happens when done presenting
         }];
         return NO;
     }
 }
 
-- (BOOL)matchingPasswords
-{
+- (BOOL)matchingPasswords {
     if([self.passwordField.text isEqual:self.confirmPasswordField.text])
     {
         return YES;
@@ -148,9 +139,8 @@
         // add the cancel action to the alertController
         [alert addAction:okAction];
 
-        
         [self presentViewController:alert animated:YES completion:^{
-            // optional code for what happens after the alert controller has finished presenting
+            // nothing happens when done presenting
         }];
         return NO;
     }

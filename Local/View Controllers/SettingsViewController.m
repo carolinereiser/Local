@@ -11,19 +11,38 @@
 #import "SettingsViewController.h"
 #import "SceneDelegate.h"
 
-@interface SettingsViewController ()
+@import GooglePlaces;
+
+@interface SettingsViewController () <GMSAutocompleteViewControllerDelegate>
 
 @end
 
-@implementation SettingsViewController
+@implementation SettingsViewController {
+ GMSAutocompleteFilter *filter;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self getAddress];
+}
+
+- (void)reloadData {
+    [self getAddress];
+}
+
+- (void)getAddress {
+    //TODO: Use CoreData to load address when no network connection
+    PFUser* user = [PFUser currentUser];
+    if(user[@"placeName"])
+    {
+        self.userAddress.text = user[@"placeName"];
+    }
 }
 
 - (IBAction)logOut:(id)sender {
-    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error) {
+    [PFUser logOutInBackgroundWithBlock:^(NSError * _Nullable error)
+    {
         if(error)
         {
             NSLog(@"%@", error.localizedDescription);
@@ -34,11 +53,64 @@
         }
     }];
     
+    //navigate back to login page
     SceneDelegate *sceneDelegate = (SceneDelegate *)self.parentViewController.view.window.windowScene.delegate;
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     LogInViewController *loginViewController = [storyboard instantiateViewControllerWithIdentifier:@"LoginViewController"];
     sceneDelegate.window.rootViewController = loginViewController;
 }
+
+- (IBAction)enterAddress:(id)sender {
+    //Google Places autocomplete search controller
+    GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
+    acController.delegate = self;
+
+    // Specify the place data types to return.
+    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID |GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress);
+    acController.placeFields = fields;
+
+    // Specify a filter.
+    filter = [[GMSAutocompleteFilter alloc] init];
+    filter.type = kGMSPlacesAutocompleteTypeFilterAddress;
+    acController.autocompleteFilter = filter;
+
+    // Display the autocomplete view controller.
+    [self presentViewController:acController animated:YES completion:nil];
+}
+
+  // Handle the user's selection.
+- (void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //Add place to user
+    PFUser* user = [PFUser currentUser];
+    user[@"lat"] = [NSDecimalNumber numberWithFloat:place.coordinate.latitude];
+    user[@"lng"] = [NSDecimalNumber numberWithFloat:place.coordinate.longitude];
+    user[@"placeID"] = place.placeID;
+    user[@"placeName"] = place.formattedAddress;
+        
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded)
+        {
+            NSLog(@"Successfully saved address!");
+            [self reloadData];
+        }
+        else
+        {
+            NSLog(@"Failed to save");
+        }
+    }];
+}
+
+- (void)viewController:(GMSAutocompleteViewController *)viewController didFailAutocompleteWithError:(NSError *)error {
+  [self dismissViewControllerAnimated:YES completion:nil];
+  NSLog(@"Error: %@", [error description]);
+}
+
+  // User canceled the operation.
+- (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
+  [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 
 /*

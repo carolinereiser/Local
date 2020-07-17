@@ -22,11 +22,12 @@
     self.passwordField.secureTextEntry = YES;
 }
 - (IBAction)logIn:(id)sender {
+    //check to see if the user field is an email or username
     PFQuery *query = [PFUser query];
     [query whereKey:@"email" equalTo:self.userField.text];
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        if (objects.count > 0) {
-
+        if (objects.count > 0)  //it's an existing email
+        {
             PFObject *object = [objects objectAtIndex:0];
             NSString *username = [object objectForKey:@"username"];
             [PFUser logInWithUsernameInBackground:username password:self.passwordField.text block:^(PFUser* user, NSError* error){
@@ -34,24 +35,18 @@
                     [self loginError:@"E-mail and/or password doesn't exist or match" withError:error];
                 } else {
                     NSLog(@"User logged in successfully");
-                    
-                    // display view controller that needs to shown after successful login
-                    
                     // manually segue to logged in view
                     [self performSegueWithIdentifier:@"timelineSegue" sender:nil];
                 }
             }];
         }
-        else
+        else  //it's a username or invalid email
         {
             [PFUser logInWithUsernameInBackground:self.userField.text password:self.passwordField.text block:^(PFUser* user, NSError* error){
                 if (error != nil) {
-                    [self loginError:@"Username and/or password doesn't exist or match" withError:error];
+                    [self loginError:@"Username/email and/or password doesn't exist or match" withError:error];
                 } else {
                     NSLog(@"User logged in successfully");
-                    
-                    // display view controller that needs to shown after successful login
-                    
                     // manually segue to logged in view
                     [self performSegueWithIdentifier:@"timelineSegue" sender:nil];
                 }
@@ -60,9 +55,7 @@
     }];
 }
 
-
--(void) loginError:(NSString *)message withError:(NSError *) error
-{
+- (void)loginError:(NSString *)message withError:(NSError *)error {
     NSLog(@"User log in failed: %@", error.localizedDescription);
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error Logging In" message:message preferredStyle:(UIAlertControllerStyleAlert)];
      
@@ -74,10 +67,9 @@
     }];
      // add the cancel action to the alertController
      [alert addAction:okAction];
-
      
      [self presentViewController:alert animated:YES completion:^{
-         // optional code for what happens after the alert controller has finished presenting
+         // nothing happens when finished
      }];
 }
 
