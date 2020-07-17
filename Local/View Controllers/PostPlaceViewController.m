@@ -142,7 +142,6 @@
 - (void)viewController:(GMSAutocompleteViewController *)viewController
 didFailAutocompleteWithError:(NSError *)error {
   [self dismissViewControllerAnimated:YES completion:nil];
-  // TODO: handle the error.
   NSLog(@"Error: %@", [error description]);
 }
 

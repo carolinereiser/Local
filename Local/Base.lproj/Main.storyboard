@@ -299,12 +299,13 @@
                     <navigationItem key="navigationItem" id="hWn-t7-Q9q">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="y77-ik-Bse">
                             <connections>
-                                <segue destination="RRV-WI-NoV" kind="show" id="HMW-MS-8Ob"/>
+                                <action selector="nextController:" destination="5s6-lB-947" id="ZHT-eY-qIr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="uEx-fz-Dzs" id="QpO-BA-bqo"/>
+                        <segue destination="RRV-WI-NoV" kind="show" identifier="pickPlaceSegue" id="3vc-dF-8lh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9WB-Bi-RbN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -314,7 +315,7 @@
         <!--Select a Place-->
         <scene sceneID="bxf-tn-CD1">
             <objects>
-                <viewController id="RRV-WI-NoV" customClass="SpotPlacePickerViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="RRV-WI-NoV" customClass="SpotPlacePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rAv-qm-PIL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -347,6 +348,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="re3-DO-LeE" id="2EM-ef-jAC"/>
+                                            <segue destination="Qiw-Gs-7IE" kind="show" id="7Kf-8a-l4x"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -355,7 +357,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="pGy-1h-Tis"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Select a Place" id="wy9-Ne-Ck0"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="idY-ht-MLn" id="NdN-oc-fo5"/>
                         <segue destination="874-8P-jS9" kind="show" identifier="profileSegue" id="a2Z-6C-g13"/>
@@ -364,6 +368,57 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xQk-L4-fAp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5531.884057971015" y="2704.6875"/>
+        </scene>
+        <!--Post Spot View Controller-->
+        <scene sceneID="aoa-F3-5QU">
+            <objects>
+                <viewController id="Qiw-Gs-7IE" customClass="PostSpotViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="krK-Ee-8jf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1w-R7-jku">
+                                <rect key="frame" x="20" y="174" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="b3b-CH-p9a">
+                                <rect key="frame" x="20" y="267" width="374" height="326"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add a description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZU7-lH-GKJ">
+                                <rect key="frame" x="20" y="238" width="135" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-up-J7h">
+                                <rect key="frame" x="12" y="136" width="123" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add an address"/>
+                                <connections>
+                                    <action selector="addAddress:" destination="Qiw-Gs-7IE" eventType="touchUpInside" id="gxp-yw-swK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="XUX-y1-0pU"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pMP-eP-3Nl"/>
+                    <connections>
+                        <outlet property="address" destination="w1w-R7-jku" id="vWE-hI-QeF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K5F-ne-zJO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5532" y="3560"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="U6D-bG-WEa">

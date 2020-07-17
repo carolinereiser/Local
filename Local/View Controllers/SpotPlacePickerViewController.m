@@ -7,10 +7,14 @@
 //
 
 #import <Parse/Parse.h>
+#import "Place.h"
 #import "PlaceInfoCell.h"
+#import "PostSpotViewController.h"
 #import "SpotPlacePickerViewController.h"
 
 @interface SpotPlacePickerViewController () <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) Place* place;
 
 @end
 
@@ -25,7 +29,7 @@
     [self fetchPlaces];
 }
 
--(void)fetchPlaces
+- (void)fetchPlaces
 {
     //get the places that the logged in user has uploaded
     PFQuery *query = [PFQuery queryWithClassName:@"Place"];
@@ -54,7 +58,6 @@
                 [alert addAction:okAction];
 
                 [self presentViewController:alert animated:YES completion:^{
-                    
                 }];
             }
         }
@@ -79,15 +82,20 @@
 
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+     UITableViewCell *tappedCell = sender;
+     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+     Place *tappedPlace = self.places[indexPath.row];
+     PostSpotViewController *postSpotViewController = [segue destinationViewController];
+     postSpotViewController.place = tappedPlace;
 }
-*/
+
 
 
 @end
