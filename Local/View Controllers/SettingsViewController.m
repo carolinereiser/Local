@@ -12,6 +12,7 @@
 #import "SceneDelegate.h"
 
 @import GooglePlaces;
+@import MBProgressHUD;
 
 @interface SettingsViewController () <GMSAutocompleteViewControllerDelegate>
 
@@ -88,15 +89,18 @@
     user[@"placeID"] = place.placeID;
     user[@"placeName"] = place.formattedAddress;
         
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded)
         {
             NSLog(@"Successfully saved address!");
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
             [self reloadData];
         }
         else
         {
             NSLog(@"Failed to save");
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
     }];
 }

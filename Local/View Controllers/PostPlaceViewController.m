@@ -10,6 +10,7 @@
 #import "PostPlaceViewController.h"
 
 @import GooglePlaces;
+@import MBProgressHUD;
 
 @interface PostPlaceViewController () <GMSAutocompleteViewControllerDelegate>
 
@@ -32,49 +33,70 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)postPlace:(id)sender {
-    //check to see if the user has already posted that place
-    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-    [query whereKey:@"placeID" equalTo:self.placeID];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
-        if(posts != nil)
-        {
-            //the user already has that place
-            if([posts count] >= 1)
+    //make sure user can't add without adding a location
+    if([self.placeID isKindOfClass:[NSString class]])
+    {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        //check to see if the user has already posted that place
+        PFQuery *query = [PFQuery queryWithClassName:@"Place"];
+        [query whereKey:@"placeID" equalTo:self.placeID];
+        [query whereKey:@"user" equalTo:[PFUser currentUser]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable posts, NSError * _Nullable error) {
+            if(posts != nil)
             {
-                //present an alert
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"You have already added this place" message:@"Please select a place you haven't added." preferredStyle:(UIAlertControllerStyleAlert)];
-                // create a cancel action
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
-                {}];
-                // add the cancel action to the alertController
-                [alert addAction:okAction];
+                //the user already has that place
+                if([posts count] >= 1)
+                {
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    //present an alert
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"You have already added this place" message:@"Please select a place you haven't added." preferredStyle:(UIAlertControllerStyleAlert)];
+                    // create a cancel action
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
+                    {}];
+                    // add the cancel action to the alertController
+                    [alert addAction:okAction];
 
-                [self presentViewController:alert animated:YES completion:^{
-                    // nothing happens when done presenting
-                }];
+                    [self presentViewController:alert animated:YES completion:^{
+                    }];
+                }
+                //the user hasn't posted the place...post it
+                else
+                {
+                    [Place postPlace:self.formattedAddress withId:self.placeID Image:self.picture.image Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                        if(succeeded)
+                        {
+                            NSLog(@"Successfully added Place!");
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                            [self performSegueWithIdentifier:@"profileSegue" sender:nil];
+                        }
+                        else
+                        {
+                            NSLog(@"ERROR: %@", error.localizedDescription);
+                            [MBProgressHUD hideHUDForView:self.view animated:YES];
+                        }
+                    }];
+                }
             }
-            //the user hasn't posted the place...post it
             else
             {
-                [Place postPlace:self.formattedAddress withId:self.placeID Image:self.picture.image Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                    if(succeeded)
-                    {
-                        NSLog(@"Successfully added Place!");
-                        [self performSegueWithIdentifier:@"profileSegue" sender:nil];
-                    }
-                    else
-                    {
-                        NSLog(@"ERROR: %@", error.localizedDescription);
-                    }
-                }];
+                NSLog(@"Error: %@", error.localizedDescription);
             }
-        }
-        else
-        {
-            NSLog(@"Error: %@", error.localizedDescription);
-        }
-    }];
+        }];
+    }
+    else
+    {
+        //present an alert
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Select a location" message:@"You can't add a place without a location" preferredStyle:(UIAlertControllerStyleAlert)];
+        // create a cancel action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
+        {}];
+        // add the cancel action to the alertController
+        [alert addAction:okAction];
+
+        [self presentViewController:alert animated:YES completion:^{
+            // nothing happens when done presenting
+        }];
+    }
 }
 
 - (IBAction)addPlace:(id)sender {
