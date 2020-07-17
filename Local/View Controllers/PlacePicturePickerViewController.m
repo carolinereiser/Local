@@ -9,6 +9,8 @@
 #import "PlacePicturePickerViewController.h"
 #import "PostPlaceViewController.h"
 
+@import YangMingShan;
+
 @interface PlacePicturePickerViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
@@ -54,6 +56,8 @@
 
     [self presentViewController:imagePickerVC animated:YES completion:nil];
 }
+ 
+
 
 
 #pragma mark - Navigation

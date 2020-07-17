@@ -32,7 +32,6 @@
     // Do any additional setup after loading the view.
 }
 - (IBAction)postPlace:(id)sender {
-    NSLog(@"%@", self.placeID);
     //check to see if the user has already posted that place
     PFQuery *query = [PFQuery queryWithClassName:@"Place"];
     [query whereKey:@"placeID" equalTo:self.placeID];
@@ -109,12 +108,10 @@
         if([place.addressComponents[i].types[0] isEqualToString:@"locality"])
         {
             self.city = place.addressComponents[i].name;
-            NSLog(@"hi");
         }
         else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
         {
             self.country = place.addressComponents[i].name;
-            NSLog(@"hey");
         }
     }
     [self dismissViewControllerAnimated:YES completion:nil];
