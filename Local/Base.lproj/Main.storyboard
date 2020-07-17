@@ -358,18 +358,10 @@
                                 <rect key="frame" x="0.0" y="56" width="414" height="414"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oFJ-Mt-sxf">
-                                <rect key="frame" x="70" y="526" width="82" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Use camera"/>
-                                <connections>
-                                    <action selector="cameraClick:" destination="7Ie-TM-2G0" eventType="touchUpInside" id="Cke-GU-tya"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XPo-eQ-rMp">
-                                <rect key="frame" x="256" y="526" width="85" height="30"/>
+                                <rect key="frame" x="149" y="524" width="116" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Camera Roll"/>
+                                <state key="normal" title="Select an Image"/>
                                 <connections>
                                     <action selector="photoRollClick:" destination="7Ie-TM-2G0" eventType="touchUpInside" id="nTX-uW-7d3"/>
                                 </connections>
@@ -391,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xmb-ma-76m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8599" y="2285"/>
+            <point key="canvasLocation" x="8598.5507246376819" y="2284.8214285714284"/>
         </scene>
         <!--Post Place View Controller-->
         <scene sceneID="KGX-P4-Hx8">
@@ -489,6 +481,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="hau-MH-Nd9"/>
         <segue reference="9Rw-UU-Hww"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -11,7 +11,9 @@
 
 @import YangMingShan;
 
-@interface PlacePicturePickerViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface PlacePicturePickerViewController () <YMSPhotoPickerViewControllerDelegate>
+
+@property (nonatomic, strong) NSArray<UIImage *> *images;
 
 @end
 
@@ -22,43 +24,57 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
-    //set the picture to the picked image
-    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
-    self.picture.image = editedImage;
-    
-    // Dismiss UIImagePickerController to go back to your original view controller
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)cameraClick:(id)sender {
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-    }
-    else {
-        NSLog(@"Camera 🚫 available so we will use photo library instead");
-        imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
-}
-
 - (IBAction)photoRollClick:(id)sender {
-    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
-    imagePickerVC.delegate = self;
-    imagePickerVC.allowsEditing = YES;
-    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    YMSPhotoPickerViewController *pickerViewController = [[YMSPhotoPickerViewController alloc] init];
+    pickerViewController.numberOfPhotoToSelect = 1;
+    
+    UIColor *customColor = [UIColor colorWithRed:64.0/255.0 green:0.0 blue:144.0/255.0 alpha:1.0];
+    UIColor *customCameraColor = [UIColor colorWithRed:86.0/255.0 green:1.0/255.0 blue:236.0/255.0 alpha:1.0];
 
-    [self presentViewController:imagePickerVC animated:YES completion:nil];
+    pickerViewController.theme.titleLabelTextColor = [UIColor whiteColor];
+            pickerViewController.theme.navigationBarBackgroundColor = customColor;
+    pickerViewController.theme.tintColor = [UIColor whiteColor];
+    pickerViewController.theme.orderTintColor = customCameraColor;
+    pickerViewController.theme.cameraVeilColor = customCameraColor;
+    pickerViewController.theme.cameraIconColor = [UIColor whiteColor];
+    pickerViewController.theme.statusBarStyle = UIStatusBarStyleLightContent;
+    
+    [self yms_presentCustomAlbumPhotoView:pickerViewController delegate:self];
 }
- 
 
+- (void)photoPickerViewControllerDidReceivePhotoAlbumAccessDenied:(YMSPhotoPickerViewController *)picker
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Allow photo album access?", nil) message:NSLocalizedString(@"Need your permission to access photo albums", nil) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Settings", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }];
+    [alertController addAction:dismissAction];
+    [alertController addAction:settingsAction];
 
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)photoPickerViewControllerDidReceiveCameraAccessDenied:(YMSPhotoPickerViewController *)picker
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Allow camera access?", nil) message:NSLocalizedString(@"Need your permission to take a photo", nil) preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *dismissAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *settingsAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Settings", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+    }];
+    [alertController addAction:dismissAction];
+    [alertController addAction:settingsAction];
+
+    // The access denied of camera is always happened on picker, present alert on it to follow the view hierarchy
+    [picker presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)photoPickerViewController:(YMSPhotoPickerViewController *)picker didFinishPickingImage:(UIImage *)image{
+    NSLog(@"HI!");
+    [picker dismissViewControllerAnimated:YES completion:^() {
+        self.picture.image = image;
+    }];
+}
 
 #pragma mark - Navigation
 

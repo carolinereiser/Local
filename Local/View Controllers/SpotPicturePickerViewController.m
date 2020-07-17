@@ -82,6 +82,7 @@
 
 - (void)photoPickerViewController:(YMSPhotoPickerViewController *)picker didFinishPickingImages:(NSArray *)photoAssets
 {
+    NSLog(@"HEY!");
     [picker dismissViewControllerAnimated:YES completion:^() {
         // Remember images you get here is PHAsset array, you need to implement PHImageManager to get UIImage data by yourself
         PHImageManager *imageManager = [[PHImageManager alloc] init];
