@@ -52,7 +52,6 @@
                 // create a cancel action
                 UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
                 {
-                    [self performSegueWithIdentifier:@"profileSegue" sender:nil];
                 }];
                 // add the cancel action to the alertController
                 [alert addAction:okAction];
