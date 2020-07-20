@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PlaceCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet PFImageView *image;
+@property (weak, nonatomic) IBOutlet UILabel *placeName;
 @property (weak, nonatomic) Place* place;
 
 @end

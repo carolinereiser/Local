@@ -16,6 +16,9 @@
     
     self.image.file = place[@"image"];
     [self.image loadInBackground];
+    
+    self.placeName.text = place.name;
+    [self.placeName sizeToFit];
 }
 
 @end

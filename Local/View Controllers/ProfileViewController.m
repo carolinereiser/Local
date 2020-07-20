@@ -11,6 +11,7 @@
 #import "ProfileViewController.h"
 
 @import MBProgressHUD;
+@import Parse;
 
 @interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
  
@@ -48,8 +49,8 @@
     self.collectionView.frame = self.view.frame;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
 
-    layout.minimumInteritemSpacing = 10;
-    layout.minimumLineSpacing = 10;
+    layout.minimumInteritemSpacing = 5;
+    layout.minimumLineSpacing = 5;
     
     CGFloat imagesPerLine = 3;
     CGFloat itemWidth = (self.collectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
