@@ -10,4 +10,12 @@
 
 @implementation PlaceCell
 
+- (void)setPlace:(Place*)place
+{
+    _place = place;
+    
+    self.image.file = place[@"image"];
+    [self.image loadInBackground];
+}
+
 @end

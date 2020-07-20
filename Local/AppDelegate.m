@@ -9,9 +9,6 @@
 #import "AppDelegate.h"
 #import <GooglePlaces/GooglePlaces.h>
 #import <Parse/Parse.h>
-//MARK: THIS IS THE FILE NOT BEING RECOGNIZED
-//#import <ParseFacebookUtilsV4/PFFacebookUtils.h>
-
 
 @interface AppDelegate ()
 
@@ -28,7 +25,6 @@
     }];
     [Parse initializeWithConfiguration:configuration];
     [GMSPlacesClient provideAPIKey:@"AIzaSyCKhYPEbVm2yXPAzcCdU7jSx0UQpdfzNK0"];
-    //[PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
     return YES;
 }

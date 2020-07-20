@@ -6,11 +6,17 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "Place.h"
 #import <UIKit/UIKit.h>
+
+@import Parse;
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PlaceCell : UICollectionViewCell
+
+@property (weak, nonatomic) IBOutlet PFImageView *image;
+@property (weak, nonatomic) Place* place;
 
 @end
 

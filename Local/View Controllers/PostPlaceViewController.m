@@ -18,7 +18,7 @@
 @property (nonatomic) double longitude;
 @property (nonatomic, strong) NSString* formattedAddress;
 @property (nonatomic, strong) NSString* placeID;
-@property (nonatomic, weak) NSString* city;
+@property (nonatomic, strong) NSString* city;
 @property (nonatomic, strong) NSString* country;
 
 @end
@@ -30,6 +30,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.picture.image = self.image;
+    self.city = nil;
+    self.country = nil;
     // Do any additional setup after loading the view.
 }
 - (IBAction)postPlace:(id)sender {
