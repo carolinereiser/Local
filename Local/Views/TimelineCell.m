@@ -7,6 +7,7 @@
 //
 
 #import "TimelineCell.h"
+#import "TimelinePhotoCell.h"
 
 @implementation TimelineCell
 
@@ -20,5 +21,14 @@
 
     // Configure the view for the selected state
 }
+
+- (void)setSpot:(Spot *)spot{
+    _spot = spot;
+    
+    self.spotName.text = spot.name;
+    self.username.text = spot.user.username;
+    self.spotDescription.text = spot.spotDescription;
+}
+
 
 @end
