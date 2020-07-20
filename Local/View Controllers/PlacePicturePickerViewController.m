@@ -70,10 +70,25 @@
 }
 
 - (void)photoPickerViewController:(YMSPhotoPickerViewController *)picker didFinishPickingImage:(UIImage *)image{
-    NSLog(@"HI!");
     [picker dismissViewControllerAnimated:YES completion:^() {
-        self.picture.image = image;
+        //resize image;
+        UIImage* resizedImage = [self resizeImage:image withSize:CGSizeMake(400, 400)];
+        self.picture.image = resizedImage;
     }];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 #pragma mark - Navigation

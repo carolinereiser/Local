@@ -7,6 +7,7 @@
 //
 
 #import "PostSpotViewController.h"
+#import "Spot.h"
 
 @import GooglePlaces;
 @import MBProgressHUD;
@@ -19,6 +20,7 @@
 @property (nonatomic, strong) NSString* placeID;
 @property (nonatomic, weak) NSString* city;
 @property (nonatomic, strong) NSString* country;
+@property (weak, nonatomic) IBOutlet UITextView *caption;
 
 @end
 
@@ -67,7 +69,6 @@ didFailAutocompleteWithError:(NSError *)error {
 }
 
 - (IBAction)addAddress:(id)sender {
-    NSLog(@"HEY!");
     GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
     acController.delegate = self;
 
@@ -82,6 +83,26 @@ didFailAutocompleteWithError:(NSError *)error {
 
     // Display the autocomplete view controller.
     [self presentViewController:acController animated:YES completion:nil];
+}
+
+- (IBAction)post:(id)sender {
+    //make sure user added a spot
+    if([self.placeID isKindOfClass:[NSString class]])
+    {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [Spot postSpot:self.formattedAddress withId:self.placeID Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            if(succeeded)
+            {
+                NSLog(@"Successfully added Spot!");
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            }
+            else
+            {
+                NSLog(@"ERROR: %@", error.localizedDescription);
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+            }
+        }];
+    }
 }
 
 

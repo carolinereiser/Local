@@ -84,8 +84,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     //Add place to user
     PFUser* user = [PFUser currentUser];
-    user[@"lat"] = [NSDecimalNumber numberWithFloat:place.coordinate.latitude];
-    user[@"lng"] = [NSDecimalNumber numberWithFloat:place.coordinate.longitude];
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:place.coordinate.latitude longitude:place.coordinate.longitude];
+    user[@"location"] = geoPoint;
     user[@"placeID"] = place.placeID;
     user[@"placeName"] = place.formattedAddress;
         

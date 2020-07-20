@@ -10,4 +10,6 @@
 
 @implementation SpotPostCell
 
+
+
 @end

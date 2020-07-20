@@ -94,6 +94,7 @@
      Place *tappedPlace = self.places[indexPath.row];
      PostSpotViewController *postSpotViewController = [segue destinationViewController];
      postSpotViewController.place = tappedPlace;
+     postSpotViewController.images = self.images;
 }
 
 

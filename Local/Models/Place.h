@@ -13,8 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Place : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) PFFileObject * _Nonnull image;
-@property (nonatomic) double latitude;
-@property (nonatomic) double longitude;
+@property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, strong) NSString* placeID;
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* city;

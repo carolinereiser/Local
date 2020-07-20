@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray<Place *> *places;
+@property (nonatomic, strong) NSArray<UIImage *> *images;
 
 @end
 

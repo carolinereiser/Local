@@ -407,6 +407,19 @@
                                     <action selector="addAddress:" destination="Qiw-Gs-7IE" eventType="touchUpInside" id="gxp-yw-swK"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N86-kj-geF">
+                                <rect key="frame" x="190" y="734" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Post!"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pnm-Fi-pRa">
+                                <rect key="frame" x="190" y="734" width="35" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Post!"/>
+                                <connections>
+                                    <action selector="post:" destination="Qiw-Gs-7IE" eventType="touchUpInside" id="GAo-CT-Uq2"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="XUX-y1-0pU"/>
@@ -414,6 +427,7 @@
                     <navigationItem key="navigationItem" id="pMP-eP-3Nl"/>
                     <connections>
                         <outlet property="address" destination="w1w-R7-jku" id="vWE-hI-QeF"/>
+                        <outlet property="caption" destination="b3b-CH-p9a" id="JEf-OV-Uan"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K5F-ne-zJO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -594,6 +608,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="3vc-dF-8lh"/>
         <segue reference="a2Z-6C-g13"/>
         <segue reference="9Rw-UU-Hww"/>
     </inferredMetricsTieBreakers>

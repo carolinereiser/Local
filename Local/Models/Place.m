@@ -11,8 +11,7 @@
 @implementation Place
 
 @dynamic image;
-@dynamic latitude;
-@dynamic longitude;
+@dynamic location;
 @dynamic placeID;
 @dynamic name;
 @dynamic user;
@@ -27,8 +26,8 @@
 {
     Place* newPlace = [Place new];
     newPlace.image = [self getPFFileFromImage:image];
-    newPlace.latitude = lat;
-    newPlace.longitude = lng;
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:lat longitude:lng];
+    newPlace.location = geoPoint;
     newPlace.placeID = placeID;
     newPlace.name = place;
     newPlace.user = [PFUser currentUser];
