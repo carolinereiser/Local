@@ -27,6 +27,7 @@
     // Do any additional setup after loading the view.
     [self getAddress];
     [self getProfilePic];
+    self.username.text = [PFUser currentUser][@"username"];
 }
 
 - (void)reloadData {
@@ -52,6 +53,46 @@
         [self.profilePic loadInBackground];
     }
 }
+
+- (IBAction)changeUsername:(id)sender{
+    PFQuery *query = [PFQuery queryWithClassName:@"User"];
+    [query whereKey:@"username" equalTo:self.username.text];
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+        if(objects != nil){
+            PFUser *user = [PFUser currentUser];
+            user.username = self.username.text;
+            [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                if(succeeded){
+                    NSLog(@"Successfully changed username!");
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                }
+                else{
+                    NSLog(@"%@", error.localizedDescription);
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    NSLog(@"Error: %@", error.localizedDescription);
+                    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error changing username" message:@"The username already exists." preferredStyle:(UIAlertControllerStyleAlert)];
+                    
+                    // create a cancel action
+                    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
+                    {
+                    // handle cancel response here. Doing nothing will dismiss the view.
+                        self.username.text = [PFUser currentUser].username;
+                    }];
+                    // add the cancel action to the alertController
+                    [alert addAction:okAction];
+                    [self presentViewController:alert animated:YES completion:^{
+                        // nothing happens when view controller is done presenting
+                    }];
+                }
+            }];
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
 
 - (IBAction)editBio:(id)sender {
     PFUser* user = [PFUser currentUser];

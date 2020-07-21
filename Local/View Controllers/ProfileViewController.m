@@ -66,6 +66,7 @@
     self.profilePic.file = self.user[@"profilePic"];
     [self.profilePic loadInBackground];
     self.bio.text = self.user[@"bio"];
+    self.username.text = [NSString stringWithFormat:@"@%@", self.user.username];
 }
 
 - (void)fetchPlaces{
