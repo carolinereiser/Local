@@ -10,6 +10,7 @@
 #import "SpotPicturePickerViewController.h"
 #import "SpotPostCell.h"
 
+//to select multiple photos at once
 @import YangMingShan;
 
 @interface SpotPicturePickerViewController () <UICollectionViewDataSource, UICollectionViewDelegate, YMSPhotoPickerViewControllerDelegate>

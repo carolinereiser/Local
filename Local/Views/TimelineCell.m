@@ -16,6 +16,16 @@
     // Initialization code
     self.imagesCollectionView.delegate = self;
     self.imagesCollectionView.dataSource = self;
+    
+    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.imagesCollectionView.collectionViewLayout;
+        
+    layout.minimumInteritemSpacing = 2;
+    layout.minimumLineSpacing = 2;
+    
+    CGFloat imagesPerLine = 1;
+    CGFloat itemWidth = (self.imagesCollectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
+    CGFloat itemHeight = itemWidth;
+    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -48,6 +58,5 @@
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.images.count;
 }
-
 
 @end
