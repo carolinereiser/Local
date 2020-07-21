@@ -53,6 +53,21 @@
     }
 }
 
+- (IBAction)editBio:(id)sender {
+    PFUser* user = [PFUser currentUser];
+    user[@"bio"] = self.bio.text;
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded)
+        {
+            NSLog(@"Successfully changed bio!");
+        }
+        else
+        {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
 - (IBAction)editProfilePic:(id)sender {
     UIImagePickerController *imagePickerVC = [UIImagePickerController new];
     imagePickerVC.delegate = self;
@@ -74,6 +89,7 @@
         if(succeeded)
         {
             NSLog(@"Uploaded profile pic!");
+            [self reloadData];
         }
         else
         {
@@ -83,7 +99,6 @@
     
     // Dismiss UIImagePickerController to go back to your original view controller
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self reloadData];
 }
 
 - (IBAction)logOut:(id)sender {

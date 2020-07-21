@@ -39,6 +39,7 @@
     self.numCountries.text = [NSString stringWithFormat:@"%@", self.user[@"countryCount"]];
     self.profilePic.file = self.user[@"profilePic"];
     [self.profilePic loadInBackground];
+    self.bio.text = self.user[@"bio"];
     
     [self.username sizeToFit];
     [self.numFollowers sizeToFit];
@@ -58,6 +59,13 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
     CGFloat itemHeight = itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.profilePic.file = self.user[@"profilePic"];
+    [self.profilePic loadInBackground];
+    self.bio.text = self.user[@"bio"];
 }
 
 - (void)fetchPlaces{
