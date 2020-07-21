@@ -14,7 +14,7 @@
 @import GooglePlaces;
 @import MBProgressHUD;
 
-@interface SettingsViewController () <GMSAutocompleteViewControllerDelegate>
+@interface SettingsViewController () <GMSAutocompleteViewControllerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -26,10 +26,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self getAddress];
+    [self getProfilePic];
 }
 
 - (void)reloadData {
     [self getAddress];
+    [self getProfilePic];
 }
 
 - (void)getAddress {
@@ -39,6 +41,49 @@
     {
         self.userAddress.text = user[@"placeName"];
     }
+}
+
+- (void)getProfilePic{
+    //TODO: Use CoreData to load profile pic when no network connection
+    PFUser* user = [PFUser currentUser];
+    if(user[@"profilePic"])
+    {
+        self.profilePic.file = user[@"profilePic"];
+        [self.profilePic loadInBackground];
+    }
+}
+
+- (IBAction)editProfilePic:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+
+    // Do something with the images (based on your use case)
+    //self.picture.image = [self resizeImage:editedImage withSize:(CGSizeMake)(500,500)];
+    PFUser* currUser = [PFUser currentUser];
+    currUser[@"profilePic"] = [self getPFFileFromImage:editedImage];
+    
+    [currUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded)
+        {
+            NSLog(@"Uploaded profile pic!");
+        }
+        else
+        {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+    [self reloadData];
 }
 
 - (IBAction)logOut:(id)sender {
@@ -79,7 +124,7 @@
     [self presentViewController:acController animated:YES completion:nil];
 }
 
-  // Handle the user's selection.
+// Handle the user's selection.
 - (void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
     [self dismissViewControllerAnimated:YES completion:nil];
     //Add place to user
@@ -110,9 +155,24 @@
   NSLog(@"Error: %@", [error description]);
 }
 
-  // User canceled the operation.
+// User canceled the operation.
 - (void)wasCancelled:(GMSAutocompleteViewController *)viewController {
   [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
+    // check if image is not nil
+    if (!image) {
+        return nil;
+    }
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    // get image data and check if that is not nil
+    if (!imageData) {
+        return nil;
+    }
+    
+    return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
 }
 
 

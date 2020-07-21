@@ -1001,18 +1001,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3H-Jk-qss">
+                                <rect key="frame" x="158" y="298" width="99" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Edit Profile Pic"/>
+                                <connections>
+                                    <action selector="editProfilePic:" destination="p9d-Ih-KC9" eventType="touchUpInside" id="4fH-AF-IJW"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PAD-la-zs0" customClass="PFImageView">
+                                <rect key="frame" x="157" y="336" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" white="0.21551313089999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="p1h-rH-CNe"/>
                     </view>
                     <navigationItem key="navigationItem" id="ucv-C8-7H0"/>
                     <connections>
+                        <outlet property="profilePic" destination="PAD-la-zs0" id="SjA-3r-Wdc"/>
                         <outlet property="userAddress" destination="tkb-HT-7Rm" id="F7T-j6-pDA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HY8-zx-n5L" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="8599" y="1216"/>
+            <point key="canvasLocation" x="8598.5507246376819" y="1215.4017857142856"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
