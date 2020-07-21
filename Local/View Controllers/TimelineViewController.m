@@ -29,6 +29,11 @@
     self.tableView.dataSource = self;
     
     [self fetchFeed];
+    
+    //pull to refresh
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(fetchFeed) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
 - (void)fetchFeed{
@@ -46,6 +51,7 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+    [self.refreshControl endRefreshing];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
