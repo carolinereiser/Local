@@ -21,19 +21,21 @@
 @dynamic isCertified;
 @dynamic spotDescription;
 @dynamic place;
+@dynamic address;
 
 + (nonnull NSString *)parseClassName {
     return @"Spot";
 }
 
-+ (void)postSpot:(NSString*)spot withId:(NSString*)placeID Image:(NSArray<UIImage *> *)images Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Caption:(NSString*)caption Place:(Place*)place withCompletion: (PFBooleanResultBlock  _Nullable)completion
++ (void)postSpot:(NSString*)spot withId:(NSString*)placeID Name:(NSString*)name Image:(NSArray<UIImage *> *)images Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Caption:(NSString*)caption Place:(Place*)place withCompletion: (PFBooleanResultBlock  _Nullable)completion
 {
     Spot* newSpot = [Spot new];
     newSpot.images = [self getPFFilesFromImages:images];
     PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:lat longitude:lng];
     newSpot.location = geoPoint;
     newSpot.placeID = placeID;
-    newSpot.name = spot;
+    newSpot.address = spot;
+    newSpot.name = name;
     newSpot.user = [PFUser currentUser];
     newSpot.city = city;
     newSpot.country = country;

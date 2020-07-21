@@ -21,6 +21,7 @@
 @property (nonatomic, weak) NSString* city;
 @property (nonatomic, strong) NSString* country;
 @property (weak, nonatomic) IBOutlet UITextView *caption;
+@property (strong, nonatomic) NSString* name;
 
 @end
 
@@ -40,11 +41,11 @@
     self.placeID = place.placeID;
     self.formattedAddress = place.formattedAddress;
     self.address.text = self.formattedAddress;
+    self.name = place.name;
     
     //is there more time efficient way to do this?
     for (int i = 0; i < [place.addressComponents count]; i++)
     {
-        NSLog(@"name %@ = type %@", place.addressComponents[i].name, place.addressComponents[i].types[0]);
         if([place.addressComponents[i].types[0] isEqualToString:@"locality"])
         {
             self.city = place.addressComponents[i].name;
@@ -90,11 +91,12 @@ didFailAutocompleteWithError:(NSError *)error {
     if([self.placeID isKindOfClass:[NSString class]])
     {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [Spot postSpot:self.formattedAddress withId:self.placeID Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        [Spot postSpot:self.formattedAddress withId:self.placeID Name:self.name Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded)
             {
                 NSLog(@"Successfully added Spot!");
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self performSegueWithIdentifier:@"timelineSegue" sender:nil];
             }
             else
             {

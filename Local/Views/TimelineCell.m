@@ -41,6 +41,7 @@
     self.username.text = [NSString stringWithFormat:@"@%@", spot.user.username];
     self.spotDescription.text = spot.spotDescription;
     self.images = spot.images;
+    self.formattedAddress.text = spot.address;
 
     [self.imagesCollectionView reloadData];
 }
