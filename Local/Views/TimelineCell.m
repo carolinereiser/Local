@@ -42,6 +42,8 @@
     self.spotDescription.text = spot.spotDescription;
     self.images = spot.images;
     self.formattedAddress.text = spot.address;
+    self.profilePic.file = spot.user[@"profilePic"];
+    [self.profilePic loadInBackground];
 
     [self.imagesCollectionView reloadData];
 }

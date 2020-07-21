@@ -37,6 +37,8 @@
     self.numFollowing.text = [NSString stringWithFormat:@"%@", self.user[@"followingCount"]];
     self.numCities.text = [NSString stringWithFormat:@"%@", self.user[@"cityCount"]];
     self.numCountries.text = [NSString stringWithFormat:@"%@", self.user[@"countryCount"]];
+    self.profilePic.file = self.user[@"profilePic"];
+    [self.profilePic loadInBackground];
     
     [self.username sizeToFit];
     [self.numFollowers sizeToFit];
