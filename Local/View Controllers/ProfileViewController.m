@@ -35,7 +35,10 @@
     self.navigationItem.title = self.user.username;
 
     // Do any additional setup after loading the view.
-    self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
+    if(self.user[@"name"])
+    {
+        self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
+    }
     self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
     self.numFollowing.text = [NSString stringWithFormat:@"%@", self.user[@"followingCount"]];
     self.numCities.text = [NSString stringWithFormat:@"%@", self.user[@"cityCount"]];
