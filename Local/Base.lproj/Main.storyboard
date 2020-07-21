@@ -877,12 +877,12 @@
                         <outlet property="bio" destination="3gJ-6K-cel" id="Jc7-1c-ZBd"/>
                         <outlet property="collectionView" destination="jn9-Y5-GWI" id="wpq-eJ-KRo"/>
                         <outlet property="location" destination="Sfh-C3-ERL" id="8ZX-bs-gre"/>
+                        <outlet property="name" destination="KXJ-aJ-G9d" id="k8j-EX-gf3"/>
                         <outlet property="numCities" destination="tib-h1-cmy" id="1YL-0I-ibE"/>
                         <outlet property="numCountries" destination="uHv-B9-qmM" id="FJl-m6-AIE"/>
                         <outlet property="numFollowers" destination="ZCx-2X-rgD" id="RG5-7J-LHx"/>
                         <outlet property="numFollowing" destination="KaM-fb-oUs" id="Vdg-Ga-BPq"/>
                         <outlet property="profilePic" destination="ua3-Od-TzO" id="3zq-7D-wid"/>
-                        <outlet property="username" destination="KXJ-aJ-G9d" id="Qxh-J1-ZZg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POG-Nt-h42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1030,6 +1030,14 @@
                                     <action selector="editBio:" destination="p9d-Ih-KC9" eventType="touchUpInside" id="wmo-Jz-rsp"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="This is a bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-I8-aYW">
+                                <rect key="frame" x="20" y="480" width="374" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JZP-q7-5fJ">
                                 <rect key="frame" x="20" y="621" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1044,14 +1052,20 @@
                                     <action selector="changeUsername:" destination="p9d-Ih-KC9" eventType="touchUpInside" id="iA5-xr-NoA"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="This is a bio" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="xV5-I8-aYW">
-                                <rect key="frame" x="20" y="480" width="374" height="51"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAN-y0-x0I">
+                                <rect key="frame" x="20" y="712" width="374" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5cX-KW-lc3">
+                                <rect key="frame" x="156" y="754" width="104" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change name"/>
+                                <connections>
+                                    <action selector="changeName:" destination="p9d-Ih-KC9" eventType="touchUpInside" id="UYy-lY-eZW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="p1h-rH-CNe"/>
@@ -1059,6 +1073,7 @@
                     <navigationItem key="navigationItem" id="ucv-C8-7H0"/>
                     <connections>
                         <outlet property="bio" destination="xV5-I8-aYW" id="wdQ-4P-dtq"/>
+                        <outlet property="name" destination="LAN-y0-x0I" id="KuU-NK-WI5"/>
                         <outlet property="profilePic" destination="PAD-la-zs0" id="SjA-3r-Wdc"/>
                         <outlet property="userAddress" destination="tkb-HT-7Rm" id="F7T-j6-pDA"/>
                         <outlet property="username" destination="JZP-q7-5fJ" id="s7h-nE-z6G"/>
@@ -1070,6 +1085,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="zEV-b4-qA0"/>
         <segue reference="5O3-yi-734"/>
         <segue reference="9Rw-UU-Hww"/>
     </inferredMetricsTieBreakers>

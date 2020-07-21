@@ -26,13 +26,16 @@
     
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    
+        
     if(!self.user)
     {
         self.user = [PFUser currentUser];
     }
+    
+    self.navigationItem.title = self.user.username;
+
     // Do any additional setup after loading the view.
-    self.username.text = [NSString stringWithFormat:@"@%@", self.user.username];
+    self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
     self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
     self.numFollowing.text = [NSString stringWithFormat:@"%@", self.user[@"followingCount"]];
     self.numCities.text = [NSString stringWithFormat:@"%@", self.user[@"cityCount"]];
@@ -41,7 +44,7 @@
     [self.profilePic loadInBackground];
     self.bio.text = self.user[@"bio"];
     
-    [self.username sizeToFit];
+    [self.name sizeToFit];
     [self.numFollowers sizeToFit];
     [self.numFollowing sizeToFit];
     [self.numCities sizeToFit];
@@ -63,10 +66,11 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    self.navigationItem.title = self.user.username;
+    self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
     self.profilePic.file = self.user[@"profilePic"];
     [self.profilePic loadInBackground];
     self.bio.text = self.user[@"bio"];
-    self.username.text = [NSString stringWithFormat:@"@%@", self.user.username];
 }
 
 - (void)fetchPlaces{
