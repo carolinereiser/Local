@@ -14,6 +14,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    self.imagesCollectionView.delegate = self;
+    self.imagesCollectionView.dataSource = self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -26,8 +28,25 @@
     _spot = spot;
     
     self.spotName.text = spot.name;
-    self.username.text = spot.user.username;
+    self.username.text = [NSString stringWithFormat:@"@%@", spot.user.username];
     self.spotDescription.text = spot.spotDescription;
+    self.images = spot.images;
+
+    [self.imagesCollectionView reloadData];
+}
+
+
+- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    TimelinePhotoCell* cell = [self.imagesCollectionView dequeueReusableCellWithReuseIdentifier:@"TimelinePhotoCell" forIndexPath:indexPath];
+    
+    cell.image.file = self.images[indexPath.item];
+    [cell.image loadInBackground];
+    
+    return cell;
+}
+
+- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return self.images.count;
 }
 
 

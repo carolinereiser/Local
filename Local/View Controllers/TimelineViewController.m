@@ -8,6 +8,7 @@
 
 #import "Spot.h"
 #import "TimelineCell.h"
+#import "TimelinePhotoCell.h"
 #import "TimelineViewController.h"
 
 @import MBProgressHUD;
