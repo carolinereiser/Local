@@ -1119,6 +1119,7 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="EQM-aB-r1o"/>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="RbX-oR-vgy" id="3a4-rW-F5H"/>
@@ -1142,6 +1143,7 @@
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="AXh-n7-URR"/>
                     </view>
                     <connections>
                         <outlet property="map" destination="7vx-mU-0Q3" id="kgm-DG-aNZ"/>

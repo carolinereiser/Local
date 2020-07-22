@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import <MapKit/MapKit.h>
 #import <Parse/Parse.h>
 #import "Place.h"
 
@@ -16,7 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray <PFFileObject *> *images;
 @property (nonatomic, strong) PFGeoPoint *location;
 @property (nonatomic, strong) NSString* placeID;
-@property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) NSString* title;
 @property (nonatomic, strong) NSString* address;
 @property (nonatomic, strong) NSString* city;
 @property (nonatomic, strong) NSString* country;

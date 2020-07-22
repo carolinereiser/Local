@@ -37,7 +37,7 @@
 - (void)setSpot:(Spot *)spot{
     _spot = spot;
     
-    self.spotName.text = spot.name;
+    self.spotName.text = spot.title;
     self.username.text = [NSString stringWithFormat:@"@%@", spot.user.username];
     self.spotDescription.text = spot.spotDescription;
     self.images = spot.images;

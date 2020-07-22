@@ -8,12 +8,16 @@
 
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
+#import "Spot.h"
 
 @import CoreLocation;
+@import Parse;
 
 @interface MapViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLLocation *currLoc;
+@property (nonatomic, strong) NSArray<Spot *> *spots;
 
 @end
 
@@ -31,21 +35,46 @@
     [self.locationManager startUpdatingLocation];
     NSLog(@"HEY!");
     
-    CLLocation *currLoc = [[CLLocation alloc] init];
+    self.currLoc = [[CLLocation alloc] init];
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     if(status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse)
     {
-        currLoc = self.locationManager.location;
-        NSLog(@"%f", currLoc.coordinate.latitude);
+        self.currLoc = self.locationManager.location;
+        NSLog(@"%f", self.currLoc.coordinate.latitude);
     }
     else
     {
         //make currLoc San Francisco region
-        currLoc = [[CLLocation alloc] initWithLatitude:37.783333 longitude:-122.416667];
+        self.currLoc = [[CLLocation alloc] initWithLatitude:37.783333 longitude:-122.416667];
     }
     
-    MKCoordinateRegion currRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(currLoc.coordinate.latitude, currLoc.coordinate.longitude), MKCoordinateSpanMake(0.1, 0.1));
+    MKCoordinateRegion currRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currLoc.coordinate.latitude, self.currLoc.coordinate.longitude), MKCoordinateSpanMake(0.1, 0.1));
     [self.map setRegion:currRegion animated:false];
+    [self dropPins];
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self dropPins];
+}
+
+//drop a pin for each spot posted within the region
+- (void)dropPins{
+    //find all of the spots
+    PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
+        if(spots){
+            self.spots = spots;
+            NSLog(@"SPOTS: %@", self.spots);
+            for(int i =0; i<[self.spots count]; i++){
+                MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
+                annotation.coordinate = CLLocationCoordinate2DMake(self.spots[i].location.latitude, self.spots[i].location.longitude);;
+                [self.map addAnnotation:annotation];
+            }
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 /*

@@ -12,9 +12,8 @@
 @implementation Spot
 
 @dynamic images;
-@dynamic location;
 @dynamic placeID;
-@dynamic name;
+@dynamic title;
 @dynamic user;
 @dynamic city;
 @dynamic country;
@@ -22,6 +21,7 @@
 @dynamic spotDescription;
 @dynamic place;
 @dynamic address;
+@dynamic location;
 
 + (nonnull NSString *)parseClassName {
     return @"Spot";
@@ -30,18 +30,21 @@
 + (void)postSpot:(NSString*)spot withId:(NSString*)placeID Name:(NSString*)name Image:(NSArray<UIImage *> *)images Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Caption:(NSString*)caption Place:(Place*)place withCompletion: (PFBooleanResultBlock  _Nullable)completion
 {
     Spot* newSpot = [Spot new];
+    //for map annotation
+    
+    
+    //for Parse
     newSpot.images = [self getPFFilesFromImages:images];
     PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:lat longitude:lng];
     newSpot.location = geoPoint;
     newSpot.placeID = placeID;
     newSpot.address = spot;
-    newSpot.name = name;
+    newSpot.title = name;
     newSpot.user = [PFUser currentUser];
     newSpot.city = city;
     newSpot.country = country;
     newSpot.spotDescription = caption;
     newSpot.place = place;
-    
                        
     newSpot.isCertified = [self checkLatitude:geoPoint];
     
