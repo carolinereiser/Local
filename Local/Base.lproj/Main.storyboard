@@ -149,11 +149,33 @@
                                     <segue destination="wsT-KB-Lrq" kind="embed" id="pNn-fc-ESR"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gs8-CR-Rbm">
+                                <rect key="frame" x="0.0" y="13" width="414" height="883"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="Gjt-ct-luI" kind="embed" id="s4c-UG-vTf"/>
+                                </connections>
+                            </containerView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gf7-xk-8Vr">
+                                <rect key="frame" x="158" y="107" width="99" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Feed"/>
+                                    <segment title="Map"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switchView:" destination="n3b-4b-EgU" eventType="valueChanged" id="O93-X3-UmV"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Stg-5p-att"/>
                     </view>
                     <navigationItem key="navigationItem" id="QIg-dK-jGG"/>
+                    <connections>
+                        <outlet property="mapView" destination="gs8-CR-Rbm" id="1kU-IT-tgk"/>
+                        <outlet property="timelineView" destination="iXP-um-KSb" id="CcB-2U-zJw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqo-hp-HpW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1105,6 +1127,20 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="161-4M-vaQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4480" y="2042"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xRF-Io-Aen">
+            <objects>
+                <viewController id="Gjt-ct-luI" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dE6-C6-ofr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="883"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B9U-5E-NHj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3012" y="2041"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
