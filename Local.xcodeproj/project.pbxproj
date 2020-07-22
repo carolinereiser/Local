@@ -34,6 +34,7 @@
 		58ACBDB824C646DA00066301 /* TimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDB724C646DA00066301 /* TimelineCell.m */; };
 		58ACBDBB24C6474500066301 /* TimelinePhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDBA24C6474500066301 /* TimelinePhotoCell.m */; };
 		58ACBDBE24C8918300066301 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDBD24C8918300066301 /* HomeViewController.m */; };
+		58ACBDC124C897E600066301 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDC024C897E600066301 /* MapViewController.m */; };
 		78ED3FAFC62C59E048349408 /* Pods_Local.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9381EA0E75B3B382C43F9861 /* Pods_Local.framework */; };
 		DBF542A8865DB8CA18623F4E /* Pods_Local_LocalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29CE7071A1A5E8478AD7691D /* Pods_Local_LocalUITests.framework */; };
 /* End PBXBuildFile section */
@@ -112,6 +113,8 @@
 		58ACBDBA24C6474500066301 /* TimelinePhotoCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimelinePhotoCell.m; sourceTree = "<group>"; };
 		58ACBDBC24C8918300066301 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		58ACBDBD24C8918300066301 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		58ACBDBF24C897E600066301 /* MapViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		58ACBDC024C897E600066301 /* MapViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		75E7FE64BCC460B8690261CE /* Pods-Local.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.debug.xcconfig"; path = "Target Support Files/Pods-Local/Pods-Local.debug.xcconfig"; sourceTree = "<group>"; };
 		9381EA0E75B3B382C43F9861 /* Pods_Local.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Local.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCB956EB06023596796A3DA /* Pods-Local-LocalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local-LocalUITests.release.xcconfig"; path = "Target Support Files/Pods-Local-LocalUITests/Pods-Local-LocalUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -232,6 +235,8 @@
 				58ACBDB424C6466900066301 /* TimelineViewController.m */,
 				58ACBDBC24C8918300066301 /* HomeViewController.h */,
 				58ACBDBD24C8918300066301 /* HomeViewController.m */,
+				58ACBDBF24C897E600066301 /* MapViewController.h */,
+				58ACBDC024C897E600066301 /* MapViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -589,6 +594,7 @@
 				5802F29524C0E111007128EA /* PostPlaceViewController.m in Sources */,
 				58ACBDB824C646DA00066301 /* TimelineCell.m in Sources */,
 				5802F29224C0DF30007128EA /* PlacePicturePickerViewController.m in Sources */,
+				58ACBDC124C897E600066301 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

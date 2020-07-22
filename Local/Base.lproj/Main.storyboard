@@ -1128,19 +1128,28 @@
             </objects>
             <point key="canvasLocation" x="4480" y="2042"/>
         </scene>
-        <!--View Controller-->
+        <!--Map View Controller-->
         <scene sceneID="xRF-Io-Aen">
             <objects>
-                <viewController id="Gjt-ct-luI" sceneMemberID="viewController">
+                <viewController id="Gjt-ct-luI" customClass="MapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dE6-C6-ofr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="883"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemPinkColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7vx-mU-0Q3">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="883"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
+                    <connections>
+                        <outlet property="map" destination="7vx-mU-0Q3" id="kgm-DG-aNZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9U-5E-NHj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3012" y="2041"/>
+            <point key="canvasLocation" x="3011.594202898551" y="2040.7366071428571"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
