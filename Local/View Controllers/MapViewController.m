@@ -8,6 +8,7 @@
 
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
+#import "ProfileViewController.h"
 #import "Spot.h"
 
 @import CoreLocation;
@@ -33,7 +34,6 @@
     }
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
-    NSLog(@"HEY!");
     
     self.currLoc = [[CLLocation alloc] init];
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
@@ -60,11 +60,22 @@
 //drop a pin for each spot posted within the region
 - (void)dropPins{
     //find all of the spots
+    //TODO: only add the pins in the view of the map
     PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
+    //NSLog(@"%@", [self.parentViewController class]);
+    if([self.parentViewController isKindOfClass:[ProfileViewController class]]){
+        [query whereKey:@"user" equalTo:[PFUser currentUser]];
+        [self findSpots:query];
+    }
+    else{
+        [self findSpots:query];
+    }
+}
+
+- (void)findSpots:(PFQuery*)query{
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots){
             self.spots = spots;
-            NSLog(@"SPOTS: %@", self.spots);
             for(int i =0; i<[self.spots count]; i++){
                 MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
                 annotation.coordinate = CLLocationCoordinate2DMake(self.spots[i].location.latitude, self.spots[i].location.longitude);;
