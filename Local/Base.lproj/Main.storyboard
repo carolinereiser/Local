@@ -1425,10 +1425,10 @@
             </objects>
             <point key="canvasLocation" x="6447.826086956522" y="1993.8616071428571"/>
         </scene>
-        <!--View Controller-->
+        <!--Saved View Controller-->
         <scene sceneID="Ly0-O0-OYe">
             <objects>
-                <viewController id="YgO-OR-4Ry" sceneMemberID="viewController">
+                <viewController id="YgO-OR-4Ry" customClass="SavedViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OKQ-hU-bPU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
