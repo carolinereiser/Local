@@ -1,19 +1,19 @@
 //
-//  MapViewController.m
+//  PersonalMapViewController.m
 //  Local
 //
-//  Created by Caroline Reiser on 7/22/20.
+//  Created by Caroline Reiser on 7/23/20.
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
 #import <MapKit/MapKit.h>
-#import "MapViewController.h"
+#import "PersonalMapViewController.h"
 #import "Spot.h"
 
 @import CoreLocation;
 @import Parse;
 
-@interface MapViewController () <CLLocationManagerDelegate>
+@interface PersonalMapViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *currLoc;
@@ -21,7 +21,7 @@
 
 @end
 
-@implementation MapViewController
+@implementation PersonalMapViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,18 +49,14 @@
     
     MKCoordinateRegion currRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currLoc.coordinate.latitude, self.currLoc.coordinate.longitude), MKCoordinateSpanMake(0.1, 0.1));
     [self.map setRegion:currRegion animated:false];
-    [self dropPins];
+    [self dropPersonalPins];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    [self dropPins];
-}
 
-//drop a pin for each spot posted within the region
-- (void)dropPins{
-    //find all of the spots
-    //TODO: only add the pins in the view of the map
+- (void)dropPersonalPins{
     PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
+    [query includeKey:@"user"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [self findSpots:query];
 }
 

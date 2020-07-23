@@ -1194,10 +1194,10 @@
             </objects>
             <point key="canvasLocation" x="8189.8550724637689" y="1993.8616071428571"/>
         </scene>
-        <!--Map View Controller-->
+        <!--Personal Map View Controller-->
         <scene sceneID="8JI-pY-KvO">
             <objects>
-                <viewController id="Aip-PQ-wAJ" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController id="Aip-PQ-wAJ" customClass="PersonalMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lgp-Ql-Wz1">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1210,7 +1210,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     </view>
                     <connections>
-                        <outlet property="map" destination="eYZ-mM-cRc" id="C0p-8z-Ia3"/>
+                        <outlet property="map" destination="eYZ-mM-cRc" id="Adu-ky-y05"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PJa-mQ-tDc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
