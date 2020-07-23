@@ -946,7 +946,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="takeMeAnywhere:" destination="Gjt-ct-luI" eventType="touchUpInside" id="SxK-qS-OwX"/>
+                                    <segue destination="865-JS-eDn" kind="show" id="cBb-TF-qHI"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -955,7 +955,6 @@
                     </view>
                     <connections>
                         <outlet property="map" destination="7vx-mU-0Q3" id="kgm-DG-aNZ"/>
-                        <segue destination="865-JS-eDn" kind="show" identifier="takeMeSegue" id="y1C-XM-rJi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9U-5E-NHj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

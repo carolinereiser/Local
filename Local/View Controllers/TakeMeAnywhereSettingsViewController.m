@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"%f", self.currentCoordinate.latitude);
 }
 
 //update the milesLabel
@@ -49,6 +50,40 @@
 }
 
 - (IBAction)currentLocation:(id)sender {
+    if(self.locationServiceEnabled)
+    {
+        NSLog(@"%f, %f", self.currentCoordinate.latitude, self.currentCoordinate.longitude);
+        self.coordinate = self.currentCoordinate;
+        self.locationLabel.text = @"Current Location";
+    }
+    else{
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error finding Current Location" message:@"Please select a location." preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create a cancel action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
+        {
+        // handle cancel response here. Doing nothing will dismiss the view.
+            GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
+            acController.delegate = self;
+
+            // Specify the place data types to return.
+            GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldCoordinate);
+            acController.placeFields = fields;
+
+            // Specify a filter.
+            self->filter = [[GMSAutocompleteFilter alloc] init];
+            self->filter.type = kGMSPlacesAutocompleteTypeFilterNoFilter;
+            acController.autocompleteFilter = self->filter;
+
+            // Display the autocomplete view controller.
+            [self presentViewController:acController animated:YES completion:nil];
+        }];
+        // add the cancel action to the alertController
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:^{
+            // nothing happens when view controller is done presenting
+        }];
+    }
 }
 
 - (IBAction)takeMe:(id)sender {

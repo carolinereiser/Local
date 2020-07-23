@@ -9,6 +9,7 @@
 #import <MapKit/MapKit.h>
 #import "MapViewController.h"
 #import "Spot.h"
+#import "TakeMeAnywhereSettingsViewController.h"
 
 @import CoreLocation;
 @import Parse;
@@ -18,6 +19,7 @@
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) CLLocation *currLoc;
 @property (nonatomic, strong) NSArray<Spot *> *spots;
+@property (nonatomic) BOOL locationServiceEnabled;
 
 @end
 
@@ -40,11 +42,13 @@
     {
         self.currLoc = self.locationManager.location;
         NSLog(@"%f", self.currLoc.coordinate.latitude);
+        self.locationServiceEnabled = YES;
     }
     else
     {
         //make currLoc San Francisco region
         self.currLoc = [[CLLocation alloc] initWithLatitude:37.783333 longitude:-122.416667];
+        self.locationServiceEnabled = NO;
     }
     
     MKCoordinateRegion currRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currLoc.coordinate.latitude, self.currLoc.coordinate.longitude), MKCoordinateSpanMake(0.1, 0.1));
@@ -80,18 +84,17 @@
     }];
 }
 
-- (IBAction)takeMeAnywhere:(id)sender {
-    [self performSegueWithIdentifier:@"takeMeSegue" sender:nil];
-}
 
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    TakeMeAnywhereSettingsViewController* viewController = [segue destinationViewController];
+    viewController.currentCoordinate = self.currLoc.coordinate;
+    viewController.locationServiceEnabled = self.locationServiceEnabled;
 }
-*/
+
 
 @end
