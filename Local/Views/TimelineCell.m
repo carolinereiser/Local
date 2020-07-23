@@ -30,6 +30,7 @@
 
 - (void)refreshData {
     self.likeCount.text = [NSString stringWithFormat:@"%@", self.spot.likeCount];
+    self.saveCount.text = [NSString stringWithFormat:@"%@", self.spot.saveCount];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -128,6 +129,68 @@
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
+
+- (IBAction)didSave:(id)sender {
+    PFQuery *query = [PFQuery queryWithClassName:@"Saves"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"spot" equalTo:self.spot];
+    query.limit = 1;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil)
+        {
+            if(users.count == 1)
+            {
+                PFQuery *query = [PFQuery queryWithClassName:@"Saves"];
+                [query whereKey:@"user" equalTo:[PFUser currentUser]];
+                [query whereKey:@"spot" equalTo:self.spot];
+                query.limit = 1;
+                [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable user, NSError * _Nullable error) {
+                    if(user)
+                    {
+                        NSLog (@"Save removed");
+                        [user[0] deleteInBackground];
+                    }
+                    else
+                    {
+                        NSLog (@"unable to retrieve save");
+                    }
+                }];
+                
+                NSNumber *currSaveCount = self.spot.saveCount;
+                int val = [currSaveCount intValue];
+                val -= 1;
+                self.spot.saveCount = [NSNumber numberWithInt:val];
+                [self refreshData];
+            }
+            else
+            {
+                PFObject *like = [PFObject objectWithClassName:@"Saves"];
+                like[@"user"] = [PFUser currentUser];
+                like[@"spot"] = self.spot;
+                
+                [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                  if (succeeded) {
+                      NSLog(@"Spot saved!");
+                      [self refreshData];
+                  } else {
+                     NSLog(@"Error: %@", error.description);
+                  }
+                }];
+                
+                NSNumber *currSaveCount = self.spot.saveCount;
+                int val = [currSaveCount intValue];
+                val += 1;
+                self.spot.saveCount = [NSNumber numberWithInt:val];
+            }
+        }
+        else
+        {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
 }
 
 @end

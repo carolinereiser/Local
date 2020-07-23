@@ -815,6 +815,9 @@
                                                     </constraints>
                                                     <color key="tintColor" white="0.21551313089999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="bookmark" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="didSave:" destination="hBO-05-lYJ" eventType="touchUpInside" id="xGI-1b-XQb"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sch-WT-5dC">
                                                     <rect key="frame" x="147" y="539" width="21" height="22"/>
@@ -1371,6 +1374,7 @@
                             <constraint firstAttribute="bottom" secondItem="jn9-Y5-GWI" secondAttribute="bottom" id="oqx-v6-fOt"/>
                             <constraint firstItem="jn9-Y5-GWI" firstAttribute="top" secondItem="cPj-kE-1Cp" secondAttribute="bottom" constant="8" id="yLn-Eh-a5c"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="EVf-7G-0Xg"/>
                     </view>
                     <connections>
                         <outlet property="bio" destination="3gJ-6K-cel" id="Dld-x6-RaG"/>
@@ -1402,6 +1406,7 @@
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="4OT-hK-rRa"/>
                     </view>
                     <connections>
                         <outlet property="map" destination="eYZ-mM-cRc" id="Adu-ky-y05"/>
