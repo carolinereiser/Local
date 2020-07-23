@@ -22,19 +22,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.map.alpha = 0;
+    self.saved.alpha = 0;
     self.posts.alpha = 1;
 }
 
 - (IBAction)switchView:(id)sender {
-    if([sender selectedSegmentIndex] == 0){
+    if([sender selectedSegmentIndex] == 0) {
         self.posts.alpha = 1;
         self.map.alpha = 0;
+        self.saved.alpha = 0;
     }
-    else{
+    else if([sender selectedSegmentIndex] == 1) {
         self.posts.alpha = 0;
         self.map.alpha = 1;
-        self.map.tag = 1;
+        self.saved.alpha = 0;
     }
+    else {
+        self.posts.alpha = 0;
+        self.map.alpha = 0;
+        self.saved.alpha = 1;
+    }
+    
 }
 
 
