@@ -22,6 +22,10 @@
 @dynamic place;
 @dynamic address;
 @dynamic location;
+@dynamic likeCount;
+@dynamic shareCount;
+@dynamic commentCount;
+@dynamic saveCount;
 
 + (nonnull NSString *)parseClassName {
     return @"Spot";
@@ -45,6 +49,10 @@
     newSpot.country = country;
     newSpot.spotDescription = caption;
     newSpot.place = place;
+    newSpot.likeCount = @(0);
+    newSpot.commentCount = @(0);
+    newSpot.shareCount = @(0);
+    newSpot.saveCount = @(0);
                        
     newSpot.isCertified = [self checkLatitude:geoPoint];
     

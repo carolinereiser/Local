@@ -21,6 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet PFImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UILabel *username;
 @property (weak, nonatomic) IBOutlet UILabel *spotDescription;
+@property (weak, nonatomic) IBOutlet UILabel *likeCount;
+@property (weak, nonatomic) IBOutlet UILabel *commentCount;
+@property (weak, nonatomic) IBOutlet UILabel *saveCount;
+@property (weak, nonatomic) IBOutlet UILabel *shareCount;
+
 
 @property (weak, nonatomic) Spot* spot;
 @property (weak, nonatomic) NSArray<PFFileObject *> *images;
