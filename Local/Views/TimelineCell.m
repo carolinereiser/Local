@@ -101,6 +101,7 @@
                 int val = [currLikeCount intValue];
                 val -= 1;
                 self.spot.likeCount = [NSNumber numberWithInt:val];
+                [self.spot saveInBackground];
                 [self refreshData];
             }
             else
@@ -112,7 +113,6 @@
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                   if (succeeded) {
                       NSLog(@"Like saved!");
-                      [self refreshData];
                   } else {
                      NSLog(@"Error: %@", error.description);
                   }
@@ -122,6 +122,8 @@
                 int val = [currLikeCount intValue];
                 val += 1;
                 self.spot.likeCount = [NSNumber numberWithInt:val];
+                [self.spot saveInBackground];
+                [self refreshData];
             }
         }
         else
@@ -162,6 +164,7 @@
                 int val = [currSaveCount intValue];
                 val -= 1;
                 self.spot.saveCount = [NSNumber numberWithInt:val];
+                [self.spot saveInBackground];
                 [self refreshData];
             }
             else
@@ -173,7 +176,6 @@
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                   if (succeeded) {
                       NSLog(@"Spot saved!");
-                      [self refreshData];
                   } else {
                      NSLog(@"Error: %@", error.description);
                   }
@@ -183,6 +185,8 @@
                 int val = [currSaveCount intValue];
                 val += 1;
                 self.spot.saveCount = [NSNumber numberWithInt:val];
+                [self.spot saveInBackground];
+                [self refreshData];
             }
         }
         else
