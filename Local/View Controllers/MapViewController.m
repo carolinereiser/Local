@@ -50,11 +50,21 @@
     
     MKCoordinateRegion currRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currLoc.coordinate.latitude, self.currLoc.coordinate.longitude), MKCoordinateSpanMake(0.1, 0.1));
     [self.map setRegion:currRegion animated:false];
-    [self dropPins];
+    if([self.parentViewController isKindOfClass:([ProfileViewController class])]){
+        [self dropPersonalPins];
+    }
+    else{
+        [self dropPins];
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
-    [self dropPins];
+    if([self.parentViewController isKindOfClass:([ProfileViewController class])]){
+        [self dropPersonalPins];
+    }
+    else{
+        [self dropPins];
+    }
 }
 
 //drop a pin for each spot posted within the region
@@ -62,14 +72,14 @@
     //find all of the spots
     //TODO: only add the pins in the view of the map
     PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
-    //NSLog(@"%@", [self.parentViewController class]);
-    if([self.parentViewController isKindOfClass:[ProfileViewController class]]){
-        [query whereKey:@"user" equalTo:[PFUser currentUser]];
-        [self findSpots:query];
-    }
-    else{
-        [self findSpots:query];
-    }
+    [self findSpots:query];
+}
+
+- (void)dropPersonalPins{
+    PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
+    [query includeKey:@"user"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [self findSpots:query];
 }
 
 - (void)findSpots:(PFQuery*)query{
