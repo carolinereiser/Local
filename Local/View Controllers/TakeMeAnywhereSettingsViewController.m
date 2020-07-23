@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "RandomSpotViewController.h"
 #import "Spot.h"
 #include <stdlib.h>
 #import "TakeMeAnywhereSettingsViewController.h"
@@ -83,10 +84,11 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots){
             self.spots = spots;
-            srand(time(NULL));
+            srand(time(nil));
             int r = rand() % [self.spots count];
             self.randomSpot = spots[r];
             NSLog(@"%@", self.randomSpot);
+            [self performSegueWithIdentifier:@"randomSpotSegue" sender:nil];
         }
         else{
             NSLog(@"%@", error.localizedDescription);
@@ -128,14 +130,16 @@ didFailAutocompleteWithError:(NSError *)error {
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    RandomSpotViewController *viewController = [segue destinationViewController];
+    viewController.spot = self.randomSpot;
 }
-*/
+
 
 @end

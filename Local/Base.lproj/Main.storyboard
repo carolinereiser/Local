@@ -1056,7 +1056,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="takeMe:" destination="865-JS-eDn" eventType="touchUpInside" id="S7i-eh-NOK"/>
+                                    <action selector="takeMe:" destination="865-JS-eDn" eventType="touchUpInside" id="16V-xb-hqH"/>
                                     <action selector="takeMeAnywhere:" destination="Gjt-ct-luI" eventType="touchUpInside" id="vwg-XI-k88"/>
                                 </connections>
                             </button>
@@ -1069,22 +1069,24 @@
                         <outlet property="locationLabel" destination="E8P-ML-wp9" id="9R8-yZ-ev3"/>
                         <outlet property="milesLabel" destination="Rpr-IJ-k4n" id="Qf4-QF-xhU"/>
                         <outlet property="milesSlider" destination="bh6-xh-iIW" id="hWH-42-yZw"/>
+                        <segue destination="SJC-pq-CDw" kind="show" identifier="randomSpotSegue" id="3nu-dg-clW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5DE-N4-YOB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2602.898550724638" y="2767.6339285714284"/>
         </scene>
-        <!--View Controller-->
+        <!--Random Spot View Controller-->
         <scene sceneID="qSH-jb-Ife">
             <objects>
-                <viewController id="SJC-pq-CDw" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="SJC-pq-CDw" customClass="RandomSpotViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H78-rt-Bfd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="883"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="znK-4q-AcL"/>
                     </view>
+                    <navigationItem key="navigationItem" id="N5q-Qj-sG9"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Bi-fV-T6x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
