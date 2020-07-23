@@ -77,22 +77,18 @@
     query.limit = 1;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
-        if(users != nil)
-        {
-            if(users.count == 1)
-            {
+        if(users != nil) {
+            if(users.count == 1) {
                 PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
                 [query whereKey:@"user" equalTo:[PFUser currentUser]];
                 [query whereKey:@"spot" equalTo:self.spot];
                 query.limit = 1;
                 [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable user, NSError * _Nullable error) {
-                    if(user)
-                    {
+                    if(user) {
                         NSLog (@"Like removed");
                         [user[0] deleteInBackground];
                     }
-                    else
-                    {
+                    else {
                         NSLog (@"unable to retrieve like");
                     }
                 }];
@@ -104,8 +100,7 @@
                 [self.spot saveInBackground];
                 [self refreshData];
             }
-            else
-            {
+            else {
                 PFObject *like = [PFObject objectWithClassName:@"Likes"];
                 like[@"user"] = [PFUser currentUser];
                 like[@"spot"] = self.spot;
@@ -126,8 +121,7 @@
                 [self refreshData];
             }
         }
-        else
-        {
+        else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
@@ -140,22 +134,18 @@
     query.limit = 1;
     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
-        if(users != nil)
-        {
-            if(users.count == 1)
-            {
+        if(users != nil) {
+            if(users.count == 1) {
                 PFQuery *query = [PFQuery queryWithClassName:@"Saves"];
                 [query whereKey:@"user" equalTo:[PFUser currentUser]];
                 [query whereKey:@"spot" equalTo:self.spot];
                 query.limit = 1;
                 [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable user, NSError * _Nullable error) {
-                    if(user)
-                    {
+                    if(user) {
                         NSLog (@"Save removed");
                         [user[0] deleteInBackground];
                     }
-                    else
-                    {
+                    else {
                         NSLog (@"unable to retrieve save");
                     }
                 }];
@@ -167,18 +157,17 @@
                 [self.spot saveInBackground];
                 [self refreshData];
             }
-            else
-            {
+            else {
                 PFObject *like = [PFObject objectWithClassName:@"Saves"];
                 like[@"user"] = [PFUser currentUser];
                 like[@"spot"] = self.spot;
                 
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                  if (succeeded) {
-                      NSLog(@"Spot saved!");
-                  } else {
-                     NSLog(@"Error: %@", error.description);
-                  }
+                    if (succeeded) {
+                        NSLog(@"Spot saved!");
+                    } else {
+                        NSLog(@"Error: %@", error.description);
+                    }
                 }];
                 
                 NSNumber *currSaveCount = self.spot.saveCount;
@@ -189,12 +178,10 @@
                 [self refreshData];
             }
         }
-        else
-        {
+        else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
-    
 }
 
 @end
