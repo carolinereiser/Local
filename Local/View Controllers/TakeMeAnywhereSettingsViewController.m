@@ -6,14 +6,20 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "Spot.h"
+#include <stdlib.h>
 #import "TakeMeAnywhereSettingsViewController.h"
+#include <time.h>
 
 @import GooglePlaces;
+@import Parse;
 
 @interface TakeMeAnywhereSettingsViewController () <GMSAutocompleteViewControllerDelegate>
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) NSArray *spots;
+@property (nonatomic, strong) Spot* randomSpot;
 
 @end
 
@@ -44,19 +50,7 @@
         self.locationLabel.text = @"Current Location";
     }
     else{
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error finding Current Location" message:@"Please select a location." preferredStyle:(UIAlertControllerStyleAlert)];
-        
-        // create a cancel action
-        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
-        {
-        // handle cancel response here. Doing nothing will dismiss the view.
-            [self showPlacePicker];
-        }];
-        // add the cancel action to the alertController
-        [alert addAction:okAction];
-        [self presentViewController:alert animated:YES completion:^{
-            // nothing happens when view controller is done presenting
-        }];
+        [self presentErrorAlert];
     }
 }
 
@@ -79,6 +73,41 @@
 
 
 - (IBAction)takeMe:(id)sender {
+    if([self.locationLabel.text isEqualToString:@""])
+    {
+        [self presentErrorAlert];
+    }
+    PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+    [query whereKey:@"location" nearGeoPoint:geoPoint withinMiles:self.milesSlider.value];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
+        if(spots){
+            self.spots = spots;
+            srand(time(NULL));
+            int r = rand() % [self.spots count];
+            self.randomSpot = spots[r];
+            NSLog(@"%@", self.randomSpot);
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)presentErrorAlert {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error finding Current Location" message:@"Please select a location." preferredStyle:(UIAlertControllerStyleAlert)];
+    
+    // create a cancel action
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
+    {
+    // handle cancel response here. Doing nothing will dismiss the view.
+        [self showPlacePicker];
+    }];
+    // add the cancel action to the alertController
+    [alert addAction:okAction];
+    [self presentViewController:alert animated:YES completion:^{
+        // nothing happens when view controller is done presenting
+    }];
 }
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
