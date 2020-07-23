@@ -34,33 +34,34 @@
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
     
+    //get current location
     self.currLoc = [[CLLocation alloc] init];
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    if(status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse)
-    {
+    if(status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         self.currLoc = self.locationManager.location;
         NSLog(@"%f", self.currLoc.coordinate.latitude);
     }
-    else
-    {
-        //make currLoc San Francisco region
+    else {
+        //make currLoc San Francisco region if can't get current location
         self.currLoc = [[CLLocation alloc] initWithLatitude:37.783333 longitude:-122.416667];
     }
     
+    //set map region center to be current location
     MKCoordinateRegion currRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currLoc.coordinate.latitude, self.currLoc.coordinate.longitude), MKCoordinateSpanMake(0.1, 0.1));
     [self.map setRegion:currRegion animated:false];
     [self dropPersonalPins];
 }
 
 
-- (void)dropPersonalPins{
+- (void)dropPersonalPins {
+    //only put pins on map that user has posted
     PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
     [query includeKey:@"user"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [self findSpots:query];
 }
 
-- (void)findSpots:(PFQuery*)query{
+- (void)findSpots:(PFQuery*)query {
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots){
             self.spots = spots;

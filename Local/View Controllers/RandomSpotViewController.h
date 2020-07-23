@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface RandomSpotViewController : UIViewController
 
 @property (nonatomic, strong) Spot* spot;
+@property (weak, nonatomic) IBOutlet UILabel *name;
 
 @end
 

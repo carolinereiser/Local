@@ -22,8 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *numFollowing;
 @property (weak, nonatomic) IBOutlet UILabel *numCities;
 @property (weak, nonatomic) IBOutlet UILabel *numCountries;
-
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
 @property (weak, nonatomic) PFUser *user;
 
 @end

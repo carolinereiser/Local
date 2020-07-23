@@ -36,6 +36,7 @@
 
 //update the milesLabel
 - (IBAction)didSlide:(id)sender {
+    //update label to reflect how many miles the user has picked
     self.milesLabel.text = [NSString stringWithFormat:@"%d", (int)(self.milesSlider.value+0.5)];
 }
 
@@ -56,6 +57,7 @@
 }
 
 - (void)showPlacePicker {
+    //use Google API to select a location
     GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
     acController.delegate = self;
 
@@ -76,13 +78,22 @@
 - (IBAction)takeMe:(id)sender {
     if([self.locationLabel.text isEqualToString:@""])
     {
-        [self presentErrorAlert];
+        //if they haven't specified where to take them, first try current location
+        if(self.locationServiceEnabled) {
+            self.coordinate = self.currentCoordinate;
+        }
+        else {
+            //if current location not available, present error
+            [self presentErrorAlert];
+        }
     }
     PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
     PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
     [query whereKey:@"location" nearGeoPoint:geoPoint withinMiles:self.milesSlider.value];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots){
+            //TODO:ERROR IF THERE ARE NO SPOTS
+            //find random spot
             self.spots = spots;
             srand(time(nil));
             int r = rand() % [self.spots count];
@@ -102,7 +113,7 @@
     // create a cancel action
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
     {
-    // handle cancel response here. Doing nothing will dismiss the view.
+        //present place picker for user to select a place
         [self showPlacePicker];
     }];
     // add the cancel action to the alertController

@@ -27,52 +27,52 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    if (self.locationManager == nil)
-    {
+    //in order to get current location
+    if (self.locationManager == nil) {
         self.locationManager = [[CLLocationManager alloc] init];
         self.locationManager.delegate = self;
     }
+    //ask for location permissions
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
     
+    //get current location
     self.currLoc = [[CLLocation alloc] init];
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
-    if(status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse)
-    {
+    if(status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         self.currLoc = self.locationManager.location;
         NSLog(@"%f", self.currLoc.coordinate.latitude);
         self.locationServiceEnabled = YES;
     }
-    else
-    {
-        //make currLoc San Francisco region
+    else {
+        //make currLoc San Francisco region if can't get current location
         self.currLoc = [[CLLocation alloc] initWithLatitude:37.783333 longitude:-122.416667];
         self.locationServiceEnabled = NO;
     }
     
+    //set region for map to show centered around current location
     MKCoordinateRegion currRegion = MKCoordinateRegionMake(CLLocationCoordinate2DMake(self.currLoc.coordinate.latitude, self.currLoc.coordinate.longitude), MKCoordinateSpanMake(0.1, 0.1));
     [self.map setRegion:currRegion animated:false];
     [self dropPins];
 }
 
-- (void)viewDidAppear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated {
     [self dropPins];
 }
 
 //drop a pin for each spot posted within the region
-- (void)dropPins{
+- (void)dropPins {
     //find all of the spots
     //TODO: only add the pins in the view of the map
     PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
     [self findSpots:query];
 }
 
-- (void)findSpots:(PFQuery*)query{
+- (void)findSpots:(PFQuery*)query {
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
-        if(spots){
+        if(spots) {
             self.spots = spots;
-            for(int i =0; i<[self.spots count]; i++){
+            for(int i =0; i<[self.spots count]; i++) {
                 MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
                 annotation.coordinate = CLLocationCoordinate2DMake(self.spots[i].location.latitude, self.spots[i].location.longitude);;
                 [self.map addAnnotation:annotation];
