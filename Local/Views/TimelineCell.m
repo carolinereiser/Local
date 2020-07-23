@@ -28,6 +28,10 @@
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
+- (void)refreshData {
+    self.likeCount.text = [NSString stringWithFormat:@"%@", self.spot.likeCount];
+}
+
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
@@ -64,6 +68,66 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.images.count;
+}
+- (IBAction)didLike:(id)sender {
+    PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"spot" equalTo:self.spot];
+    query.limit = 1;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil)
+        {
+            if(users.count == 1)
+            {
+                PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
+                [query whereKey:@"user" equalTo:[PFUser currentUser]];
+                [query whereKey:@"spot" equalTo:self.spot];
+                query.limit = 1;
+                [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable user, NSError * _Nullable error) {
+                    if(user)
+                    {
+                        NSLog (@"Like removed");
+                        [user[0] deleteInBackground];
+                    }
+                    else
+                    {
+                        NSLog (@"unable to retrieve like");
+                    }
+                }];
+                
+                NSNumber *currLikeCount = self.spot.likeCount;
+                int val = [currLikeCount intValue];
+                val -= 1;
+                self.spot.likeCount = [NSNumber numberWithInt:val];
+                [self refreshData];
+            }
+            else
+            {
+                PFObject *like = [PFObject objectWithClassName:@"Likes"];
+                like[@"user"] = [PFUser currentUser];
+                like[@"spot"] = self.spot;
+                
+                [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                  if (succeeded) {
+                      NSLog(@"Like saved!");
+                      [self refreshData];
+                  } else {
+                     NSLog(@"Error: %@", error.description);
+                  }
+                }];
+                
+                NSNumber *currLikeCount = self.spot.likeCount;
+                int val = [currLikeCount intValue];
+                val += 1;
+                self.spot.likeCount = [NSNumber numberWithInt:val];
+            }
+        }
+        else
+        {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 @end
