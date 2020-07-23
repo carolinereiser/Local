@@ -13,9 +13,7 @@
 @import MBProgressHUD;
 @import Parse;
 
-@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
- 
-@property (strong, nonatomic) NSArray<Place *> *places;
+@interface ProfileViewController ()
 
 @end
 
@@ -23,74 +21,24 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.collectionView.delegate = self;
-    self.collectionView.dataSource = self;
-        
-    if(!self.user)
-    {
-        self.user = [PFUser currentUser];
+    self.map.alpha = 0;
+    self.posts.alpha = 1;
+}
+
+- (IBAction)switchView:(id)sender {
+    if([sender selectedSegmentIndex] == 0){
+        self.posts.alpha = 1;
+        self.map.alpha = 0;
     }
-    
-    self.navigationItem.title = self.user.username;
-
-    // Do any additional setup after loading the view.
-    if(self.user[@"name"])
-    {
-        self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
+    else{
+        self.posts.alpha = 0;
+        self.map.alpha = 1;
+        self.map.tag = 1;
     }
-    self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
-    self.numFollowing.text = [NSString stringWithFormat:@"%@", self.user[@"followingCount"]];
-    self.numCities.text = [NSString stringWithFormat:@"%@", self.user[@"cityCount"]];
-    self.numCountries.text = [NSString stringWithFormat:@"%@", self.user[@"countryCount"]];
-    self.profilePic.file = self.user[@"profilePic"];
-    [self.profilePic loadInBackground];
-    self.bio.text = self.user[@"bio"];
-    
-    [self.name sizeToFit];
-    [self.numFollowers sizeToFit];
-    [self.numFollowing sizeToFit];
-    [self.numCities sizeToFit];
-    [self.numCountries sizeToFit];
-    
-    [self fetchPlaces];
-    
-    self.collectionView.frame = self.view.frame;
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
-
-    layout.minimumInteritemSpacing = 5;
-    layout.minimumLineSpacing = 5;
-    
-    CGFloat imagesPerLine = 3;
-    CGFloat itemWidth = (self.collectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
-    CGFloat itemHeight = itemWidth;
-    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    self.navigationItem.title = self.user.username;
-    self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
-    self.profilePic.file = self.user[@"profilePic"];
-    [self.profilePic loadInBackground];
-    self.bio.text = self.user[@"bio"];
-}
 
-- (void)fetchPlaces{
-    PFQuery *query = [PFQuery queryWithClassName:@"Place"];
-    [query orderByDescending:@"createdAt"];
-    [query whereKey:@"user" equalTo:self.user];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable places, NSError * _Nullable error) {
-        if(places)
-        {
-            self.places = places;
-            [self.collectionView reloadData];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        }
-    }];
-}
+
 
 /*
 #pragma mark - Navigation
@@ -102,18 +50,7 @@
 }
 */
 
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    PlaceCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceCell" forIndexPath:indexPath];
-    
-    Place* place = self.places[indexPath.item];
-    [cell setPlace:place];
-    
-    return cell;
-}
 
-- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.places.count;
-}
 
 
 

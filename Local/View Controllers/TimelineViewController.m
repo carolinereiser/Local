@@ -14,9 +14,10 @@
 @import MBProgressHUD;
 @import Parse;
 
-@interface TimelineViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface TimelineViewController ()
 
-@property (nonatomic, strong) NSArray<Spot *> *feed;
+@property (weak, nonatomic) IBOutlet UIView *timelineView;
+@property (weak, nonatomic) IBOutlet UIView *mapView;
 
 @end
 
@@ -25,48 +26,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    
-    [self fetchFeed];
-    
-    //pull to refresh
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    [self.refreshControl addTarget:self action:@selector(fetchFeed) forControlEvents:UIControlEventValueChanged];
-    [self.tableView insertSubview:self.refreshControl atIndex:0];
+    self.timelineView.alpha = 1;
+    self.mapView.alpha = 0;
+
 }
 
-- (void)fetchFeed{
-    PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
-    [query orderByDescending:@"createdAt"];
-    [query includeKey:@"user"];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *spots, NSError *error) {
-        if (spots != nil) {
-            // do something with the array of object returned by the call
-            self.feed = spots;
-            [self.tableView reloadData];
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-    [self.refreshControl endRefreshing];
+- (IBAction)switchView:(id)sender {
+    if([sender selectedSegmentIndex] == 0){
+        self.timelineView.alpha = 1;
+        self.mapView.alpha = 0;
+    }
+    else{
+        self.timelineView.alpha = 0;
+        self.mapView.alpha = 1;
+        self.mapView.tag = 0;
+    }
 }
-
-- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TimelineCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"TimelineCell" forIndexPath:indexPath];
-    
-    Spot* spot = self.feed[indexPath.row];
-    [cell setSpot:spot];
-    
-    return cell;
-}
-
-- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.feed.count;
-}
-
 /*
 #pragma mark - Navigation
 
