@@ -33,20 +33,7 @@
 }
 
 - (IBAction)customLocation:(id)sender {
-    GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
-    acController.delegate = self;
-
-    // Specify the place data types to return.
-    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldCoordinate);
-    acController.placeFields = fields;
-
-    // Specify a filter.
-    filter = [[GMSAutocompleteFilter alloc] init];
-    filter.type = kGMSPlacesAutocompleteTypeFilterNoFilter;
-    acController.autocompleteFilter = filter;
-
-    // Display the autocomplete view controller.
-    [self presentViewController:acController animated:YES completion:nil];
+    [self showPlacePicker];
 }
 
 - (IBAction)currentLocation:(id)sender {
@@ -63,20 +50,7 @@
         UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
         {
         // handle cancel response here. Doing nothing will dismiss the view.
-            GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
-            acController.delegate = self;
-
-            // Specify the place data types to return.
-            GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldCoordinate);
-            acController.placeFields = fields;
-
-            // Specify a filter.
-            self->filter = [[GMSAutocompleteFilter alloc] init];
-            self->filter.type = kGMSPlacesAutocompleteTypeFilterNoFilter;
-            acController.autocompleteFilter = self->filter;
-
-            // Display the autocomplete view controller.
-            [self presentViewController:acController animated:YES completion:nil];
+            [self showPlacePicker];
         }];
         // add the cancel action to the alertController
         [alert addAction:okAction];
@@ -85,6 +59,24 @@
         }];
     }
 }
+
+- (void)showPlacePicker {
+    GMSAutocompleteViewController *acController = [[GMSAutocompleteViewController alloc] init];
+    acController.delegate = self;
+
+    // Specify the place data types to return.
+    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldCoordinate);
+    acController.placeFields = fields;
+
+    // Specify a filter.
+    self->filter = [[GMSAutocompleteFilter alloc] init];
+    self->filter.type = kGMSPlacesAutocompleteTypeFilterNoFilter;
+    acController.autocompleteFilter = self->filter;
+
+    // Display the autocomplete view controller.
+    [self presentViewController:acController animated:YES completion:nil];
+}
+
 
 - (IBAction)takeMe:(id)sender {
 }
