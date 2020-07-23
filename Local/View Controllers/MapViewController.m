@@ -81,7 +81,7 @@
 }
 
 - (IBAction)takeMeAnywhere:(id)sender {
-    
+    [self performSegueWithIdentifier:@"takeMeSegue" sender:nil];
 }
 
 /*
