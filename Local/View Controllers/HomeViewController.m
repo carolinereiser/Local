@@ -39,9 +39,24 @@
 }
 
 - (void)fetchFeed {
-    PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
+    //get posts from users that this user follows
+    PFQuery *followingQuery = [PFQuery queryWithClassName:@"Following"];
+    [followingQuery whereKey:@"follower" equalTo:[PFUser currentUser]];
+    
+    PFQuery *postsFromFollowedUsers = [PFQuery queryWithClassName:@"Spot"];
+    [postsFromFollowedUsers whereKey:@"user" matchesKey:@"following" inQuery:followingQuery];
+    
+    //get posts this user
+    PFQuery *postsFromThisUser = [PFQuery queryWithClassName:@"Spot"];
+    [postsFromThisUser whereKey:@"user" equalTo:[PFUser currentUser]];
+    
+    //NSArray<PFQuery *> *queries = [NSArray arrayWithObjects:@[postsFromThisUser, postsFromFollowedUsers], nil];
+    NSLog(@"QUERIES: %@", [NSArray arrayWithObjects:@[postsFromThisUser, postsFromFollowedUsers], nil]);
+    //put it together
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[postsFromFollowedUsers, postsFromThisUser]];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"user"];
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [query findObjectsInBackgroundWithBlock:^(NSArray *spots, NSError *error) {
         if (spots != nil) {
