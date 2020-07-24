@@ -32,8 +32,6 @@
         newUser.username = self.usernameField.text;
         newUser.password = self.passwordField.text;
         newUser.email = self.emailField.text;
-        newUser[@"followerCount"] = @(0);
-        newUser[@"followingCount"] = @(0);
         newUser[@"countryCount"] = @(0);
         newUser[@"cityCount"] = @(0);
         newUser[@"isPublic"] = @YES;

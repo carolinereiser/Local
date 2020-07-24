@@ -35,8 +35,20 @@
     if(self.user[@"name"]) {
         self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
     }
-    self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
-    self.numFollowing.text = [NSString stringWithFormat:@"%@", self.user[@"followingCount"]];
+    //get numfollowers
+    PFQuery *query = [PFQuery queryWithClassName:@"Following"];
+    [query whereKey:@"following" equalTo:self.user];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable followers, NSError * _Nullable error) {
+        self.numFollowers.text = [NSString stringWithFormat:@"%lu", [followers count]];
+    }];
+    //self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
+    //get numfollowing
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Following"];
+    [query2 whereKey:@"follower" equalTo:self.user];
+    [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable following, NSError * _Nullable error) {
+        self.numFollowing.text = [NSString stringWithFormat:@"%lu", [following count]];
+    }];
+    //self.numFollowing.text = [NSString stringWithFormat:@"%@", self.user[@"followingCount"]];
     self.numCities.text = [NSString stringWithFormat:@"%@", self.user[@"cityCount"]];
     self.numCountries.text = [NSString stringWithFormat:@"%@", self.user[@"countryCount"]];
     self.profilePic.file = self.user[@"profilePic"];
@@ -71,8 +83,19 @@
     self.profilePic.file = self.user[@"profilePic"];
     [self.profilePic loadInBackground];
     self.bio.text = self.user[@"bio"];
-    self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
-    self.numFollowing.text = [NSString stringWithFormat:@"%@", self.user[@"followingCount"]];
+    //get numfollowers
+    PFQuery *query = [PFQuery queryWithClassName:@"Following"];
+    [query whereKey:@"following" equalTo:self.user];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable followers, NSError * _Nullable error) {
+        self.numFollowers.text = [NSString stringWithFormat:@"%lu", [followers count]];
+    }];
+
+    //get numfollowing
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Following"];
+    [query2 whereKey:@"follower" equalTo:self.user];
+    [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable following, NSError * _Nullable error) {
+        self.numFollowing.text = [NSString stringWithFormat:@"%lu", [following count]];
+    }];
 }
 
 - (void)fetchPlaces {
@@ -92,7 +115,19 @@
 }
 
 - (void) refreshData {
-    self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
+    //get numfollowers
+    PFQuery *query = [PFQuery queryWithClassName:@"Following"];
+    [query whereKey:@"following" equalTo:self.user];
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable followers, NSError * _Nullable error) {
+        self.numFollowers.text = [NSString stringWithFormat:@"%lu", [followers count]];
+    }];
+
+    //get numfollowing
+    PFQuery *query2 = [PFQuery queryWithClassName:@"Following"];
+    [query2 whereKey:@"follower" equalTo:self.user];
+    [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable following, NSError * _Nullable error) {
+        self.numFollowing.text = [NSString stringWithFormat:@"%lu", [following count]];
+    }];
 }
 
 - (IBAction)didTapFollow:(id)sender {
@@ -108,22 +143,6 @@
                 //delete the follow
                 [users[0] deleteInBackground];
                 NSLog(@"Unfollowed!");
-
-                NSNumber *currFollowerCount = self.user[@"followerCount"];
-                int val = [currFollowerCount intValue];
-                val -= 1;
-                
-                NSNumber *currFollowingCount = [PFUser currentUser][@"followingCount"];
-                int val2 = [currFollowingCount intValue];
-                val2 -= 1;
-                
-                //self.user[@"followerCount"] = [NSNumber numberWithInt:val];
-                [PFUser currentUser][@"followingCount"] = [NSNumber numberWithInt:val2];
-                
-                //[self.user saveInBackground];
-                [[PFUser currentUser] saveInBackground];
-                
-                [self refreshData];
             }
             else {
                 PFObject *follow = [PFObject objectWithClassName:@"Following"];
@@ -137,20 +156,6 @@
                      NSLog(@"Error: %@", error.description);
                   }
                 }];
-                
-                NSNumber *currFollowCount = self.user[@"followerCount"];
-                int val = [currFollowCount intValue];
-                val += 1;
-                
-                NSNumber *currFollowingCount = [PFUser currentUser][@"followingCount"];
-                int val2 = [currFollowingCount intValue];
-                val2 += 1;
-                
-                //self.user[@"followerCount"] = [NSNumber numberWithInt:val];
-                [PFUser currentUser][@"followingCount"] = [NSNumber numberWithInt:val2];
-                
-                //[self.user saveInBackground];
-                [[PFUser currentUser] saveInBackground];
                 
                 [self refreshData];
             }
