@@ -62,6 +62,33 @@
     [self.numCities sizeToFit];
     [self.numCountries sizeToFit];
     
+    //follow button configuration
+    //if it's the current user's account, don't show the button
+    if([self.user isEqual:[PFUser currentUser]])
+    {
+        self.followButton.alpha = 0;
+        self.editButton.alpha = 1;
+    }
+    else
+    {
+        self.followButton.alpha = 1;
+        self.editButton.alpha = 0;
+        //see if the current user follows the user
+        PFQuery *query = [PFQuery queryWithClassName:@"Following"];
+        [query whereKey:@"follower" equalTo:[PFUser currentUser]];
+        [query whereKey:@"following" equalTo:self.user];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+            if(users != nil) {
+                if(users.count == 1) {
+                    [self.followButton setTitle:@"Unfollow" forState:UIControlStateNormal];
+                }
+            }
+            else {
+                NSLog(@"%@", error.localizedDescription);
+            }
+        }];
+    }
+    
     [self fetchPlaces];
     
     self.collectionView.frame = self.view.frame;
@@ -143,6 +170,7 @@
                 //delete the follow
                 [users[0] deleteInBackground];
                 NSLog(@"Unfollowed!");
+                [self.followButton setTitle:@"Follow" forState:UIControlStateNormal];
             }
             else {
                 PFObject *follow = [PFObject objectWithClassName:@"Following"];
@@ -152,6 +180,7 @@
                 [follow saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                   if (succeeded) {
                       NSLog(@"Followed!");
+                      [self.followButton setTitle:@"Unfollow" forState:UIControlStateNormal];
                   } else {
                      NSLog(@"Error: %@", error.description);
                   }
