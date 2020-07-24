@@ -9,6 +9,7 @@
 #import "Spot.h"
 #import <UIKit/UIKit.h>
 
+@import CoreLocation;
 @import Parse;
 
 NS_ASSUME_NONNULL_BEGIN

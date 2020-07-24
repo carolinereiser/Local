@@ -184,4 +184,13 @@
     }];
 }
 
+- (IBAction)didPressMap:(id)sender {
+    NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?daddr=%f,%f", self.spot.location.latitude, self.spot.location.longitude];
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL] options:@{} completionHandler:^(BOOL success) {}];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL]];
+    }
+}
+
 @end

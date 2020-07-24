@@ -833,6 +833,9 @@
                                                     </constraints>
                                                     <color key="tintColor" white="0.21551313089999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="map" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="didPressMap:" destination="hBO-05-lYJ" eventType="touchUpInside" id="E6b-5S-qAA"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QSx-CE-rAk" customClass="PFImageView">
                                                     <rect key="frame" x="20" y="478" width="20" height="19"/>
