@@ -156,9 +156,8 @@
                      NSLog(@"Error: %@", error.description);
                   }
                 }];
-                
-                [self refreshData];
             }
+            [self refreshData];
         }
         else {
             NSLog(@"%@", error.localizedDescription);
