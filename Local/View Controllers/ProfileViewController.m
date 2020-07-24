@@ -6,8 +6,10 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "PersonalMapViewController.h"
 #import "Place.h"
 #import "PlaceCell.h"
+#import "ProfilePostsViewController.h"
 #import "ProfileViewController.h"
 
 @import MBProgressHUD;
@@ -21,9 +23,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    NSLog(@"hey");
+    
     self.map.alpha = 0;
     self.saved.alpha = 0;
     self.posts.alpha = 1;
+    
+    if(!self.user) {
+        self.user = [PFUser currentUser];
+    }
 }
 
 - (IBAction)switchView:(id)sender {
@@ -45,18 +54,26 @@
     
 }
 
-
-
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if(!self.user)
+    {
+        self.user = [PFUser currentUser];
+    }
+    if([[segue identifier] isEqualToString:@"profilePostsSegue"])
+    {
+        ProfilePostsViewController* viewController = [segue destinationViewController];
+        viewController.user = self.user;
+    }
+    else if([[segue identifier] isEqualToString:@"profileMapSegue"]) {
+        PersonalMapViewController* viewController = [segue destinationViewController];
+        viewController.user = self.user;
+    }
 }
-*/
 
 
 

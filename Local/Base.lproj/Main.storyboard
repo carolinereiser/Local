@@ -461,28 +461,28 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" modalPresentationStyle="fullScreen" id="874-8P-jS9" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FPo-wb-KS2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="883"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuG-Nv-RiB">
-                                <rect key="frame" x="0.0" y="-75" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="-34" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="rUK-86-raG" kind="embed" id="BbT-ZE-CUH"/>
+                                    <segue destination="rUK-86-raG" kind="embed" identifier="profilePostsSegue" id="BbT-ZE-CUH"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8In-xM-MLq">
-                                <rect key="frame" x="0.0" y="-39" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="2" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="Aip-PQ-wAJ" kind="embed" id="Q3V-Xi-cNg"/>
+                                    <segue destination="Aip-PQ-wAJ" kind="embed" identifier="profileMapSegue" id="Q3V-Xi-cNg"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-q8-sjA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="41" width="414" height="842"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
-                                    <segue destination="YgO-OR-4Ry" kind="embed" id="5Cd-Dc-Okj"/>
+                                    <segue destination="YgO-OR-4Ry" kind="embed" identifier="" id="5Cd-Dc-Okj"/>
                                 </connections>
                             </containerView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ows-P9-bg7">
@@ -614,7 +614,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="p9d-Ih-KC9" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dWo-1z-2Ta">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="883"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Hd-On-GIX">
@@ -893,6 +893,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHr-qu-3Kn">
+                                                    <rect key="frame" x="21" y="472" width="19" height="30"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <segue destination="874-8P-jS9" kind="show" identifier="profileSegue" id="jaj-em-yZM"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="7KF-14-jep" firstAttribute="top" secondItem="exv-q6-opp" secondAttribute="bottom" constant="2" id="17f-Te-SYZ"/>
@@ -942,6 +949,7 @@
                                             <outlet property="formattedAddress" destination="6XE-Dv-U58" id="pqj-yB-XNe"/>
                                             <outlet property="imagesCollectionView" destination="HZa-zs-mb5" id="OuQ-DB-5zt"/>
                                             <outlet property="likeCount" destination="7KF-14-jep" id="wW0-vn-cLm"/>
+                                            <outlet property="profileButton" destination="tHr-qu-3Kn" id="6O3-oE-be3"/>
                                             <outlet property="profilePic" destination="QSx-CE-rAk" id="XbS-3s-vmd"/>
                                             <outlet property="saveCount" destination="haF-gu-6PK" id="Fqj-bo-tm7"/>
                                             <outlet property="shareCount" destination="fht-Xi-lGS" id="QJm-GT-iIN"/>
@@ -1152,7 +1160,7 @@
         <!--Profile Posts View Controller-->
         <scene sceneID="RJR-iu-q2s">
             <objects>
-                <viewController id="rUK-86-raG" customClass="ProfilePostsViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="rUK-86-raG" customClass="ProfilePostsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uQK-hl-lkg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1385,6 +1393,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="EVf-7G-0Xg"/>
                     </view>
+                    <navigationItem key="navigationItem" id="CqY-Fr-9J5"/>
                     <connections>
                         <outlet property="bio" destination="3gJ-6K-cel" id="Dld-x6-RaG"/>
                         <outlet property="collectionView" destination="jn9-Y5-GWI" id="VoQ-at-jQC"/>
@@ -1450,6 +1459,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="jaj-em-yZM"/>
         <segue reference="qdc-qV-597"/>
     </inferredMetricsTieBreakers>
     <resources>

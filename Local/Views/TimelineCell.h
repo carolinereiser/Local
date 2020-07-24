@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *commentCount;
 @property (weak, nonatomic) IBOutlet UILabel *saveCount;
 @property (weak, nonatomic) IBOutlet UILabel *shareCount;
+@property (weak, nonatomic) IBOutlet UIButton *profileButton;
 
 
 @property (weak, nonatomic) Spot* spot;

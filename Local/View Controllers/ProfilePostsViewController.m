@@ -9,6 +9,7 @@
 #import "Place.h"
 #import "PlaceCell.h"
 #import "ProfilePostsViewController.h"
+#import "ProfileViewController.h"
 
 @import MBProgressHUD;
 @import Parse;
@@ -24,12 +25,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"sup");
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-        
-    if(!self.user) {
+    
+    NSLog(@"%@", self.user);
+    
+   /* if(!self.user)
+    {
         self.user = [PFUser currentUser];
-    }
+    }*/
+    //((ProfileViewController*)self.parentViewController).user = self.user;
+    
+    //self.user = ((ProfileViewController*)self.parentViewController).user;
     
     //put username in the title of screen
     self.navigationItem.title = self.user.username;

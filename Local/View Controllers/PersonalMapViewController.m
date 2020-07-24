@@ -57,7 +57,7 @@
     //only put pins on map that user has posted
     PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
     [query includeKey:@"user"];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"user" equalTo:self.user];
     [self findSpots:query];
 }
 

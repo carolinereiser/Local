@@ -23,8 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *numCities;
 @property (weak, nonatomic) IBOutlet UILabel *numCountries;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
-@property (weak, nonatomic) PFUser *user;
+@property (strong, nonatomic) PFUser* user;
 
 @end
 

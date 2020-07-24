@@ -7,6 +7,8 @@
 //
 
 #import "HomeViewController.h"
+#import "ProfilePostsViewController.h"
+#import "ProfileViewController.h"
 #import "Spot.h"
 #import "TimelineCell.h"
 #import "TimelinePhotoCell.h"
@@ -59,6 +61,7 @@
     
     Spot* spot = self.feed[indexPath.row];
     [cell setSpot:spot];
+    cell.profileButton.tag = indexPath.row;
     
     return cell;
 }
@@ -68,14 +71,20 @@
 }
 
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"profileSegue"]) {
+        UIButton *tappedButton = sender;
+        ProfileViewController *profileViewController = [segue destinationViewController];
+        PFUser *user = self.feed[tappedButton.tag][@"user"];
+        profileViewController.user = user;
+    }
 }
-*/
+
 
 @end
