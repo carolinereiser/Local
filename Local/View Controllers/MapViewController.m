@@ -64,7 +64,18 @@
 - (void)dropPins {
     //find all of the spots
     //TODO: only add the pins in the view of the map
-    PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
+    PFQuery *followingQuery = [PFQuery queryWithClassName:@"Following"];
+    [followingQuery whereKey:@"follower" equalTo:[PFUser currentUser]];
+    
+    PFQuery *postsFromFollowedUsers = [PFQuery queryWithClassName:@"Spot"];
+    [postsFromFollowedUsers whereKey:@"user" matchesKey:@"following" inQuery:followingQuery];
+    
+    //get posts this user
+    PFQuery *postsFromThisUser = [PFQuery queryWithClassName:@"Spot"];
+    [postsFromThisUser whereKey:@"user" equalTo:[PFUser currentUser]];
+    
+    //put it together
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[postsFromFollowedUsers, postsFromThisUser]];
     [self findSpots:query];
 }
 

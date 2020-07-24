@@ -50,8 +50,6 @@
     PFQuery *postsFromThisUser = [PFQuery queryWithClassName:@"Spot"];
     [postsFromThisUser whereKey:@"user" equalTo:[PFUser currentUser]];
     
-    //NSArray<PFQuery *> *queries = [NSArray arrayWithObjects:@[postsFromThisUser, postsFromFollowedUsers], nil];
-    NSLog(@"QUERIES: %@", [NSArray arrayWithObjects:@[postsFromThisUser, postsFromFollowedUsers], nil]);
     //put it together
     PFQuery *query = [PFQuery orQueryWithSubqueries:@[postsFromFollowedUsers, postsFromThisUser]];
     [query orderByDescending:@"createdAt"];
