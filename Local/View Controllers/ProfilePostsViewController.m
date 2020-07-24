@@ -29,16 +29,6 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    NSLog(@"%@", self.user);
-    
-   /* if(!self.user)
-    {
-        self.user = [PFUser currentUser];
-    }*/
-    //((ProfileViewController*)self.parentViewController).user = self.user;
-    
-    //self.user = ((ProfileViewController*)self.parentViewController).user;
-    
     //put username in the title of screen
     self.navigationItem.title = self.user.username;
 
@@ -81,6 +71,8 @@
     self.profilePic.file = self.user[@"profilePic"];
     [self.profilePic loadInBackground];
     self.bio.text = self.user[@"bio"];
+    self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
+    self.numFollowing.text = [NSString stringWithFormat:@"%@", self.user[@"followingCount"]];
 }
 
 - (void)fetchPlaces {
@@ -99,7 +91,74 @@
     }];
 }
 
+- (void) refreshData {
+    self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
+}
+
 - (IBAction)didTapFollow:(id)sender {
+    PFQuery *query = [PFQuery queryWithClassName:@"Following"];
+    [query whereKey:@"follower" equalTo:[PFUser currentUser]];
+    [query whereKey:@"following" equalTo:self.user];
+    query.limit = 1;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil) {
+            NSLog(@"%lu", users.count);
+            if(users.count == 1) {
+                //delete the follow
+                [users[0] deleteInBackground];
+                NSLog(@"Unfollowed!");
+
+                NSNumber *currFollowerCount = self.user[@"followerCount"];
+                int val = [currFollowerCount intValue];
+                val -= 1;
+                
+                NSNumber *currFollowingCount = [PFUser currentUser][@"followingCount"];
+                int val2 = [currFollowingCount intValue];
+                val2 -= 1;
+                
+                //self.user[@"followerCount"] = [NSNumber numberWithInt:val];
+                [PFUser currentUser][@"followingCount"] = [NSNumber numberWithInt:val2];
+                
+                //[self.user saveInBackground];
+                [[PFUser currentUser] saveInBackground];
+                
+                [self refreshData];
+            }
+            else {
+                PFObject *follow = [PFObject objectWithClassName:@"Following"];
+                follow[@"follower"] = [PFUser currentUser];
+                follow[@"following"] = self.user;
+                
+                [follow saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                  if (succeeded) {
+                      NSLog(@"Followed!");
+                  } else {
+                     NSLog(@"Error: %@", error.description);
+                  }
+                }];
+                
+                NSNumber *currFollowCount = self.user[@"followerCount"];
+                int val = [currFollowCount intValue];
+                val += 1;
+                
+                NSNumber *currFollowingCount = [PFUser currentUser][@"followingCount"];
+                int val2 = [currFollowingCount intValue];
+                val2 += 1;
+                
+                //self.user[@"followerCount"] = [NSNumber numberWithInt:val];
+                [PFUser currentUser][@"followingCount"] = [NSNumber numberWithInt:val2];
+                
+                //[self.user saveInBackground];
+                [[PFUser currentUser] saveInBackground];
+                
+                [self refreshData];
+            }
+        }
+        else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
