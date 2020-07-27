@@ -8,6 +8,7 @@
 
 #import "CommentCell.h"
 #import "CommentViewController.h"
+#import "ProfileViewController.h"
 
 @import MBProgressHUD;
 
@@ -84,6 +85,7 @@
     [cell.profilePic loadInBackground];
     cell.username.text = self.comments[indexPath.row][@"user"][@"username"];
     cell.comment.text = self.comments[indexPath.row][@"text"];
+    cell.profileButton.tag = indexPath.row;
     
     return cell;
 }
@@ -96,14 +98,18 @@
     [self.view endEditing:YES];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UIButton *tappedButton = sender;
+    ProfileViewController *profileViewController = [segue destinationViewController];
+    PFUser *user = self.comments[tappedButton.tag][@"user"];
+    profileViewController.user = user;
 }
-*/
+
 
 @end
