@@ -185,15 +185,21 @@
         <scene sceneID="FFI-ok-DpX">
             <objects>
                 <viewController id="ZNp-ze-VFx" customClass="SearchViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="56E-9t-qbg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="UVA-a0-y45"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="9Vl-kA-4lc"/>
+                    <navigationItem key="navigationItem" id="9Vl-kA-4lc">
+                        <connections>
+                            <outlet property="titleView" destination="t7s-L2-EPX" id="GDy-Ro-evw"/>
+                        </connections>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="searchBar" destination="t7s-L2-EPX" id="Ar4-sJ-h79"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9qh-eL-rLz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <searchBar contentMode="redraw" id="t7s-L2-EPX">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
             </objects>
             <point key="canvasLocation" x="4138" y="1739"/>
         </scene>
@@ -246,7 +252,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="ZNp-ze-VFx" kind="relationship" relationship="rootViewController" id="dBW-tH-GMe"/>
+                        <segue destination="ZNp-ze-VFx" kind="relationship" relationship="rootViewController" id="TFd-WS-PTk"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zed-Nr-eND" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
