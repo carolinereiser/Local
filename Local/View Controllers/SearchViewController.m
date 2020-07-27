@@ -62,6 +62,7 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     SearchResultCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
     cell.profilePic.file = self.users[indexPath.row][@"profilePic"];
+    [cell.profilePic loadInBackground];
     cell.username.text = [NSString stringWithFormat:@"@%@", self.users[indexPath.row].username];
     
     return cell;
