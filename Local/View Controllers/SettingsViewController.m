@@ -74,7 +74,8 @@
 - (IBAction)changeUsername:(id)sender{
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     PFUser *user = [PFUser currentUser];
-    user.username = self.username.text;
+    NSString *lowerUsername = [self.username.text lowercaseString];
+    user.username = lowerUsername;
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded){
             NSLog(@"Successfully changed username!");

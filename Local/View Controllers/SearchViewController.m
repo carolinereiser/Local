@@ -27,16 +27,25 @@
     //self.tableView.dataSource = self;
     
     //get users
-    [self fetchUsers];
+    //[self fetchUsers];
 }
 
-- (void)fetchUsers {
-    PFQuery *query = [PFUser query];
-    [query whereKey:@"username" notEqualTo:[PFUser currentUser].username];
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    PFQuery *query1 = [PFUser query];
+    [query1 whereKey:@"username" notEqualTo:[PFUser currentUser].username];
+    [query1 whereKey:@"username" containsString:[searchText lowercaseString]];
+    
+    PFQuery *query2 = [PFUser query];
+    [query2 whereKey:@"username" notEqualTo:[PFUser currentUser].username];
+    [query2 whereKey:@"name" containsString:searchText];
+    
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1, query2]];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
         if(users)
         {
             self.users = users;
+            NSLog(@"%@", self.users);
         }
         else
         {

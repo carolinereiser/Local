@@ -29,7 +29,8 @@
         PFUser *newUser = [PFUser user];
         
         // set user properties
-        newUser.username = self.usernameField.text;
+        NSString *lowerUsername = [self.usernameField.text lowercaseString];
+        newUser.username = lowerUsername;
         newUser.password = self.passwordField.text;
         newUser.email = self.emailField.text;
         newUser[@"countryCount"] = @(0);
