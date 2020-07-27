@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *saveCount;
 @property (weak, nonatomic) IBOutlet UILabel *shareCount;
 @property (weak, nonatomic) IBOutlet UIButton *profileButton;
-
+@property (weak, nonatomic) IBOutlet UIButton *commentButton;
 
 @property (weak, nonatomic) Spot* spot;
 @property (weak, nonatomic) NSArray<PFFileObject *> *images;

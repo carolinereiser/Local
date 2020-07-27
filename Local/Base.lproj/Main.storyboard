@@ -558,25 +558,25 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" modalPresentationStyle="fullScreen" id="874-8P-jS9" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FPo-wb-KS2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="883"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuG-Nv-RiB">
-                                <rect key="frame" x="0.0" y="-21" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="-34" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="rUK-86-raG" kind="embed" identifier="profilePostsSegue" id="BbT-ZE-CUH"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8In-xM-MLq">
-                                <rect key="frame" x="0.0" y="15" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="2" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Aip-PQ-wAJ" kind="embed" identifier="profileMapSegue" id="Q3V-Xi-cNg"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-q8-sjA">
-                                <rect key="frame" x="0.0" y="54" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="41" width="414" height="842"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="YgO-OR-4Ry" kind="embed" identifier="" id="5Cd-Dc-Okj"/>
@@ -904,7 +904,7 @@
                                                     <color key="tintColor" white="0.21551313089999999" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal" image="bubble.left" catalog="system"/>
                                                     <connections>
-                                                        <segue destination="omy-Xa-fXp" kind="show" id="fUF-CY-OWb"/>
+                                                        <segue destination="omy-Xa-fXp" kind="show" identifier="commentSegue" id="fUF-CY-OWb"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x6k-NQ-XAV">
@@ -1048,6 +1048,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="commentButton" destination="ZtX-tb-qry" id="Ccu-j5-cYU"/>
                                             <outlet property="commentCount" destination="f7P-fW-afD" id="Yth-Zx-K0d"/>
                                             <outlet property="formattedAddress" destination="6XE-Dv-U58" id="pqj-yB-XNe"/>
                                             <outlet property="imagesCollectionView" destination="HZa-zs-mb5" id="OuQ-DB-5zt"/>
@@ -1245,26 +1246,26 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="62" id="hm9-LJ-esX">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="62"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="hm9-LJ-esX" customClass="CommentCell">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hm9-LJ-esX" id="HIn-zK-uq7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="62"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-gG-YUT">
-                                                    <rect key="frame" x="58" y="12.5" width="336" height="23"/>
+                                                    <rect key="frame" x="58" y="12.5" width="336" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E06-cb-UKv">
-                                                    <rect key="frame" x="58" y="36.5" width="336" height="20.5"/>
+                                                    <rect key="frame" x="58" y="35" width="336" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="t5q-Ah-9YS">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="t5q-Ah-9YS" customClass="PFImageView">
                                                     <rect key="frame" x="20" y="9.5" width="30" height="29"/>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
@@ -1291,6 +1292,11 @@
                                                 <constraint firstItem="E06-cb-UKv" firstAttribute="leading" secondItem="HIn-zK-uq7" secondAttribute="leading" constant="58" id="xU6-bZ-mId"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="comment" destination="E06-cb-UKv" id="MuA-Nv-NaB"/>
+                                            <outlet property="profilePic" destination="t5q-Ah-9YS" id="HQu-pE-cyJ"/>
+                                            <outlet property="username" destination="ZDV-gG-YUT" id="Q8S-h8-4cy"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1315,14 +1321,31 @@
                                 <rect key="frame" x="365" y="763.5" width="36" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Send"/>
+                                <connections>
+                                    <action selector="didSendComment:" destination="omy-Xa-fXp" eventType="touchUpInside" id="w3E-0I-oYR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <viewLayoutGuide key="safeArea" id="dK5-64-2fe"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="t5L-1j-Abk" appends="YES" id="AAP-SA-Aha"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Pel-qQ-sKL"/>
+                    <connections>
+                        <outlet property="comment" destination="l1b-NP-df3" id="RvB-rr-Ki3"/>
+                        <outlet property="profilePic" destination="a4V-5O-btI" id="A4R-1D-wuY"/>
+                        <outlet property="tableView" destination="aHO-VL-vev" id="cap-5X-hLL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="71j-lX-94U" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="t5L-1j-Abk">
+                    <connections>
+                        <action selector="didTap:" destination="omy-Xa-fXp" id="IxY-sw-6qs"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2834.7826086956525" y="3266.8526785714284"/>
         </scene>
@@ -1711,7 +1734,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Oir-1F-HeH"/>
+        <segue reference="jaj-em-yZM"/>
         <segue reference="9Rw-UU-Hww"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "CommentViewController.h"
 #import "HomeViewController.h"
 #import "ProfilePostsViewController.h"
 #import "ProfileViewController.h"
@@ -79,6 +80,7 @@
     Spot* spot = self.feed[indexPath.row];
     [cell setSpot:spot];
     cell.profileButton.tag = indexPath.row;
+    cell.commentButton.tag = indexPath.row;
     
     return cell;
 }
@@ -100,6 +102,12 @@
         ProfileViewController *profileViewController = [segue destinationViewController];
         PFUser *user = self.feed[tappedButton.tag][@"user"];
         profileViewController.user = user;
+    }
+    else if([[segue identifier] isEqualToString:@"commentSegue"]) {
+        UIButton *tappedButton = sender;
+        CommentViewController *commentViewController = [segue destinationViewController];
+        Spot *spot = self.feed[tappedButton.tag];
+        commentViewController.spot = spot;
     }
 }
 
