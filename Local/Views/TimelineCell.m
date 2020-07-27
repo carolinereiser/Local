@@ -31,6 +31,7 @@
 - (void)refreshData {
     self.likeCount.text = [NSString stringWithFormat:@"%@", self.spot.likeCount];
     self.saveCount.text = [NSString stringWithFormat:@"%@", self.spot.saveCount];
+    self.commentCount.text = [NSString stringWithFormat:@"%@", self.spot.commentCount];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -63,6 +63,12 @@
             {
                 NSLog(@"Successfully commented!");
                 [self fetchComments];
+                //update comment count
+                NSNumber *currCount = self.spot.commentCount;
+                int val = [currCount intValue];
+                val += 1;
+                self.spot.commentCount = [NSNumber numberWithInt:val];
+                [self.spot saveInBackground];
             }
             else
             {
