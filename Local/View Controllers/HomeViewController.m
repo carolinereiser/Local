@@ -38,6 +38,10 @@
     [self.tableView insertSubview:self.refreshControl atIndex:0];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self fetchFeed];
+}
+
 - (void)fetchFeed {
     //get posts from users that this user follows
     PFQuery *followingQuery = [PFQuery queryWithClassName:@"Following"];

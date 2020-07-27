@@ -29,9 +29,6 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    //put username in the title of screen
-    self.navigationItem.title = self.user.username;
-
     if(self.user[@"name"]) {
         self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
     }

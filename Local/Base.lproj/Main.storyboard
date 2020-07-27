@@ -139,45 +139,49 @@
             <objects>
                 <viewController id="n3b-4b-EgU" customClass="TimelineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Rr-Cc-xvH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iXP-um-KSb">
-                                <rect key="frame" x="0.0" y="-2" width="414" height="883"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="883"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="wsT-KB-Lrq" kind="embed" id="pNn-fc-ESR"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gs8-CR-Rbm">
-                                <rect key="frame" x="0.0" y="-2" width="414" height="883"/>
+                                <rect key="frame" x="0.0" y="13" width="414" height="883"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Gjt-ct-luI" kind="embed" id="s4c-UG-vTf"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Gf7-xk-8Vr">
-                                <rect key="frame" x="158" y="107" width="99" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Feed"/>
-                                    <segment title="Map"/>
-                                </segments>
-                                <connections>
-                                    <action selector="switchView:" destination="n3b-4b-EgU" eventType="valueChanged" id="O93-X3-UmV"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="Stg-5p-att"/>
                     </view>
-                    <navigationItem key="navigationItem" id="QIg-dK-jGG"/>
+                    <navigationItem key="navigationItem" id="QIg-dK-jGG">
+                        <connections>
+                            <outlet property="titleView" destination="Gf7-xk-8Vr" id="cBj-2O-U72"/>
+                        </connections>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="gs8-CR-Rbm" id="1kU-IT-tgk"/>
                         <outlet property="timelineView" destination="iXP-um-KSb" id="CcB-2U-zJw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lqo-hp-HpW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="Gf7-xk-8Vr">
+                    <rect key="frame" x="0.0" y="0.0" width="99" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Feed"/>
+                        <segment title="Map"/>
+                    </segments>
+                    <connections>
+                        <action selector="switchView:" destination="n3b-4b-EgU" eventType="valueChanged" id="O93-X3-UmV"/>
+                    </connections>
+                </segmentedControl>
             </objects>
             <point key="canvasLocation" x="2835" y="1744"/>
         </scene>
@@ -187,7 +191,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9qh-eL-rLz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="ZNp-ze-VFx" customClass="SearchViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DrC-Wa-gRD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -352,7 +356,7 @@
             <objects>
                 <viewController id="5s6-lB-947" customClass="SpotPicturePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="THi-Te-bqB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uEx-fz-Dzs">
@@ -432,7 +436,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="RRV-WI-NoV" customClass="SpotPlacePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rAv-qm-PIL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zll-Nf-p4I">
@@ -488,7 +492,7 @@
             <objects>
                 <viewController id="Qiw-Gs-7IE" customClass="PostSpotViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="krK-Ee-8jf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1w-R7-jku">
@@ -578,18 +582,6 @@
                                     <segue destination="YgO-OR-4Ry" kind="embed" identifier="" id="5Cd-Dc-Okj"/>
                                 </connections>
                             </containerView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ows-P9-bg7">
-                                <rect key="frame" x="96" y="748" width="223" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="Profile"/>
-                                    <segment title="Map"/>
-                                    <segment title="Saved"/>
-                                </segments>
-                                <connections>
-                                    <action selector="switchView:" destination="874-8P-jS9" eventType="valueChanged" id="k3E-ns-PbZ"/>
-                                </connections>
-                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="tintColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -599,6 +591,9 @@
                         <barButtonItem key="rightBarButtonItem" image="gear" catalog="system" id="rZp-Vf-WuL">
                             <color key="tintColor" red="0.62850323029999999" green="0.66663708180000003" blue="0.66666668650000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         </barButtonItem>
+                        <connections>
+                            <outlet property="titleView" destination="ows-P9-bg7" id="AlO-k1-zqP"/>
+                        </connections>
                     </navigationItem>
                     <connections>
                         <outlet property="map" destination="8In-xM-MLq" id="3KK-r4-6d1"/>
@@ -607,6 +602,18 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="POG-Nt-h42" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="ows-P9-bg7">
+                    <rect key="frame" x="0.0" y="0.0" width="223" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <segments>
+                        <segment title="Profile"/>
+                        <segment title="Map"/>
+                        <segment title="Saved"/>
+                    </segments>
+                    <connections>
+                        <action selector="switchView:" destination="874-8P-jS9" eventType="valueChanged" id="k3E-ns-PbZ"/>
+                    </connections>
+                </segmentedControl>
             </objects>
             <point key="canvasLocation" x="8187" y="1744"/>
         </scene>
@@ -615,7 +622,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="7Ie-TM-2G0" customClass="PlacePicturePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5jh-TX-eiD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bpq-No-9KX">
@@ -654,7 +661,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="JO9-LX-oV5" customClass="PostPlaceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZsD-um-qkj">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XKP-sV-Dic">
@@ -704,7 +711,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="p9d-Ih-KC9" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dWo-1z-2Ta">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Hd-On-GIX">
@@ -1606,6 +1613,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="zEV-b4-qA0"/>
         <segue reference="Oir-1F-HeH"/>
         <segue reference="9Rw-UU-Hww"/>
     </inferredMetricsTieBreakers>
