@@ -139,18 +139,18 @@
             <objects>
                 <viewController id="n3b-4b-EgU" customClass="TimelineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Rr-Cc-xvH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iXP-um-KSb">
-                                <rect key="frame" x="0.0" y="13" width="414" height="883"/>
+                                <rect key="frame" x="0.0" y="-2" width="414" height="883"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="wsT-KB-Lrq" kind="embed" id="pNn-fc-ESR"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gs8-CR-Rbm">
-                                <rect key="frame" x="0.0" y="13" width="414" height="883"/>
+                                <rect key="frame" x="0.0" y="-2" width="414" height="883"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Gjt-ct-luI" kind="embed" id="s4c-UG-vTf"/>
@@ -187,7 +187,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9qh-eL-rLz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController id="ZNp-ze-VFx" customClass="SearchViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DrC-Wa-gRD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -232,6 +232,7 @@
                                 <connections>
                                     <outlet property="profilePic" destination="og5-rJ-84p" id="RvU-au-cUb"/>
                                     <outlet property="username" destination="eVM-Av-ppV" id="DfY-JW-iph"/>
+                                    <segue destination="874-8P-jS9" kind="show" identifier="profileSegue" id="Oir-1F-HeH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -351,7 +352,7 @@
             <objects>
                 <viewController id="5s6-lB-947" customClass="SpotPicturePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="THi-Te-bqB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uEx-fz-Dzs">
@@ -431,7 +432,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="RRV-WI-NoV" customClass="SpotPlacePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rAv-qm-PIL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zll-Nf-p4I">
@@ -487,7 +488,7 @@
             <objects>
                 <viewController id="Qiw-Gs-7IE" customClass="PostSpotViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="krK-Ee-8jf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w1w-R7-jku">
@@ -1605,7 +1606,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="PNg-bD-xus"/>
+        <segue reference="Oir-1F-HeH"/>
         <segue reference="9Rw-UU-Hww"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "ProfileViewController.h"
 #import "SearchResultCell.h"
 #import "SearchViewController.h"
 
@@ -52,6 +53,12 @@
     }];
 }
 
+//dismiss the keyboard when a user presses search
+- (void) searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     SearchResultCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
     cell.profilePic.file = self.users[indexPath.row][@"profilePic"];
@@ -64,17 +71,19 @@
     return self.users.count;
 }
 
-
-
-/*
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+    PFUser *user = self.users[indexPath.row];
+    ProfileViewController* profileViewController = [segue destinationViewController];
+    profileViewController.user = user;
 }
-*/
+
 
 
 
