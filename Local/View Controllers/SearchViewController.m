@@ -6,11 +6,12 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "SearchResultCell.h"
 #import "SearchViewController.h"
 
 @import Parse;
 
-@interface SearchViewController () <UISearchBarDelegate>
+@interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSArray<PFUser *> *users;
 @property (nonatomic, strong) NSArray<PFUser *> *filteredUsers;
@@ -23,11 +24,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.searchBar.delegate = self;
-    //self.tableView.delegate = self;
-    //self.tableView.dataSource = self;
-    
-    //get users
-    //[self fetchUsers];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -45,7 +43,7 @@
         if(users)
         {
             self.users = users;
-            NSLog(@"%@", self.users);
+            [self.tableView reloadData];
         }
         else
         {
@@ -53,6 +51,20 @@
         }
     }];
 }
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    SearchResultCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
+    cell.profilePic.file = self.users[indexPath.row][@"profilePic"];
+    cell.username.text = [NSString stringWithFormat:@"@%@", self.users[indexPath.row].username];
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.users.count;
+}
+
+
 
 /*
 #pragma mark - Navigation
@@ -63,5 +75,7 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
 
 @end
