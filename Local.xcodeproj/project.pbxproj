@@ -40,8 +40,8 @@
 		58ACBDCA24CA072B00066301 /* TakeMeAnywhereSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDC924CA072B00066301 /* TakeMeAnywhereSettingsViewController.m */; };
 		58ACBDCD24CA233200066301 /* RandomSpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDCC24CA233200066301 /* RandomSpotViewController.m */; };
 		58ACBDD024CA55C700066301 /* SavedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDCF24CA55C700066301 /* SavedViewController.m */; };
-		58ACBDD324CF486400066301 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDD224CF486400066301 /* SearchViewController.m */; };
 		58ACBDD624CF4DDD00066301 /* SearchResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDD524CF4DDD00066301 /* SearchResultCell.m */; };
+		58ACBDDC24CF522D00066301 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDDB24CF522D00066301 /* SearchViewController.m */; };
 		78ED3FAFC62C59E048349408 /* Pods_Local.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9381EA0E75B3B382C43F9861 /* Pods_Local.framework */; };
 		DBF542A8865DB8CA18623F4E /* Pods_Local_LocalUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 29CE7071A1A5E8478AD7691D /* Pods_Local_LocalUITests.framework */; };
 /* End PBXBuildFile section */
@@ -132,10 +132,10 @@
 		58ACBDCC24CA233200066301 /* RandomSpotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RandomSpotViewController.m; sourceTree = "<group>"; };
 		58ACBDCE24CA55C700066301 /* SavedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SavedViewController.h; sourceTree = "<group>"; };
 		58ACBDCF24CA55C700066301 /* SavedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SavedViewController.m; sourceTree = "<group>"; };
-		58ACBDD124CF486400066301 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
-		58ACBDD224CF486400066301 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		58ACBDD424CF4DDD00066301 /* SearchResultCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchResultCell.h; sourceTree = "<group>"; };
 		58ACBDD524CF4DDD00066301 /* SearchResultCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchResultCell.m; sourceTree = "<group>"; };
+		58ACBDDA24CF522D00066301 /* SearchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchViewController.h; sourceTree = "<group>"; };
+		58ACBDDB24CF522D00066301 /* SearchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SearchViewController.m; sourceTree = "<group>"; };
 		75E7FE64BCC460B8690261CE /* Pods-Local.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local.debug.xcconfig"; path = "Target Support Files/Pods-Local/Pods-Local.debug.xcconfig"; sourceTree = "<group>"; };
 		9381EA0E75B3B382C43F9861 /* Pods_Local.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Local.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCB956EB06023596796A3DA /* Pods-Local-LocalUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Local-LocalUITests.release.xcconfig"; path = "Target Support Files/Pods-Local-LocalUITests/Pods-Local-LocalUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -268,8 +268,8 @@
 				58ACBDCC24CA233200066301 /* RandomSpotViewController.m */,
 				58ACBDCE24CA55C700066301 /* SavedViewController.h */,
 				58ACBDCF24CA55C700066301 /* SavedViewController.m */,
-				58ACBDD124CF486400066301 /* SearchViewController.h */,
-				58ACBDD224CF486400066301 /* SearchViewController.m */,
+				58ACBDDA24CF522D00066301 /* SearchViewController.h */,
+				58ACBDDB24CF522D00066301 /* SearchViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -612,10 +612,10 @@
 				58ACBDD624CF4DDD00066301 /* SearchResultCell.m in Sources */,
 				58A33EB624BF684B00A40188 /* SignUpViewController.m in Sources */,
 				5802F29E24C2150A007128EA /* SpotPostCell.m in Sources */,
+				58ACBDDC24CF522D00066301 /* SearchViewController.m in Sources */,
 				58A33EB924BF685600A40188 /* LogInViewController.m in Sources */,
 				58A33E8024BF666100A40188 /* AppDelegate.m in Sources */,
 				58ACBDBE24C8918300066301 /* HomeViewController.m in Sources */,
-				58ACBDD324CF486400066301 /* SearchViewController.m in Sources */,
 				5802F2AD24C25F43007128EA /* Spot.m in Sources */,
 				58A33E9124BF666200A40188 /* main.m in Sources */,
 				58ACBDC424C8ECCE00066301 /* ProfilePostsViewController.m in Sources */,
