@@ -40,6 +40,7 @@
     PFQuery *likeQuery = [PFQuery queryWithClassName:@"Likes"];
     [likeQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
     [likeQuery includeKey:@"createdAt"];
+    [likeQuery includeKey:@"user"];
     [likeQuery orderByDescending:@"createdAt"];
     likeQuery.limit = 50;
     [likeQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable likes, NSError * _Nullable error) {
@@ -49,6 +50,7 @@
              PFQuery *commentQuery = [PFQuery queryWithClassName:@"Comments"];
              [commentQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
              [commentQuery includeKey:@"createdAt"];
+             [commentQuery includeKey:@"user"];
              [commentQuery orderByDescending:@"createdAt"];
              commentQuery.limit = 50;
              [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable comments, NSError * _Nullable error) {
@@ -58,6 +60,7 @@
                       PFQuery *followQuery = [PFQuery queryWithClassName:@"Following"];
                       [followQuery whereKey:@"following" equalTo:[PFUser currentUser]];
                       [followQuery includeKey:@"createdAt"];
+                      [followQuery includeKey:@"user"];
                       [followQuery orderByDescending:@"createdAt"];
                       followQuery.limit = 50;
                       [followQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable follows, NSError * _Nullable error) {
@@ -114,26 +117,20 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ActivityCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
-    //cell.profilePic.file = self.allActivity[indexPath.row][@"user"][@"profilePic"];
-    //[cell.profilePic loadInBackground];
-    //PFUser* user = self.allActivity[indexPath.row][@"user"];
-    //NSLog(@"%@", user.username);
-    //cell.profilePic.file = user[@"profilePic"];
-    //[cell.profilePic loadInBackground];
-    //cell.username = user.username;
-    PFObject* object = self.allActivity[indexPath.row];
+    cell.profilePic.file = self.allActivity[indexPath.row][@"user"][@"profilePic"];
+    [cell.profilePic loadInBackground];
+
+    PFObject* object = [self.allActivity[indexPath.row] fetchIfNeeded];
+    NSLog(@"%@", object);
     if([[object parseClassName] isEqualToString:@"Likes"]) {
-        cell.text.text = [NSString stringWithFormat:@"liked your spot"];
+        cell.text.text = [NSString stringWithFormat:@"%@ liked your spot", object[@"user"][@"username"]];
     }
     else if([[object parseClassName] isEqualToString:@"Comments"]) {
-        cell.text.text = [NSString stringWithFormat:@"commented \"%@\"", object[@"text"]];
+        cell.text.text = [NSString stringWithFormat:@"%@ commented \"%@\"", object[@"user"][@"username"], object[@"text"]];
     }
     else if([[object parseClassName] isEqualToString:@"Following"]) {
-        cell.text.text = [NSString stringWithFormat:@"followed you"];
+        cell.text.text = [NSString stringWithFormat:@"%@ followed you", object[@"user"][@"username"]];
     }
-    NSLog(@"%@", [object parseClassName]);
-    //cell.text.text = [NSString stringWithFormat:@"%@"]
-    
     return cell;
 }
 
