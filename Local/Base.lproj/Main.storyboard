@@ -137,20 +137,20 @@
         <!--Timeline View Controller-->
         <scene sceneID="X0C-OM-7CX">
             <objects>
-                <viewController id="n3b-4b-EgU" customClass="TimelineViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="n3b-4b-EgU" customClass="TimelineViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Rr-Cc-xvH">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iXP-um-KSb">
-                                <rect key="frame" x="0.0" y="13" width="414" height="883"/>
+                                <rect key="frame" x="0.0" y="-41" width="414" height="883"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="wsT-KB-Lrq" kind="embed" id="pNn-fc-ESR"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gs8-CR-Rbm">
-                                <rect key="frame" x="0.0" y="13" width="414" height="883"/>
+                                <rect key="frame" x="0.0" y="-41" width="414" height="883"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Gjt-ct-luI" kind="embed" id="s4c-UG-vTf"/>
@@ -188,9 +188,9 @@
         <!--Search View Controller-->
         <scene sceneID="FFI-ok-DpX">
             <objects>
-                <viewController id="ZNp-ze-VFx" customClass="SearchViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="ZNp-ze-VFx" customClass="SearchViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="40" sectionFooterHeight="28" id="DrC-Wa-gRD">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -290,7 +290,7 @@
                     <tabBarItem key="tabBarItem" title="Home" id="f5H-OY-rwA"/>
                     <navigationItem key="navigationItem" id="37J-Kd-amH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bu5-EP-TKU">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -304,10 +304,10 @@
         <!--Search-->
         <scene sceneID="pEl-1I-8M7">
             <objects>
-                <navigationController id="a3Z-2S-ERY" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="a3Z-2S-ERY" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Search" id="jcL-sZ-y1x"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UHs-ek-54u">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -321,10 +321,10 @@
         <!--Post-->
         <scene sceneID="40n-nD-Ekk">
             <objects>
-                <navigationController id="FlP-2t-Dre" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="FlP-2t-Dre" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Post" id="2xP-Q1-g7V"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eDf-Hs-j51">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -338,10 +338,10 @@
         <!--Item-->
         <scene sceneID="20I-uG-M3n">
             <objects>
-                <navigationController id="Lka-GF-Fs9" sceneMemberID="viewController">
+                <navigationController modalPresentationStyle="fullScreen" id="Lka-GF-Fs9" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="m63-Hq-joa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ofH-ms-Kgs">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -359,7 +359,7 @@
                     <tabBarItem key="tabBarItem" title="Profile" id="k9r-mb-zyw"/>
                     <navigationItem key="navigationItem" id="9kX-RV-ySC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x3F-EA-tVH">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -373,13 +373,13 @@
         <!--Spot Picture Picker View Controller-->
         <scene sceneID="Mea-uk-0fV">
             <objects>
-                <viewController id="5s6-lB-947" customClass="SpotPicturePickerViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="5s6-lB-947" customClass="SpotPicturePickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="THi-Te-bqB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="uEx-fz-Dzs">
-                                <rect key="frame" x="0.0" y="88" width="414" height="414"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="414"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="414" id="hgJ-dZ-j9C"/>
@@ -575,9 +575,9 @@
         <!--Activity View Controller-->
         <scene sceneID="uxp-lU-NDC">
             <objects>
-                <viewController id="EaG-12-pOI" customClass="ActivityViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="EaG-12-pOI" customClass="ActivityViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KDf-Uc-yJC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3eq-Uv-zYG">
@@ -647,25 +647,25 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" modalPresentationStyle="fullScreen" id="874-8P-jS9" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FPo-wb-KS2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuG-Nv-RiB">
-                                <rect key="frame" x="0.0" y="-21" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="-75" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="rUK-86-raG" kind="embed" identifier="profilePostsSegue" id="BbT-ZE-CUH"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8In-xM-MLq">
-                                <rect key="frame" x="0.0" y="15" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="-39" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Aip-PQ-wAJ" kind="embed" identifier="profileMapSegue" id="Q3V-Xi-cNg"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-q8-sjA">
-                                <rect key="frame" x="0.0" y="54" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="YgO-OR-4Ry" kind="embed" identifier="" id="5Cd-Dc-Okj"/>
@@ -816,12 +816,11 @@
                     <connections>
                         <outlet property="picture" destination="XKP-sV-Dic" id="vto-Jz-Pbh"/>
                         <outlet property="place" destination="ydy-OY-JfO" id="Wl9-KK-TlT"/>
-                        <segue destination="0X0-KH-bVg" kind="presentation" identifier="profileSegue" id="9Rw-UU-Hww"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vyi-mM-wVJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="10096" y="3454"/>
+            <point key="canvasLocation" x="10180" y="3458"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="gG2-JU-W3p">
@@ -1866,7 +1865,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="Oir-1F-HeH"/>
-        <segue reference="9Rw-UU-Hww"/>
+        <segue reference="0PC-lq-V0v"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.right" catalog="system" width="128" height="106"/>

@@ -116,26 +116,23 @@
     ActivityCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
     //cell.profilePic.file = self.allActivity[indexPath.row][@"user"][@"profilePic"];
     //[cell.profilePic loadInBackground];
-    PFUser* user = self.allActivity[indexPath.row][@"user"];
-   //NSLog(@"%@", user.username);
-//    cell.profilePic.file = user[@"profilePic"];
-//    [cell.profilePic loadInBackground];
-//    cell.username = user.username;
+    //PFUser* user = self.allActivity[indexPath.row][@"user"];
+    //NSLog(@"%@", user.username);
+    //cell.profilePic.file = user[@"profilePic"];
+    //[cell.profilePic loadInBackground];
+    //cell.username = user.username;
     PFObject* object = self.allActivity[indexPath.row];
-    if([[object parseClassName] isEqualToString:@"Likes"])
-    {
+    if([[object parseClassName] isEqualToString:@"Likes"]) {
         cell.text.text = [NSString stringWithFormat:@"liked your spot"];
     }
-    else if([[object parseClassName] isEqualToString:@"Comments"])
-    {
+    else if([[object parseClassName] isEqualToString:@"Comments"]) {
         cell.text.text = [NSString stringWithFormat:@"commented \"%@\"", object[@"text"]];
     }
-    else if([[object parseClassName] isEqualToString:@"Following"])
-    {
+    else if([[object parseClassName] isEqualToString:@"Following"]) {
         cell.text.text = [NSString stringWithFormat:@"followed you"];
     }
     NSLog(@"%@", [object parseClassName]);
-//cell.text.text = [NSString stringWithFormat:@"%@"]
+    //cell.text.text = [NSString stringWithFormat:@"%@"]
     
     return cell;
 }

@@ -96,7 +96,7 @@ didFailAutocompleteWithError:(NSError *)error {
             {
                 NSLog(@"Successfully added Spot!");
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
-                [self performSegueWithIdentifier:@"timelineSegue" sender:nil];
+                [self.tabBarController setSelectedIndex:0];
             }
             else
             {
