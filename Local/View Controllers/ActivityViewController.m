@@ -91,9 +91,9 @@
  
     while (i < [leftArray count] && e < [rightArray count]) {
         //sort by createdAt date
-        NSDate *leftValue = [[leftArray objectAtIndex:i] createdAt];
-        NSDate *rightValue = [[rightArray objectAtIndex:e] createdAt];
-        if (leftValue < rightValue) {
+        NSDate *leftDate = [[leftArray objectAtIndex:i] createdAt];
+        NSDate *rightDate = [[rightArray objectAtIndex:e] createdAt];
+        if ([leftDate compare:rightDate] == NSOrderedDescending) {
             [returnArray addObject: [leftArray objectAtIndex:i++]];
         } else {
             [returnArray addObject: [rightArray objectAtIndex:e++]];

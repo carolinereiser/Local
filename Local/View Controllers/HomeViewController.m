@@ -98,6 +98,7 @@
     }
     else
     {
+        //if it's the current user, send them to the profile tab
         [self.tabBarController setSelectedIndex:4];
     }
 }
