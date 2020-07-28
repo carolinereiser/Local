@@ -31,11 +31,17 @@
     [self fetchActivity];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self fetchActivity];
+}
+
 - (void)fetchActivity {
     //find the likes
     PFQuery *likeQuery = [PFQuery queryWithClassName:@"Likes"];
     [likeQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
     [likeQuery includeKey:@"createdAt"];
+    [likeQuery orderByDescending:@"createdAt"];
+    likeQuery.limit = 50;
     [likeQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable likes, NSError * _Nullable error) {
          if(likes) {
              self.likes = likes;
@@ -43,6 +49,8 @@
              PFQuery *commentQuery = [PFQuery queryWithClassName:@"Comments"];
              [commentQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
              [commentQuery includeKey:@"createdAt"];
+             [commentQuery orderByDescending:@"createdAt"];
+             commentQuery.limit = 50;
              [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable comments, NSError * _Nullable error) {
                   if(comments) {
                       self.comments = comments;
@@ -50,6 +58,8 @@
                       PFQuery *followQuery = [PFQuery queryWithClassName:@"Following"];
                       [followQuery whereKey:@"following" equalTo:[PFUser currentUser]];
                       [followQuery includeKey:@"createdAt"];
+                      [followQuery orderByDescending:@"createdAt"];
+                      followQuery.limit = 50;
                       [followQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable follows, NSError * _Nullable error) {
                           if(follows) {
                                self.follows = follows;
