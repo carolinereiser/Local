@@ -7,8 +7,11 @@
 //
 
 #import "PlaceViewController.h"
+#import "Spot.h"
 
 @interface PlaceViewController ()
+
+@property (nonatomic, strong) NSArray<Spot *> *spots;
 
 @end
 
@@ -17,6 +20,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.placeName.text = self.place.name;
+    [self fetchSpots];
+}
+
+- (void)fetchSpots {
+    PFQuery* query = [PFQuery queryWithClassName:@"Spot"];
+    [query whereKey:@"place" equalTo:self.place];
+    [query whereKey:@"user" equalTo:self.user];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
+        if(spots) {
+            self.spots = spots;
+        }
+        else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 /*

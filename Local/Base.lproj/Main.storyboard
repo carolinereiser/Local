@@ -1690,7 +1690,7 @@
                                         <connections>
                                             <outlet property="image" destination="7Gf-HA-gtm" id="f6u-Hp-aj2"/>
                                             <outlet property="placeName" destination="vxK-Vr-In3" id="bY7-ep-n1J"/>
-                                            <segue destination="s6x-KJ-kMx" kind="show" id="3t5-RB-69z"/>
+                                            <segue destination="s6x-KJ-kMx" kind="show" identifier="placeSegue" id="3t5-RB-69z"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
