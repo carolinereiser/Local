@@ -58,6 +58,7 @@
         comment[@"user"] = [PFUser currentUser];
         comment[@"spot"] = self.spot;
         comment[@"text"] = self.comment.text;
+        comment[@"owner"] = self.spot.user;
         
         [comment saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded)

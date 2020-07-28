@@ -105,6 +105,7 @@
                 PFObject *like = [PFObject objectWithClassName:@"Likes"];
                 like[@"user"] = [PFUser currentUser];
                 like[@"spot"] = self.spot;
+                like[@"owner"] = self.spot.user;
                 
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                   if (succeeded) {
@@ -162,6 +163,7 @@
                 PFObject *like = [PFObject objectWithClassName:@"Saves"];
                 like[@"user"] = [PFUser currentUser];
                 like[@"spot"] = self.spot;
+                like[@"owner"] = self.spot.user;
                 
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
