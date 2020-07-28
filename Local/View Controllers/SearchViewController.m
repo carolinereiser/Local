@@ -6,6 +6,8 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "Place.h"
+#import "PlaceViewController.h"
 #import "ProfileViewController.h"
 #import "SearchResultCell.h"
 #import "SearchViewController.h"
@@ -14,7 +16,7 @@
 
 @interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray<PFUser *> *results;
+@property (nonatomic, strong) NSArray<PFObject *> *results;
 
 @end
 
@@ -106,7 +108,7 @@
     if([self.segmentedControl selectedSegmentIndex] == 0) {
         cell.profilePic.file = self.results[indexPath.row][@"profilePic"];
         [cell.profilePic loadInBackground];
-        cell.username.text = [NSString stringWithFormat:@"@%@", self.results[indexPath.row].username];
+        cell.username.text = [NSString stringWithFormat:@"@%@", self.results[indexPath.row][@"username"]];
     }
     else {
         cell.profilePic.file = self.results[indexPath.row][@"image"];
@@ -120,17 +122,37 @@
     return self.results.count;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell* cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    if([self.segmentedControl selectedSegmentIndex] == 0) {
+        [self performSegueWithIdentifier:@"profileSegue" sender:cell];
+    }
+    else {
+        [self performSegueWithIdentifier:@"placeSegue" sender:cell];
+    }
+}
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    UITableViewCell *tappedCell = sender;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-    PFUser *user = self.results[indexPath.row];
-    ProfileViewController* profileViewController = [segue destinationViewController];
-    profileViewController.user = user;
+    if([[segue identifier] isEqualToString:@"profileSegue"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        PFUser *user = self.results[indexPath.row];
+        ProfileViewController* profileViewController = [segue destinationViewController];
+        profileViewController.user = user;
+    }
+    else if([[segue identifier] isEqualToString:@"placeSegue"]) {
+        UITableViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+        Place *place = self.results[indexPath.row];
+        PlaceViewController* placeViewController = [segue destinationViewController];
+        placeViewController.place = place;
+        placeViewController.user = place.user;
+    }
 }
 
 

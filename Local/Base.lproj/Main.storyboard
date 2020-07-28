@@ -246,7 +246,6 @@
                                 <connections>
                                     <outlet property="profilePic" destination="og5-rJ-84p" id="RvU-au-cUb"/>
                                     <outlet property="username" destination="eVM-Av-ppV" id="DfY-JW-iph"/>
-                                    <segue destination="874-8P-jS9" kind="show" identifier="profileSegue" id="Oir-1F-HeH"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -262,6 +261,8 @@
                         <outlet property="searchBar" destination="6KY-mO-aEe" id="UA4-1v-JDI"/>
                         <outlet property="segmentedControl" destination="zDj-Yf-fKv" id="uXZ-3w-ufy"/>
                         <outlet property="tableView" destination="DrC-Wa-gRD" id="uxb-uU-6JE"/>
+                        <segue destination="874-8P-jS9" kind="show" identifier="profileSegue" id="5IA-Dm-ao6"/>
+                        <segue destination="s6x-KJ-kMx" kind="show" identifier="placeSegue" id="pqs-ko-QTq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9qh-eL-rLz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -722,7 +723,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="s6x-KJ-kMx" customClass="PlaceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vmq-Zh-6MS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="881"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Place Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rez-nM-KsD">
@@ -1878,7 +1879,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LuL-uG-2hw"/>
-        <segue reference="Oir-1F-HeH"/>
+        <segue reference="pqs-ko-QTq"/>
+        <segue reference="5IA-Dm-ao6"/>
         <segue reference="0PC-lq-V0v"/>
     </inferredMetricsTieBreakers>
     <resources>
