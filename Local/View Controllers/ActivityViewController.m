@@ -6,11 +6,12 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "ActivityCell.h"
 #import "ActivityViewController.h"
 
 @import Parse;
 
-@interface ActivityViewController () //<UITableViewDelegate, UITableViewDataSource>
+@interface ActivityViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray<PFObject *> *likes;
 @property (nonatomic, strong) NSArray<PFObject *> *comments;
@@ -24,8 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //self.tableView.delegate = self;
-    //self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     
     [self fetchActivity];
 }
@@ -52,10 +53,11 @@
                       [followQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable follows, NSError * _Nullable error) {
                           if(follows) {
                                self.follows = follows;
-                               //sort the arrays
-                               NSArray* arr1 = [self mergeArray:self.likes rightArray:self.comments];
-                               NSArray* sorted = [self mergeArray:arr1 rightArray:self.follows];
-                               NSLog(@"SORTED: %@", sorted);
+                               //sort the arrays, must do in here because of asynchronous API calls
+                               NSArray* temp = [self mergeArray:self.likes rightArray:self.comments];
+                               self.allActivity = [self mergeArray:temp rightArray:self.follows];
+                               [self.tableView reloadData];
+                              NSLog(@"%@", self.allActivity);
                            }
                            else {
                                NSLog(@"%@", error.localizedDescription);
@@ -74,7 +76,6 @@
 }
 
 - (NSArray *) mergeArray:(NSArray *)leftArray rightArray:(NSArray *)rightArray {
- 
     NSMutableArray *returnArray = [NSMutableArray array];
     int i = 0, e = 0;
  
@@ -100,6 +101,38 @@
     return returnArray;
 }
 
+
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    ActivityCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
+    //cell.profilePic.file = self.allActivity[indexPath.row][@"user"][@"profilePic"];
+    //[cell.profilePic loadInBackground];
+    PFUser* user = self.allActivity[indexPath.row][@"user"];
+   //NSLog(@"%@", user.username);
+//    cell.profilePic.file = user[@"profilePic"];
+//    [cell.profilePic loadInBackground];
+//    cell.username = user.username;
+    PFObject* object = self.allActivity[indexPath.row];
+    if([[object parseClassName] isEqualToString:@"Likes"])
+    {
+        cell.text.text = [NSString stringWithFormat:@"liked your spot"];
+    }
+    else if([[object parseClassName] isEqualToString:@"Comments"])
+    {
+        cell.text.text = [NSString stringWithFormat:@"commented \"%@\"", object[@"text"]];
+    }
+    else if([[object parseClassName] isEqualToString:@"Following"])
+    {
+        cell.text.text = [NSString stringWithFormat:@"followed you"];
+    }
+    NSLog(@"%@", [object parseClassName]);
+//cell.text.text = [NSString stringWithFormat:@"%@"]
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.allActivity.count;
+}
 
 /*
 #pragma mark - Navigation

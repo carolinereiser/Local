@@ -42,7 +42,7 @@
     //self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
     //get numfollowing
     PFQuery *query2 = [PFQuery queryWithClassName:@"Following"];
-    [query2 whereKey:@"follower" equalTo:self.user];
+    [query2 whereKey:@"user" equalTo:self.user];
     [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable following, NSError * _Nullable error) {
         self.numFollowing.text = [NSString stringWithFormat:@"%lu", [following count]];
     }];
@@ -73,7 +73,7 @@
         self.editButton.alpha = 0;
         //see if the current user follows the user
         PFQuery *query = [PFQuery queryWithClassName:@"Following"];
-        [query whereKey:@"follower" equalTo:[PFUser currentUser]];
+        [query whereKey:@"user" equalTo:[PFUser currentUser]];
         [query whereKey:@"following" equalTo:self.user];
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
             if(users != nil) {
@@ -117,7 +117,7 @@
 
     //get numfollowing
     PFQuery *query2 = [PFQuery queryWithClassName:@"Following"];
-    [query2 whereKey:@"follower" equalTo:self.user];
+    [query2 whereKey:@"user" equalTo:self.user];
     [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable following, NSError * _Nullable error) {
         self.numFollowing.text = [NSString stringWithFormat:@"%lu", [following count]];
     }];
@@ -149,7 +149,7 @@
 
     //get numfollowing
     PFQuery *query2 = [PFQuery queryWithClassName:@"Following"];
-    [query2 whereKey:@"follower" equalTo:self.user];
+    [query2 whereKey:@"user" equalTo:self.user];
     [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable following, NSError * _Nullable error) {
         self.numFollowing.text = [NSString stringWithFormat:@"%lu", [following count]];
     }];
@@ -157,7 +157,7 @@
 
 - (IBAction)didTapFollow:(id)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Following"];
-    [query whereKey:@"follower" equalTo:[PFUser currentUser]];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query whereKey:@"following" equalTo:self.user];
     query.limit = 1;
     
@@ -172,7 +172,7 @@
             }
             else {
                 PFObject *follow = [PFObject objectWithClassName:@"Following"];
-                follow[@"follower"] = [PFUser currentUser];
+                follow[@"user"] = [PFUser currentUser];
                 follow[@"following"] = self.user;
                 
                 [follow saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {

@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@import Parse;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface ActivityCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UIImageView *profilePic;
+@property (weak, nonatomic) IBOutlet PFImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UILabel *text;
 @property (weak, nonatomic) NSString* username;
 
