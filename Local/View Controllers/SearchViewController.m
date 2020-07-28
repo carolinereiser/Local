@@ -30,27 +30,38 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    PFQuery *query1 = [PFUser query];
-    [query1 whereKey:@"username" notEqualTo:[PFUser currentUser].username];
-    [query1 whereKey:@"username" containsString:[searchText lowercaseString]];
-    
-    PFQuery *query2 = [PFUser query];
-    [query2 whereKey:@"username" notEqualTo:[PFUser currentUser].username];
-    [query2 whereKey:@"name" containsString:searchText];
-    
-    PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1, query2]];
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
-        if(users)
-        {
-            self.users = users;
-            [self.tableView reloadData];
-        }
-        else
-        {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
+    [self search:searchText];
+}
+
+- (void)search:(NSString*)searchText {
+    //search users
+    if([self.segmentedControl selectedSegmentIndex] == 0) {
+        PFQuery *query1 = [PFUser query];
+        [query1 whereKey:@"username" notEqualTo:[PFUser currentUser].username];
+        [query1 whereKey:@"username" containsString:[searchText lowercaseString]];
+        
+        PFQuery *query2 = [PFUser query];
+        [query2 whereKey:@"username" notEqualTo:[PFUser currentUser].username];
+        [query2 whereKey:@"name" containsString:searchText];
+        
+        PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1, query2]];
+        
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+            if(users)
+            {
+                self.users = users;
+                [self.tableView reloadData];
+            }
+            else
+            {
+                NSLog(@"%@", error.localizedDescription);
+            }
+        }];
+    }
+    //search places
+    else {
+        
+    }
 }
 
 //dismiss the keyboard when a user presses search

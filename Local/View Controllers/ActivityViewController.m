@@ -70,7 +70,6 @@
                                NSArray* temp = [self mergeArray:self.likes rightArray:self.comments];
                                self.allActivity = [self mergeArray:temp rightArray:self.follows];
                                [self.tableView reloadData];
-                              NSLog(@"%@", self.allActivity);
                            }
                            else {
                                NSLog(@"%@", error.localizedDescription);
@@ -121,7 +120,6 @@
     [cell.profilePic loadInBackground];
 
     PFObject* object = [self.allActivity[indexPath.row] fetchIfNeeded];
-    NSLog(@"%@", object);
     if([[object parseClassName] isEqualToString:@"Likes"]) {
         cell.text.text = [NSString stringWithFormat:@"%@ liked your spot", object[@"user"][@"username"]];
     }

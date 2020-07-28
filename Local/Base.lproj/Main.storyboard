@@ -193,9 +193,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="zDj-Yf-fKv">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="32"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Users"/>
+                                <segment title="Places"/>
+                            </segments>
+                        </segmentedControl>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchResultCell" rowHeight="59" id="umt-KI-f2w" customClass="SearchResultCell">
-                                <rect key="frame" x="0.0" y="28" width="414" height="59"/>
+                                <rect key="frame" x="0.0" y="60" width="414" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="umt-KI-f2w" id="uJi-WQ-Ldf">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
@@ -249,6 +257,7 @@
                     <connections>
                         <outlet property="navigationItem" destination="9Vl-kA-4lc" id="ecf-c7-7UR"/>
                         <outlet property="searchBar" destination="6KY-mO-aEe" id="UA4-1v-JDI"/>
+                        <outlet property="segmentedControl" destination="zDj-Yf-fKv" id="uXZ-3w-ufy"/>
                         <outlet property="tableView" destination="DrC-Wa-gRD" id="uxb-uU-6JE"/>
                     </connections>
                 </viewController>
@@ -335,11 +344,11 @@
             </objects>
             <point key="canvasLocation" x="5532" y="899"/>
         </scene>
-        <!--Item-->
+        <!--Activity-->
         <scene sceneID="20I-uG-M3n">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="Lka-GF-Fs9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="m63-Hq-joa"/>
+                    <tabBarItem key="tabBarItem" title="Activity" id="m63-Hq-joa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ofH-ms-Kgs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -646,25 +655,25 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" modalPresentationStyle="fullScreen" id="874-8P-jS9" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FPo-wb-KS2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="883"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuG-Nv-RiB">
-                                <rect key="frame" x="0.0" y="-34" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="-75" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="rUK-86-raG" kind="embed" identifier="profilePostsSegue" id="BbT-ZE-CUH"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8In-xM-MLq">
-                                <rect key="frame" x="0.0" y="2" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="-39" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Aip-PQ-wAJ" kind="embed" identifier="profileMapSegue" id="Q3V-Xi-cNg"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-q8-sjA">
-                                <rect key="frame" x="0.0" y="41" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="YgO-OR-4Ry" kind="embed" identifier="" id="5Cd-Dc-Okj"/>
@@ -1866,7 +1875,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LuL-uG-2hw"/>
-        <segue reference="F7U-bO-Ev2"/>
+        <segue reference="Oir-1F-HeH"/>
         <segue reference="0PC-lq-V0v"/>
     </inferredMetricsTieBreakers>
     <resources>
