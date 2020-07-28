@@ -31,39 +31,73 @@
 }
 
 - (void)fetchActivity {
+    //find the likes
     PFQuery *likeQuery = [PFQuery queryWithClassName:@"Likes"];
     [likeQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
+    [likeQuery includeKey:@"createdAt"];
     [likeQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable likes, NSError * _Nullable error) {
          if(likes) {
              self.likes = likes;
+             //once likes are found, find the comments
+             PFQuery *commentQuery = [PFQuery queryWithClassName:@"Comments"];
+             [commentQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
+             [commentQuery includeKey:@"createdAt"];
+             [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable comments, NSError * _Nullable error) {
+                  if(comments) {
+                      self.comments = comments;
+                      //once comments found, find the follows
+                      PFQuery *followQuery = [PFQuery queryWithClassName:@"Following"];
+                      [followQuery whereKey:@"following" equalTo:[PFUser currentUser]];
+                      [followQuery includeKey:@"createdAt"];
+                      [followQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable follows, NSError * _Nullable error) {
+                          if(follows) {
+                               self.follows = follows;
+                               //sort the arrays
+                               NSArray* arr1 = [self mergeArray:self.likes rightArray:self.comments];
+                               NSArray* sorted = [self mergeArray:arr1 rightArray:self.follows];
+                               NSLog(@"SORTED: %@", sorted);
+                           }
+                           else {
+                               NSLog(@"%@", error.localizedDescription);
+                           }
+                       }];
+                  }
+                  else {
+                      NSLog(@"%@", error.localizedDescription);
+                  }
+              }];
          }
          else {
              NSLog(@"%@", error.localizedDescription);
          }
      }];
-    
-    PFQuery *commentQuery = [PFQuery queryWithClassName:@"Comments"];
-    [commentQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
-    [commentQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable comments, NSError * _Nullable error) {
-         if(comments) {
-             self.comments = comments;
-         }
-         else {
-             NSLog(@"%@", error.localizedDescription);
-         }
-     }];
-    
-    PFQuery *followQuery = [PFQuery queryWithClassName:@"Following"];
-    [followQuery whereKey:@"following" equalTo:[PFUser currentUser]];
-    [followQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable follows, NSError * _Nullable error) {
-        if(follows) {
-            NSLog(@"%@", follows);
-             self.follows = follows;
-         }
-         else {
-             NSLog(@"%@", error.localizedDescription);
-         }
-     }];
+}
+
+- (NSArray *) mergeArray:(NSArray *)leftArray rightArray:(NSArray *)rightArray {
+ 
+    NSMutableArray *returnArray = [NSMutableArray array];
+    int i = 0, e = 0;
+ 
+    while (i < [leftArray count] && e < [rightArray count]) {
+        //sort by createdAt date
+        NSDate *leftValue = [[leftArray objectAtIndex:i] createdAt];
+        NSDate *rightValue = [[rightArray objectAtIndex:e] createdAt];
+        if (leftValue < rightValue) {
+            [returnArray addObject: [leftArray objectAtIndex:i++]];
+        } else {
+            [returnArray addObject: [rightArray objectAtIndex:e++]];
+        }
+    }
+ 
+    while (i < [leftArray count]) {
+        [returnArray addObject: [leftArray objectAtIndex:i++]];
+    }
+ 
+    while (e < [rightArray count]) {
+        [returnArray addObject: [rightArray objectAtIndex:e++]];
+    }
+ 
+    return returnArray;
 }
 
 
