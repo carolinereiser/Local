@@ -17,6 +17,7 @@
 		5802F2A724C247EF007128EA /* PlaceInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802F2A624C247EF007128EA /* PlaceInfoCell.m */; };
 		5802F2AA24C25F25007128EA /* PostSpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802F2A924C25F25007128EA /* PostSpotViewController.m */; };
 		5802F2AD24C25F43007128EA /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802F2AC24C25F43007128EA /* Spot.m */; };
+		580EAE5424D09DBD000CBFD4 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE5324D09DBD000CBFD4 /* PlaceViewController.m */; };
 		58A33E8024BF666100A40188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E7F24BF666100A40188 /* AppDelegate.m */; };
 		58A33E8324BF666100A40188 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E8224BF666100A40188 /* SceneDelegate.m */; };
 		58A33E8924BF666100A40188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A33E8724BF666100A40188 /* Main.storyboard */; };
@@ -88,6 +89,8 @@
 		5802F2A924C25F25007128EA /* PostSpotViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PostSpotViewController.m; sourceTree = "<group>"; };
 		5802F2AB24C25F43007128EA /* Spot.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Spot.h; sourceTree = "<group>"; };
 		5802F2AC24C25F43007128EA /* Spot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
+		580EAE5224D09DBD000CBFD4 /* PlaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceViewController.h; sourceTree = "<group>"; };
+		580EAE5324D09DBD000CBFD4 /* PlaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceViewController.m; sourceTree = "<group>"; };
 		58A33E7B24BF666100A40188 /* Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Local.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A33E7E24BF666100A40188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58A33E7F24BF666100A40188 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -278,6 +281,8 @@
 				58ACBDDB24CF522D00066301 /* SearchViewController.m */,
 				58ACBDDD24CF6CA800066301 /* CommentViewController.h */,
 				58ACBDDE24CF6CA800066301 /* CommentViewController.m */,
+				580EAE5224D09DBD000CBFD4 /* PlaceViewController.h */,
+				580EAE5324D09DBD000CBFD4 /* PlaceViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -638,6 +643,7 @@
 				58ACBDE224CF6CC100066301 /* CommentCell.m in Sources */,
 				58ACBDD024CA55C700066301 /* SavedViewController.m in Sources */,
 				58ACBDB524C6466900066301 /* TimelineViewController.m in Sources */,
+				580EAE5424D09DBD000CBFD4 /* PlaceViewController.m in Sources */,
 				58ACBDC724CA001E00066301 /* PersonalMapViewController.m in Sources */,
 				58ACBDCA24CA072B00066301 /* TakeMeAnywhereSettingsViewController.m in Sources */,
 				5802F29B24C0FFC8007128EA /* Place.m in Sources */,
