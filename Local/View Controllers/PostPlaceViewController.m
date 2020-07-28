@@ -69,7 +69,8 @@
                         {
                             NSLog(@"Successfully added Place!");
                             [MBProgressHUD hideHUDForView:self.view animated:YES];
-                            [self performSegueWithIdentifier:@"profileSegue" sender:nil];
+                            //[self.tabBarController setSelectedIndex:4];
+                            [self.navigationController popToRootViewControllerAnimated: YES];
                         }
                         else
                         {

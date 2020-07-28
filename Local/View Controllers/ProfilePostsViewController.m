@@ -103,6 +103,8 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self fetchPlaces];
+    
     self.navigationItem.title = self.user.username;
     self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
     self.profilePic.file = self.user[@"profilePic"];

@@ -97,6 +97,7 @@ didFailAutocompleteWithError:(NSError *)error {
                 NSLog(@"Successfully added Spot!");
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
                 [self.tabBarController setSelectedIndex:0];
+                [self.navigationController popToRootViewControllerAnimated: YES];
             }
             else
             {
