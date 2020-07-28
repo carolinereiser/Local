@@ -18,6 +18,8 @@
 		5802F2AA24C25F25007128EA /* PostSpotViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802F2A924C25F25007128EA /* PostSpotViewController.m */; };
 		5802F2AD24C25F43007128EA /* Spot.m in Sources */ = {isa = PBXBuildFile; fileRef = 5802F2AC24C25F43007128EA /* Spot.m */; };
 		580EAE5424D09DBD000CBFD4 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE5324D09DBD000CBFD4 /* PlaceViewController.m */; };
+		580EAE5724D0A548000CBFD4 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE5624D0A548000CBFD4 /* ActivityViewController.m */; };
+		580EAE5A24D0A574000CBFD4 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE5924D0A574000CBFD4 /* ActivityCell.m */; };
 		58A33E8024BF666100A40188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E7F24BF666100A40188 /* AppDelegate.m */; };
 		58A33E8324BF666100A40188 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E8224BF666100A40188 /* SceneDelegate.m */; };
 		58A33E8924BF666100A40188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A33E8724BF666100A40188 /* Main.storyboard */; };
@@ -91,6 +93,10 @@
 		5802F2AC24C25F43007128EA /* Spot.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Spot.m; sourceTree = "<group>"; };
 		580EAE5224D09DBD000CBFD4 /* PlaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlaceViewController.h; sourceTree = "<group>"; };
 		580EAE5324D09DBD000CBFD4 /* PlaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlaceViewController.m; sourceTree = "<group>"; };
+		580EAE5524D0A548000CBFD4 /* ActivityViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityViewController.h; sourceTree = "<group>"; };
+		580EAE5624D0A548000CBFD4 /* ActivityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
+		580EAE5824D0A574000CBFD4 /* ActivityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
+		580EAE5924D0A574000CBFD4 /* ActivityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		58A33E7B24BF666100A40188 /* Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Local.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A33E7E24BF666100A40188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58A33E7F24BF666100A40188 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -207,7 +213,6 @@
 			children = (
 				58A33EB324BF683900A40188 /* View Controllers */,
 				58A33EBA24BF6C1B00A40188 /* Views */,
-				58A33EBC24BF6C4F00A40188 /* API */,
 				58A33EBB24BF6C2800A40188 /* Models */,
 				58A33E7E24BF666100A40188 /* AppDelegate.h */,
 				58A33E7F24BF666100A40188 /* AppDelegate.m */,
@@ -283,6 +288,8 @@
 				58ACBDDE24CF6CA800066301 /* CommentViewController.m */,
 				580EAE5224D09DBD000CBFD4 /* PlaceViewController.h */,
 				580EAE5324D09DBD000CBFD4 /* PlaceViewController.m */,
+				580EAE5524D0A548000CBFD4 /* ActivityViewController.h */,
+				580EAE5624D0A548000CBFD4 /* ActivityViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -304,6 +311,8 @@
 				58ACBDD524CF4DDD00066301 /* SearchResultCell.m */,
 				58ACBDE024CF6CC100066301 /* CommentCell.h */,
 				58ACBDE124CF6CC100066301 /* CommentCell.m */,
+				580EAE5824D0A574000CBFD4 /* ActivityCell.h */,
+				580EAE5924D0A574000CBFD4 /* ActivityCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -317,13 +326,6 @@
 				5802F2AC24C25F43007128EA /* Spot.m */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		58A33EBC24BF6C4F00A40188 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		CD68AF64768EEA1C76E560F5 /* Pods */ = {
@@ -624,10 +626,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5802F2A124C215A5007128EA /* SpotPicturePickerViewController.m in Sources */,
+				580EAE5724D0A548000CBFD4 /* ActivityViewController.m in Sources */,
 				58ACBDD624CF4DDD00066301 /* SearchResultCell.m in Sources */,
 				58A33EB624BF684B00A40188 /* SignUpViewController.m in Sources */,
 				5802F29E24C2150A007128EA /* SpotPostCell.m in Sources */,
 				58ACBDDC24CF522D00066301 /* SearchViewController.m in Sources */,
+				580EAE5A24D0A574000CBFD4 /* ActivityCell.m in Sources */,
 				58A33EB924BF685600A40188 /* LogInViewController.m in Sources */,
 				58A33E8024BF666100A40188 /* AppDelegate.m in Sources */,
 				58ACBDBE24C8918300066301 /* HomeViewController.m in Sources */,
