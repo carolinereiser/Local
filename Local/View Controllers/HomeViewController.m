@@ -46,7 +46,7 @@
 - (void)fetchFeed {
     //get posts from users that this user follows
     PFQuery *followingQuery = [PFQuery queryWithClassName:@"Following"];
-    [followingQuery whereKey:@"follower" equalTo:[PFUser currentUser]];
+    [followingQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     
     PFQuery *postsFromFollowedUsers = [PFQuery queryWithClassName:@"Spot"];
     [postsFromFollowedUsers whereKey:@"user" matchesKey:@"following" inQuery:followingQuery];
@@ -89,6 +89,18 @@
     return self.feed.count;
 }
 
+- (IBAction)pressedProfile:(id)sender {
+    UIButton *tappedButton = sender;
+    PFUser* user = self.feed[tappedButton.tag][@"user"];
+    if(![user.username isEqual:[PFUser currentUser].username])
+    {
+        [self performSegueWithIdentifier:@"profileSegue" sender:sender];
+    }
+    else
+    {
+        [self.tabBarController setSelectedIndex:4];
+    }
+}
 
 
 #pragma mark - Navigation

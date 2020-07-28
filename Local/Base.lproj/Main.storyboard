@@ -646,25 +646,25 @@
             <objects>
                 <viewController storyboardIdentifier="ProfileViewController" modalPresentationStyle="fullScreen" id="874-8P-jS9" customClass="ProfileViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FPo-wb-KS2">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="883"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kuG-Nv-RiB">
-                                <rect key="frame" x="0.0" y="-75" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="-34" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="rUK-86-raG" kind="embed" identifier="profilePostsSegue" id="BbT-ZE-CUH"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8In-xM-MLq">
-                                <rect key="frame" x="0.0" y="-39" width="414" height="881"/>
+                                <rect key="frame" x="0.0" y="2" width="414" height="881"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="Aip-PQ-wAJ" kind="embed" identifier="profileMapSegue" id="Q3V-Xi-cNg"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JxP-q8-sjA">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="41" width="414" height="842"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="YgO-OR-4Ry" kind="embed" identifier="" id="5Cd-Dc-Okj"/>
@@ -1116,7 +1116,7 @@
                                                     <rect key="frame" x="21" y="472" width="19" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <connections>
-                                                        <segue destination="874-8P-jS9" kind="show" identifier="profileSegue" id="jaj-em-yZM"/>
+                                                        <action selector="pressedProfile:" destination="wsT-KB-Lrq" eventType="touchUpInside" id="C1J-o5-sxR"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -1186,6 +1186,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="RbX-oR-vgy" id="3a4-rW-F5H"/>
+                        <segue destination="874-8P-jS9" kind="show" identifier="profileSegue" id="F7U-bO-Ev2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="161-4M-vaQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1865,7 +1866,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="LuL-uG-2hw"/>
-        <segue reference="Oir-1F-HeH"/>
+        <segue reference="F7U-bO-Ev2"/>
         <segue reference="0PC-lq-V0v"/>
     </inferredMetricsTieBreakers>
     <resources>
