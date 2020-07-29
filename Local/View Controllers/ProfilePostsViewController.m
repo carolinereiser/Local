@@ -11,6 +11,7 @@
 #import "PlaceViewController.h"
 #import "ProfilePostsViewController.h"
 #import "ProfileViewController.h"
+#import "RandomSpotViewController.h"
 #import "SaveCell.h"
 #import "Spot.h"
 
@@ -269,14 +270,20 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    if([[segue identifier] isEqualToString:@"placeSegue"])
-    {
+    if([[segue identifier] isEqualToString:@"placeSegue"]) {
         UICollectionViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
         Place *place = self.places[indexPath.item];
         PlaceViewController *placeViewController = [segue destinationViewController];
         placeViewController.place = place;
         placeViewController.user = self.user;
+    }
+    else if([[segue identifier] isEqualToString:@"spotSegue"]) {
+        UICollectionViewCell *tappedCell = sender;
+        NSIndexPath *indexPath = [self.saveCollectionView indexPathForCell:tappedCell];
+        Spot *spot = self.saved[indexPath.item][@"spot"];
+        RandomSpotViewController *spotViewController = [segue destinationViewController];
+        spotViewController.spot = spot;
     }
 }
 
