@@ -23,6 +23,12 @@
     
     [self.gradientView.layer insertSublayer:gradient atIndex:0];
     
+    /*CAGradientLayer *gradient2 = [CAGradientLayer layer];
+    gradient2.frame = self.topGradientView.bounds;
+    gradient2.colors = @[(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor];
+    
+    [self.topGradientView.layer insertSublayer:gradient2 atIndex:0];*/
+    
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.imagesCollectionView.collectionViewLayout;
         
     layout.minimumInteritemSpacing = 2;
