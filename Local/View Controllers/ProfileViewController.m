@@ -27,7 +27,6 @@
     NSLog(@"hey");
     
     self.map.alpha = 0;
-    self.saved.alpha = 0;
     self.posts.alpha = 1;
     
     if(!self.user) {
@@ -39,19 +38,11 @@
     if([sender selectedSegmentIndex] == 0) {
         self.posts.alpha = 1;
         self.map.alpha = 0;
-        self.saved.alpha = 0;
     }
     else if([sender selectedSegmentIndex] == 1) {
         self.posts.alpha = 0;
         self.map.alpha = 1;
-        self.saved.alpha = 0;
     }
-    else {
-        self.posts.alpha = 0;
-        self.map.alpha = 0;
-        self.saved.alpha = 1;
-    }
-    
 }
 
 #pragma mark - Navigation
