@@ -20,7 +20,7 @@
 @interface ProfilePostsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) NSArray<Place *> *places;
-@property (strong, nonatomic) NSArray<Spot *> *saved;
+@property (strong, nonatomic) NSArray<PFObject *> *saved;
 
 @end
 
@@ -121,6 +121,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self fetchPlaces];
+    [self fetchSaves];
     
     self.navigationItem.title = self.user.username;
     self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
@@ -161,6 +162,7 @@
 - (void)fetchSaves {
     PFQuery* query = [PFQuery queryWithClassName:@"Saves"];
     [query orderByDescending:@"createdAt"];
+    [query includeKey:@"spot"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query findObjectsInBackgroundWithBlock:^(NSArray *spots, NSError *error) {
         if (spots != nil) {
@@ -239,10 +241,10 @@
     }
     else
     {
-        NSLog(@"hey");
+        //NSLog(@"hey");
         SaveCell *cell = [self.saveCollectionView dequeueReusableCellWithReuseIdentifier:@"SaveCell" forIndexPath:indexPath];
-        Spot* spot = self.saved[indexPath.item];
-        cell.name.text = spot[@"title"];
+        Spot* spot = self.saved[indexPath.item][@"spot"];
+        [cell setSpot:spot];
         
         return cell;
     }
