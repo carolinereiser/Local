@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@import Parse;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LogInViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField *userField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordField;
+//@property (weak, nonatomic) IBOutlet FBSDKLoginButton *facebookButton;
 
 @end
 

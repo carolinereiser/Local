@@ -9,6 +9,10 @@
 #import "AppDelegate.h"
 #import <GooglePlaces/GooglePlaces.h>
 #import <Parse/Parse.h>
+//#import <PFFacebookUtils.h>
+
+@import FBSDKCoreKit;
+@import Parse;
 
 @interface AppDelegate ()
 
@@ -25,9 +29,20 @@
     }];
     [Parse initializeWithConfiguration:configuration];
     [GMSPlacesClient provideAPIKey:@"AIzaSyCKhYPEbVm2yXPAzcCdU7jSx0UQpdfzNK0"];
+    //[PFFacebookUtils initializeFacebookWithApplicationLaunchOptions:launchOptions];
     
     return YES;
+    //return [[FBSDKApplicationDelegate sharedInstance]application:application didFinishLaunchingWithOptions:launchOptions];
 }
+
+/*
+- (BOOL)application:(UIApplication*)application openURL:(NSURL *)url sourceApplication:(NSString*)sourceApplication annotation:(id)annotation {
+    return [[FBSDKApplicationDelegate sharedInstance] application:(id)application openURL:url sourceApplication:sourceApplication annotation:annotation];
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    [FBSDKAppEvents activateApp];
+}*/
 
 
 #pragma mark - UISceneSession lifecycle

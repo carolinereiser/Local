@@ -6,9 +6,12 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
+//#import <Parse/PFFacebookUtils.h>
 #import "LogInViewController.h"
 #import <Parse/Parse.h>
+
+//@import FBSDKLoginKit;
+@import Parse;
 
 @interface LogInViewController ()
 

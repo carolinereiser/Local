@@ -9,6 +9,8 @@
 #import <Parse/Parse.h>
 #import "SceneDelegate.h"
 
+@import FBSDKCoreKit;
+
 @interface SceneDelegate ()
 
 @end
@@ -38,6 +40,10 @@
     // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
 }
 
+/*
+- (void)scene:(UIScene *)scene openURLContexts:(NSSet<UIOpenURLContext *> *)URLContexts {
+    [[FBSDKApplicationDelegate sharedInstance] application:UIApplication.sharedApplication openURL:[[URLContexts allObjects] objectAtIndex:0].URL sourceApplication:nil annotation:UIApplicationOpenURLOptionsAnnotationKey];
+}*/
 
 - (void)sceneDidBecomeActive:(UIScene *)scene {
     // Called when the scene has moved from an inactive state to an active state.
