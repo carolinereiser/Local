@@ -11,6 +11,8 @@
 #import "PlaceViewController.h"
 #import "ProfilePostsViewController.h"
 #import "ProfileViewController.h"
+#import "SaveCell.h"
+#import "Spot.h"
 
 @import MBProgressHUD;
 @import Parse;
@@ -18,6 +20,7 @@
 @interface ProfilePostsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (strong, nonatomic) NSArray<Place *> *places;
+@property (strong, nonatomic) NSArray<Spot *> *saved;
 
 @end
 
@@ -29,6 +32,8 @@
     NSLog(@"sup");
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    self.saveCollectionView.delegate = self;
+    self.saveCollectionView.dataSource = self;
     
     if(self.user[@"name"]) {
         self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
@@ -88,6 +93,7 @@
     }
     
     [self fetchPlaces];
+    [self fetchSaves];
     
     self.collectionView.frame = self.view.frame;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
@@ -100,6 +106,17 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
     CGFloat itemHeight = itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    
+    self.saveCollectionView.frame = self.view.frame;
+    UICollectionViewFlowLayout *layout2 = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+
+    layout2.minimumInteritemSpacing = 5;
+    layout2.minimumLineSpacing = 5;
+    
+    //three images per line
+    CGFloat itemWidth2 = (self.saveCollectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
+    CGFloat itemHeight2 = itemWidth2;
+    layout.itemSize = CGSizeMake(itemWidth2, itemHeight2);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -137,6 +154,22 @@
             self.places = places;
             [self.collectionView reloadData];
             [MBProgressHUD hideHUDForView:self.view animated:YES];
+        }
+    }];
+}
+
+- (void)fetchSaves {
+    PFQuery* query = [PFQuery queryWithClassName:@"Saves"];
+    [query orderByDescending:@"createdAt"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *spots, NSError *error) {
+        if (spots != nil) {
+            // do something with the array of object returned by the call
+            self.saved = spots;
+            [self.saveCollectionView reloadData];
+            NSLog(@"%@", self.saved);
+        } else {
+            NSLog(@"%@", error.localizedDescription);
         }
     }];
 }
@@ -195,16 +228,36 @@
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    PlaceCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceCell" forIndexPath:indexPath];
-    
-    Place* place = self.places[indexPath.item];
-    [cell setPlace:place];
-    
-    return cell;
+    if(collectionView == self.collectionView)
+    {
+        PlaceCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceCell" forIndexPath:indexPath];
+        
+        Place* place = self.places[indexPath.item];
+        [cell setPlace:place];
+        
+        return cell;
+    }
+    else
+    {
+        NSLog(@"hey");
+        SaveCell *cell = [self.saveCollectionView dequeueReusableCellWithReuseIdentifier:@"SaveCell" forIndexPath:indexPath];
+        Spot* spot = self.saved[indexPath.item];
+        cell.name.text = spot[@"title"];
+        
+        return cell;
+    }
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.places.count;
+    if(collectionView == self.collectionView)
+    {
+        return self.places.count;
+    }
+    else
+    {
+        return self.saved.count;
+    }
+    
 }
 
 

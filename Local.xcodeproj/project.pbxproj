@@ -19,6 +19,7 @@
 		580EAE5424D09DBD000CBFD4 /* PlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE5324D09DBD000CBFD4 /* PlaceViewController.m */; };
 		580EAE5724D0A548000CBFD4 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE5624D0A548000CBFD4 /* ActivityViewController.m */; };
 		580EAE5A24D0A574000CBFD4 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE5924D0A574000CBFD4 /* ActivityCell.m */; };
+		580EAE7E24D21645000CBFD4 /* SaveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE7D24D21645000CBFD4 /* SaveCell.m */; };
 		58A33E8024BF666100A40188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E7F24BF666100A40188 /* AppDelegate.m */; };
 		58A33E8324BF666100A40188 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E8224BF666100A40188 /* SceneDelegate.m */; };
 		58A33E8924BF666100A40188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A33E8724BF666100A40188 /* Main.storyboard */; };
@@ -94,6 +95,8 @@
 		580EAE5624D0A548000CBFD4 /* ActivityViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityViewController.m; sourceTree = "<group>"; };
 		580EAE5824D0A574000CBFD4 /* ActivityCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActivityCell.h; sourceTree = "<group>"; };
 		580EAE5924D0A574000CBFD4 /* ActivityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
+		580EAE7C24D21645000CBFD4 /* SaveCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveCell.h; sourceTree = "<group>"; };
+		580EAE7D24D21645000CBFD4 /* SaveCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveCell.m; sourceTree = "<group>"; };
 		58A33E7B24BF666100A40188 /* Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Local.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A33E7E24BF666100A40188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58A33E7F24BF666100A40188 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -323,6 +326,8 @@
 				58ACBDE124CF6CC100066301 /* CommentCell.m */,
 				580EAE5824D0A574000CBFD4 /* ActivityCell.h */,
 				580EAE5924D0A574000CBFD4 /* ActivityCell.m */,
+				580EAE7C24D21645000CBFD4 /* SaveCell.h */,
+				580EAE7D24D21645000CBFD4 /* SaveCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -425,6 +430,7 @@
 				TargetAttributes = {
 					58A33E7A24BF666100A40188 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1160;
 					};
 					58A33E9524BF666200A40188 = {
 						CreatedOnToolsVersion = 11.5;
@@ -637,6 +643,7 @@
 				58ACBDBE24C8918300066301 /* HomeViewController.m in Sources */,
 				5802F2AD24C25F43007128EA /* Spot.m in Sources */,
 				58A33E9124BF666200A40188 /* main.m in Sources */,
+				580EAE7E24D21645000CBFD4 /* SaveCell.m in Sources */,
 				58ACBDC424C8ECCE00066301 /* ProfilePostsViewController.m in Sources */,
 				58ACBDBB24C6474500066301 /* TimelinePhotoCell.m in Sources */,
 				5802F2A724C247EF007128EA /* PlaceInfoCell.m in Sources */,
@@ -828,6 +835,7 @@
 			baseConfigurationReference = B470115D2388638CCC60A1CC /* Pods-Local.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LCA26X86Z4;
 				INFOPLIST_FILE = Local/Info.plist;
@@ -837,6 +845,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carolinereiser.Local;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Local/View Controllers/Local-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -846,6 +857,7 @@
 			baseConfigurationReference = D59003B93150AD0ACBAC6AA0 /* Pods-Local.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LCA26X86Z4;
 				INFOPLIST_FILE = Local/Info.plist;
@@ -855,6 +867,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.carolinereiser.Local;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Local/View Controllers/Local-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
