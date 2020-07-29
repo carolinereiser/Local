@@ -17,6 +17,12 @@
     self.imagesCollectionView.delegate = self;
     self.imagesCollectionView.dataSource = self;
     
+    CAGradientLayer *gradient = [CAGradientLayer layer];
+    gradient.frame = self.gradientView.bounds;
+    gradient.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor blackColor].CGColor];
+    
+    [self.gradientView.layer insertSublayer:gradient atIndex:0];
+    
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.imagesCollectionView.collectionViewLayout;
         
     layout.minimumInteritemSpacing = 2;
@@ -44,7 +50,6 @@
     _spot = spot;
     
     self.spotName.text = spot.title;
-    self.username.text = [NSString stringWithFormat:@"@%@", spot.user.username];
     self.spotDescription.text = spot.spotDescription;
     self.images = spot.images;
     self.formattedAddress.text = spot.address;

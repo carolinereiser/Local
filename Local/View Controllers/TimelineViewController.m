@@ -28,7 +28,6 @@
     // Do any additional setup after loading the view.
     self.timelineView.alpha = 1;
     self.mapView.alpha = 0;
-
 }
 
 - (IBAction)switchView:(id)sender {
