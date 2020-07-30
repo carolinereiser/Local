@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "Place.h"
 #import "PlaceViewController.h"
 #import "ProfileViewController.h"
@@ -14,7 +15,7 @@
 
 @import Parse;
 
-@interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) NSArray<PFObject *> *results;
 
@@ -28,6 +29,13 @@
     self.searchBar.delegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
+    self.tableView.tableFooterView = [UIView new];
+    
+    [self.tableView reloadEmptyDataSet];
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
@@ -132,6 +140,18 @@
         [self performSegueWithIdentifier:@"placeSegue" sender:cell];
     }
 }
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+        NSString *text = @"No Results";
+        
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+        
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+
 
 #pragma mark - Navigation
 

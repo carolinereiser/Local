@@ -50,8 +50,7 @@
     PFImageView* imageView = [[PFImageView alloc] init];
     if(!view) {
         imageView.layer.cornerRadius = 20;
-        imageView.layer.masksToBounds = YES;
-        imageView.frame = CGRectMake(0, 0, self.carousel.frame.size.height - 50, self.carousel.frame.size.width - 50);
+        imageView.frame = CGRectMake(0, 0, self.carousel.frame.size.width - 50, self.carousel.frame.size.width - 50);
         imageView.contentMode = UIViewContentModeScaleAspectFit;
     }
     else {

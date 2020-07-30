@@ -1874,7 +1874,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="418" height="687"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNI-d4-pLf" customClass="iCarousel">
-                                        <rect key="frame" x="0.0" y="145" width="410" height="443"/>
+                                        <rect key="frame" x="0.0" y="145" width="418" height="443"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -1965,7 +1965,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="h3N-2e-lxb" secondAttribute="trailing" constant="20" id="0gJ-xt-PFg"/>
-                                    <constraint firstAttribute="trailing" secondItem="cNI-d4-pLf" secondAttribute="trailing" constant="8" id="2Md-0X-jVJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="cNI-d4-pLf" secondAttribute="trailing" id="2Md-0X-jVJ"/>
                                     <constraint firstItem="AG5-p2-iBl" firstAttribute="top" secondItem="cNI-d4-pLf" secondAttribute="bottom" constant="8" id="3Pw-Lw-djk"/>
                                     <constraint firstAttribute="bottom" secondItem="KAG-ad-jOt" secondAttribute="bottom" id="3vy-xf-6gB"/>
                                     <constraint firstItem="foD-qL-SyU" firstAttribute="leading" secondItem="nGk-Lp-QR6" secondAttribute="leading" constant="158" id="4fM-nL-oyN"/>
