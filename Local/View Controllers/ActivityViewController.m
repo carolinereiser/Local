@@ -8,10 +8,11 @@
 
 #import "ActivityCell.h"
 #import "ActivityViewController.h"
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 
 @import Parse;
 
-@interface ActivityViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface ActivityViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) NSArray<PFObject *> *likes;
 @property (nonatomic, strong) NSArray<PFObject *> *comments;
@@ -27,6 +28,11 @@
     // Do any additional setup after loading the view.
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
+    self.tableView.tableFooterView = [UIView new];
     
     [self fetchActivity];
 }
@@ -134,6 +140,16 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.allActivity.count;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+        NSString *text = @"No Activity";
+        
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+        
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
 /*
