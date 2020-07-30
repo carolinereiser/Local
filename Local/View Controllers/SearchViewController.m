@@ -82,6 +82,7 @@
         [query3 whereKey:@"country" matchesRegex:[NSString stringWithFormat:@"(?i)%@",searchText]];
         
         PFQuery *query = [PFQuery orQueryWithSubqueries:@[query1, query2, query3]];
+        [query includeKey:@"user"];
         
         [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable places, NSError * _Nullable error) {
             if(places)

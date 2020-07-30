@@ -7,6 +7,7 @@
 //
 
 #import "PlaceViewController.h"
+#import "ProfileViewController.h"
 #import "Spot.h"
 #import "TimelineCell.h"
 
@@ -63,14 +64,17 @@
     return self.spots.count;
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    ProfileViewController *profileViewController = [segue destinationViewController];
+    PFUser *user = self.user;
+    profileViewController.user = user;
 }
-*/
+
 
 @end
