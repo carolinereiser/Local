@@ -6,12 +6,13 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "PlaceViewController.h"
 #import "ProfileViewController.h"
 #import "Spot.h"
 #import "TimelineCell.h"
 
-@interface PlaceViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface PlaceViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) NSArray<Spot *> *spots;
 
@@ -27,6 +28,11 @@
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
+    self.tableView.tableFooterView = [UIView new];
     
     [self fetchSpots];
 }
@@ -62,6 +68,16 @@
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.spots.count;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+        NSString *text = @"No Spots";
+        
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+        
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
 
