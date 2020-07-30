@@ -109,15 +109,15 @@
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
     
     self.saveCollectionView.frame = self.view.frame;
-    UICollectionViewFlowLayout *layout2 = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
+    UICollectionViewFlowLayout *layout2 = (UICollectionViewFlowLayout *)self.saveCollectionView.collectionViewLayout;
 
     layout2.minimumInteritemSpacing = 5;
     layout2.minimumLineSpacing = 5;
     
     //three images per line
-    CGFloat itemWidth2 = (self.saveCollectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
+    CGFloat itemWidth2 = (self.saveCollectionView.frame.size.width - (layout2.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
     CGFloat itemHeight2 = itemWidth2;
-    layout.itemSize = CGSizeMake(itemWidth2, itemHeight2);
+    layout2.itemSize = CGSizeMake(itemWidth2, itemHeight2);
 }
 
 - (void)viewWillAppear:(BOOL)animated {
