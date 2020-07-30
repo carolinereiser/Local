@@ -233,12 +233,20 @@
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     if(collectionView == self.collectionView)
     {
-        PlaceCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceCell" forIndexPath:indexPath];
-        
-        Place* place = self.places[indexPath.item];
-        [cell setPlace:place];
-        
-        return cell;
+        if(indexPath.item == 0 && self.user == [PFUser currentUser])
+        {
+            //create a custom cell
+            UICollectionViewCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"AddPlaceCell" forIndexPath:indexPath];
+            return cell;
+        }
+        else {
+            PlaceCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceCell" forIndexPath:indexPath];
+            
+            Place* place = self.places[indexPath.item];
+            [cell setPlace:place];
+            
+            return cell;
+        }
     }
     else
     {
@@ -254,11 +262,11 @@
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     if(collectionView == self.collectionView)
     {
-        return self.places.count;
+        return (self.places.count < 10) ? self.places.count : 10;
     }
     else
     {
-        return self.saved.count;
+        return (self.saved.count < 10) ? self.saved.count : 10;
     }
     
 }
