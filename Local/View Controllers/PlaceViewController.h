@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PlaceViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *placeName;
+@property (weak, nonatomic) IBOutlet UILabel *userName;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) Place* place;
 @property (weak, nonatomic) PFUser* user;
 
