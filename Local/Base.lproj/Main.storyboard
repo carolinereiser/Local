@@ -1094,45 +1094,21 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="518"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="HZa-zs-mb5">
+                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KNh-xV-KOY" customClass="iCarousel">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="HZa-zs-mb5" secondAttribute="height" multiplier="1:1" id="1rB-v8-IFP"/>
-                                                    </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="yXR-hR-DUR">
-                                                        <size key="itemSize" width="414" height="414"/>
-                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    </collectionViewFlowLayout>
-                                                    <cells>
-                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimelinePhotoCell" id="QXp-jb-BDU" customClass="TimelinePhotoCell">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="qI2-AM-9Hs" customClass="PFImageView">
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                            <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="UIv-XU-a0X">
-                                                                <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qI2-AM-9Hs" customClass="PFImageView">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                                <integer key="value" value="20"/>
-                                                                            </userDefinedRuntimeAttribute>
-                                                                        </userDefinedRuntimeAttributes>
-                                                                    </imageView>
-                                                                </subviews>
-                                                            </collectionViewCellContentView>
-                                                            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                            <size key="customSize" width="414" height="414"/>
-                                                            <connections>
-                                                                <outlet property="image" destination="qI2-AM-9Hs" id="h96-WU-DjS"/>
-                                                            </connections>
-                                                        </collectionViewCell>
-                                                    </cells>
-                                                </collectionView>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                    <integer key="value" value="20"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                    </subviews>
+                                                </view>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f2a-UL-Thh">
                                                     <rect key="frame" x="0.0" y="347" width="414" height="80"/>
                                                     <subviews>
@@ -1310,12 +1286,9 @@
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="fhN-Ln-aNv" secondAttribute="bottom" id="1rR-Ue-XpY"/>
                                                 <constraint firstItem="f2a-UL-Thh" firstAttribute="leading" secondItem="chX-vP-rJe" secondAttribute="leading" id="2rz-k7-YGw"/>
-                                                <constraint firstItem="HZa-zs-mb5" firstAttribute="leading" secondItem="chX-vP-rJe" secondAttribute="leading" id="OQ1-ti-RwK"/>
                                                 <constraint firstItem="f2a-UL-Thh" firstAttribute="centerY" secondItem="chX-vP-rJe" secondAttribute="centerY" constant="128" id="PrQ-rE-N1S"/>
                                                 <constraint firstAttribute="trailing" secondItem="f2a-UL-Thh" secondAttribute="trailing" id="TVg-a2-7fl"/>
-                                                <constraint firstAttribute="trailing" secondItem="HZa-zs-mb5" secondAttribute="trailing" id="YUE-C8-RxS"/>
                                                 <constraint firstAttribute="trailing" secondItem="fhN-Ln-aNv" secondAttribute="trailing" id="fyA-Jr-qZb"/>
-                                                <constraint firstItem="HZa-zs-mb5" firstAttribute="top" secondItem="chX-vP-rJe" secondAttribute="top" id="lrj-iz-wus"/>
                                                 <constraint firstItem="fhN-Ln-aNv" firstAttribute="top" secondItem="f2a-UL-Thh" secondAttribute="bottom" constant="1" id="oYe-3f-NDx"/>
                                                 <constraint firstItem="fhN-Ln-aNv" firstAttribute="leading" secondItem="chX-vP-rJe" secondAttribute="leading" id="sel-Fg-8fr"/>
                                             </constraints>
@@ -1325,12 +1298,12 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <outlet property="carousel" destination="KNh-xV-KOY" id="dOY-PG-HzW"/>
                                             <outlet property="commentButton" destination="ZtX-tb-qry" id="Ccu-j5-cYU"/>
                                             <outlet property="commentCount" destination="f7P-fW-afD" id="Yth-Zx-K0d"/>
                                             <outlet property="detailView" destination="fhN-Ln-aNv" id="KEr-FU-Ta9"/>
                                             <outlet property="formattedAddress" destination="6XE-Dv-U58" id="pqj-yB-XNe"/>
                                             <outlet property="gradientView" destination="f2a-UL-Thh" id="6Z5-VR-3iS"/>
-                                            <outlet property="imagesCollectionView" destination="HZa-zs-mb5" id="OuQ-DB-5zt"/>
                                             <outlet property="likeCount" destination="7KF-14-jep" id="wW0-vn-cLm"/>
                                             <outlet property="profileButton" destination="tHr-qu-3Kn" id="6O3-oE-be3"/>
                                             <outlet property="profilePic" destination="QSx-CE-rAk" id="XbS-3s-vmd"/>
@@ -1526,10 +1499,10 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="hm9-LJ-esX" customClass="CommentCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hm9-LJ-esX" id="HIn-zK-uq7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="t5q-Ah-9YS" customClass="PFImageView">
@@ -1547,13 +1520,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-gG-YUT">
-                                                    <rect key="frame" x="58" y="12.5" width="336" height="21"/>
+                                                    <rect key="frame" x="58" y="12.5" width="336" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E06-cb-UKv">
-                                                    <rect key="frame" x="58" y="34.5" width="336" height="20.5"/>
+                                                    <rect key="frame" x="58" y="35" width="336" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

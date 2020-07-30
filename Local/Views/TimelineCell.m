@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import <iCarousel/iCarousel.h>
 #import "TimelineCell.h"
 #import "TimelinePhotoCell.h"
 
@@ -14,8 +15,11 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.imagesCollectionView.delegate = self;
-    self.imagesCollectionView.dataSource = self;
+    self.carousel.dataSource = self;
+    self.carousel.delegate = self;
+    
+    self.carousel.scrollEnabled = YES;
+    self.carousel.pagingEnabled = YES;
     
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.gradientView.bounds;
@@ -23,21 +27,7 @@
     
     [self.gradientView.layer insertSublayer:gradient atIndex:0];
     
-    /*CAGradientLayer *gradient2 = [CAGradientLayer layer];
-    gradient2.frame = self.topGradientView.bounds;
-    gradient2.colors = @[(id)[UIColor blackColor].CGColor, (id)[UIColor clearColor].CGColor];
-    
-    [self.topGradientView.layer insertSublayer:gradient2 atIndex:0];*/
-    
-    UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.imagesCollectionView.collectionViewLayout;
-        
-    layout.minimumInteritemSpacing = 2;
-    layout.minimumLineSpacing = 2;
-    
-    CGFloat imagesPerLine = 1;
-    CGFloat itemWidth = (self.imagesCollectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
-    CGFloat itemHeight = itemWidth;
-    layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+    self.carousel.type = iCarouselTypeRotary;
 }
 
 - (void)refreshData {
@@ -66,22 +56,30 @@
     self.shareCount.text = [NSString stringWithFormat:@"%@", spot.shareCount];
     [self.profilePic loadInBackground];
 
-    [self.imagesCollectionView reloadData];
+    //[self.imagesCollectionView reloadData];
+    [self.carousel reloadData];
 }
 
-
-- (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TimelinePhotoCell* cell = [self.imagesCollectionView dequeueReusableCellWithReuseIdentifier:@"TimelinePhotoCell" forIndexPath:indexPath];
-    
-    cell.image.file = self.images[indexPath.item];
-    [cell.image loadInBackground];
-    
-    return cell;
-}
-
-- (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+- (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
     return self.images.count;
 }
+
+- (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSInteger)index reusingView:(UIView *)view {
+    PFImageView* imageView = [[PFImageView alloc] init];
+    if(!view) {
+        imageView.layer.cornerRadius = 20;
+        imageView.layer.masksToBounds = YES;
+        imageView.frame = CGRectMake(0, 0, self.carousel.frame.size.height - 50, self.carousel.frame.size.width - 50);
+        imageView.contentMode = UIViewContentModeScaleAspectFit;
+    }
+    else {
+        imageView = (PFImageView*)view;
+    }
+    imageView.file = self.images[index];
+    [imageView loadInBackground];
+    return imageView;
+}
+
 - (IBAction)didLike:(id)sender {
     PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];

@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import <iCarousel/iCarousel.h>
 #import "Spot.h"
 #import <UIKit/UIKit.h>
 
@@ -14,9 +15,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface TimelineCell : UITableViewCell <UICollectionViewDelegate, UICollectionViewDataSource>
+@interface TimelineCell : UITableViewCell <iCarouselDelegate, iCarouselDataSource> 
 
-@property (weak, nonatomic) IBOutlet UICollectionView *imagesCollectionView;
 @property (weak, nonatomic) IBOutlet UILabel *spotName;
 @property (weak, nonatomic) IBOutlet UILabel *formattedAddress;
 @property (weak, nonatomic) IBOutlet PFImageView *profilePic;
@@ -29,6 +29,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *commentButton;
 @property (weak, nonatomic) IBOutlet UIView *gradientView;
 @property (weak, nonatomic) IBOutlet UIView *detailView;
+@property (weak, nonatomic) IBOutlet iCarousel *carousel; 
 
 @property (weak, nonatomic) Spot* spot;
 @property (weak, nonatomic) NSArray<PFFileObject *> *images;
