@@ -28,6 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIButton *followButton;
 @property (weak, nonatomic) IBOutlet UIButton *editButton;
 
+
 @end
 
 NS_ASSUME_NONNULL_END

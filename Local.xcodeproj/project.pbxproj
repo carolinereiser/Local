@@ -20,6 +20,8 @@
 		580EAE5724D0A548000CBFD4 /* ActivityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE5624D0A548000CBFD4 /* ActivityViewController.m */; };
 		580EAE5A24D0A574000CBFD4 /* ActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE5924D0A574000CBFD4 /* ActivityCell.m */; };
 		580EAE7E24D21645000CBFD4 /* SaveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE7D24D21645000CBFD4 /* SaveCell.m */; };
+		580EAE8124D34D09000CBFD4 /* ProfilePlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8024D34D09000CBFD4 /* ProfilePlacesViewController.m */; };
+		580EAE8424D34D1D000CBFD4 /* ProfileSavesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8324D34D1D000CBFD4 /* ProfileSavesViewController.m */; };
 		58A33E8024BF666100A40188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E7F24BF666100A40188 /* AppDelegate.m */; };
 		58A33E8324BF666100A40188 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E8224BF666100A40188 /* SceneDelegate.m */; };
 		58A33E8924BF666100A40188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A33E8724BF666100A40188 /* Main.storyboard */; };
@@ -96,6 +98,10 @@
 		580EAE5924D0A574000CBFD4 /* ActivityCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActivityCell.m; sourceTree = "<group>"; };
 		580EAE7C24D21645000CBFD4 /* SaveCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SaveCell.h; sourceTree = "<group>"; };
 		580EAE7D24D21645000CBFD4 /* SaveCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SaveCell.m; sourceTree = "<group>"; };
+		580EAE7F24D34D09000CBFD4 /* ProfilePlacesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfilePlacesViewController.h; sourceTree = "<group>"; };
+		580EAE8024D34D09000CBFD4 /* ProfilePlacesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePlacesViewController.m; sourceTree = "<group>"; };
+		580EAE8224D34D1D000CBFD4 /* ProfileSavesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSavesViewController.h; sourceTree = "<group>"; };
+		580EAE8324D34D1D000CBFD4 /* ProfileSavesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileSavesViewController.m; sourceTree = "<group>"; };
 		58A33E7B24BF666100A40188 /* Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Local.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A33E7E24BF666100A40188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58A33E7F24BF666100A40188 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -298,6 +304,10 @@
 				580EAE5324D09DBD000CBFD4 /* PlaceViewController.m */,
 				580EAE5524D0A548000CBFD4 /* ActivityViewController.h */,
 				580EAE5624D0A548000CBFD4 /* ActivityViewController.m */,
+				580EAE7F24D34D09000CBFD4 /* ProfilePlacesViewController.h */,
+				580EAE8024D34D09000CBFD4 /* ProfilePlacesViewController.m */,
+				580EAE8224D34D1D000CBFD4 /* ProfileSavesViewController.h */,
+				580EAE8324D34D1D000CBFD4 /* ProfileSavesViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -639,6 +649,7 @@
 				5802F2AD24C25F43007128EA /* Spot.m in Sources */,
 				58A33E9124BF666200A40188 /* main.m in Sources */,
 				580EAE7E24D21645000CBFD4 /* SaveCell.m in Sources */,
+				580EAE8424D34D1D000CBFD4 /* ProfileSavesViewController.m in Sources */,
 				58ACBDC424C8ECCE00066301 /* ProfilePostsViewController.m in Sources */,
 				58ACBDBB24C6474500066301 /* TimelinePhotoCell.m in Sources */,
 				5802F2A724C247EF007128EA /* PlaceInfoCell.m in Sources */,
@@ -651,6 +662,7 @@
 				580EAE5424D09DBD000CBFD4 /* PlaceViewController.m in Sources */,
 				58ACBDC724CA001E00066301 /* PersonalMapViewController.m in Sources */,
 				58ACBDCA24CA072B00066301 /* TakeMeAnywhereSettingsViewController.m in Sources */,
+				580EAE8124D34D09000CBFD4 /* ProfilePlacesViewController.m in Sources */,
 				5802F29B24C0FFC8007128EA /* Place.m in Sources */,
 				58ACBDAF24C6294600066301 /* PlaceCell.m in Sources */,
 				58A33E8324BF666100A40188 /* SceneDelegate.m in Sources */,

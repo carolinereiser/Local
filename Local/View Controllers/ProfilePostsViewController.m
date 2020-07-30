@@ -9,6 +9,7 @@
 #import "Place.h"
 #import "PlaceCell.h"
 #import "PlaceViewController.h"
+#import "ProfilePlacesViewController.h"
 #import "ProfilePostsViewController.h"
 #import "ProfileViewController.h"
 #import "RandomSpotViewController.h"
@@ -30,7 +31,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"sup");
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     self.saveCollectionView.delegate = self;
@@ -124,7 +124,6 @@
     [self fetchPlaces];
     [self fetchSaves];
     
-    self.navigationItem.title = self.user.username;
     self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
     self.profilePic.file = self.user[@"profilePic"];
     [self.profilePic loadInBackground];
@@ -272,6 +271,7 @@
 }
 
 
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -292,6 +292,10 @@
         Spot *spot = self.saved[indexPath.item][@"spot"];
         RandomSpotViewController *spotViewController = [segue destinationViewController];
         spotViewController.spot = spot;
+    }
+    else if([[segue identifier] isEqualToString:@"profilePlacesSegue"]) {
+        ProfilePlacesViewController *viewController = [segue destinationViewController];
+        viewController.user = self.user;
     }
 }
 
