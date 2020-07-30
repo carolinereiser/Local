@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "CommentViewController.h"
 #import "HomeViewController.h"
 #import "ProfilePostsViewController.h"
@@ -17,7 +18,7 @@
 @import MBProgressHUD;
 @import Parse;
 
-@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface HomeViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) NSArray<Spot *> *feed;
 
@@ -37,6 +38,13 @@
     self.refreshControl = [[UIRefreshControl alloc] init];
     [self.refreshControl addTarget:self action:@selector(fetchFeed) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
+    
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.emptyDataSetDelegate = self;
+    
+    self.tableView.tableFooterView = [UIView new];
+    
+    [self.tableView reloadEmptyDataSet];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -101,6 +109,16 @@
         //if it's the current user, send them to the profile tab
         [self.tabBarController setSelectedIndex:4];
     }
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+        NSString *text = @"No Results";
+        
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+        
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
 
