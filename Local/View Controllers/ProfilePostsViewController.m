@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "Place.h"
 #import "PlaceCell.h"
 #import "PlaceViewController.h"
@@ -19,7 +20,7 @@
 @import MBProgressHUD;
 @import Parse;
 
-@interface ProfilePostsViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ProfilePostsViewController () <UICollectionViewDataSource, UICollectionViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (strong, nonatomic) NSArray<Place *> *places;
 @property (strong, nonatomic) NSArray<PFObject *> *saved;
@@ -35,6 +36,11 @@
     self.collectionView.dataSource = self;
     self.saveCollectionView.delegate = self;
     self.saveCollectionView.dataSource = self;
+    
+    self.collectionView.emptyDataSetSource = self;
+    self.collectionView.emptyDataSetDelegate = self;
+    self.saveCollectionView.emptyDataSetSource = self;
+    self.saveCollectionView.emptyDataSetDelegate = self;
     
     if(self.user[@"name"]) {
         self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
@@ -269,6 +275,27 @@
     }
     
 }
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    if(scrollView == self.collectionView) {
+        NSString *text = @"No Places";
+        
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+        
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }
+    else {
+        NSString *text = @"No Saves";
+        
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+        
+        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+    }
+}
+
 
 
 
