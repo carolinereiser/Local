@@ -6,13 +6,14 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "ProfileSavesViewController.h"
 #import "RandomSpotViewController.h"
 #import "SaveCell.h"
 
 @import Parse;
 
-@interface ProfileSavesViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ProfileSavesViewController () <UICollectionViewDataSource, UICollectionViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (strong, nonatomic) NSArray<PFObject *> *saved;
 
@@ -25,6 +26,9 @@
     // Do any additional setup after loading the view.
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
+    
+    self.collectionView.emptyDataSetSource = self;
+    self.collectionView.emptyDataSetDelegate = self;
     
     self.navigationItem.title = @"Saves";
     
@@ -70,6 +74,16 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.saved.count;
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *text = @"No Saves";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
 
