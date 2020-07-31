@@ -19,7 +19,7 @@
 
 @property (nonatomic) CLLocationCoordinate2D coordinate;
 @property (nonatomic, strong) NSString* name;
-@property (nonatomic, strong) NSArray *spots;
+@property (nonatomic, weak) NSArray *spots;
 @property (nonatomic, strong) Spot* randomSpot;
 
 @end
@@ -87,19 +87,46 @@
             [self presentErrorAlert];
         }
     }
-    PFQuery *query = [PFQuery queryWithClassName:@"Spot"];
+    
+    PFQuery *followingQuery = [PFQuery queryWithClassName:@"Following"];
+    [followingQuery whereKey:@"user" equalTo:[PFUser currentUser]];
+    
+    PFQuery *postsFromFollowedUsers = [PFQuery queryWithClassName:@"Spot"];
+       [postsFromFollowedUsers whereKey:@"user" matchesKey:@"following" inQuery:followingQuery];
+       
+    //get posts this user
+    PFQuery *postsFromThisUser = [PFQuery queryWithClassName:@"Spot"];
+    [postsFromThisUser whereKey:@"user" equalTo:[PFUser currentUser]];
+    
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[postsFromFollowedUsers, postsFromThisUser]];
     PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
     [query whereKey:@"location" nearGeoPoint:geoPoint withinMiles:self.milesSlider.value];
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots){
             //TODO:ERROR IF THERE ARE NO SPOTS
-            //find random spot
-            self.spots = spots;
-            srand(time(nil));
-            int r = rand() % [self.spots count];
-            self.randomSpot = spots[r];
-            NSLog(@"%@", self.randomSpot);
-            [self performSegueWithIdentifier:@"randomSpotSegue" sender:nil];
+            if(spots.count == 0) {
+                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"No spots in range" message:@"Please expand your range or follow more users." preferredStyle:(UIAlertControllerStyleAlert)];
+                
+                // create a cancel action
+                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
+                {
+                }];
+                // add the cancel action to the alertController
+                [alert addAction:okAction];
+                [self presentViewController:alert animated:YES completion:^{
+                    // nothing happens when view controller is done presenting
+                }];
+            }
+            else {
+                //find random spot
+                self.spots = spots;
+                srand(time(nil));
+                int r = rand() % [self.spots count];
+                self.randomSpot = spots[r];
+                NSLog(@"%@", self.randomSpot);
+                [self performSegueWithIdentifier:@"randomSpotSegue" sender:nil];
+            }
         }
         else{
             NSLog(@"%@", error.localizedDescription);
