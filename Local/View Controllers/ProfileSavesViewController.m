@@ -51,7 +51,7 @@
     PFQuery* query = [PFQuery queryWithClassName:@"Saves"];
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"spot"];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"user" equalTo:self.user];
     [query findObjectsInBackgroundWithBlock:^(NSArray *spots, NSError *error) {
         if (spots != nil) {
             // do something with the array of object returned by the call
