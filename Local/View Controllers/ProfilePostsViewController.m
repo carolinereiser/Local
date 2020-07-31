@@ -265,7 +265,15 @@
     else {
         PlaceCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceCell" forIndexPath:indexPath];
         
-        Place* place = self.places[indexPath.item - 1];
+        Place* place = [[Place alloc] init];
+        if(self.user == [PFUser currentUser]) {
+            place = self.places[indexPath.item - 1];
+        }
+        else {
+            place = self.places[indexPath.item];
+        }
+           
+        
         [cell setPlace:place];
         
         return cell;
@@ -273,7 +281,13 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return (self.places.count < 10) ? self.places.count + 1: 10;
+    if(self.user == [PFUser currentUser]) {
+        return (self.places.count < 10) ? self.places.count + 1: 10;
+    }
+    else {
+        return (self.places.count < 10) ? self.places.count : 10;
+    }
+    
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
@@ -298,7 +312,14 @@
     if([[segue identifier] isEqualToString:@"placeSegue"]) {
         UICollectionViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
-        Place *place = self.places[indexPath.item -1];
+        Place *place = [[Place alloc] init];
+        if(self.user == [PFUser currentUser]) {
+            place = self.places[indexPath.item -1];
+        }
+        else {
+            place = self.places[indexPath.item];
+        }
+        
         PlaceViewController *placeViewController = [segue destinationViewController];
         placeViewController.place = place;
         placeViewController.user = self.user;
