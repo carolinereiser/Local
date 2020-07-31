@@ -1224,13 +1224,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XKP-sV-Dic">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XKP-sV-Dic">
                                 <rect key="frame" x="64" y="99" width="286" height="286"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="286" id="FuF-Sq-kif"/>
+                                    <constraint firstAttribute="height" constant="286" id="SwF-Ra-UZi"/>
+                                </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0D-4c-ly7">
-                                <rect key="frame" x="159" y="427" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h0D-4c-ly7">
+                                <rect key="frame" x="158.5" y="427" width="97" height="30"/>
                                 <state key="normal" title="Select a place"/>
                                 <connections>
                                     <action selector="addPlace:" destination="JO9-LX-oV5" eventType="touchUpInside" id="wgR-ys-slQ"/>
@@ -1243,9 +1245,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8s-QP-Eda">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8s-QP-Eda">
                                 <rect key="frame" x="191" y="657" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Add!"/>
                                 <connections>
                                     <action selector="postPlace:" destination="JO9-LX-oV5" eventType="touchUpInside" id="I7M-Nq-FRl"/>
@@ -1253,6 +1254,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="XKP-sV-Dic" firstAttribute="top" secondItem="gKA-Um-iU7" secondAttribute="top" constant="55" id="CPl-Eh-Ooh"/>
+                            <constraint firstItem="h0D-4c-ly7" firstAttribute="top" secondItem="XKP-sV-Dic" secondAttribute="bottom" constant="42" id="KJD-1d-rmo"/>
+                            <constraint firstItem="gKA-Um-iU7" firstAttribute="bottom" secondItem="J8s-QP-Eda" secondAttribute="bottom" constant="175" id="Xxi-35-DmO"/>
+                            <constraint firstItem="J8s-QP-Eda" firstAttribute="centerX" secondItem="ZsD-um-qkj" secondAttribute="centerX" id="etw-hO-ruk"/>
+                            <constraint firstItem="XKP-sV-Dic" firstAttribute="centerX" secondItem="ZsD-um-qkj" secondAttribute="centerX" id="hab-37-Is6"/>
+                            <constraint firstItem="h0D-4c-ly7" firstAttribute="centerX" secondItem="ZsD-um-qkj" secondAttribute="centerX" id="qUP-RF-73T"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="gKA-Um-iU7"/>
                     </view>
                     <navigationItem key="navigationItem" id="H8B-6b-TTD"/>
@@ -1441,7 +1450,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lX1-L8-fuN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="9696" y="2648"/>
+            <point key="canvasLocation" x="9719" y="2630"/>
         </scene>
         <!--Change Address View Controller-->
         <scene sceneID="3Rv-S8-Rz2">
