@@ -298,7 +298,7 @@
     if([[segue identifier] isEqualToString:@"placeSegue"]) {
         UICollectionViewCell *tappedCell = sender;
         NSIndexPath *indexPath = [self.collectionView indexPathForCell:tappedCell];
-        Place *place = self.places[indexPath.item];
+        Place *place = self.places[indexPath.item -1];
         PlaceViewController *placeViewController = [segue destinationViewController];
         placeViewController.place = place;
         placeViewController.user = self.user;
