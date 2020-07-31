@@ -53,7 +53,6 @@
     self.likeCount.text = [NSString stringWithFormat:@"%@", spot.likeCount];
     self.commentCount.text = [NSString stringWithFormat:@"%@", spot.commentCount];
     self.saveCount.text = [NSString stringWithFormat:@"%@", spot.saveCount];
-    self.shareCount.text = [NSString stringWithFormat:@"%@", spot.shareCount];
     [self.profilePic loadInBackground];
 
     //[self.imagesCollectionView reloadData];
