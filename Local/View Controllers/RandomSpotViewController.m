@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "CommentViewController.h"
 #import "RandomSpotViewController.h"
 
 @import Parse;
@@ -41,6 +42,12 @@
     [self.carousel reloadData];
 }
 
+- (void)refreshData {
+    self.likeCount.text = [NSString stringWithFormat:@"%@", self.spot.likeCount];
+    self.saveCount.text = [NSString stringWithFormat:@"%@", self.spot.saveCount];
+    self.commentCount.text = [NSString stringWithFormat:@"%@", self.spot.commentCount];
+}
+
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
     return self.images.count;
 }
@@ -63,22 +70,142 @@
 
 
 - (IBAction)didLike:(id)sender {
+    PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"spot" equalTo:self.spot];
+    query.limit = 1;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil) {
+            if(users.count == 1) {
+                PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
+                [query whereKey:@"user" equalTo:[PFUser currentUser]];
+                [query whereKey:@"spot" equalTo:self.spot];
+                query.limit = 1;
+                [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable user, NSError * _Nullable error) {
+                    if(user) {
+                        NSLog (@"Like removed");
+                        [user[0] deleteInBackground];
+                    }
+                    else {
+                        NSLog (@"unable to retrieve like");
+                    }
+                }];
+                
+                NSNumber *currLikeCount = self.spot.likeCount;
+                int val = [currLikeCount intValue];
+                val -= 1;
+                self.spot.likeCount = [NSNumber numberWithInt:val];
+                [self.spot saveInBackground];
+                [self refreshData];
+            }
+            else {
+                PFObject *like = [PFObject objectWithClassName:@"Likes"];
+                like[@"user"] = [PFUser currentUser];
+                like[@"spot"] = self.spot;
+                like[@"owner"] = self.spot.user;
+                
+                [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                  if (succeeded) {
+                      NSLog(@"Like saved!");
+                  } else {
+                     NSLog(@"Error: %@", error.description);
+                  }
+                }];
+                
+                NSNumber *currLikeCount = self.spot.likeCount;
+                int val = [currLikeCount intValue];
+                val += 1;
+                self.spot.likeCount = [NSNumber numberWithInt:val];
+                [self.spot saveInBackground];
+                [self refreshData];
+            }
+        }
+        else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 - (IBAction)didSave:(id)sender {
+    PFQuery *query = [PFQuery queryWithClassName:@"Saves"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"spot" equalTo:self.spot];
+    query.limit = 1;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil) {
+            if(users.count == 1) {
+                PFQuery *query = [PFQuery queryWithClassName:@"Saves"];
+                [query whereKey:@"user" equalTo:[PFUser currentUser]];
+                [query whereKey:@"spot" equalTo:self.spot];
+                query.limit = 1;
+                [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable user, NSError * _Nullable error) {
+                    if(user) {
+                        NSLog (@"Save removed");
+                        [user[0] deleteInBackground];
+                    }
+                    else {
+                        NSLog (@"unable to retrieve save");
+                    }
+                }];
+                
+                NSNumber *currSaveCount = self.spot.saveCount;
+                int val = [currSaveCount intValue];
+                val -= 1;
+                self.spot.saveCount = [NSNumber numberWithInt:val];
+                [self.spot saveInBackground];
+                [self refreshData];
+            }
+            else {
+                PFObject *like = [PFObject objectWithClassName:@"Saves"];
+                like[@"user"] = [PFUser currentUser];
+                like[@"spot"] = self.spot;
+                like[@"owner"] = self.spot.user;
+                
+                [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"Spot saved!");
+                    } else {
+                        NSLog(@"Error: %@", error.description);
+                    }
+                }];
+                
+                NSNumber *currSaveCount = self.spot.saveCount;
+                int val = [currSaveCount intValue];
+                val += 1;
+                self.spot.saveCount = [NSNumber numberWithInt:val];
+                [self.spot saveInBackground];
+                [self refreshData];
+            }
+        }
+        else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 - (IBAction)didPressMap:(id)sender {
+    NSString* directionsURL = [NSString stringWithFormat:@"http://maps.apple.com/?daddr=%f,%f", self.spot.location.latitude, self.spot.location.longitude];
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(openURL:options:completionHandler:)]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL] options:@{} completionHandler:^(BOOL success) {}];
+    } else {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: directionsURL]];
+    }
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"commentSegue"]) {
+        CommentViewController *commentViewController = [segue destinationViewController];
+        commentViewController.spot = self.spot;
+    }
 }
-*/
+
 
 @end

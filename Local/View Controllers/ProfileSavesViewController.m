@@ -47,6 +47,10 @@
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [self fetchSaves];
+}
+
 - (void)fetchSaves {
     PFQuery* query = [PFQuery queryWithClassName:@"Saves"];
     [query orderByDescending:@"createdAt"];

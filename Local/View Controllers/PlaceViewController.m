@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "CommentViewController.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "PlaceViewController.h"
 #import "ProfileViewController.h"
@@ -87,9 +88,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-    ProfileViewController *profileViewController = [segue destinationViewController];
-    PFUser *user = self.user;
-    profileViewController.user = user;
+    if([[segue identifier] isEqualToString:@"commentSegue"]) {
+        UIButton *tappedButton = sender;
+        CommentViewController *commentViewController = [segue destinationViewController];
+        Spot *spot = self.spots[tappedButton.tag];
+        commentViewController.spot = spot;
+    }
 }
 
 

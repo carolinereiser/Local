@@ -6,6 +6,7 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "CommentViewController.h"
 #import <Parse/Parse.h>
 #import "SignUpViewController.h"
 
