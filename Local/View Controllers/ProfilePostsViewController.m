@@ -40,9 +40,13 @@
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetDelegate = self;
     
-    if(self.user[@"name"]) {
+    if((self.user[@"name"] != nil) && ![self.user[@"name"] isEqualToString:@""]) {
         self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
     }
+    else {
+        self.name.text = self.user[@"username"];
+    } 
+
     //get numfollowers
     PFQuery *query = [PFQuery queryWithClassName:@"Following"];
     [query whereKey:@"following" equalTo:self.user];
@@ -261,7 +265,7 @@
     else {
         PlaceCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceCell" forIndexPath:indexPath];
         
-        Place* place = self.places[indexPath.item];
+        Place* place = self.places[indexPath.item - 1];
         [cell setPlace:place];
         
         return cell;
@@ -269,7 +273,7 @@
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return (self.places.count < 10) ? self.places.count : 10;
+    return (self.places.count < 10) ? self.places.count + 1: 10;
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
