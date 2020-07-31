@@ -10,6 +10,7 @@
 #import "Place.h"
 #import "PlaceCell.h"
 #import "ProfilePostsViewController.h"
+#import "ProfileSavesViewController.h"
 #import "ProfileViewController.h"
 
 @import MBProgressHUD;
@@ -28,6 +29,8 @@
     
     self.map.alpha = 0;
     self.posts.alpha = 1;
+    self.saves.alpha = 0;
+    
     
     if(!self.user) {
         self.user = [PFUser currentUser];
@@ -38,10 +41,17 @@
     if([sender selectedSegmentIndex] == 0) {
         self.posts.alpha = 1;
         self.map.alpha = 0;
+        self.saves.alpha = 0;
     }
     else if([sender selectedSegmentIndex] == 1) {
         self.posts.alpha = 0;
         self.map.alpha = 1;
+        self.saves.alpha = 0;
+    }
+    else if([sender selectedSegmentIndex] == 2) {
+        self.posts.alpha = 0;
+        self.map.alpha = 0;
+        self.saves.alpha = 1;
     }
 }
 
@@ -62,6 +72,10 @@
     }
     else if([[segue identifier] isEqualToString:@"profileMapSegue"]) {
         PersonalMapViewController* viewController = [segue destinationViewController];
+        viewController.user = self.user;
+    }
+    else if([[segue identifier] isEqualToString:@"savesSegue"]) {
+        ProfileSavesViewController* viewController = [segue destinationViewController];
         viewController.user = self.user;
     }
 }

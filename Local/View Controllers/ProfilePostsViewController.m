@@ -303,10 +303,6 @@
         ProfilePlacesViewController *viewController = [segue destinationViewController];
         viewController.user = self.user;
     }
-    else if([[segue identifier] isEqualToString:@"profileSavesSegue"]) {
-        ProfileSavesViewController *viewController = [segue destinationViewController];
-        viewController.user = self.user;
-    }
 }
 
 
