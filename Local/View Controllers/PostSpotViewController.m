@@ -108,6 +108,9 @@ didFailAutocompleteWithError:(NSError *)error {
     }
 }
 
+- (IBAction)didTapOutside:(id)sender {
+    [self.caption resignFirstResponder];
+}
 
 /*
 #pragma mark - Navigation

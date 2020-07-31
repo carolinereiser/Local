@@ -145,6 +145,12 @@
     }
 }
 
+- (IBAction)didTapOutside:(id)sender {
+    [self.emailField resignFirstResponder];
+    [self.usernameField resignFirstResponder];
+    [self.passwordField resignFirstResponder];
+    [self.confirmPasswordField resignFirstResponder];
+}
 
 /*
 #pragma mark - Navigation
