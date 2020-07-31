@@ -12,6 +12,7 @@
 #import "PlaceViewController.h"
 #import "ProfilePlacesViewController.h"
 #import "ProfilePostsViewController.h"
+#import "ProfileSavesViewController.h"
 #import "ProfileViewController.h"
 #import "RandomSpotViewController.h"
 #import "SaveCell.h"
@@ -34,13 +35,10 @@
     // Do any additional setup after loading the view.
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
-    self.saveCollectionView.delegate = self;
-    self.saveCollectionView.dataSource = self;
+
     
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetDelegate = self;
-    self.saveCollectionView.emptyDataSetSource = self;
-    self.saveCollectionView.emptyDataSetDelegate = self;
     
     if(self.user[@"name"]) {
         self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
@@ -100,7 +98,6 @@
     }
     
     [self fetchPlaces];
-    [self fetchSaves];
     
     self.collectionView.frame = self.view.frame;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
@@ -113,17 +110,6 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
     CGFloat itemHeight = itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
-    
-    self.saveCollectionView.frame = self.view.frame;
-    UICollectionViewFlowLayout *layout2 = (UICollectionViewFlowLayout *)self.saveCollectionView.collectionViewLayout;
-
-    layout2.minimumInteritemSpacing = 5;
-    layout2.minimumLineSpacing = 5;
-    
-    //three images per line
-    CGFloat itemWidth2 = (self.saveCollectionView.frame.size.width - (layout2.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
-    CGFloat itemHeight2 = itemWidth2;
-    layout2.itemSize = CGSizeMake(itemWidth2, itemHeight2);
 }
 
 - (void)getNumCities {
@@ -163,7 +149,6 @@
                 }
                 if(countries[spots[i][@"country"]] == nil) {
                     [countries setObject:[NSNumber numberWithInt:1] forKey:spots[i][@"country"]];
-                    //cities[spots[i][@"city"]] = [NSNumber numberWithInt:1];
                     countryCount = countryCount + 1;
                 }
             }
@@ -174,7 +159,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self fetchPlaces];
-    [self fetchSaves];
+    [self getNumCities];
+    [self getNumCountries];
     
     self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
     self.profilePic.file = self.user[@"profilePic"];
@@ -211,21 +197,6 @@
     }];
 }
 
-- (void)fetchSaves {
-    PFQuery* query = [PFQuery queryWithClassName:@"Saves"];
-    [query orderByDescending:@"createdAt"];
-    [query includeKey:@"spot"];
-    [query whereKey:@"user" equalTo:self.user];
-    [query findObjectsInBackgroundWithBlock:^(NSArray *spots, NSError *error) {
-        if (spots != nil) {
-            // do something with the array of object returned by the call
-            self.saved = spots;
-            [self.saveCollectionView reloadData];
-        } else {
-            NSLog(@"%@", error.localizedDescription);
-        }
-    }];
-}
 
 - (void) refreshData {
     //get numfollowers
@@ -281,64 +252,34 @@
 }
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    if(collectionView == self.collectionView)
+    if(indexPath.item == 0 && self.user == [PFUser currentUser])
     {
-        if(indexPath.item == 0 && self.user == [PFUser currentUser])
-        {
-            //create a custom cell
-            UICollectionViewCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"AddPlaceCell" forIndexPath:indexPath];
-            return cell;
-        }
-        else {
-            PlaceCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceCell" forIndexPath:indexPath];
-            
-            Place* place = self.places[indexPath.item];
-            [cell setPlace:place];
-            
-            return cell;
-        }
+        //create a custom cell
+        UICollectionViewCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"AddPlaceCell" forIndexPath:indexPath];
+        return cell;
     }
-    else
-    {
-        //NSLog(@"hey");
-        SaveCell *cell = [self.saveCollectionView dequeueReusableCellWithReuseIdentifier:@"SaveCell" forIndexPath:indexPath];
-        Spot* spot = self.saved[indexPath.item][@"spot"];
-        [cell setSpot:spot];
+    else {
+        PlaceCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"PlaceCell" forIndexPath:indexPath];
+        
+        Place* place = self.places[indexPath.item];
+        [cell setPlace:place];
         
         return cell;
     }
 }
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    if(collectionView == self.collectionView)
-    {
-        return (self.places.count < 10) ? self.places.count : 10;
-    }
-    else
-    {
-        return (self.saved.count < 10) ? self.saved.count : 10;
-    }
-    
+    return (self.places.count < 10) ? self.places.count : 10;
 }
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    if(scrollView == self.collectionView) {
-        NSString *text = @"No Places";
-        
-        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-        
-        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
-    }
-    else {
-        NSString *text = @"No Saves";
-        
-        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
-        
-        return [[NSAttributedString alloc] initWithString:text attributes:attributes];
-    }
+    NSString *text = @"No Places";
+    
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
+                                 NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
 
@@ -358,15 +299,12 @@
         placeViewController.place = place;
         placeViewController.user = self.user;
     }
-    else if([[segue identifier] isEqualToString:@"spotSegue"]) {
-        UICollectionViewCell *tappedCell = sender;
-        NSIndexPath *indexPath = [self.saveCollectionView indexPathForCell:tappedCell];
-        Spot *spot = self.saved[indexPath.item][@"spot"];
-        RandomSpotViewController *spotViewController = [segue destinationViewController];
-        spotViewController.spot = spot;
-    }
     else if([[segue identifier] isEqualToString:@"profilePlacesSegue"]) {
         ProfilePlacesViewController *viewController = [segue destinationViewController];
+        viewController.user = self.user;
+    }
+    else if([[segue identifier] isEqualToString:@"profileSavesSegue"]) {
+        ProfileSavesViewController *viewController = [segue destinationViewController];
         viewController.user = self.user;
     }
 }
