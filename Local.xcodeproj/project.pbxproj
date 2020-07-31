@@ -22,6 +22,11 @@
 		580EAE7E24D21645000CBFD4 /* SaveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE7D24D21645000CBFD4 /* SaveCell.m */; };
 		580EAE8124D34D09000CBFD4 /* ProfilePlacesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8024D34D09000CBFD4 /* ProfilePlacesViewController.m */; };
 		580EAE8424D34D1D000CBFD4 /* ProfileSavesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8324D34D1D000CBFD4 /* ProfileSavesViewController.m */; };
+		580EAE8724D4A57D000CBFD4 /* ChangeAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8624D4A57D000CBFD4 /* ChangeAddressViewController.m */; };
+		580EAE8A24D4A765000CBFD4 /* ChangeProfilePicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8924D4A765000CBFD4 /* ChangeProfilePicViewController.m */; };
+		580EAE8D24D4A8EF000CBFD4 /* ChangeBioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8C24D4A8EF000CBFD4 /* ChangeBioViewController.m */; };
+		580EAE9024D4A9C7000CBFD4 /* ChangeUsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8F24D4A9C7000CBFD4 /* ChangeUsernameViewController.m */; };
+		580EAE9324D4AA99000CBFD4 /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE9224D4AA99000CBFD4 /* ChangeNameViewController.m */; };
 		58A33E8024BF666100A40188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E7F24BF666100A40188 /* AppDelegate.m */; };
 		58A33E8324BF666100A40188 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E8224BF666100A40188 /* SceneDelegate.m */; };
 		58A33E8924BF666100A40188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A33E8724BF666100A40188 /* Main.storyboard */; };
@@ -102,6 +107,16 @@
 		580EAE8024D34D09000CBFD4 /* ProfilePlacesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfilePlacesViewController.m; sourceTree = "<group>"; };
 		580EAE8224D34D1D000CBFD4 /* ProfileSavesViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProfileSavesViewController.h; sourceTree = "<group>"; };
 		580EAE8324D34D1D000CBFD4 /* ProfileSavesViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProfileSavesViewController.m; sourceTree = "<group>"; };
+		580EAE8524D4A57D000CBFD4 /* ChangeAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeAddressViewController.h; sourceTree = "<group>"; };
+		580EAE8624D4A57D000CBFD4 /* ChangeAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeAddressViewController.m; sourceTree = "<group>"; };
+		580EAE8824D4A765000CBFD4 /* ChangeProfilePicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeProfilePicViewController.h; sourceTree = "<group>"; };
+		580EAE8924D4A765000CBFD4 /* ChangeProfilePicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeProfilePicViewController.m; sourceTree = "<group>"; };
+		580EAE8B24D4A8EF000CBFD4 /* ChangeBioViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeBioViewController.h; sourceTree = "<group>"; };
+		580EAE8C24D4A8EF000CBFD4 /* ChangeBioViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeBioViewController.m; sourceTree = "<group>"; };
+		580EAE8E24D4A9C7000CBFD4 /* ChangeUsernameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeUsernameViewController.h; sourceTree = "<group>"; };
+		580EAE8F24D4A9C7000CBFD4 /* ChangeUsernameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeUsernameViewController.m; sourceTree = "<group>"; };
+		580EAE9124D4AA99000CBFD4 /* ChangeNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeNameViewController.h; sourceTree = "<group>"; };
+		580EAE9224D4AA99000CBFD4 /* ChangeNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeNameViewController.m; sourceTree = "<group>"; };
 		58A33E7B24BF666100A40188 /* Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Local.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A33E7E24BF666100A40188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58A33E7F24BF666100A40188 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -308,6 +323,16 @@
 				580EAE8024D34D09000CBFD4 /* ProfilePlacesViewController.m */,
 				580EAE8224D34D1D000CBFD4 /* ProfileSavesViewController.h */,
 				580EAE8324D34D1D000CBFD4 /* ProfileSavesViewController.m */,
+				580EAE8524D4A57D000CBFD4 /* ChangeAddressViewController.h */,
+				580EAE8624D4A57D000CBFD4 /* ChangeAddressViewController.m */,
+				580EAE8824D4A765000CBFD4 /* ChangeProfilePicViewController.h */,
+				580EAE8924D4A765000CBFD4 /* ChangeProfilePicViewController.m */,
+				580EAE8B24D4A8EF000CBFD4 /* ChangeBioViewController.h */,
+				580EAE8C24D4A8EF000CBFD4 /* ChangeBioViewController.m */,
+				580EAE8E24D4A9C7000CBFD4 /* ChangeUsernameViewController.h */,
+				580EAE8F24D4A9C7000CBFD4 /* ChangeUsernameViewController.m */,
+				580EAE9124D4AA99000CBFD4 /* ChangeNameViewController.h */,
+				580EAE9224D4AA99000CBFD4 /* ChangeNameViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -646,16 +671,19 @@
 				58A33EB924BF685600A40188 /* LogInViewController.m in Sources */,
 				58A33E8024BF666100A40188 /* AppDelegate.m in Sources */,
 				58ACBDBE24C8918300066301 /* HomeViewController.m in Sources */,
+				580EAE8A24D4A765000CBFD4 /* ChangeProfilePicViewController.m in Sources */,
 				5802F2AD24C25F43007128EA /* Spot.m in Sources */,
 				58A33E9124BF666200A40188 /* main.m in Sources */,
 				580EAE7E24D21645000CBFD4 /* SaveCell.m in Sources */,
 				580EAE8424D34D1D000CBFD4 /* ProfileSavesViewController.m in Sources */,
 				58ACBDC424C8ECCE00066301 /* ProfilePostsViewController.m in Sources */,
+				580EAE8724D4A57D000CBFD4 /* ChangeAddressViewController.m in Sources */,
 				58ACBDBB24C6474500066301 /* TimelinePhotoCell.m in Sources */,
 				5802F2A724C247EF007128EA /* PlaceInfoCell.m in Sources */,
 				5802F2A424C22746007128EA /* SpotPlacePickerViewController.m in Sources */,
 				58ACBDB224C62A2300066301 /* ProfileViewController.m in Sources */,
 				58ACBDCD24CA233200066301 /* RandomSpotViewController.m in Sources */,
+				580EAE9024D4A9C7000CBFD4 /* ChangeUsernameViewController.m in Sources */,
 				5802F2AA24C25F25007128EA /* PostSpotViewController.m in Sources */,
 				58ACBDE224CF6CC100066301 /* CommentCell.m in Sources */,
 				58ACBDB524C6466900066301 /* TimelineViewController.m in Sources */,
@@ -668,10 +696,12 @@
 				58A33E8324BF666100A40188 /* SceneDelegate.m in Sources */,
 				58ACBDDF24CF6CA800066301 /* CommentViewController.m in Sources */,
 				58A33F1A24BFBAF800A40188 /* SettingsViewController.m in Sources */,
+				580EAE8D24D4A8EF000CBFD4 /* ChangeBioViewController.m in Sources */,
 				5802F29524C0E111007128EA /* PostPlaceViewController.m in Sources */,
 				58ACBDB824C646DA00066301 /* TimelineCell.m in Sources */,
 				5802F29224C0DF30007128EA /* PlacePicturePickerViewController.m in Sources */,
 				58ACBDC124C897E600066301 /* MapViewController.m in Sources */,
+				580EAE9324D4AA99000CBFD4 /* ChangeNameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

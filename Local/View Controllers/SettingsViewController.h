@@ -14,12 +14,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingsViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *userAddress;
-@property (weak, nonatomic) IBOutlet PFImageView *profilePic;
-@property (weak, nonatomic) IBOutlet UITextView *bio;
-@property (weak, nonatomic) IBOutlet UITextField *username;
-@property (weak, nonatomic) IBOutlet UITextField *name;
-
 @end
 
 NS_ASSUME_NONNULL_END
