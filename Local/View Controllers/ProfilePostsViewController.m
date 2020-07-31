@@ -51,16 +51,16 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable followers, NSError * _Nullable error) {
         self.numFollowers.text = [NSString stringWithFormat:@"%lu", [followers count]];
     }];
-    //self.numFollowers.text = [NSString stringWithFormat:@"%@", self.user[@"followerCount"]];
     //get numfollowing
     PFQuery *query2 = [PFQuery queryWithClassName:@"Following"];
     [query2 whereKey:@"user" equalTo:self.user];
     [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable following, NSError * _Nullable error) {
         self.numFollowing.text = [NSString stringWithFormat:@"%lu", [following count]];
     }];
-    //self.numFollowing.text = [NSString stringWithFormat:@"%@", self.user[@"followingCount"]];
-    self.numCities.text = [NSString stringWithFormat:@"%@", self.user[@"cityCount"]];
-    self.numCountries.text = [NSString stringWithFormat:@"%@", self.user[@"countryCount"]];
+    
+    [self getNumCities];
+    [self getNumCountries];
+    
     self.profilePic.file = self.user[@"profilePic"];
     [self.profilePic loadInBackground];
     self.bio.text = self.user[@"bio"];
@@ -126,6 +126,52 @@
     layout2.itemSize = CGSizeMake(itemWidth2, itemHeight2);
 }
 
+- (void)getNumCities {
+    __block int cityCount = 0;
+    NSMutableDictionary<NSString*, NSNumber*> *cities = [[NSMutableDictionary alloc] init];
+    PFQuery *cityQuery = [PFQuery queryWithClassName:@"Spot"];
+    [cityQuery whereKey:@"user" equalTo:self.user];
+    [cityQuery includeKey:@"city"];
+    [cityQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
+        if(spots) {
+            for(int i =0; i<spots.count; i++) {
+                if(spots[i][@"city"] == nil) {
+                    continue;
+                }
+                if(cities[spots[i][@"city"]] == nil) {
+                    [cities setObject:[NSNumber numberWithInt:1] forKey:spots[i][@"city"]];
+                    //cities[spots[i][@"city"]] = [NSNumber numberWithInt:1];
+                    cityCount = cityCount + 1;
+                }
+            }
+            self.numCities.text = [NSString stringWithFormat:@"%d", cityCount];
+        }
+    }];
+}
+
+- (void)getNumCountries {
+    __block int countryCount = 0;
+    NSMutableDictionary<NSString*, NSNumber*> *countries = [[NSMutableDictionary alloc] init];
+    PFQuery *countryQuery = [PFQuery queryWithClassName:@"Spot"];
+    [countryQuery whereKey:@"user" equalTo:self.user];
+    [countryQuery includeKey:@"city"];
+    [countryQuery findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
+        if(spots) {
+            for(int i =0; i<spots.count; i++) {
+                if(spots[i][@"country"] == nil) {
+                    continue;
+                }
+                if(countries[spots[i][@"country"]] == nil) {
+                    [countries setObject:[NSNumber numberWithInt:1] forKey:spots[i][@"country"]];
+                    //cities[spots[i][@"city"]] = [NSNumber numberWithInt:1];
+                    countryCount = countryCount + 1;
+                }
+            }
+            self.numCountries.text = [NSString stringWithFormat:@"%d", countryCount];
+        }
+    }];
+}
+
 - (void)viewWillAppear:(BOOL)animated {
     [self fetchPlaces];
     [self fetchSaves];
@@ -175,7 +221,6 @@
             // do something with the array of object returned by the call
             self.saved = spots;
             [self.saveCollectionView reloadData];
-            NSLog(@"%@", self.saved);
         } else {
             NSLog(@"%@", error.localizedDescription);
         }
