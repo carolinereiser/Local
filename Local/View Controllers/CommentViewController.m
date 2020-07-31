@@ -82,7 +82,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CommentCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
-    cell.profilePic.file = self.comments[indexPath.row][@"profilePic"];
+    cell.profilePic.file = self.comments[indexPath.row][@"user"][@"profilePic"];
     [cell.profilePic loadInBackground];
     cell.username.text = self.comments[indexPath.row][@"user"][@"username"];
     cell.comment.text = self.comments[indexPath.row][@"text"];
