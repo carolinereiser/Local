@@ -60,11 +60,17 @@
     self.spotDescription.text = spot.spotDescription;
     self.images = spot.images;
     self.formattedAddress.text = spot.address;
-    self.profilePic.file = spot.user[@"profilePic"];
     self.likeCount.text = [NSString stringWithFormat:@"%@", spot.likeCount];
     self.commentCount.text = [NSString stringWithFormat:@"%@", spot.commentCount];
     self.saveCount.text = [NSString stringWithFormat:@"%@", spot.saveCount];
-    [self.profilePic loadInBackground];
+    
+    if(self.spot[@"user"][@"profilePic"]) {
+        self.profilePic.file = self.spot[@"user"][@"profilePic"];
+        [self.profilePic loadInBackground];
+    }
+    else {
+        self.profilePic.image = [UIImage systemImageNamed:@"person.circle.fill"];
+    }
     
     //make like button red if liked
     [self isLiked];

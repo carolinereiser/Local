@@ -122,9 +122,13 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ActivityCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
-    cell.profilePic.file = self.allActivity[indexPath.row][@"user"][@"profilePic"];
-    [cell.profilePic loadInBackground];
-
+    if(self.allActivity[indexPath.row][@"user"][@"profilePic"]) {
+        cell.profilePic.file = self.allActivity[indexPath.row][@"user"][@"profilePic"];
+        [cell.profilePic loadInBackground];
+    }
+    else {
+        cell.profilePic.image = [UIImage systemImageNamed:@"person.circle.fill"];
+    }
     PFObject* object = [self.allActivity[indexPath.row] fetchIfNeeded];
     if([[object parseClassName] isEqualToString:@"Likes"]) {
         cell.text.text = [NSString stringWithFormat:@"%@ liked your spot", object[@"user"][@"username"]];
