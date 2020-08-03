@@ -45,6 +45,7 @@
     //find the likes
     PFQuery *likeQuery = [PFQuery queryWithClassName:@"Likes"];
     [likeQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
+    [likeQuery whereKey:@"user" notEqualTo:[PFUser currentUser]];
     [likeQuery includeKey:@"createdAt"];
     [likeQuery includeKey:@"user"];
     [likeQuery orderByDescending:@"createdAt"];
@@ -55,6 +56,7 @@
              //once likes are found, find the comments
              PFQuery *commentQuery = [PFQuery queryWithClassName:@"Comments"];
              [commentQuery whereKey:@"owner" equalTo:[PFUser currentUser]];
+             [commentQuery whereKey:@"user" notEqualTo:[PFUser currentUser]];
              [commentQuery includeKey:@"createdAt"];
              [commentQuery includeKey:@"user"];
              [commentQuery orderByDescending:@"createdAt"];
@@ -65,6 +67,7 @@
                       //once comments found, find the follows
                       PFQuery *followQuery = [PFQuery queryWithClassName:@"Following"];
                       [followQuery whereKey:@"following" equalTo:[PFUser currentUser]];
+                      [followQuery whereKey:@"user" notEqualTo:[PFUser currentUser]];
                       [followQuery includeKey:@"createdAt"];
                       [followQuery includeKey:@"user"];
                       [followQuery orderByDescending:@"createdAt"];
