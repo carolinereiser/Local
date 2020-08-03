@@ -37,6 +37,7 @@
         newUser[@"countryCount"] = @(0);
         newUser[@"cityCount"] = @(0);
         newUser[@"isPublic"] = @YES;
+        newUser[@"name"] = @"";
         
         // call sign up function on the object
         [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError * error) {
@@ -153,6 +154,7 @@
     [self.confirmPasswordField resignFirstResponder];
 }
 
+
 /*
 #pragma mark - Navigation
 
@@ -160,7 +162,7 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-}
-*/
+} */
+
 
 @end

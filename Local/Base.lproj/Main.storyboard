@@ -174,7 +174,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <segue destination="YDw-TY-doD" kind="showDetail" animates="NO" id="Lbg-kj-RIe"/>
+                                    <segue destination="YDw-TY-doD" kind="showDetail" identifier="" animates="NO" id="Lbg-kj-RIe"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -3321,14 +3321,14 @@
     <inferredMetricsTieBreakers>
         <segue reference="9SV-Tu-nn8"/>
         <segue reference="iA8-bC-M6e"/>
-        <segue reference="IME-e1-Ms4"/>
+        <segue reference="Lbg-kj-RIe"/>
         <segue reference="Axu-n9-s0C"/>
         <segue reference="ayT-Y2-mfe"/>
         <segue reference="LuL-uG-2hw"/>
         <segue reference="pqs-ko-QTq"/>
         <segue reference="5IA-Dm-ao6"/>
         <segue reference="uZd-CF-LI5"/>
-        <segue reference="Qeu-EW-06P"/>
+        <segue reference="Txg-lj-bp7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
