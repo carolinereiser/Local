@@ -8,6 +8,8 @@
 
 #import "SignUpNameViewController.h"
 
+@import Parse;
+
 @interface SignUpNameViewController ()
 
 @end
@@ -18,6 +20,23 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 }
+
+- (IBAction)addName:(id)sender {
+    PFUser *user = [PFUser currentUser];
+    user[@"name"] = self.nameField.text;
+    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded){
+            NSLog(@"Successfully changed name!");
+            [self performSegueWithIdentifier:@"nextSegue" sender:nil];
+        }
+        else{
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+
+
 
 /*
 #pragma mark - Navigation
