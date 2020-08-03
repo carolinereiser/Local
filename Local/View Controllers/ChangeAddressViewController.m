@@ -89,6 +89,12 @@
   [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)confirmAddress:(id)sender {
+    if([PFUser currentUser][@"placeName"]) {
+        [self performSegueWithIdentifier:@"nextSegue" sender:nil];
+    }
+}
+
 /*
 #pragma mark - Navigation
 

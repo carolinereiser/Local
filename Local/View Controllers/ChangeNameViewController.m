@@ -39,6 +39,10 @@
     }];
 }
 
+- (IBAction)next:(id)sender {
+    [self performSegueWithIdentifier:@"nextSegue" sender:nil];
+}
+
 /*
 #pragma mark - Navigation
 

@@ -116,14 +116,21 @@
             </objects>
             <point key="canvasLocation" x="-1194" y="700"/>
         </scene>
-        <!--Sign Up Name View Controller-->
+        <!--Change Name View Controller-->
         <scene sceneID="xGl-cg-aw6">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="i91-Fi-GqR" customClass="SignUpNameViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="i91-Fi-GqR" customClass="ChangeNameViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OJS-eg-sfP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Local!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6R-KM-jVA">
+                                <rect key="frame" x="73" y="134" width="268" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Before you get started, tell us a bit about yourself" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sZA-49-9kR">
                                 <rect key="frame" x="66" y="183" width="282" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -152,37 +159,31 @@
                                 <color key="currentPageIndicatorTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Xc-2D-sCY">
-                                <rect key="frame" x="187" y="432" width="40" height="35"/>
+                                <rect key="frame" x="174" y="431" width="67" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="changeName:" destination="i91-Fi-GqR" eventType="touchUpInside" id="qI6-S6-jcD"/>
+                                    <action selector="next:" destination="i91-Fi-GqR" eventType="touchUpInside" id="jFc-3G-Eor"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaO-t5-v87">
+                                <rect key="frame" x="181" y="795" width="52" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Next"/>
                                 <connections>
-                                    <action selector="addName:" destination="i91-Fi-GqR" eventType="touchUpInside" id="fvp-2w-PfD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HaO-t5-v87">
-                                <rect key="frame" x="189" y="794" width="37" height="33"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                <state key="normal" title="Skip"/>
-                                <connections>
                                     <segue destination="YDw-TY-doD" kind="showDetail" animates="NO" id="Lbg-kj-RIe"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome to Local!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J6R-KM-jVA">
-                                <rect key="frame" x="73" y="134" width="268" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="tMu-Ef-gLa"/>
                     </view>
                     <navigationItem key="navigationItem" id="c0Q-uS-gBU"/>
                     <connections>
-                        <outlet property="nameField" destination="bXR-Vm-0Np" id="Wrr-rb-wF0"/>
+                        <outlet property="name" destination="bXR-Vm-0Np" id="3Iq-hS-OqK"/>
                         <segue destination="YDw-TY-doD" kind="showDetail" identifier="nextSegue" animates="NO" id="XuR-3C-4ZX"/>
                     </connections>
                 </viewController>
@@ -2953,10 +2954,10 @@
             </objects>
             <point key="canvasLocation" x="9347.826086956522" y="1749.7767857142856"/>
         </scene>
-        <!--Sign Up Profile Pic View Controller-->
+        <!--Change Profile Pic View Controller-->
         <scene sceneID="GVD-j4-PFU">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="YDw-TY-doD" customClass="SignUpProfilePicViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="YDw-TY-doD" customClass="ChangeProfilePicViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WHf-QP-ftk">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3000,7 +3001,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Change"/>
                                 <connections>
-                                    <action selector="changePic:" destination="YDw-TY-doD" eventType="touchUpInside" id="X2o-zT-xTz"/>
+                                    <action selector="changePic:" destination="YDw-TY-doD" eventType="touchUpInside" id="e6u-vy-Q3H"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbX-3C-jJu">
@@ -3009,7 +3010,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Confirm"/>
                                 <connections>
-                                    <action selector="confirmPic:" destination="YDw-TY-doD" eventType="touchUpInside" id="cDT-sq-oEf"/>
+                                    <action selector="confirmSelection:" destination="YDw-TY-doD" eventType="touchUpInside" id="iAz-ph-lHz"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRR-0c-mpU">
@@ -3027,7 +3028,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="u91-CN-3f8"/>
                     <connections>
-                        <outlet property="profilePic" destination="4ah-oh-h31" id="qbP-DW-2x3"/>
+                        <outlet property="profilePic" destination="4ah-oh-h31" id="cNJ-yk-2ls"/>
                         <segue destination="fZL-VN-Hey" kind="showDetail" identifier="nextSegue" animates="NO" id="CJR-OI-D76"/>
                     </connections>
                 </viewController>
@@ -3035,10 +3036,10 @@
             </objects>
             <point key="canvasLocation" x="1473.913043478261" y="125.89285714285714"/>
         </scene>
-        <!--Sign Up Address View Controller-->
+        <!--Change Address View Controller-->
         <scene sceneID="eFD-V9-592">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="fZL-VN-Hey" customClass="SignUpAddressViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="fZL-VN-Hey" customClass="ChangeAddressViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="76H-gW-S05">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -3093,12 +3094,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Add address"/>
+                                <connections>
+                                    <action selector="changeAddress:" destination="fZL-VN-Hey" eventType="touchUpInside" id="dCc-Pc-cAb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGg-dF-9or">
                                 <rect key="frame" x="271" y="450" width="69" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmAddress:" destination="fZL-VN-Hey" eventType="touchUpInside" id="7m9-z1-I6B"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -3106,7 +3113,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4SE-zT-Y8o"/>
                     <connections>
-                        <outlet property="addressLabel" destination="dkt-Z1-Dia" id="7aA-wC-ZNW"/>
+                        <outlet property="addressLabel" destination="dkt-Z1-Dia" id="ecT-NI-wIt"/>
                         <segue destination="MzD-uQ-3n5" kind="showDetail" identifier="nextSegue" animates="NO" id="9SV-Tu-nn8"/>
                     </connections>
                 </viewController>

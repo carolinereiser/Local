@@ -53,9 +53,6 @@
 		58ACBDDC24CF522D00066301 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDDB24CF522D00066301 /* SearchViewController.m */; };
 		58ACBDDF24CF6CA800066301 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDDE24CF6CA800066301 /* CommentViewController.m */; };
 		58ACBDE224CF6CC100066301 /* CommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58ACBDE124CF6CC100066301 /* CommentCell.m */; };
-		58B3A0FC24D87B3400A87320 /* SignUpNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B3A0FB24D87B3400A87320 /* SignUpNameViewController.m */; };
-		58B3A0FF24D87B4100A87320 /* SignUpProfilePicViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B3A0FE24D87B4100A87320 /* SignUpProfilePicViewController.m */; };
-		58B3A10224D87B5500A87320 /* SignUpAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B3A10124D87B5500A87320 /* SignUpAddressViewController.m */; };
 		58B3A10524D87B6300A87320 /* SignUpPlaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B3A10424D87B6300A87320 /* SignUpPlaceViewController.m */; };
 		7F34F39C9CAE0EC4AD944212 /* Pods_Local.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27CEA1609312324989BEED6F /* Pods_Local.framework */; };
 		BBC8E2FAA0A79230E709D48A /* Pods_LocalTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAEAEBAD45FCC11AA5EC4361 /* Pods_LocalTests.framework */; };
@@ -173,12 +170,6 @@
 		58ACBDDE24CF6CA800066301 /* CommentViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		58ACBDE024CF6CC100066301 /* CommentCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentCell.h; sourceTree = "<group>"; };
 		58ACBDE124CF6CC100066301 /* CommentCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentCell.m; sourceTree = "<group>"; };
-		58B3A0FA24D87B3400A87320 /* SignUpNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpNameViewController.h; sourceTree = "<group>"; };
-		58B3A0FB24D87B3400A87320 /* SignUpNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpNameViewController.m; sourceTree = "<group>"; };
-		58B3A0FD24D87B4100A87320 /* SignUpProfilePicViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpProfilePicViewController.h; sourceTree = "<group>"; };
-		58B3A0FE24D87B4100A87320 /* SignUpProfilePicViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpProfilePicViewController.m; sourceTree = "<group>"; };
-		58B3A10024D87B5500A87320 /* SignUpAddressViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpAddressViewController.h; sourceTree = "<group>"; };
-		58B3A10124D87B5500A87320 /* SignUpAddressViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpAddressViewController.m; sourceTree = "<group>"; };
 		58B3A10324D87B6300A87320 /* SignUpPlaceViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SignUpPlaceViewController.h; sourceTree = "<group>"; };
 		58B3A10424D87B6300A87320 /* SignUpPlaceViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SignUpPlaceViewController.m; sourceTree = "<group>"; };
 		7C216EC8C6A03FD22E275F25 /* Pods-LocalTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocalTests.release.xcconfig"; path = "Target Support Files/Pods-LocalTests/Pods-LocalTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -345,12 +336,6 @@
 				580EAE8F24D4A9C7000CBFD4 /* ChangeUsernameViewController.m */,
 				580EAE9124D4AA99000CBFD4 /* ChangeNameViewController.h */,
 				580EAE9224D4AA99000CBFD4 /* ChangeNameViewController.m */,
-				58B3A0FA24D87B3400A87320 /* SignUpNameViewController.h */,
-				58B3A0FB24D87B3400A87320 /* SignUpNameViewController.m */,
-				58B3A0FD24D87B4100A87320 /* SignUpProfilePicViewController.h */,
-				58B3A0FE24D87B4100A87320 /* SignUpProfilePicViewController.m */,
-				58B3A10024D87B5500A87320 /* SignUpAddressViewController.h */,
-				58B3A10124D87B5500A87320 /* SignUpAddressViewController.m */,
 				58B3A10324D87B6300A87320 /* SignUpPlaceViewController.h */,
 				58B3A10424D87B6300A87320 /* SignUpPlaceViewController.m */,
 			);
@@ -682,7 +667,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5802F2A124C215A5007128EA /* SpotPicturePickerViewController.m in Sources */,
-				58B3A0FC24D87B3400A87320 /* SignUpNameViewController.m in Sources */,
 				580EAE5724D0A548000CBFD4 /* ActivityViewController.m in Sources */,
 				58ACBDD624CF4DDD00066301 /* SearchResultCell.m in Sources */,
 				58A33EB624BF684B00A40188 /* SignUpViewController.m in Sources */,
@@ -701,14 +685,12 @@
 				58ACBDC424C8ECCE00066301 /* ProfilePostsViewController.m in Sources */,
 				580EAE8724D4A57D000CBFD4 /* ChangeAddressViewController.m in Sources */,
 				58ACBDBB24C6474500066301 /* TimelinePhotoCell.m in Sources */,
-				58B3A10224D87B5500A87320 /* SignUpAddressViewController.m in Sources */,
 				5802F2A724C247EF007128EA /* PlaceInfoCell.m in Sources */,
 				5802F2A424C22746007128EA /* SpotPlacePickerViewController.m in Sources */,
 				58ACBDB224C62A2300066301 /* ProfileViewController.m in Sources */,
 				58ACBDCD24CA233200066301 /* RandomSpotViewController.m in Sources */,
 				580EAE9024D4A9C7000CBFD4 /* ChangeUsernameViewController.m in Sources */,
 				5802F2AA24C25F25007128EA /* PostSpotViewController.m in Sources */,
-				58B3A0FF24D87B4100A87320 /* SignUpProfilePicViewController.m in Sources */,
 				58ACBDE224CF6CC100066301 /* CommentCell.m in Sources */,
 				58ACBDB524C6466900066301 /* TimelineViewController.m in Sources */,
 				580EAE5424D09DBD000CBFD4 /* PlaceViewController.m in Sources */,

@@ -78,6 +78,13 @@
     return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
 }
 
+- (IBAction)confirmSelection:(id)sender {
+    if([PFUser currentUser][@"profilePic"]) {
+        [self performSegueWithIdentifier:@"nextSegue" sender:nil];
+    }
+}
+ 
+
 /*
 #pragma mark - Navigation
 
