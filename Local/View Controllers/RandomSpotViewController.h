@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *saveCount;
 @property (weak, nonatomic) IBOutlet UILabel *formattedAddress;
 @property (weak, nonatomic) IBOutlet UILabel *spotDescription;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
 
 
 @end

@@ -38,14 +38,68 @@
     self.likeCount.text = [NSString stringWithFormat:@"%@", self.spot.likeCount];
     self.commentCount.text = [NSString stringWithFormat:@"%@", self.spot.commentCount];
     self.saveCount.text = [NSString stringWithFormat:@"%@", self.spot.saveCount];
+    [self isLiked];
+    [self isSaved];
+    
+    //double tap to like
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapToLike:)];
+    tapGesture.numberOfTapsRequired = 2;
+    [self.carousel addGestureRecognizer:tapGesture];
     
     [self.carousel reloadData];
+}
+
+- (void)doubleTapToLike:(UITapGestureRecognizer *)sender {
+    if(sender.state == UIGestureRecognizerStateRecognized) {
+        [self like];
+    }
 }
 
 - (void)refreshData {
     self.likeCount.text = [NSString stringWithFormat:@"%@", self.spot.likeCount];
     self.saveCount.text = [NSString stringWithFormat:@"%@", self.spot.saveCount];
     self.commentCount.text = [NSString stringWithFormat:@"%@", self.spot.commentCount];
+}
+
+- (void)isLiked {
+    PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"spot" equalTo:self.spot];
+    query.limit = 1;
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil) {
+            if(users.count == 1) {
+                self.likeButton.tintColor = [UIColor redColor];
+            }
+            else {
+                self.likeButton.tintColor = [UIColor whiteColor];
+            }
+        }
+        else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)isSaved {
+    PFQuery *query = [PFQuery queryWithClassName:@"Saves"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"spot" equalTo:self.spot];
+    query.limit = 1;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil) {
+            if(users.count == 1) {
+                self.saveButton.tintColor = [UIColor grayColor];
+            }
+            else {
+                self.saveButton.tintColor = [UIColor whiteColor];
+            }
+        }
+        else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
 }
 
 - (NSInteger)numberOfItemsInCarousel:(iCarousel *)carousel {
@@ -70,11 +124,15 @@
 
 
 - (IBAction)didLike:(id)sender {
+    [self like];
+}
+
+- (void)like {
     PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query whereKey:@"spot" equalTo:self.spot];
     query.limit = 1;
-    
+     
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
         if(users != nil) {
             if(users.count == 1) {
@@ -86,12 +144,13 @@
                     if(user) {
                         NSLog (@"Like removed");
                         [user[0] deleteInBackground];
+                        self.likeButton.tintColor = [UIColor whiteColor];
                     }
                     else {
                         NSLog (@"unable to retrieve like");
                     }
                 }];
-                
+                 
                 NSNumber *currLikeCount = self.spot.likeCount;
                 int val = [currLikeCount intValue];
                 val -= 1;
@@ -104,15 +163,16 @@
                 like[@"user"] = [PFUser currentUser];
                 like[@"spot"] = self.spot;
                 like[@"owner"] = self.spot.user;
-                
+                 
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-                  if (succeeded) {
-                      NSLog(@"Like saved!");
-                  } else {
-                     NSLog(@"Error: %@", error.description);
-                  }
+                    if (succeeded) {
+                        NSLog(@"Like saved!");
+                        self.likeButton.tintColor = [UIColor redColor];
+                    } else {
+                        NSLog(@"Error: %@", error.description);
+                    }
                 }];
-                
+                 
                 NSNumber *currLikeCount = self.spot.likeCount;
                 int val = [currLikeCount intValue];
                 val += 1;
@@ -144,6 +204,7 @@
                     if(user) {
                         NSLog (@"Save removed");
                         [user[0] deleteInBackground];
+                        self.saveButton.tintColor = [UIColor whiteColor];
                     }
                     else {
                         NSLog (@"unable to retrieve save");
@@ -166,6 +227,7 @@
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         NSLog(@"Spot saved!");
+                        self.saveButton.tintColor = [UIColor grayColor];
                     } else {
                         NSLog(@"Error: %@", error.description);
                     }
