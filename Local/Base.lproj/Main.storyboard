@@ -2029,10 +2029,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHO-VL-vev">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="715"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="791"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="aHO-VL-vev" secondAttribute="height" multiplier="138:247" constant="14.526315789473642" id="90c-n4-L9v"/>
+                                    <constraint firstAttribute="width" secondItem="aHO-VL-vev" secondAttribute="height" multiplier="138:247" constant="-27.93522267206481" id="90c-n4-L9v"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="hm9-LJ-esX" customClass="CommentCell">
@@ -2103,7 +2103,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRj-ia-Wvr">
-                                <rect key="frame" x="0.0" y="723" width="414" height="63"/>
+                                <rect key="frame" x="0.0" y="799" width="414" height="63"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWm-iH-J0G">
                                         <rect key="frame" x="370" y="13" width="36" height="30"/>
@@ -2116,10 +2116,6 @@
                                         <rect key="frame" x="56" y="13" width="306" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
-                                        <connections>
-                                            <action selector="didBeginEditing:" destination="omy-Xa-fXp" eventType="editingDidBegin" id="0bx-Gz-sya"/>
-                                            <action selector="didEndEditing:" destination="omy-Xa-fXp" eventType="editingDidEnd" id="eM3-mZ-MxM"/>
-                                        </connections>
                                     </textField>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="a4V-5O-btI" customClass="PFImageView">
                                         <rect key="frame" x="8" y="8.5" width="40" height="39"/>
@@ -3257,7 +3253,7 @@
         <segue reference="iA8-bC-M6e"/>
         <segue reference="IME-e1-Ms4"/>
         <segue reference="Axu-n9-s0C"/>
-        <segue reference="8d0-2j-hQ3"/>
+        <segue reference="ayT-Y2-mfe"/>
         <segue reference="LuL-uG-2hw"/>
         <segue reference="3t5-RB-69z"/>
         <segue reference="aUe-pY-zz9"/>

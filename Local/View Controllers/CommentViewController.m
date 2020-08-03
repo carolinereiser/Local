@@ -26,16 +26,43 @@
     // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(keyboardOnScreen:) name:UIKeyboardWillShowNotification object:nil];
+    [center addObserver:self selector:@selector(keyboardOffScreen:) name:UIKeyboardWillHideNotification object:nil];
+    
+    self.tabBarController.tabBar.hidden=YES;
     
     [self fetchComments];
 }
 
+- (void)keyboardOnScreen:(NSNotification *)notification {
+    NSDictionary *info = notification.userInfo;
+    NSValue *value = info[UIKeyboardFrameEndUserInfoKey];
+    CGRect rawFrame = [value CGRectValue];
+    CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
+
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -1*keyboardFrame.size.height);
+    }];
+    
+}
+
+- (void)keyboardOffScreen:(NSNotification *) notification {
+    [UIView animateWithDuration:0.2 animations:^{
+        self.view.transform = CGAffineTransformIdentity;
+    }];
+}
+
+/*
 - (IBAction)didBeginEditing:(id)sender {
     CGRect newCommentFrame = self.commentView.frame;
     newCommentFrame.origin.y -= 230;
     
+    
     [UIView animateWithDuration:0.2 animations:^{
         self.commentView.frame = newCommentFrame;
+        //self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height - 300);
+        
     }];
 }
 
@@ -45,8 +72,9 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         self.commentView.frame = newCommentFrame;
+        //self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height + 300);
     }];
-}
+} */
 
 - (void)fetchComments {
     PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
