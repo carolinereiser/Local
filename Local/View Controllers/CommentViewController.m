@@ -36,11 +36,13 @@
 }
 
 - (void)keyboardOnScreen:(NSNotification *)notification {
+    //get height of keyboard
     NSDictionary *info = notification.userInfo;
     NSValue *value = info[UIKeyboardFrameEndUserInfoKey];
     CGRect rawFrame = [value CGRectValue];
     CGRect keyboardFrame = [self.view convertRect:rawFrame fromView:nil];
-
+ 
+    //shift view up the height of the keyboard
     [UIView animateWithDuration:0.2 animations:^{
         self.view.transform = CGAffineTransformTranslate(CGAffineTransformIdentity, 0, -1*keyboardFrame.size.height);
     }];
@@ -48,33 +50,11 @@
 }
 
 - (void)keyboardOffScreen:(NSNotification *) notification {
+    //return back to normal
     [UIView animateWithDuration:0.2 animations:^{
         self.view.transform = CGAffineTransformIdentity;
     }];
 }
-
-/*
-- (IBAction)didBeginEditing:(id)sender {
-    CGRect newCommentFrame = self.commentView.frame;
-    newCommentFrame.origin.y -= 230;
-    
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        self.commentView.frame = newCommentFrame;
-        //self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height - 300);
-        
-    }];
-}
-
-- (IBAction)didEndEditing:(id)sender {
-    CGRect newCommentFrame = self.commentView.frame;
-    newCommentFrame.origin.y += 230;
-    
-    [UIView animateWithDuration:0.2 animations:^{
-        self.commentView.frame = newCommentFrame;
-        //self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.frame.size.height + 300);
-    }];
-} */
 
 - (void)fetchComments {
     PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
