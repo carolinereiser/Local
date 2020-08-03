@@ -1892,6 +1892,7 @@
                                             <outlet property="likeCount" destination="7KF-14-jep" id="wW0-vn-cLm"/>
                                             <outlet property="profileButton" destination="tHr-qu-3Kn" id="6O3-oE-be3"/>
                                             <outlet property="profilePic" destination="QSx-CE-rAk" id="XbS-3s-vmd"/>
+                                            <outlet property="saveButton" destination="PFv-em-wg7" id="kB1-l8-giL"/>
                                             <outlet property="saveCount" destination="haF-gu-6PK" id="Fqj-bo-tm7"/>
                                             <outlet property="spotDescription" destination="7XN-7F-ynn" id="JOZ-hT-EFD"/>
                                             <outlet property="spotName" destination="1ul-8f-lYz" id="ofa-89-9Pl"/>

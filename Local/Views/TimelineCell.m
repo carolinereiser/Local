@@ -68,6 +68,9 @@
     
     //make like button red if liked
     [self isLiked];
+    
+    //make save button grey if saved
+    [self isSaved];
 
     //[self.imagesCollectionView reloadData];
     [self.carousel reloadData];
@@ -167,6 +170,30 @@
             if(users.count == 1) {
                 self.likeButton.tintColor = [UIColor redColor];
             }
+            else {
+                self.likeButton.tintColor = [UIColor whiteColor];
+            }
+        }
+        else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)isSaved {
+    PFQuery *query = [PFQuery queryWithClassName:@"Saves"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"spot" equalTo:self.spot];
+    query.limit = 1;
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil) {
+            if(users.count == 1) {
+                self.saveButton.tintColor = [UIColor grayColor];
+            }
+            else {
+                self.saveButton.tintColor = [UIColor whiteColor];
+            }
         }
         else {
             NSLog(@"%@", error.localizedDescription);
@@ -191,6 +218,7 @@
                     if(user) {
                         NSLog (@"Save removed");
                         [user[0] deleteInBackground];
+                        self.saveButton.tintColor = [UIColor whiteColor];
                     }
                     else {
                         NSLog (@"unable to retrieve save");
@@ -213,6 +241,7 @@
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         NSLog(@"Spot saved!");
+                        self.saveButton.tintColor = [UIColor grayColor];
                     } else {
                         NSLog(@"Error: %@", error.description);
                     }
