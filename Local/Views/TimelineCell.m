@@ -21,6 +21,7 @@
     self.carousel.scrollEnabled = YES;
     self.carousel.pagingEnabled = YES;
     
+    //double tap to like
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapToLike:)];
     tapGesture.numberOfTapsRequired = 2;
     [self.carousel addGestureRecognizer:tapGesture];
@@ -64,6 +65,9 @@
     self.commentCount.text = [NSString stringWithFormat:@"%@", spot.commentCount];
     self.saveCount.text = [NSString stringWithFormat:@"%@", spot.saveCount];
     [self.profilePic loadInBackground];
+    
+    //make like button red if liked
+    [self isLiked];
 
     //[self.imagesCollectionView reloadData];
     [self.carousel reloadData];
@@ -110,6 +114,7 @@
                     if(user) {
                         NSLog (@"Like removed");
                         [user[0] deleteInBackground];
+                        self.likeButton.tintColor = [UIColor whiteColor];
                     }
                     else {
                         NSLog (@"unable to retrieve like");
@@ -132,6 +137,7 @@
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                   if (succeeded) {
                       NSLog(@"Like saved!");
+                      self.likeButton.tintColor = [UIColor redColor];
                   } else {
                      NSLog(@"Error: %@", error.description);
                   }
@@ -143,6 +149,23 @@
                 self.spot.likeCount = [NSNumber numberWithInt:val];
                 [self.spot saveInBackground];
                 [self refreshData];
+            }
+        }
+        else {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+}
+
+- (void)isLiked {
+    PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
+    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"spot" equalTo:self.spot];
+    query.limit = 1;
+    [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
+        if(users != nil) {
+            if(users.count == 1) {
+                self.likeButton.tintColor = [UIColor redColor];
             }
         }
         else {

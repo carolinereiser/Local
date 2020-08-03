@@ -1888,6 +1888,7 @@
                                             <outlet property="detailView" destination="fhN-Ln-aNv" id="KEr-FU-Ta9"/>
                                             <outlet property="formattedAddress" destination="6XE-Dv-U58" id="pqj-yB-XNe"/>
                                             <outlet property="gradientView" destination="f2a-UL-Thh" id="6Z5-VR-3iS"/>
+                                            <outlet property="likeButton" destination="exv-q6-opp" id="gMJ-a4-Eg5"/>
                                             <outlet property="likeCount" destination="7KF-14-jep" id="wW0-vn-cLm"/>
                                             <outlet property="profileButton" destination="tHr-qu-3Kn" id="6O3-oE-be3"/>
                                             <outlet property="profilePic" destination="QSx-CE-rAk" id="XbS-3s-vmd"/>
