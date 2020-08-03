@@ -529,16 +529,18 @@
                     <navigationItem key="navigationItem" id="hWn-t7-Q9q">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="y77-ik-Bse">
                             <connections>
-                                <action selector="nextController:" destination="5s6-lB-947" id="ZHT-eY-qIr"/>
+                                <action selector="nextButton:" destination="rG0-Tp-Cey" id="amm-m6-6c2"/>
+                                <segue destination="RRV-WI-NoV" kind="show" id="o7P-ft-hel"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="uEx-fz-Dzs" id="QpO-BA-bqo"/>
-                        <segue destination="RRV-WI-NoV" kind="show" identifier="pickPlaceSegue" id="3vc-dF-8lh"/>
+                        <outlet property="nextButton" destination="y77-ik-Bse" id="oSK-y1-YnQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9WB-Bi-RbN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="rG0-Tp-Cey" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5531.884057971015" y="1743.75"/>
         </scene>
@@ -1959,10 +1961,10 @@
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="hm9-LJ-esX" customClass="CommentCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hm9-LJ-esX" id="HIn-zK-uq7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="t5q-Ah-9YS" customClass="PFImageView">
@@ -1980,13 +1982,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-gG-YUT">
-                                                    <rect key="frame" x="58" y="12.5" width="336" height="21"/>
+                                                    <rect key="frame" x="58" y="12.5" width="336" height="21.5"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E06-cb-UKv">
-                                                    <rect key="frame" x="58" y="34.5" width="336" height="20.5"/>
+                                                    <rect key="frame" x="58" y="35" width="336" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2883,7 +2885,7 @@
         <segue reference="8d0-2j-hQ3"/>
         <segue reference="LuL-uG-2hw"/>
         <segue reference="3t5-RB-69z"/>
-        <segue reference="PNg-bD-xus"/>
+        <segue reference="5IA-Dm-ao6"/>
         <segue reference="0PC-lq-V0v"/>
     </inferredMetricsTieBreakers>
     <resources>

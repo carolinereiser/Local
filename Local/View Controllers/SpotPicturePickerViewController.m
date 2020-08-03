@@ -21,6 +21,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    if(self.images.count == 0) {
+        self.navigationItem.rightBarButtonItem = nil;
+    }
+    
     // Do any additional setup after loading the view.
     self.collectionView.dataSource = self;
     self.collectionView.delegate = self;
@@ -84,7 +89,6 @@
 
 - (void)photoPickerViewController:(YMSPhotoPickerViewController *)picker didFinishPickingImages:(NSArray *)photoAssets
 {
-    NSLog(@"HEY!");
     [picker dismissViewControllerAnimated:YES completion:^() {
         // Remember images you get here is PHAsset array, you need to implement PHImageManager to get UIImage data by yourself
         PHImageManager *imageManager = [[PHImageManager alloc] init];
@@ -106,6 +110,13 @@
 
         // Assign to Array with images
         self.images = [mutableImages copy];
+        if(self.images.count != 0) {
+            NSLog(@"hey");
+            self.navigationItem.rightBarButtonItem = self.nextButton;
+        }
+        else {
+            self.navigationItem.rightBarButtonItem = nil;
+        }
         [self.collectionView reloadData];
     }];
 }
@@ -120,13 +131,6 @@
 
 - (NSInteger)collectionView:(nonnull UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return self.images.count;
-}
-
-- (IBAction)nextController:(id)sender {
-    if(self.images.count != 0)
-    {
-        [self performSegueWithIdentifier:@"pickPlaceSegue" sender:nil];
-    }
 }
 
 

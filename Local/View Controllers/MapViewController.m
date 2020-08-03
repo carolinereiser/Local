@@ -45,7 +45,7 @@
         self.locationServiceEnabled = YES;
     }
     else {
-        //make currLoc San Francisco region if can't get current location
+        //make currLoc San Francisco region if can't get current location...not getting here...Why???
         self.currLoc = [[CLLocation alloc] initWithLatitude:37.783333 longitude:-122.416667];
         self.locationServiceEnabled = NO;
     }

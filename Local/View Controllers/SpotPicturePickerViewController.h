@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (strong, nonatomic) NSArray<UIImage *> *images;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
 @end
 
