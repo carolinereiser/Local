@@ -2999,12 +2999,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Change"/>
+                                <connections>
+                                    <action selector="changePic:" destination="YDw-TY-doD" eventType="touchUpInside" id="X2o-zT-xTz"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbX-3C-jJu">
                                 <rect key="frame" x="259" y="528" width="69" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Confirm"/>
+                                <connections>
+                                    <action selector="confirmPic:" destination="YDw-TY-doD" eventType="touchUpInside" id="cDT-sq-oEf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XRR-0c-mpU">
                                 <rect key="frame" x="142" y="793" width="43" height="35"/>
@@ -3101,7 +3107,7 @@
                     <navigationItem key="navigationItem" id="4SE-zT-Y8o"/>
                     <connections>
                         <outlet property="addressLabel" destination="dkt-Z1-Dia" id="7aA-wC-ZNW"/>
-                        <segue destination="MzD-uQ-3n5" kind="showDetail" animates="NO" id="9SV-Tu-nn8"/>
+                        <segue destination="MzD-uQ-3n5" kind="showDetail" identifier="nextSegue" animates="NO" id="9SV-Tu-nn8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cn7-F1-PrI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -3213,7 +3219,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="9SV-Tu-nn8"/>
-        <segue reference="iA8-bC-M6e"/>
+        <segue reference="CJR-OI-D76"/>
         <segue reference="IME-e1-Ms4"/>
         <segue reference="Axu-n9-s0C"/>
         <segue reference="8d0-2j-hQ3"/>

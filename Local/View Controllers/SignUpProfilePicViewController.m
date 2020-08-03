@@ -8,7 +8,7 @@
 
 #import "SignUpProfilePicViewController.h"
 
-@interface SignUpProfilePicViewController ()
+@interface SignUpProfilePicViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -17,6 +17,72 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self getProfilePic];
+}
+
+- (IBAction)changePic:(id)sender {
+    UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+    imagePickerVC.delegate = self;
+    imagePickerVC.allowsEditing = YES;
+    imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+
+    [self presentViewController:imagePickerVC animated:YES completion:nil];
+}
+
+- (IBAction)confirmPic:(id)sender {
+    if([PFUser currentUser][@"profilePic"]) {
+        [self performSegueWithIdentifier:@"nextSegue" sender:nil];
+    }
+}
+
+- (void)getProfilePic{
+    //TODO: Use CoreData to load profile pic when no network connection
+    PFUser* user = [PFUser currentUser];
+    if(user[@"profilePic"])
+    {
+        self.profilePic.file = user[@"profilePic"];
+        [self.profilePic loadInBackground];
+    }
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *editedImage = info[UIImagePickerControllerEditedImage];
+
+    // Do something with the images (based on your use case)
+    //self.picture.image = [self resizeImage:editedImage withSize:(CGSizeMake)(500,500)];
+    PFUser* currUser = [PFUser currentUser];
+    currUser[@"profilePic"] = [self getPFFileFromImage:editedImage];
+    
+    [currUser saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded)
+        {
+            NSLog(@"Uploaded profile pic!");
+            [self getProfilePic];
+            
+        }
+        else
+        {
+            NSLog(@"%@", error.localizedDescription);
+        }
+    }];
+    
+    // Dismiss UIImagePickerController to go back to your original view controller
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
+    // check if image is not nil
+    if (!image) {
+        return nil;
+    }
+    
+    NSData *imageData = UIImagePNGRepresentation(image);
+    // get image data and check if that is not nil
+    if (!imageData) {
+        return nil;
+    }
+    
+    return [PFFileObject fileObjectWithName:@"image.png" data:imageData];
 }
 
 /*
