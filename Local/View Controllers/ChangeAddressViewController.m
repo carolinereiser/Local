@@ -14,6 +14,9 @@
 
 @interface ChangeAddressViewController () <GMSAutocompleteViewControllerDelegate>
 
+@property (nonatomic, weak) NSString* city;
+@property (nonatomic, strong) NSString* country;
+
 @end
 
 @implementation ChangeAddressViewController  {
@@ -41,7 +44,7 @@
     acController.delegate = self;
 
     // Specify the place data types to return.
-    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID |GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress);
+    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID |GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress | GMSPlaceFieldAddressComponents);
     acController.placeFields = fields;
 
     // Specify a filter.
@@ -62,7 +65,37 @@
     user[@"location"] = geoPoint;
     user[@"placeID"] = place.placeID;
     user[@"placeName"] = place.formattedAddress;
-        
+    
+    BOOL foundCity = NO;
+    BOOL foundCountry = NO;
+    NSLog(@"%@", place.addressComponents[0]);
+    for (int i = 0; i < [place.addressComponents count]; i++)
+    {
+        if([place.addressComponents[i].types[0] isEqualToString:@"locality"])
+        {
+            self.city = place.addressComponents[i].name;
+            foundCity = YES;
+        }
+        else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
+        {
+            self.country = place.addressComponents[i].name;
+            foundCountry = YES;
+        }
+    }
+    
+    if(foundCity && foundCountry) {
+        user[@"userLoc"] = [NSString stringWithFormat:@"%@, %@", self.city, self.country];
+    }
+    else if(foundCity) {
+        user[@"userLoc"] = [NSString stringWithFormat:@"%@", self.city];
+    }
+    else if(foundCountry) {
+        user[@"userLoc"] = [NSString stringWithFormat:@"%@", self.country];
+    }
+    else {
+        user[@"userLoc"] = @"";
+    }
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
         if(succeeded)

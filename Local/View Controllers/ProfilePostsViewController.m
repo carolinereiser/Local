@@ -45,7 +45,7 @@
     }
     else {
         self.name.text = self.user[@"username"];
-    } 
+    }
 
     //get numfollowers
     PFQuery *query = [PFQuery queryWithClassName:@"Following"];
@@ -59,6 +59,9 @@
     [query2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable following, NSError * _Nullable error) {
         self.numFollowing.text = [NSString stringWithFormat:@"%lu", [following count]];
     }];
+    
+    //get location
+    self.location.text = self.user[@"userLoc"];
     
     [self getNumCities];
     [self getNumCountries];
@@ -170,6 +173,8 @@
     self.profilePic.file = self.user[@"profilePic"];
     [self.profilePic loadInBackground];
     self.bio.text = self.user[@"bio"];
+    self.location.text = self.user[@"userLoc"];
+    
     //get numfollowers
     PFQuery *query = [PFQuery queryWithClassName:@"Following"];
     [query whereKey:@"following" equalTo:self.user];
