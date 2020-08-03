@@ -48,6 +48,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = NO;
     [self fetchFeed];
 }
 

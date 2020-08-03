@@ -30,9 +30,11 @@
     [center addObserver:self selector:@selector(keyboardOnScreen:) name:UIKeyboardWillShowNotification object:nil];
     [center addObserver:self selector:@selector(keyboardOffScreen:) name:UIKeyboardWillHideNotification object:nil];
     
-    self.tabBarController.tabBar.hidden=YES;
-    
     [self fetchComments];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)keyboardOnScreen:(NSNotification *)notification {
