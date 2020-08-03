@@ -21,6 +21,10 @@
     self.carousel.scrollEnabled = YES;
     self.carousel.pagingEnabled = YES;
     
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapToLike:)];
+    tapGesture.numberOfTapsRequired = 2;
+    [self.carousel addGestureRecognizer:tapGesture];
+    
     CAGradientLayer *gradient = [CAGradientLayer layer];
     gradient.frame = self.gradientView.bounds;
     gradient.colors = @[(id)[UIColor clearColor].CGColor, (id)[UIColor blackColor].CGColor];
@@ -28,6 +32,12 @@
     [self.gradientView.layer insertSublayer:gradient atIndex:0];
     
     self.carousel.type = iCarouselTypeRotary;
+}
+
+- (void)doubleTapToLike:(UITapGestureRecognizer *)sender {
+    if(sender.state == UIGestureRecognizerStateRecognized) {
+        [self like];
+    }
 }
 
 - (void)refreshData {
@@ -80,6 +90,10 @@
 }
 
 - (IBAction)didLike:(id)sender {
+    [self like];
+}
+
+- (void)like {
     PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
     [query whereKey:@"spot" equalTo:self.spot];
