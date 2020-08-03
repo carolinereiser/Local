@@ -1212,9 +1212,11 @@
                                             <outlet property="detailView" destination="aJ3-QS-6TR" id="XdX-tD-AEo"/>
                                             <outlet property="formattedAddress" destination="Lip-OM-sZd" id="BYS-e8-eGj"/>
                                             <outlet property="gradientView" destination="XtJ-LA-4mG" id="Bec-6l-RWL"/>
+                                            <outlet property="likeButton" destination="mAX-Iw-QIg" id="lXj-oT-wzg"/>
                                             <outlet property="likeCount" destination="Uum-IN-7Il" id="qhC-hD-5hO"/>
                                             <outlet property="profileButton" destination="Bxc-0d-rFa" id="03X-31-I5u"/>
                                             <outlet property="profilePic" destination="4Vi-K5-AKh" id="ghi-vJ-dvG"/>
+                                            <outlet property="saveButton" destination="11I-IC-vbE" id="R8o-YP-mL2"/>
                                             <outlet property="saveCount" destination="gwQ-yP-FDh" id="cWl-u5-o1e"/>
                                             <outlet property="spotDescription" destination="UbC-hs-iLw" id="KhQ-PA-yeC"/>
                                             <outlet property="spotName" destination="Fur-Yl-Jgy" id="oZE-1I-E8K"/>
@@ -3417,7 +3419,7 @@
         <segue reference="iA8-bC-M6e"/>
         <segue reference="IME-e1-Ms4"/>
         <segue reference="Axu-n9-s0C"/>
-        <segue reference="ayT-Y2-mfe"/>
+        <segue reference="8d0-2j-hQ3"/>
         <segue reference="LuL-uG-2hw"/>
         <segue reference="3t5-RB-69z"/>
         <segue reference="F7U-bO-Ev2"/>
