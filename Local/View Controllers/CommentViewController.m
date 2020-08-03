@@ -15,6 +15,7 @@
 @interface CommentViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) NSArray<PFObject *> *comments;
+@property (weak, nonatomic) IBOutlet UIView *commentView;
 
 @end
 
@@ -27,6 +28,24 @@
     self.tableView.delegate = self;
     
     [self fetchComments];
+}
+
+- (IBAction)didBeginEditing:(id)sender {
+    CGRect newCommentFrame = self.commentView.frame;
+    newCommentFrame.origin.y -= 230;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.commentView.frame = newCommentFrame;
+    }];
+}
+
+- (IBAction)didEndEditing:(id)sender {
+    CGRect newCommentFrame = self.commentView.frame;
+    newCommentFrame.origin.y += 230;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        self.commentView.frame = newCommentFrame;
+    }];
 }
 
 - (void)fetchComments {
@@ -98,6 +117,8 @@
 - (IBAction)didTap:(id)sender {
     [self.view endEditing:YES];
 }
+
+
 
 
 #pragma mark - Navigation
