@@ -34,8 +34,6 @@
         newUser.username = lowerUsername;
         newUser.password = self.passwordField.text;
         newUser.email = self.emailField.text;
-        newUser[@"countryCount"] = @(0);
-        newUser[@"cityCount"] = @(0);
         newUser[@"isPublic"] = @YES;
         newUser[@"name"] = @"";
         

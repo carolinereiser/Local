@@ -143,7 +143,7 @@ didFailAutocompleteWithError:(NSError *)error {
 
 - (IBAction)post:(id)sender {
     //make sure user added a spot
-    if([self.placeID isKindOfClass:[NSString class]])
+    if([self.placeID isKindOfClass:[NSString class]] && ((self.createPlace && [self.placePlaceID isKindOfClass:[NSString class]]) || !self.createPlace))
     {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         //if the user wants to make the place a spot
@@ -167,6 +167,25 @@ didFailAutocompleteWithError:(NSError *)error {
                 NSLog(@"ERROR: %@", error.localizedDescription);
                 [MBProgressHUD hideHUDForView:self.view animated:YES];
             }
+        }];
+    }
+    else {
+        NSString* message = @"";
+        if(self.createPlace) {
+            message = @"Make sure you add a Spot location and a Place location.";
+        }
+        else {
+            message = @"Make sure you add a Spot location.";
+        }
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Whoops!" message:message preferredStyle:(UIAlertControllerStyleAlert)];
+        
+        // create a cancel action
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
+        {}];
+        // add the cancel action to the alertController
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:^{
+            // nothing happens when view controller is done presenting
         }];
     }
 }
