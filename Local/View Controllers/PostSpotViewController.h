@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface PostSpotViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UILabel *address;
+@property (weak, nonatomic) IBOutlet UILabel *placeAddress;
 @property (strong, nonatomic) Place* place;
 @property (strong, nonatomic) NSArray<UIImage *> *images;
 @property (nonatomic) BOOL createPlace;

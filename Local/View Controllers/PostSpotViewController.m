@@ -54,7 +54,7 @@
         self.placeLongitude = place.coordinate.longitude;
         self.placePlaceID = place.placeID;
         self.placeFormattedAddress = place.formattedAddress;
-        
+        self.placeAddress.text = self.placeFormattedAddress;
         for (int i = 0; i < [place.addressComponents count]; i++)
         {
             NSLog(@"name %@ = type %@", place.addressComponents[i].name, place.addressComponents[i].types[0]);
@@ -148,7 +148,7 @@ didFailAutocompleteWithError:(NSError *)error {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         //if the user wants to make the place a spot
         if(self.createPlace) {
-            self.place = [Place postPlaceFromSpot:self.formattedAddress withId:self.placeID Image:self.images[0] Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            self.place = [Place postPlaceFromSpot:self.placeFormattedAddress withId:self.placePlaceID Image:self.images[0] Latitude:self.placeLatitude Longitude:self.placeLongitude City:self.placeCity Country:self.placeCountry withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if(succeeded) {
                     NSLog(@"Successfully added Place!");
                 }

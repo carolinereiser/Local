@@ -830,8 +830,8 @@
                                     <constraint firstItem="8sP-k4-ZTe" firstAttribute="top" secondItem="KD9-GL-HU2" secondAttribute="bottom" constant="8" id="zRp-81-fLg"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9f-pa-X8g">
-                                <rect key="frame" x="140.5" y="260" width="133" height="27"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a Spot location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9f-pa-X8g">
+                                <rect key="frame" x="116.5" y="260" width="181.5" height="27"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -870,6 +870,7 @@
                     <connections>
                         <outlet property="address" destination="w1w-R7-jku" id="vWE-hI-QeF"/>
                         <outlet property="caption" destination="b3b-CH-p9a" id="JEf-OV-Uan"/>
+                        <outlet property="placeAddress" destination="8sP-k4-ZTe" id="Bia-dg-EIa"/>
                         <outlet property="placeView" destination="EEq-Ug-xJg" id="y8R-Km-TfQ"/>
                     </connections>
                 </viewController>
