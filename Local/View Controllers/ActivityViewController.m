@@ -9,6 +9,7 @@
 #import "ActivityCell.h"
 #import "ActivityViewController.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import "ProfileViewController.h"
 
 @import Parse;
 
@@ -132,6 +133,7 @@
     else {
         cell.profilePic.image = [UIImage systemImageNamed:@"person.circle.fill"];
     }
+    cell.profileButton.tag = indexPath.row;
     PFObject* object = [self.allActivity[indexPath.row] fetchIfNeeded];
     if([[object parseClassName] isEqualToString:@"Likes"]) {
         cell.text.text = [NSString stringWithFormat:@"%@ liked your spot", object[@"user"][@"username"]];
@@ -159,14 +161,20 @@
         return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"profileSegue"]) {
+        UIButton *tappedButton = sender;
+        ProfileViewController *profileViewController = [segue destinationViewController];
+        PFUser *user = self.allActivity[tappedButton.tag][@"user"];
+        profileViewController.user = user;
+    }
 }
-*/
+
 
 @end

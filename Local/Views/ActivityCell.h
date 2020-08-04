@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet PFImageView *profilePic;
 @property (weak, nonatomic) IBOutlet UILabel *text;
 @property (weak, nonatomic) NSString* username;
+@property (weak, nonatomic) IBOutlet UIButton *profileButton;
 
 @end
 
