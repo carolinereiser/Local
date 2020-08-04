@@ -30,6 +30,11 @@
     [center addObserver:self selector:@selector(keyboardOnScreen:) name:UIKeyboardWillShowNotification object:nil];
     [center addObserver:self selector:@selector(keyboardOffScreen:) name:UIKeyboardWillHideNotification object:nil];
     
+    if([PFUser currentUser][@"profilePic"]) {
+        self.profilePic.file = [PFUser currentUser][@"profilePic"];
+        [self.profilePic loadInBackground];
+    }
+    
     [self fetchComments];
 }
 
@@ -107,6 +112,7 @@
             }
         }];
     }
+    [self.view endEditing:YES];
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
