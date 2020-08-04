@@ -81,7 +81,7 @@
 }
 
 - (IBAction)didSendComment:(id)sender {
-    if([self.comment.text isKindOfClass:[NSString class]])
+    if([self.comment.text isKindOfClass:[NSString class]] && ![self.comment.text isEqualToString:@""])
     {
         PFObject *comment = [PFObject objectWithClassName:@"Comments"];
         comment[@"user"] = [PFUser currentUser];
