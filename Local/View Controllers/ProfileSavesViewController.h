@@ -16,6 +16,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) PFUser *user;
+@property (weak, nonatomic) IBOutlet PFImageView *profilePic;
+@property (weak, nonatomic) IBOutlet UILabel *username;
+
 
 @end
 

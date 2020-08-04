@@ -34,6 +34,16 @@
     
     [self fetchSaves];
     
+    if(self.user[@"profilePic"]) {
+        self.profilePic.file = self.user[@"profilePic"];
+        [self.profilePic loadInBackground];
+    }
+    else {
+        self.profilePic.image = [UIImage systemImageNamed:@"person.circle.fill"];
+    }
+
+    self.username.text = [NSString stringWithFormat:@"@%@", self.user.username];
+    
     self.collectionView.frame = self.view.frame;
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
 
