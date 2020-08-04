@@ -70,8 +70,13 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     PlaceInfoCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"PlaceInfoCell" forIndexPath:indexPath];
-    cell.name.text = self.places[indexPath.row][@"name"];
-    //NSLog(@"%@", place);
+    if(indexPath.row == 0) {
+        cell.name.text = @"Make Spot it's own Place";
+    }
+    else {
+        cell.name.text = self.places[indexPath.row - 1][@"name"];
+        //NSLog(@"%@", place);
+    }
     return cell;
 }
 
@@ -88,16 +93,21 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
-     UITableViewCell *tappedCell = sender;
-     NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
-     Place *tappedPlace = self.places[indexPath.row];
-     PostSpotViewController *postSpotViewController = [segue destinationViewController];
-     postSpotViewController.place = tappedPlace;
-     postSpotViewController.images = self.images;
+    UITableViewCell *tappedCell = sender;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:tappedCell];
+    if(indexPath.row == 0) {
+        //make the spot it's own place
+        PostSpotViewController *postSpotViewController = [segue destinationViewController];
+        postSpotViewController.createPlace = YES;
+        postSpotViewController.images = self.images;
+    }
+    else {
+        Place *tappedPlace = self.places[indexPath.row - 1];
+        PostSpotViewController *postSpotViewController = [segue destinationViewController];
+        postSpotViewController.place = tappedPlace;
+        postSpotViewController.images = self.images;
+        postSpotViewController.createPlace = NO;
+    }
 }
 
-
-
-- (IBAction)nextButton:(id)sender {
-}
 @end

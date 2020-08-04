@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (strong, nonatomic) Place* place;
 @property (strong, nonatomic) NSArray<UIImage *> *images;
+@property (nonatomic) BOOL createPlace;
 
 @end
 

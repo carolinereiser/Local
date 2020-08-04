@@ -21,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) PFUser* user;
 
 + (void) postPlace: (NSString*)place withId:(NSString*) placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (Place*)postPlaceFromSpot:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

@@ -37,6 +37,22 @@
     [newPlace saveInBackgroundWithBlock: completion];
 }
 
++ (Place*)postPlaceFromSpot:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country withCompletion: (PFBooleanResultBlock  _Nullable)completion
+{
+    Place* newPlace = [Place new];
+    newPlace.image = [self getPFFileFromImage:image];
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:lat longitude:lng];
+    newPlace.location = geoPoint;
+    newPlace.placeID = placeID;
+    newPlace.name = place;
+    newPlace.user = [PFUser currentUser];
+    newPlace.city = city;
+    newPlace.country = country;
+    
+    [newPlace saveInBackgroundWithBlock: completion];
+    return newPlace;
+}
+
 + (PFFileObject *)getPFFileFromImage: (UIImage * _Nullable)image {
  
     // check if image is not nil

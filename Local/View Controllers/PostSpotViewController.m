@@ -22,6 +22,7 @@
 @property (nonatomic, strong) NSString* country;
 @property (weak, nonatomic) IBOutlet UITextView *caption;
 @property (strong, nonatomic) NSString* name;
+@property (weak, nonatomic) IBOutlet UIView *placeView;
 
 @end
 
@@ -32,7 +33,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"%@", self.place);
+    if(!self.createPlace) {
+        self.placeView.alpha = 0;
+    }
 }
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
@@ -91,6 +94,14 @@ didFailAutocompleteWithError:(NSError *)error {
     if([self.placeID isKindOfClass:[NSString class]])
     {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        //if the user wants to make the place a spot
+        if(self.createPlace) {
+            self.place = [Place postPlaceFromSpot:self.formattedAddress withId:self.placeID Image:self.images[0] Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if(succeeded) {
+                    NSLog(@"Successfully added Place!");
+                }
+            }];
+        }
         [Spot postSpot:self.formattedAddress withId:self.placeID Name:self.name Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded)
             {
