@@ -881,11 +881,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LCA26X86Z4;
 				INFOPLIST_FILE = Local/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carolinereiser.Local;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carolinereiser.Local2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Local/View Controllers/Local-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -903,11 +904,12 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LCA26X86Z4;
 				INFOPLIST_FILE = Local/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.carolinereiser.Local;
+				PRODUCT_BUNDLE_IDENTIFIER = com.carolinereiser.Local2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Local/View Controllers/Local-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

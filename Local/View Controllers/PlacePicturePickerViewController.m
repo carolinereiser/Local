@@ -72,7 +72,7 @@
 - (void)photoPickerViewController:(YMSPhotoPickerViewController *)picker didFinishPickingImage:(UIImage *)image{
     [picker dismissViewControllerAnimated:YES completion:^() {
         //resize image;
-        UIImage* resizedImage = [self resizeImage:image withSize:CGSizeMake(400, 400)];
+        UIImage* resizedImage = [self resizeImage:image withSize:CGSizeMake(800, 800)];
         self.picture.image = resizedImage;
     }];
 }
