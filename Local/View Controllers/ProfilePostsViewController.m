@@ -32,7 +32,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    // Do any additional setup after loading the view
+    self.tabBarController.tabBar.hidden = NO;
+    
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
 
@@ -117,6 +119,10 @@
     CGFloat itemWidth = (self.collectionView.frame.size.width - (layout.minimumInteritemSpacing * (imagesPerLine - 1))) / imagesPerLine;
     CGFloat itemHeight = itemWidth;
     layout.itemSize = CGSizeMake(itemWidth, itemHeight);
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)getNumCities {

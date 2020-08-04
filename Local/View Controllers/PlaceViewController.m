@@ -24,6 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tabBarController.tabBar.hidden = NO;
     self.placeName.text = self.place.name;
     self.userName.text = [NSString stringWithFormat:@"@%@", self.user.username];
     
@@ -36,6 +37,10 @@
     self.tableView.tableFooterView = [UIView new];
     
     [self fetchSpots];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    self.tabBarController.tabBar.hidden = NO;
 }
 
 - (void)fetchSpots {
