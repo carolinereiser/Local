@@ -23,6 +23,14 @@
 @property (weak, nonatomic) IBOutlet UITextView *caption;
 @property (strong, nonatomic) NSString* name;
 @property (weak, nonatomic) IBOutlet UIView *placeView;
+@property (nonatomic) BOOL forPlace;
+@property (nonatomic) double placeLatitude;
+@property (nonatomic) double placeLongitude;
+@property (nonatomic, strong) NSString* placeFormattedAddress;
+@property (nonatomic, strong) NSString* placePlaceID;
+@property (nonatomic, weak) NSString* placeCity;
+@property (nonatomic, strong) NSString* placeCountry;
+@property (strong, nonatomic) NSString* placeName;
 
 @end
 
@@ -36,29 +44,53 @@
     if(!self.createPlace) {
         self.placeView.alpha = 0;
     }
+    self.forPlace = NO;
 }
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
-    self.latitude = place.coordinate.latitude;
-    self.longitude = place.coordinate.longitude;
-    self.placeID = place.placeID;
-    self.formattedAddress = place.formattedAddress;
-    self.address.text = self.formattedAddress;
-    self.name = place.name;
-    
-    //is there more time efficient way to do this?
-    for (int i = 0; i < [place.addressComponents count]; i++)
-    {
-        if([place.addressComponents[i].types[0] isEqualToString:@"locality"])
+    if(self.forPlace) {
+        self.forPlace = NO;
+        self.placeLatitude = place.coordinate.latitude;
+        self.placeLongitude = place.coordinate.longitude;
+        self.placePlaceID = place.placeID;
+        self.placeFormattedAddress = place.formattedAddress;
+        
+        for (int i = 0; i < [place.addressComponents count]; i++)
         {
-            self.city = place.addressComponents[i].name;
+            NSLog(@"name %@ = type %@", place.addressComponents[i].name, place.addressComponents[i].types[0]);
+            if([place.addressComponents[i].types[0] isEqualToString:@"locality"])
+            {
+                self.placeCity = place.addressComponents[i].name;
+            }
+            else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
+            {
+                self.placeCountry = place.addressComponents[i].name;
+            }
         }
-        else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
-        {
-            self.country = place.addressComponents[i].name;
-        }
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    else {
+        self.latitude = place.coordinate.latitude;
+        self.longitude = place.coordinate.longitude;
+        self.placeID = place.placeID;
+        self.formattedAddress = place.formattedAddress;
+        self.address.text = self.formattedAddress;
+        self.name = place.name;
+        
+        //is there more time efficient way to do this?
+        for (int i = 0; i < [place.addressComponents count]; i++)
+        {
+            if([place.addressComponents[i].types[0] isEqualToString:@"locality"])
+            {
+                self.city = place.addressComponents[i].name;
+            }
+            else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
+            {
+                self.country = place.addressComponents[i].name;
+            }
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController
@@ -88,6 +120,26 @@ didFailAutocompleteWithError:(NSError *)error {
     // Display the autocomplete view controller.
     [self presentViewController:acController animated:YES completion:nil];
 }
+
+- (IBAction)addPlaceAddress:(id)sender {
+    self.forPlace = YES;
+    GMSAutocompleteViewController *placeController = [[GMSAutocompleteViewController alloc] init];
+    placeController.delegate = self;
+
+    // Specify the place data types to return.
+    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID |GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress |GMSPlaceFieldAddressComponents);
+    placeController.placeFields = fields;
+
+    // Specify a filter.
+    filter = [[GMSAutocompleteFilter alloc] init];
+    filter.type = kGMSPlacesAutocompleteTypeFilterRegion;
+    placeController.autocompleteFilter = filter;
+
+    // Display the autocomplete view controller.
+    [self presentViewController:placeController animated:YES completion:nil];
+}
+
+
 
 - (IBAction)post:(id)sender {
     //make sure user added a spot

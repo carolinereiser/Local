@@ -801,6 +801,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QFl-RL-frX">
                                         <rect key="frame" x="107" y="90" width="112" height="30"/>
                                         <state key="normal" title="Choose address"/>
+                                        <connections>
+                                            <action selector="addPlaceAddress:" destination="Qiw-Gs-7IE" eventType="touchUpInside" id="m94-lC-HQa"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add a Place location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uep-jo-UM2">
                                         <rect key="frame" x="68.5" y="15" width="189" height="27"/>
