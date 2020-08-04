@@ -448,6 +448,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="vRs-7J-VZZ" kind="relationship" relationship="viewControllers" id="kpM-In-9y2"/>
@@ -465,7 +467,9 @@
         <scene sceneID="MuL-t6-geZ">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="vRs-7J-VZZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" id="f5H-OY-rwA"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house" catalog="system" selectedImage="house.fill" id="f5H-OY-rwA">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <navigationItem key="navigationItem" id="37J-Kd-amH"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bu5-EP-TKU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -483,7 +487,7 @@
         <scene sceneID="pEl-1I-8M7">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="a3Z-2S-ERY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" id="jcL-sZ-y1x"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass.circle" catalog="system" selectedImage="magnifyingglass.circle.fill" id="jcL-sZ-y1x"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UHs-ek-54u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -500,7 +504,7 @@
         <scene sceneID="40n-nD-Ekk">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="FlP-2t-Dre" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Post" id="2xP-Q1-g7V"/>
+                    <tabBarItem key="tabBarItem" title="Post" image="camera.on.rectangle" catalog="system" selectedImage="camera.on.rectangle.fill" id="2xP-Q1-g7V"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eDf-Hs-j51">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -517,7 +521,7 @@
         <scene sceneID="20I-uG-M3n">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="Lka-GF-Fs9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Activity" id="m63-Hq-joa"/>
+                    <tabBarItem key="tabBarItem" title="Activity" image="bell" catalog="system" selectedImage="bell.fill" id="m63-Hq-joa"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ofH-ms-Kgs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -534,7 +538,7 @@
         <scene sceneID="om0-0w-9ow">
             <objects>
                 <navigationController modalPresentationStyle="fullScreen" id="xlS-rV-QQY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="k9r-mb-zyw"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="person.circle" catalog="system" selectedImage="person.circle.fill" id="k9r-mb-zyw"/>
                     <navigationItem key="navigationItem" id="9kX-RV-ySC"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="x3F-EA-tVH">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
@@ -2209,17 +2213,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHO-VL-vev">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="791"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="771"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="aHO-VL-vev" secondAttribute="height" multiplier="138:247" constant="-27.93522267206481" id="90c-n4-L9v"/>
+                                    <constraint firstAttribute="width" secondItem="aHO-VL-vev" secondAttribute="height" multiplier="138:247" constant="-16.761133603238932" id="90c-n4-L9v"/>
                                 </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" id="hm9-LJ-esX" customClass="CommentCell">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="60.5"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hm9-LJ-esX" id="HIn-zK-uq7">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="t5q-Ah-9YS" customClass="PFImageView">
@@ -2237,13 +2241,13 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZDV-gG-YUT">
-                                                    <rect key="frame" x="58" y="12.5" width="336" height="21.5"/>
+                                                    <rect key="frame" x="58" y="12.5" width="336" height="21"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E06-cb-UKv">
-                                                    <rect key="frame" x="58" y="35" width="336" height="20.5"/>
+                                                    <rect key="frame" x="58" y="34.5" width="336" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2283,7 +2287,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRj-ia-Wvr">
-                                <rect key="frame" x="0.0" y="799" width="414" height="63"/>
+                                <rect key="frame" x="0.0" y="779" width="414" height="63"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWm-iH-J0G">
                                         <rect key="frame" x="370" y="13" width="36" height="30"/>
@@ -2342,6 +2346,7 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="Pel-qQ-sKL"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="comment" destination="l1b-NP-df3" id="RvB-rr-Ki3"/>
                         <outlet property="commentView" destination="RRj-ia-Wvr" id="HpJ-i6-Qs0"/>
@@ -3491,15 +3496,24 @@
         <segue reference="fUF-CY-OWb"/>
         <segue reference="OsZ-Na-puS"/>
         <segue reference="GMK-Fs-yaT"/>
-        <segue reference="F7U-bO-Ev2"/>
+        <segue reference="aUe-pY-zz9"/>
         <segue reference="uZd-CF-LI5"/>
         <segue reference="Qeu-EW-06P"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="bell" catalog="system" width="128" height="124"/>
+        <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
         <image name="bubble.left.fill" catalog="system" width="128" height="110"/>
+        <image name="camera.on.rectangle" catalog="system" width="128" height="96"/>
+        <image name="camera.on.rectangle.fill" catalog="system" width="128" height="96"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="house" catalog="system" width="128" height="110"/>
+        <image name="house.fill" catalog="system" width="128" height="106"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
         <image name="map.fill" catalog="system" width="128" height="113"/>
+        <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="person.circle.fill" catalog="system" width="128" height="121"/>
         <image name="pin" catalog="system" width="119" height="128"/>
         <image name="plus" catalog="system" width="128" height="113"/>
