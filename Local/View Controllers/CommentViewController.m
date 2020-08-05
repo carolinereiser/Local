@@ -43,8 +43,6 @@
     
     [self getCommentCount];
     [self fetchComments];
-    
-    self.tableView.transform = CGAffineTransformMakeRotation(-M_PI);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -97,6 +95,8 @@
             self.comments = comments;
             NSLog(@"%@", self.comments);
             [self.tableView reloadData];
+            NSIndexPath* ipath = [NSIndexPath indexPathForRow:(self.comments.count -1) inSection:0];
+            [self.tableView scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
         else
@@ -157,9 +157,7 @@
     cell.timeStamp.text = date.shortTimeAgoSinceNow;
     
     cell.profileButton.tag = indexPath.row;
-    
-    cell.transform = CGAffineTransformMakeRotation(M_PI);
-    
+        
     return cell;
 }
 
