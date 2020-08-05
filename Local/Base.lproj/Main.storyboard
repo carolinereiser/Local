@@ -2263,17 +2263,17 @@
         <!--Comment View Controller-->
         <scene sceneID="Tdv-wg-foQ">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="omy-Xa-fXp" customClass="CommentViewController" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="omy-Xa-fXp" customClass="CommentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pqs-Vd-Z8Q">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0a-3v-Qa8">
-                                <rect key="frame" x="42" y="144" width="372" height="718"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <rect key="frame" x="42" y="144" width="372" height="655"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHO-VL-vev">
-                                <rect key="frame" x="42" y="163" width="372" height="628"/>
+                                <rect key="frame" x="42" y="165" width="372" height="611"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="66" id="hm9-LJ-esX" customClass="CommentCell">
@@ -2382,7 +2382,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="HIq-Di-1Vf"/>
                                     <constraint firstItem="l1b-NP-df3" firstAttribute="leading" secondItem="a4V-5O-btI" secondAttribute="trailing" constant="8" id="JeK-pI-dYq"/>
@@ -2413,15 +2413,15 @@
                             <constraint firstItem="MUZ-D9-InI" firstAttribute="leading" secondItem="Hqc-Z7-bUf" secondAttribute="trailing" constant="7" id="3n2-nc-zjm"/>
                             <constraint firstItem="Hqc-Z7-bUf" firstAttribute="top" secondItem="dK5-64-2fe" secondAttribute="top" constant="16" id="7kd-6i-KsL"/>
                             <constraint firstItem="RRj-ia-Wvr" firstAttribute="bottom" secondItem="dK5-64-2fe" secondAttribute="bottom" id="CpM-Ex-8dm"/>
-                            <constraint firstItem="R0a-3v-Qa8" firstAttribute="bottom" secondItem="dK5-64-2fe" secondAttribute="bottom" id="Lhi-EA-EWp"/>
+                            <constraint firstItem="R0a-3v-Qa8" firstAttribute="bottom" secondItem="RRj-ia-Wvr" secondAttribute="top" id="Lhi-EA-EWp"/>
                             <constraint firstItem="aHO-VL-vev" firstAttribute="leading" secondItem="dK5-64-2fe" secondAttribute="leading" constant="42" id="NTu-Ih-Vbf"/>
                             <constraint firstItem="MUZ-D9-InI" firstAttribute="top" secondItem="dK5-64-2fe" secondAttribute="top" constant="16" id="U0l-Fz-bkq"/>
-                            <constraint firstItem="aHO-VL-vev" firstAttribute="top" secondItem="MUZ-D9-InI" secondAttribute="bottom" constant="32" id="WBG-eE-1nS"/>
+                            <constraint firstItem="aHO-VL-vev" firstAttribute="top" secondItem="MUZ-D9-InI" secondAttribute="bottom" constant="34" id="WBG-eE-1nS"/>
                             <constraint firstItem="Hqc-Z7-bUf" firstAttribute="leading" secondItem="dK5-64-2fe" secondAttribute="leading" constant="20" id="Wbh-pY-7vl"/>
                             <constraint firstItem="R0a-3v-Qa8" firstAttribute="top" secondItem="MUZ-D9-InI" secondAttribute="bottom" constant="13" id="Wf7-NN-z84"/>
                             <constraint firstItem="RRj-ia-Wvr" firstAttribute="trailing" secondItem="dK5-64-2fe" secondAttribute="trailing" id="Z24-dB-J0R"/>
                             <constraint firstItem="RRj-ia-Wvr" firstAttribute="leading" secondItem="dK5-64-2fe" secondAttribute="leading" constant="42" id="Z2q-P4-IiB"/>
-                            <constraint firstItem="RRj-ia-Wvr" firstAttribute="top" secondItem="aHO-VL-vev" secondAttribute="bottom" constant="8" id="jaS-fZ-Z1u"/>
+                            <constraint firstItem="RRj-ia-Wvr" firstAttribute="top" secondItem="aHO-VL-vev" secondAttribute="bottom" constant="23" id="jaS-fZ-Z1u"/>
                             <constraint firstItem="R0a-3v-Qa8" firstAttribute="trailing" secondItem="dK5-64-2fe" secondAttribute="trailing" id="kwF-cY-Qi7"/>
                             <constraint firstItem="R0a-3v-Qa8" firstAttribute="leading" secondItem="dK5-64-2fe" secondAttribute="leading" constant="42" id="uf5-bV-ufy"/>
                             <constraint firstItem="aHO-VL-vev" firstAttribute="trailing" secondItem="dK5-64-2fe" secondAttribute="trailing" id="wm7-Se-9r4"/>

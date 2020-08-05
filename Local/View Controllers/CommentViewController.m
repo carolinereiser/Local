@@ -30,7 +30,7 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     self.designView.layer.cornerRadius = 30;
-    self.designView.layer.maskedCorners = kCALayerMinXMinYCorner;
+    self.designView.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMinXMaxYCorner;
     
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(keyboardOnScreen:) name:UIKeyboardWillShowNotification object:nil];
@@ -45,7 +45,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    self.tabBarController.tabBar.hidden = YES;
+   // self.tabBarController.tabBar.hidden = YES;
 }
 
 - (void)keyboardOnScreen:(NSNotification *)notification {
