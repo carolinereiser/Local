@@ -37,15 +37,10 @@
     
     self.tableView.tableFooterView = [UIView new];
     
-    //[self fetchActivity];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     self.designView.layer.cornerRadius = 30;
     self.designView.layer.maskedCorners = kCALayerMinXMinYCorner;
-    
-    //int numNew = [self getNumNewNotifications];
-    //[self configureNotifcationText:numNew];
-    //[self updateChecked];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -69,7 +64,6 @@
         NSDate* lastChecked = [formatter dateFromString:date1];
         NSDate* createdDate = [formatter dateFromString:date2];
         
-        NSLog(@"%@, %@", lastChecked, createdDate);
         if([lastChecked compare:createdDate] == NSOrderedAscending) {
             count++;
             NSLog(@"%d", count);
@@ -101,10 +95,7 @@
     //get date/time
     NSDate* currDate = [NSDate date];
     
-    //convert to Greenwich Mean Time
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    //NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
-    //[formatter setTimeZone:timeZone];
     [formatter setDateFormat:@"E MMM d HH:mm:ss"];
     NSString* generalizedDate = [formatter stringFromDate:currDate];
     
