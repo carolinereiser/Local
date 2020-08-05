@@ -95,8 +95,10 @@
             self.comments = comments;
             NSLog(@"%@", self.comments);
             [self.tableView reloadData];
-            NSIndexPath* ipath = [NSIndexPath indexPathForRow:(self.comments.count -1) inSection:0];
-            [self.tableView scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
+            if(self.comments.count > 0) {
+                NSIndexPath* ipath = [NSIndexPath indexPathForRow:(self.comments.count -1) inSection:0];
+                [self.tableView scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
+            }
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         }
         else

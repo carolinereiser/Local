@@ -143,9 +143,10 @@
                     cityCount = cityCount + 1;
                 }
             }
+            self.numCities.text = [NSString stringWithFormat:@"%d", cityCount];
         }
     }];
-    
+    /*
     PFQuery *cityQuery2 = [PFQuery queryWithClassName:@"Place"];
     [cityQuery2 whereKey:@"user" equalTo:self.user];
     [cityQuery2 includeKey:@"city"];
@@ -161,10 +162,10 @@
                     cityCount = cityCount + 1;
                 }
             }
-            self.numCities.text = [NSString stringWithFormat:@"%d", cityCount];
+            
         }
     }];
-    
+    */
 }
 
 - (void)getNumCountries {
