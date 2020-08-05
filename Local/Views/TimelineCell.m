@@ -195,7 +195,7 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable users, NSError * _Nullable error) {
         if(users != nil) {
             if(users.count == 1) {
-                self.saveButton.tintColor = [UIColor grayColor];
+                self.saveButton.tintColor = [UIColor orangeColor];
             }
             else {
                 self.saveButton.tintColor = [UIColor whiteColor];
@@ -247,7 +247,7 @@
                 [like saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                     if (succeeded) {
                         NSLog(@"Spot saved!");
-                        self.saveButton.tintColor = [UIColor grayColor];
+                        self.saveButton.tintColor = [UIColor orangeColor];
                     } else {
                         NSLog(@"Error: %@", error.description);
                     }
