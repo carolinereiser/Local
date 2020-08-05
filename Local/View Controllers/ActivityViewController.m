@@ -8,6 +8,7 @@
 
 #import "ActivityCell.h"
 #import "ActivityViewController.h"
+#import "DateTools.h"
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
 #import "ProfileViewController.h"
 
@@ -131,6 +132,7 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     ActivityCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"ActivityCell" forIndexPath:indexPath];
+    //get profile pic
     if(self.allActivity[indexPath.row][@"user"][@"profilePic"]) {
         cell.profilePic.file = self.allActivity[indexPath.row][@"user"][@"profilePic"];
         [cell.profilePic loadInBackground];
@@ -139,6 +141,7 @@
         cell.profilePic.image = [UIImage systemImageNamed:@"person.circle.fill"];
     }
     cell.profileButton.tag = indexPath.row;
+    //get text string
     PFObject* object = [self.allActivity[indexPath.row] fetchIfNeeded];
     if([[object parseClassName] isEqualToString:@"Likes"]) {
         cell.text.text = [NSString stringWithFormat:@"%@ liked your spot", object[@"user"][@"username"]];
@@ -149,6 +152,11 @@
     else if([[object parseClassName] isEqualToString:@"Following"]) {
         cell.text.text = [NSString stringWithFormat:@"%@ followed you", object[@"user"][@"username"]];
     }
+    
+    //get how long ago it happened
+    NSDate *date = object.createdAt;
+    cell.timeStamp.text = date.shortTimeAgoSinceNow;
+    
     return cell;
 }
 
