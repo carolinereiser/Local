@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSArray<PFObject *> *comments;
 @property (nonatomic, strong) NSArray<PFObject *> *follows;
 @property (nonatomic, strong) NSArray<PFObject *> *allActivity;
+@property (weak, nonatomic) IBOutlet UIView *designView;
 
 @end
 
@@ -36,6 +37,10 @@
     self.tableView.tableFooterView = [UIView new];
     
     [self fetchActivity];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    self.designView.layer.cornerRadius = 30;
+    self.designView.layer.maskedCorners = kCALayerMinXMinYCorner;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
