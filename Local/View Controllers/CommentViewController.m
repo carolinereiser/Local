@@ -84,7 +84,7 @@
 
 - (void)fetchComments {
     PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
-    [query orderByDescending:@"createdAt"];
+    [query orderByAscending:@"createdAt"];
     [query whereKey:@"spot" equalTo:self.spot];
     [query includeKey:@"user"];
     
