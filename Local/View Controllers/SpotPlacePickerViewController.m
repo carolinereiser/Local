@@ -39,32 +39,16 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable places, NSError * _Nullable error) {
         if(places)
         {
-            if([places count] >= 1)
-            {
-                self.places = places;
-                //NSLog(@"%@", self.places);
-                [self.tableView reloadData];
-            }
-            else
-            {
-                //present an alert
-                UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"You don't have any places" message:@"You must post a place before you post any spots" preferredStyle:(UIAlertControllerStyleAlert)];
-                // create a cancel action
-                UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
-                {
-                }];
-                // add the cancel action to the alertController
-                [alert addAction:okAction];
-
-                [self presentViewController:alert animated:YES completion:^{
-                }];
-            }
+            self.places = places;
+            //NSLog(@"%@", self.places);
+            [self.tableView reloadData];
         }
         else
         {
             NSLog(@"Error: %@", error.localizedDescription);
         }
     }];
+    [self.tableView reloadData];
 }
 
 
@@ -81,7 +65,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.places.count;
+    return self.places.count + 1;
 }
 
 
