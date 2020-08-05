@@ -144,13 +144,35 @@
     //get text string
     PFObject* object = [self.allActivity[indexPath.row] fetchIfNeeded];
     if([[object parseClassName] isEqualToString:@"Likes"]) {
-        cell.text.text = [NSString stringWithFormat:@"%@ liked your spot", object[@"user"][@"username"]];
+        NSString* username = object[@"user"][@"username"];
+        NSString* string = [NSString stringWithFormat:@"%@ liked your spot", username];
+        
+        NSMutableAttributedString* displayString = [[NSMutableAttributedString alloc]initWithString:string];
+        
+        [displayString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0] range:NSMakeRange(0, [username length])];
+        
+        cell.text.attributedText = displayString;
     }
     else if([[object parseClassName] isEqualToString:@"Comments"]) {
-        cell.text.text = [NSString stringWithFormat:@"%@ commented \"%@\"", object[@"user"][@"username"], object[@"text"]];
+        NSString* username = object[@"user"][@"username"];
+        NSString* string = [NSString stringWithFormat:@"%@ commented \"%@\"", username, object[@"text"]];
+        
+        NSMutableAttributedString* displayString = [[NSMutableAttributedString alloc]initWithString:string];
+        
+        [displayString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0] range:NSMakeRange(0, [username length])];
+        
+        cell.text.attributedText = displayString;
+        
     }
     else if([[object parseClassName] isEqualToString:@"Following"]) {
-        cell.text.text = [NSString stringWithFormat:@"%@ followed you", object[@"user"][@"username"]];
+        NSString* username = object[@"user"][@"username"]; 
+        NSString* string = [NSString stringWithFormat:@"%@ followed you", username];
+        
+        NSMutableAttributedString* displayString = [[NSMutableAttributedString alloc]initWithString:string];
+        
+        [displayString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15.0] range:NSMakeRange(0, [username length])];
+        
+        cell.text.attributedText = displayString;
     }
     
     //get how long ago it happened
