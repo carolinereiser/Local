@@ -41,11 +41,26 @@
         [self.profilePic loadInBackground];
     }
     
+    [self getCommentCount];
     [self fetchComments];
+    
+    self.tableView.transform = CGAffineTransformMakeRotation(-M_PI);
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-   // self.tabBarController.tabBar.hidden = YES;
+    [self getCommentCount];
+    [self fetchComments];
+}
+
+- (void)getCommentCount {
+    self.numComments.text = [NSString stringWithFormat:@"%@", self.spot.commentCount];
+    
+    if([self.spot.commentCount isEqual:@1]) {
+        self.commentLabel.text = @"comment";
+    }
+    else {
+        self.commentLabel.text = @"comments";
+    }
 }
 
 - (void)keyboardOnScreen:(NSNotification *)notification {
@@ -71,7 +86,7 @@
 
 - (void)fetchComments {
     PFQuery *query = [PFQuery queryWithClassName:@"Comments"];
-    [query orderByAscending:@"createdAt"];
+    [query orderByDescending:@"createdAt"];
     [query whereKey:@"spot" equalTo:self.spot];
     [query includeKey:@"user"];
     
@@ -110,7 +125,11 @@
                 int val = [currCount intValue];
                 val += 1;
                 self.spot.commentCount = [NSNumber numberWithInt:val];
-                [self.spot saveInBackground];
+                [self.spot saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+                    if(succeeded) {
+                        [self getCommentCount];
+                    }
+                }];
             }
             else
             {
@@ -119,6 +138,7 @@
         }];
     }
     [self.view endEditing:YES];
+    self.comment.text = @"";
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
@@ -137,6 +157,8 @@
     cell.timeStamp.text = date.shortTimeAgoSinceNow;
     
     cell.profileButton.tag = indexPath.row;
+    
+    cell.transform = CGAffineTransformMakeRotation(M_PI);
     
     return cell;
 }

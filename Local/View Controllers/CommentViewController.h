@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UITextField *comment;
 @property (weak, nonatomic) IBOutlet UILabel *numComments;
 @property (weak, nonatomic) IBOutlet UIView *designView;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
 
 @property (weak, nonatomic) Spot* spot;
 

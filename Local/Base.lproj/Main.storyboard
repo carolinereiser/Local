@@ -2272,7 +2272,7 @@
                                 <rect key="frame" x="42" y="144" width="372" height="655"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHO-VL-vev">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHO-VL-vev">
                                 <rect key="frame" x="42" y="165" width="372" height="611"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -2436,6 +2436,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="comment" destination="l1b-NP-df3" id="RvB-rr-Ki3"/>
+                        <outlet property="commentLabel" destination="MUZ-D9-InI" id="Ss6-d0-5xH"/>
                         <outlet property="commentView" destination="RRj-ia-Wvr" id="HpJ-i6-Qs0"/>
                         <outlet property="designView" destination="R0a-3v-Qa8" id="2AU-92-0Rh"/>
                         <outlet property="numComments" destination="Hqc-Z7-bUf" id="Jc0-hx-Xpn"/>
