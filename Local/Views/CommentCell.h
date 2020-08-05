@@ -15,9 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface CommentCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet PFImageView *profilePic;
-@property (weak, nonatomic) IBOutlet UILabel *username;
-@property (weak, nonatomic) IBOutlet UILabel *comment;
 @property (weak, nonatomic) IBOutlet UIButton *profileButton;
+@property (weak, nonatomic) IBOutlet UILabel *comment;
+@property (weak, nonatomic) IBOutlet UILabel *timeStamp;
 
 @end
 

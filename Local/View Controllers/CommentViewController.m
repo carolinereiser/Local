@@ -8,6 +8,7 @@
 
 #import "CommentCell.h"
 #import "CommentViewController.h"
+#import "DateTools.h"
 #import "ProfileViewController.h"
 
 @import MBProgressHUD;
@@ -26,6 +27,11 @@
     // Do any additional setup after loading the view.
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    self.designView.layer.cornerRadius = 30;
+    self.designView.layer.maskedCorners = kCALayerMinXMinYCorner;
+    
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(keyboardOnScreen:) name:UIKeyboardWillShowNotification object:nil];
     [center addObserver:self selector:@selector(keyboardOffScreen:) name:UIKeyboardWillHideNotification object:nil];
@@ -119,8 +125,17 @@
     CommentCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
     cell.profilePic.file = self.comments[indexPath.row][@"user"][@"profilePic"];
     [cell.profilePic loadInBackground];
-    cell.username.text = self.comments[indexPath.row][@"user"][@"username"];
-    cell.comment.text = self.comments[indexPath.row][@"text"];
+    NSString* username = self.comments[indexPath.row][@"user"][@"username"];
+    NSString* string = [NSString stringWithFormat:@"%@ %@", username, self.comments[indexPath.row][@"text"]];
+    NSMutableAttributedString* displayString = [[NSMutableAttributedString alloc]initWithString:string];
+    [displayString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"HelveticaNeue-Bold" size:18.0] range:NSMakeRange(0, [username length])];
+    
+    cell.comment.attributedText = displayString;
+    
+    
+    NSDate *date = self.comments[indexPath.row].createdAt;
+    cell.timeStamp.text = date.shortTimeAgoSinceNow;
+    
     cell.profileButton.tag = indexPath.row;
     
     return cell;
