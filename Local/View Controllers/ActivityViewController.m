@@ -37,15 +37,84 @@
     
     self.tableView.tableFooterView = [UIView new];
     
-    [self fetchActivity];
+    //[self fetchActivity];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
     self.designView.layer.cornerRadius = 30;
     self.designView.layer.maskedCorners = kCALayerMinXMinYCorner;
+    
+    //int numNew = [self getNumNewNotifications];
+    //[self configureNotifcationText:numNew];
+    //[self updateChecked];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [self fetchActivity];
+}
+
+- (int)getNumNewNotifications {
+    int count = 0;
+    for(int i =0; i<[self.allActivity count]; i++) {
+        if(i >10) {
+            break;
+        }
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        // Configure the input format to parse the date string
+        formatter.dateFormat = @"E MMM d HH:mm:ss";
+        
+        
+        NSString *date1 = [PFUser currentUser][@"lastChecked"];
+        NSString *date2 = [formatter stringFromDate:self.allActivity[i].createdAt];
+        
+        NSDate* lastChecked = [formatter dateFromString:date1];
+        NSDate* createdDate = [formatter dateFromString:date2];
+        
+        NSLog(@"%@, %@", lastChecked, createdDate);
+        if([lastChecked compare:createdDate] == NSOrderedAscending) {
+            count++;
+            NSLog(@"%d", count);
+        }
+        else {
+            break;
+        }
+    }
+    return count;
+}
+
+- (void)configureNotifcationText:(int)numNew {
+    if(numNew < 10) {
+        self.notificationLabel.text = [NSString stringWithFormat:@"%d", numNew];
+    }
+    else {
+        self.notificationLabel.text = @"10+";
+    }
+    
+    if(numNew == 1) {
+        self.notificationText.text = @"new notification";
+    }
+    else {
+        self.notificationText.text = @"new notifications";
+    }
+}
+
+- (void)updateChecked {
+    //get date/time
+    NSDate* currDate = [NSDate date];
+    
+    //convert to Greenwich Mean Time
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
+    //[formatter setTimeZone:timeZone];
+    [formatter setDateFormat:@"E MMM d HH:mm:ss"];
+    NSString* generalizedDate = [formatter stringFromDate:currDate];
+    
+
+    [PFUser currentUser][@"lastChecked"] = generalizedDate;
+    [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
+        if(succeeded) {
+            NSLog(@"Recorded new lastChecked");
+        }
+    }];
 }
 
 - (void)fetchActivity {
@@ -86,6 +155,9 @@
                                NSArray* temp = [self mergeArray:self.likes rightArray:self.comments];
                                self.allActivity = [self mergeArray:temp rightArray:self.follows];
                                [self.tableView reloadData];
+                               int numNew = [self getNumNewNotifications];
+                               [self configureNotifcationText:numNew];
+                               [self updateChecked];
                            }
                            else {
                                NSLog(@"%@", error.localizedDescription);

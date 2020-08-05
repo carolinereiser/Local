@@ -13,6 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface ActivityViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UILabel *notificationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *notificationText;
 
 @end
 

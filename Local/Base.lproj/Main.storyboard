@@ -1015,6 +1015,8 @@
                     <navigationItem key="navigationItem" title="Activity" id="e19-Vd-Hfv"/>
                     <connections>
                         <outlet property="designView" destination="Abn-lV-rlO" id="sae-oR-BSh"/>
+                        <outlet property="notificationLabel" destination="uff-4K-Wmw" id="kMS-JR-MYd"/>
+                        <outlet property="notificationText" destination="owt-g0-wcq" id="H9c-a4-qGQ"/>
                         <outlet property="tableView" destination="3eq-Uv-zYG" id="4g6-L6-2QT"/>
                     </connections>
                 </viewController>
