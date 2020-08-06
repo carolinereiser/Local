@@ -34,6 +34,8 @@
     self.tableView.emptyDataSetDelegate = self;
     
     self.tableView.tableFooterView = [UIView new];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+
     
     [self.tableView reloadEmptyDataSet];
 }
@@ -121,15 +123,34 @@
     if([self.segmentedControl selectedSegmentIndex] == 0) {
         cell.profilePic.file = self.results[indexPath.row][@"profilePic"];
         [cell.profilePic loadInBackground];
-        cell.username.text = [NSString stringWithFormat:@"@%@", self.results[indexPath.row][@"username"]];
+        cell.username.text = [NSString stringWithFormat:@"%@", self.results[indexPath.row][@"username"]];
+        PFQuery *query = [PFQuery queryWithClassName:@"Following"];
+        [query whereKey:@"user" equalTo:[PFUser currentUser]];
+        [query whereKey:@"following" equalTo:self.results[indexPath.row]];
+        [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable objects, NSError * _Nullable error) {
+            if(objects != nil) {
+                if(objects.count == 1) {
+                    cell.subtitle.text = @"Following";
+                }
+                else {
+                    cell.subtitle.text = @"Not Following";
+                }
+            }
+            else {
+                NSLog(@"%@", error.localizedDescription);
+                cell.subtitle.text = @"";
+            }
+        }];
     }
     else {
         cell.profilePic.file = self.results[indexPath.row][@"image"];
         [cell.profilePic loadInBackground];
         cell.username.text = self.results[indexPath.row][@"name"];
+        cell.subtitle.text = [NSString stringWithFormat:@"@%@", self.results[indexPath.row][@"user"][@"username"]];
     }
     return cell;
 }
+
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.results.count;
