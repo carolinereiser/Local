@@ -43,7 +43,6 @@
     UIImage *editedImage = info[UIImagePickerControllerEditedImage];
 
     // Do something with the images (based on your use case)
-    //self.picture.image = [self resizeImage:editedImage withSize:(CGSizeMake)(500,500)];
     PFUser* currUser = [PFUser currentUser];
     currUser[@"profilePic"] = [self getPFFileFromImage:editedImage];
     

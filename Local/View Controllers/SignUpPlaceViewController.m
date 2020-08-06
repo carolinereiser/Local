@@ -42,7 +42,7 @@
     UIColor *customCameraColor = [UIColor colorWithRed:86.0/255.0 green:1.0/255.0 blue:236.0/255.0 alpha:1.0];
 
     pickerViewController.theme.titleLabelTextColor = [UIColor whiteColor];
-            pickerViewController.theme.navigationBarBackgroundColor = customColor;
+    pickerViewController.theme.navigationBarBackgroundColor = customColor;
     pickerViewController.theme.tintColor = [UIColor whiteColor];
     pickerViewController.theme.orderTintColor = customCameraColor;
     pickerViewController.theme.cameraVeilColor = customCameraColor;
@@ -129,7 +129,6 @@
     //is there more time efficient way to do this?
     for (int i = 0; i < [place.addressComponents count]; i++)
     {
-        NSLog(@"name %@ = type %@", place.addressComponents[i].name, place.addressComponents[i].types[0]);
         if([place.addressComponents[i].types[0] isEqualToString:@"locality"])
         {
             self.city = place.addressComponents[i].name;

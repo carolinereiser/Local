@@ -33,9 +33,7 @@
 
 + (void)postSpot:(NSString*)spot withId:(NSString*)placeID Name:(NSString*)name Image:(NSArray<UIImage *> *)images Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Caption:(NSString*)caption Place:(Place*)place withCompletion: (PFBooleanResultBlock  _Nullable)completion
 {
-    Spot* newSpot = [Spot new];
-    //for map annotation
-    
+    Spot* newSpot = [Spot new];    
     
     //for Parse
     newSpot.images = [self getPFFilesFromImages:images];
