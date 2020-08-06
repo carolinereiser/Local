@@ -67,6 +67,7 @@
             for(int i =0; i<[self.spots count]; i++){
                 MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
                 annotation.coordinate = CLLocationCoordinate2DMake(self.spots[i].location.latitude, self.spots[i].location.longitude);;
+                annotation.title = self.spots[i].title;
                 [self.map addAnnotation:annotation];
             }
         }
