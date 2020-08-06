@@ -57,7 +57,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    [self dropPins];
+    //[self dropPins];
 }
 
 //drop a pin for each spot posted within the region
@@ -65,7 +65,7 @@
     //find all of the spots
     //TODO: only add the pins in the view of the map
     PFQuery *followingQuery = [PFQuery queryWithClassName:@"Following"];
-    [followingQuery whereKey:@"follower" equalTo:[PFUser currentUser]];
+    [followingQuery whereKey:@"user" equalTo:[PFUser currentUser]];
     
     PFQuery *postsFromFollowedUsers = [PFQuery queryWithClassName:@"Spot"];
     [postsFromFollowedUsers whereKey:@"user" matchesKey:@"following" inQuery:followingQuery];
@@ -75,14 +75,14 @@
     [postsFromThisUser whereKey:@"user" equalTo:[PFUser currentUser]];
     
     //put it together
-    PFQuery *query = [PFQuery orQueryWithSubqueries:@[postsFromFollowedUsers, postsFromThisUser]];
-    [self findSpots:query];
-}
-
-- (void)findSpots:(PFQuery*)query {
+    PFQuery *query = [PFQuery orQueryWithSubqueries:@[postsFromFollowedUsers,postsFromThisUser]];
+    [query includeKey:@"user"];
+    
+    
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots) {
             self.spots = spots;
+            NSLog(@"MAP: %@",self.spots);
             for(int i =0; i<[self.spots count]; i++) {
                 MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
                 annotation.coordinate = CLLocationCoordinate2DMake(self.spots[i].location.latitude, self.spots[i].location.longitude);;
@@ -94,6 +94,7 @@
         }
     }];
 }
+
 
 
 #pragma mark - Navigation
