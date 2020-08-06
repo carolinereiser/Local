@@ -105,12 +105,30 @@
     return newImage;
 }
 
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView {
+    return [self resizeImage:[UIImage imageNamed:@"icons8-palm-tree-80"] withSize:(CGSizeMake(100,100))];
+}
+
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
     NSString *text = @"No Saves";
     
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
                                  NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString* text = @"";
+    if([self.user isEqual:[PFUser currentUser]]) {
+        text = @"When you save Spots, they will show up here!";
+    }
+    else {
+        text = [NSString stringWithFormat:@"When %@ saves a Spot, it will show up here!", self.user.username];
+    }
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:15.0f],
+                                 NSForegroundColorAttributeName: [UIColor lightGrayColor]};
     
     return [[NSAttributedString alloc] initWithString:text attributes:attributes];
 }
