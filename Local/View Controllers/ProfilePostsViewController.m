@@ -42,11 +42,11 @@
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetDelegate = self;
     
-    if((self.user[@"name"] != nil) && ![self.user[@"name"] isEqualToString:@""]) {
-        self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
+    if([self.user[@"name"] isEqualToString:@""]) {
+        self.name.text = self.user.username;
     }
     else {
-        self.name.text = self.user[@"username"];
+        self.name.text = self.user[@"name"];
     }
 
     //get numfollowers
@@ -208,7 +208,12 @@
     [self getNumCities];
     [self getNumCountries];
     
-    self.name.text = [NSString stringWithFormat:@"%@", self.user[@"name"]];
+    if([self.user[@"name"] isEqualToString:@""]) {
+        self.name.text = self.user.username;
+    }
+    else {
+        self.name.text = self.user[@"name"];
+    }
     self.profilePic.file = self.user[@"profilePic"];
     [self.profilePic loadInBackground];
     self.bio.text = self.user[@"bio"];
