@@ -140,31 +140,29 @@
                 if(cities[spots[i][@"city"]] == nil) {
                     [cities setObject:[NSNumber numberWithInt:1] forKey:spots[i][@"city"]];
                     cityCount = cityCount + 1;
+                    NSLog(@"%d", cityCount);
                 }
             }
-            self.numCities.text = [NSString stringWithFormat:@"%d", cityCount];
+            PFQuery *cityQuery2 = [PFQuery queryWithClassName:@"Place"];
+            [cityQuery2 whereKey:@"user" equalTo:self.user];
+            [cityQuery2 includeKey:@"city"];
+            [cityQuery2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
+                if(spots) {
+                    for(int i =0; i<spots.count; i++) {
+                        if(spots[i][@"city"] == nil) {
+                            continue;
+                        }
+                        if(cities[spots[i][@"city"]] == nil) {
+                            [cities setObject:[NSNumber numberWithInt:1] forKey:spots[i][@"city"]];
+                            //cities[spots[i][@"city"]] = [NSNumber numberWithInt:1];
+                            cityCount = cityCount + 1;
+                        }
+                    }
+                    self.numCities.text = [NSString stringWithFormat:@"%d", cityCount];
+                }
+            }];
         }
     }];
-    /*
-    PFQuery *cityQuery2 = [PFQuery queryWithClassName:@"Place"];
-    [cityQuery2 whereKey:@"user" equalTo:self.user];
-    [cityQuery2 includeKey:@"city"];
-    [cityQuery2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
-        if(spots) {
-            for(int i =0; i<spots.count; i++) {
-                if(spots[i][@"city"] == nil) {
-                    continue;
-                }
-                if(cities[spots[i][@"city"]] == nil) {
-                    [cities setObject:[NSNumber numberWithInt:1] forKey:spots[i][@"city"]];
-                    //cities[spots[i][@"city"]] = [NSNumber numberWithInt:1];
-                    cityCount = cityCount + 1;
-                }
-            }
-            
-        }
-    }];
-    */
 }
 
 - (void)getNumCountries {
@@ -184,23 +182,23 @@
                     countryCount = countryCount + 1;
                 }
             }
-        }
-    }];
-    PFQuery *countryQuery2 = [PFQuery queryWithClassName:@"Place"];
-    [countryQuery2 whereKey:@"user" equalTo:self.user];
-    [countryQuery2 includeKey:@"city"];
-    [countryQuery2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
-        if(spots) {
-            for(int i =0; i<spots.count; i++) {
-                if(spots[i][@"country"] == nil) {
-                    continue;
+            PFQuery *countryQuery2 = [PFQuery queryWithClassName:@"Place"];
+            [countryQuery2 whereKey:@"user" equalTo:self.user];
+            [countryQuery2 includeKey:@"city"];
+            [countryQuery2 findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
+                if(spots) {
+                    for(int i =0; i<spots.count; i++) {
+                        if(spots[i][@"country"] == nil) {
+                            continue;
+                        }
+                        if(countries[spots[i][@"country"]] == nil) {
+                            [countries setObject:[NSNumber numberWithInt:1] forKey:spots[i][@"country"]];
+                            countryCount = countryCount + 1;
+                        }
+                    }
+                    self.numCountries.text = [NSString stringWithFormat:@"%d", countryCount];
                 }
-                if(countries[spots[i][@"country"]] == nil) {
-                    [countries setObject:[NSNumber numberWithInt:1] forKey:spots[i][@"country"]];
-                    countryCount = countryCount + 1;
-                }
-            }
-            self.numCountries.text = [NSString stringWithFormat:@"%d", countryCount];
+            }];
         }
     }];
 }

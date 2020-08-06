@@ -77,7 +77,6 @@
     PFQuery *query = [PFQuery orQueryWithSubqueries:@[postsFromFollowedUsers,postsFromThisUser]];
     [query includeKey:@"user"];
     
-    
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots) {
             self.spots = spots;
