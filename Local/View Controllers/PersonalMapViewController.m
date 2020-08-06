@@ -39,7 +39,6 @@
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     if(status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         self.currLoc = self.locationManager.location;
-        NSLog(@"%f", self.currLoc.coordinate.latitude);
     }
     else {
         //make currLoc San Francisco region if can't get current location

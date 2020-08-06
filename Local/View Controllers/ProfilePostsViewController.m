@@ -139,7 +139,6 @@
                 }
                 if(cities[spots[i][@"city"]] == nil) {
                     [cities setObject:[NSNumber numberWithInt:1] forKey:spots[i][@"city"]];
-                    //cities[spots[i][@"city"]] = [NSNumber numberWithInt:1];
                     cityCount = cityCount + 1;
                 }
             }

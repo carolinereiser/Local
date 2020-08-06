@@ -32,7 +32,7 @@
     UIColor *customCameraColor = [UIColor colorWithRed:86.0/255.0 green:1.0/255.0 blue:236.0/255.0 alpha:1.0];
 
     pickerViewController.theme.titleLabelTextColor = [UIColor whiteColor];
-            pickerViewController.theme.navigationBarBackgroundColor = customColor;
+    pickerViewController.theme.navigationBarBackgroundColor = customColor;
     pickerViewController.theme.tintColor = [UIColor whiteColor];
     pickerViewController.theme.orderTintColor = customCameraColor;
     pickerViewController.theme.cameraVeilColor = customCameraColor;

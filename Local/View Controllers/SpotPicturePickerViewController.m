@@ -50,7 +50,7 @@
     UIColor *customCameraColor = [UIColor colorWithRed:86.0/255.0 green:1.0/255.0 blue:236.0/255.0 alpha:1.0];
 
     pickerViewController.theme.titleLabelTextColor = [UIColor whiteColor];
-            pickerViewController.theme.navigationBarBackgroundColor = customColor;
+    pickerViewController.theme.navigationBarBackgroundColor = customColor;
     pickerViewController.theme.tintColor = [UIColor whiteColor];
     pickerViewController.theme.orderTintColor = customCameraColor;
     pickerViewController.theme.cameraVeilColor = customCameraColor;
@@ -111,7 +111,6 @@
         // Assign to Array with images
         self.images = [mutableImages copy];
         if(self.images.count != 0) {
-            NSLog(@"hey");
             self.navigationItem.rightBarButtonItem = self.nextButton;
         }
         else {
@@ -123,7 +122,6 @@
 
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath {
     SpotPostCell* cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"SpotPostCell" forIndexPath:indexPath];
-    
     cell.picture.image = self.images[indexPath.item];
     
     return cell;

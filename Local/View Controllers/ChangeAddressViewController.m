@@ -68,7 +68,6 @@
     
     BOOL foundCity = NO;
     BOOL foundCountry = NO;
-    NSLog(@"%@", place.addressComponents[0]);
     for (int i = 0; i < [place.addressComponents count]; i++)
     {
         if([place.addressComponents[i].types[0] isEqualToString:@"locality"])

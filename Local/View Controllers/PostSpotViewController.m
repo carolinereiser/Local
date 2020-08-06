@@ -77,7 +77,6 @@
         self.address.text = self.formattedAddress;
         self.name = place.name;
         
-        //is there more time efficient way to do this?
         for (int i = 0; i < [place.addressComponents count]; i++)
         {
             if([place.addressComponents[i].types[0] isEqualToString:@"locality"])

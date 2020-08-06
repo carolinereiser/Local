@@ -93,7 +93,6 @@
         if(comments != nil)
         {
             self.comments = comments;
-            NSLog(@"%@", self.comments);
             [self.tableView reloadData];
             if(self.comments.count > 0) {
                 NSIndexPath* ipath = [NSIndexPath indexPathForRow:(self.comments.count -1) inSection:0];
@@ -170,9 +169,6 @@
 - (IBAction)didTap:(id)sender {
     [self.view endEditing:YES];
 }
-
-
-
 
 #pragma mark - Navigation
 

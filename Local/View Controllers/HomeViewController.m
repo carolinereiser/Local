@@ -49,7 +49,7 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     self.tabBarController.tabBar.hidden = NO;
-    //[self fetchFeed];
+    [self fetchFeed];
 }
 
 - (void)fetchFeed {
@@ -74,7 +74,6 @@
         if (spots != nil) {
             // do something with the array of object returned by the call
             self.feed = spots;
-            NSLog(@"FEED: %@",self.feed);
             [self.tableView reloadData];
             [MBProgressHUD hideHUDForView:self.view animated:YES];
         } else {

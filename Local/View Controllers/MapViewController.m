@@ -41,7 +41,6 @@
     CLAuthorizationStatus status = [CLLocationManager authorizationStatus];
     if(status == kCLAuthorizationStatusAuthorizedAlways || status == kCLAuthorizationStatusAuthorizedWhenInUse) {
         self.currLoc = self.locationManager.location;
-        NSLog(@"%f", self.currLoc.coordinate.latitude);
         self.locationServiceEnabled = YES;
     }
     else {
@@ -57,7 +56,7 @@
 }
 
 - (void)viewDidAppear:(BOOL)animated {
-    //[self dropPins];
+    [self dropPins];
 }
 
 //drop a pin for each spot posted within the region
@@ -82,7 +81,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots) {
             self.spots = spots;
-            NSLog(@"MAP: %@",self.spots);
             for(int i =0; i<[self.spots count]; i++) {
                 MKPointAnnotation *annotation = [[MKPointAnnotation alloc] init];
                 annotation.coordinate = CLLocationCoordinate2DMake(self.spots[i].location.latitude, self.spots[i].location.longitude);;

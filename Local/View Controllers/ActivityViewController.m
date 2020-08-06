@@ -66,7 +66,6 @@
         
         if([lastChecked compare:createdDate] == NSOrderedAscending) {
             count++;
-            NSLog(@"%d", count);
         }
         else {
             break;

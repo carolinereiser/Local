@@ -29,7 +29,6 @@
     
     self.carousel.type = iCarouselTypeRotary;
     // Do any additional setup after loading the view.
-    NSLog(@"%@", self.spot);
     self.name.text = self.spot.title;
     
     self.spotDescription.text = self.spot.spotDescription;

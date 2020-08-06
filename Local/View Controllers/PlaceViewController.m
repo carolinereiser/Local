@@ -52,7 +52,6 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots) {
             self.spots = spots;
-            NSLog(@"%@", self.spots);
             [self.tableView reloadData];
         }
         else {

@@ -69,7 +69,6 @@
                         {
                             NSLog(@"Successfully added Place!");
                             [MBProgressHUD hideHUDForView:self.view animated:YES];
-                            //[self.tabBarController setSelectedIndex:4];
                             [self.navigationController popToRootViewControllerAnimated: YES];
                         }
                         else
@@ -107,7 +106,7 @@
     acController.delegate = self;
 
     // Specify the place data types to return.
-    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID |GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress |GMSPlaceFieldAddressComponents);
+    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldPlaceID |GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress | GMSPlaceFieldAddressComponents);
     acController.placeFields = fields;
 
     // Specify a filter.
@@ -126,7 +125,6 @@
     self.formattedAddress = place.formattedAddress;
     self.place.text = self.formattedAddress;
     
-    //is there more time efficient way to do this?
     for (int i = 0; i < [place.addressComponents count]; i++)
     {
         NSLog(@"name %@ = type %@", place.addressComponents[i].name, place.addressComponents[i].types[0]);

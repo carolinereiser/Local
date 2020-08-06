@@ -71,8 +71,8 @@
             // do something with the array of object returned by the call
             self.saved = spots;
             [self.collectionView reloadData];
-            NSLog(@"%@", self.saved);
-        } else {
+        }
+        else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];

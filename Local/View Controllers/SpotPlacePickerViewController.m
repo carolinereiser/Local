@@ -40,7 +40,6 @@
         if(places)
         {
             self.places = places;
-            //NSLog(@"%@", self.places);
             [self.tableView reloadData];
         }
         else
@@ -59,7 +58,6 @@
     }
     else {
         cell.name.text = self.places[indexPath.row - 1][@"name"];
-        //NSLog(@"%@", place);
     }
     return cell;
 }

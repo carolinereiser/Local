@@ -47,7 +47,6 @@
 - (IBAction)currentLocation:(id)sender {
     if(self.locationServiceEnabled)
     {
-        NSLog(@"%f, %f", self.currentCoordinate.latitude, self.currentCoordinate.longitude);
         self.coordinate = self.currentCoordinate;
         self.locationLabel.text = @"Current Location";
     }
@@ -124,7 +123,6 @@
                 srand(time(nil));
                 int r = rand() % [self.spots count];
                 self.randomSpot = spots[r];
-                NSLog(@"%@", self.randomSpot);
                 [self performSegueWithIdentifier:@"randomSpotSegue" sender:nil];
             }
         }
