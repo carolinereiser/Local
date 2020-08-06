@@ -112,14 +112,42 @@
     }
 }
 
+- (UIImage *)imageForEmptyDataSet:(UIScrollView *)scrollView
+{
+    return [self resizeImage:[UIImage imageNamed:@"feed-icon"] withSize:(CGSizeMake(100,100))];
+}
+
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
         NSString *text = @"No Posts";
         
         NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:18.0f],
-                                     NSForegroundColorAttributeName: [UIColor darkGrayColor]};
+                                     NSForegroundColorAttributeName: [UIColor systemGray5Color]};
         
         return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
+    NSString* text = @"Follow other users to see their favorite spots!";
+
+    NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:15.0f],
+                                 NSForegroundColorAttributeName: [UIColor systemGray6Color]};
+    
+    return [[NSAttributedString alloc] initWithString:text attributes:attributes];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
+    UIImageView *resizeImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, size.width, size.height)];
+    
+    resizeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    resizeImageView.image = image;
+    
+    UIGraphicsBeginImageContext(size);
+    [resizeImageView.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    return newImage;
 }
 
 
