@@ -39,8 +39,12 @@
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    if(![self.searchBar.text isEqualToString:@""]) {
+    if(![searchText isEqualToString:@""]) {
         [self search:searchText];
+    }
+    else {
+        self.results = @[];
+        [self.tableView reloadData];
     }
 }
 
