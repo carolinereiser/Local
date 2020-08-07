@@ -43,8 +43,14 @@
     self.designView.layer.maskedCorners = kCALayerMinXMinYCorner;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void)viewDidAppear:(BOOL)animated {
     [self fetchActivity];
+    
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+    self.tabBarController.tabBar.unselectedItemTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
 }
 
 - (int)getNumNewNotifications {

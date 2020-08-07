@@ -24,6 +24,14 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+    self.tabBarController.tabBar.unselectedItemTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+}
+
 - (IBAction)photoRollClick:(id)sender {
     YMSPhotoPickerViewController *pickerViewController = [[YMSPhotoPickerViewController alloc] init];
     pickerViewController.numberOfPhotoToSelect = 1;

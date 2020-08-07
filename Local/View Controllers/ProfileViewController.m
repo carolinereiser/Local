@@ -37,6 +37,14 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+    self.tabBarController.tabBar.unselectedItemTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+}
+
 - (IBAction)switchView:(id)sender {
     if([sender selectedSegmentIndex] == 0) {
         self.posts.alpha = 1;
@@ -47,6 +55,8 @@
         self.posts.alpha = 0;
         self.map.alpha = 1;
         self.saves.alpha = 0;
+        self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+        self.navigationController.navigationBar.tintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
     }
     else if([sender selectedSegmentIndex] == 2) {
         self.posts.alpha = 0;

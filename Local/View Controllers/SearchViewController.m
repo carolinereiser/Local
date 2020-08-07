@@ -39,6 +39,12 @@
     [self.tableView reloadEmptyDataSet];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.tintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+    self.tabBarController.tabBar.unselectedItemTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+}
+
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
     if(![searchText isEqualToString:@""]) {
         [self search:searchText];

@@ -1063,19 +1063,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kuG-Nv-RiB">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <connections>
                                     <segue destination="rUK-86-raG" kind="embed" identifier="profilePostsSegue" id="BbT-ZE-CUH"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8In-xM-MLq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <connections>
                                     <segue destination="Aip-PQ-wAJ" kind="embed" identifier="profileMapSegue" id="Q3V-Xi-cNg"/>
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DaU-XW-bDH">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <connections>
                                     <segue destination="pDf-wH-IU0" kind="embed" identifier="savesSegue" id="mkc-eH-YaL"/>
                                 </connections>
@@ -1131,7 +1131,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="s6x-KJ-kMx" customClass="PlaceViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vmq-Zh-6MS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rez-nM-KsD">
@@ -1141,7 +1141,7 @@
                                 <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lUf-FD-joL">
-                                <rect key="frame" x="0.0" y="121" width="414" height="804"/>
+                                <rect key="frame" x="0.0" y="121" width="414" height="721"/>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.086274509799999996" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TimelineCell" rowHeight="518" id="ALq-w6-Cbd" customClass="TimelineCell">
@@ -1477,11 +1477,11 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="4sQ-7B-41e" customClass="ProfilePlacesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GaR-Ed-fPw">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="rde-aV-6Oq">
-                                <rect key="frame" x="5" y="0.0" width="404" height="925"/>
+                                <rect key="frame" x="5" y="0.0" width="404" height="842"/>
                                 <color key="backgroundColor" red="0.0039215686269999999" green="0.086274509799999996" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="l28-N0-fkY">
                                     <size key="itemSize" width="128" height="128"/>
@@ -1638,7 +1638,7 @@
             <objects>
                 <viewController id="Wob-t1-3Yv" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hUY-fg-egz">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="871"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="788"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mbe-uo-TCt">
@@ -1753,7 +1753,7 @@
                                 </constraints>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZvQ-3E-jc0">
-                                <rect key="frame" x="20" y="738" width="187" height="30"/>
+                                <rect key="frame" x="20" y="689" width="187" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="187" id="IhE-Fl-hvD"/>
                                     <constraint firstAttribute="height" constant="30" id="vpQ-yB-o3g"/>
@@ -1829,30 +1829,33 @@
             <objects>
                 <viewController id="bbm-za-xgt" customClass="ChangeAddressViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UFu-iD-Gux">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="871"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="788"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ScD-Bf-Q6p">
                                 <rect key="frame" x="153" y="291" width="108" height="37"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="31"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.086274509799999996" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="None entered" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh3-Uh-9t9">
                                 <rect key="frame" x="20" y="336" width="374" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.086274509799999996" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hFe-D8-rcw">
-                                <rect key="frame" x="180.5" y="408" width="53" height="30"/>
-                                <state key="normal" title="Change"/>
+                                <rect key="frame" x="174.5" y="408" width="65" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="Change">
+                                    <color key="titleColor" red="1" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="changeAddress:" destination="bbm-za-xgt" eventType="touchUpInside" id="AIG-zc-huz"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.99215686270000003" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hFe-D8-rcw" firstAttribute="top" secondItem="xh3-Uh-9t9" secondAttribute="bottom" constant="51.5" id="Isr-iA-hRt"/>
                             <constraint firstItem="egN-As-qHV" firstAttribute="trailing" secondItem="xh3-Uh-9t9" secondAttribute="trailing" constant="20" id="Myr-Ry-sbj"/>
@@ -2342,15 +2345,15 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" hidesBottomBarWhenPushed="YES" id="omy-Xa-fXp" customClass="CommentViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pqs-Vd-Z8Q">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R0a-3v-Qa8">
-                                <rect key="frame" x="42" y="144" width="372" height="684"/>
+                                <rect key="frame" x="42" y="144" width="372" height="635"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHO-VL-vev">
-                                <rect key="frame" x="42" y="180" width="372" height="615"/>
+                                <rect key="frame" x="42" y="180" width="372" height="566"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommentCell" rowHeight="66" id="hm9-LJ-esX" customClass="CommentCell">
@@ -2430,7 +2433,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RRj-ia-Wvr">
-                                <rect key="frame" x="42" y="828" width="372" height="63"/>
+                                <rect key="frame" x="42" y="779" width="372" height="63"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gWm-iH-J0G">
                                         <rect key="frame" x="325" y="13" width="36" height="30"/>
@@ -2539,7 +2542,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="SJC-pq-CDw" customClass="RandomSpotViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="H78-rt-Bfd">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNI-d4-pLf" customClass="iCarousel">
@@ -2711,7 +2714,7 @@
             <objects>
                 <viewController modalPresentationStyle="fullScreen" id="rUK-86-raG" customClass="ProfilePostsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uQK-hl-lkg">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cPj-kE-1Cp">
@@ -2916,7 +2919,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jn9-Y5-GWI">
-                                <rect key="frame" x="7" y="491" width="400" height="434"/>
+                                <rect key="frame" x="7" y="491" width="400" height="351"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="1dr-cC-kb2">
                                     <size key="itemSize" width="134" height="128"/>
@@ -3055,11 +3058,11 @@
             <objects>
                 <viewController id="Aip-PQ-wAJ" customClass="PersonalMapViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lgp-Ql-Wz1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="eYZ-mM-cRc">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="891"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -3084,12 +3087,12 @@
             <objects>
                 <viewController id="3j2-8f-ag3" customClass="ChangeProfilePicViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="s9Y-Ws-29s">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="871"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="788"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qmJ-gK-gO6" customClass="PFImageView">
-                                <rect key="frame" x="87" y="316" width="240" height="239"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <rect key="frame" x="87" y="274.5" width="240" height="239"/>
+                                <color key="tintColor" red="0.0039215686269999999" green="0.086274509799999996" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="6iz-ND-qft"/>
                                     <constraint firstAttribute="height" constant="240" id="LtE-3L-gZ9"/>
@@ -3102,8 +3105,11 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s9y-gv-iQ3">
-                                <rect key="frame" x="144" y="555.5" width="126" height="30"/>
-                                <state key="normal" title="Change Profile Pic"/>
+                                <rect key="frame" x="131" y="514" width="152" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="Change Profile Pic">
+                                    <color key="titleColor" red="1" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="changePic:" destination="3j2-8f-ag3" eventType="touchUpInside" id="jq4-Z3-8Oz"/>
                                 </connections>
@@ -3132,7 +3138,7 @@
             <objects>
                 <viewController id="0ld-i6-sPZ" customClass="ChangeBioViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Und-A9-taF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="871"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="788"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="eEa-y3-ScO">
@@ -3146,8 +3152,11 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JoF-Ut-eT9">
-                                <rect key="frame" x="301" y="221" width="93" height="30"/>
-                                <state key="normal" title="Confirm Edits"/>
+                                <rect key="frame" x="281" y="221" width="113" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="Confirm Edits">
+                                    <color key="titleColor" red="1" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="confirmEdits:" destination="0ld-i6-sPZ" eventType="touchUpInside" id="8xY-eu-EuP"/>
                                 </connections>
@@ -3177,7 +3186,7 @@
             <objects>
                 <viewController id="piA-7i-jov" customClass="ChangeUsernameViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r7F-p4-Mgf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="871"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="788"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bN4-nF-rbc">
@@ -3187,8 +3196,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pgW-UH-2VY">
-                                <rect key="frame" x="266" y="121" width="128" height="30"/>
-                                <state key="normal" title="Change Username"/>
+                                <rect key="frame" x="240" y="121" width="154" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="Change Username">
+                                    <color key="titleColor" red="1" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="changeUsername:" destination="piA-7i-jov" eventType="touchUpInside" id="IjE-51-HUy"/>
                                 </connections>
@@ -3218,7 +3230,7 @@
             <objects>
                 <viewController id="Zhu-5z-Zmu" customClass="ChangeNameViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Bhm-gj-F2c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="871"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="788"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2qq-jH-ee6">
@@ -3228,8 +3240,11 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fP7-Rq-Kjp">
-                                <rect key="frame" x="296" y="124" width="98" height="30"/>
-                                <state key="normal" title="Change Name"/>
+                                <rect key="frame" x="276" y="124" width="118" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="Change Name">
+                                    <color key="titleColor" red="1" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="changeName:" destination="Zhu-5z-Zmu" eventType="touchUpInside" id="cas-KY-L5U"/>
                                 </connections>
@@ -3259,11 +3274,11 @@
             <objects>
                 <viewController id="pDf-wH-IU0" customClass="ProfileSavesViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="n2R-Rx-A0C">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="925"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="I3i-Pc-0lO">
-                                <rect key="frame" x="5" y="197" width="404" height="694"/>
+                                <rect key="frame" x="5" y="197" width="404" height="645"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="4KZ-7O-yIs">
                                     <size key="itemSize" width="128" height="128"/>
@@ -3728,14 +3743,15 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="hau-MH-Nd9"/>
         <segue reference="9SV-Tu-nn8"/>
         <segue reference="iA8-bC-M6e"/>
         <segue reference="IME-e1-Ms4"/>
         <segue reference="Axu-n9-s0C"/>
-        <segue reference="ayT-Y2-mfe"/>
+        <segue reference="fUF-CY-OWb"/>
         <segue reference="LuL-uG-2hw"/>
         <segue reference="GMK-Fs-yaT"/>
-        <segue reference="F7U-bO-Ev2"/>
+        <segue reference="8Aq-As-YJv"/>
         <segue reference="wvH-mO-OBt"/>
         <segue reference="Txg-lj-bp7"/>
     </inferredMetricsTieBreakers>

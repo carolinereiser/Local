@@ -30,6 +30,14 @@
     self.mapView.alpha = 0;
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.barTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+    self.tabBarController.tabBar.tintColor = [UIColor whiteColor];
+    self.tabBarController.tabBar.unselectedItemTintColor = [UIColor whiteColor];
+}
+
 - (IBAction)switchView:(id)sender {
     if([sender selectedSegmentIndex] == 0){
         self.timelineView.alpha = 1;
