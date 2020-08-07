@@ -46,8 +46,8 @@
     YMSPhotoPickerViewController *pickerViewController = [[YMSPhotoPickerViewController alloc] init];
     pickerViewController.numberOfPhotoToSelect = 10;
     
-    UIColor *customColor = [UIColor colorWithRed:64.0/255.0 green:0.0 blue:144.0/255.0 alpha:1.0];
-    UIColor *customCameraColor = [UIColor colorWithRed:86.0/255.0 green:1.0/255.0 blue:236.0/255.0 alpha:1.0];
+    UIColor *customColor = [UIColor colorWithRed: 1.00 green: 0.62 blue: 0.11 alpha: 1.00];
+    UIColor *customCameraColor = [UIColor colorWithRed: 1.00 green: 0.62 blue: 0.11 alpha: 0.3];
 
     pickerViewController.theme.titleLabelTextColor = [UIColor whiteColor];
     pickerViewController.theme.navigationBarBackgroundColor = customColor;
