@@ -84,18 +84,31 @@
 }
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    TimelineCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"TimelineCell" forIndexPath:indexPath];
-    
-    Spot* spot = self.feed[indexPath.row];
-    [cell setSpot:spot];
-    cell.profileButton.tag = indexPath.row;
-    cell.commentButton.tag = indexPath.row;
-    
-    return cell;
+    if(self.feed.count >= 1) {
+        TimelineCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"TimelineCell" forIndexPath:indexPath];
+        
+        Spot* spot = self.feed[indexPath.row];
+        [cell setSpot:spot];
+        cell.profileButton.tag = indexPath.row;
+        cell.commentButton.tag = indexPath.row;
+        cell.image.alpha = 0;
+        cell.gradientView.alpha = 1;
+        
+        return cell;
+    }
+    else {
+        TimelineCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"TimelineCell" forIndexPath:indexPath];
+        cell.profileButton.alpha = 0;
+        cell.profilePic.image = [UIImage systemImageNamed:@"smiley.fill"];
+        cell.image.alpha = 1;
+        cell.gradientView.alpha = 0;
+        
+        return cell;
+    }
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.feed.count;
+    return (self.feed.count > 1) ? self.feed.count : 1;
 }
 
 - (IBAction)pressedProfile:(id)sender {

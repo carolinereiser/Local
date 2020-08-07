@@ -36,7 +36,7 @@
 }
 
 - (void)doubleTapToLike:(UITapGestureRecognizer *)sender {
-    if(sender.state == UIGestureRecognizerStateRecognized) {
+    if(sender.state == UIGestureRecognizerStateRecognized && self.spot) {
         [self like];
     }
 }
