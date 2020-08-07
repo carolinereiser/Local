@@ -24,8 +24,7 @@
     return @"Place";
 }
 
-+ (void)postPlace:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Admin:(NSString*)admin Admin2:(NSString*)admin2 withCompletion: (PFBooleanResultBlock  _Nullable)completion
-{
++ (void)postPlace:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Admin:(NSString*)admin Admin2:(NSString*)admin2 withCompletion: (PFBooleanResultBlock  _Nullable)completion {
     Place* newPlace = [Place new];
     newPlace.image = [self getPFFileFromImage:image];
     PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:lat longitude:lng];
@@ -38,11 +37,15 @@
     newPlace.adminArea = admin;
     newPlace.adminArea2 = admin2;
     
-    [newPlace saveInBackgroundWithBlock: completion];
+    [newPlace saveInBackgroundWithBlock:completion];
 }
 
-+ (Place*)postPlaceFromSpot:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Admin:(NSString*)admin Admin2:(NSString*)admin2 withCompletion: (PFBooleanResultBlock  _Nullable)completion
-{
++ (void)postPlace:(Place*)place withCompletion:(PFBooleanResultBlock _Nullable)completion {
+    [place saveInBackgroundWithBlock:completion];
+}
+
++ (Place*)setPlace:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Admin:(NSString*)admin Admin2:(NSString*)admin2 {
+    
     Place* newPlace = [Place new];
     newPlace.image = [self getPFFileFromImage:image];
     PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:lat longitude:lng];
@@ -55,7 +58,6 @@
     newPlace.adminArea = admin;
     newPlace.adminArea2 = admin2;
     
-    [newPlace saveInBackgroundWithBlock: completion];
     return newPlace;
 }
 

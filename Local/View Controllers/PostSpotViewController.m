@@ -167,35 +167,78 @@ didFailAutocompleteWithError:(NSError *)error {
     [self presentViewController:placeController animated:YES completion:nil];
 }
 
+- (BOOL)isInRange {
+    if(self.place.adminArea2) {
+        if([self.adminArea2 isEqual:self.place.adminArea2]) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    else if(self.place.adminArea) {
+        if([self.adminArea isEqual:self.place.adminArea]) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    else if(self.place.country) {
+        if([self.country isEqual:self.place.country]) {
+            return YES;
+        }
+        else {
+            return NO;
+        }
+    }
+    return YES;
+}
+
 
 
 - (IBAction)post:(id)sender {
     //make sure user added a spot
+    self.place = [Place setPlace:self.placeFormattedAddress withId:self.placePlaceID Image:self.images[0] Latitude:self.placeLatitude Longitude:self.placeLongitude City:self.placeCity Country:self.placeCountry Admin:self.placeAdminArea Admin2:self.placeAdminArea2];
     if([self.placeID isKindOfClass:[NSString class]] && ((self.createPlace && [self.placePlaceID isKindOfClass:[NSString class]]) || !self.createPlace))
     {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        //if the user wants to make the place a spot
-        if(self.createPlace) {
-            self.place = [Place postPlaceFromSpot:self.placeFormattedAddress withId:self.placePlaceID Image:self.images[0] Latitude:self.placeLatitude Longitude:self.placeLongitude City:self.placeCity Country:self.placeCountry Admin:self.placeAdminArea Admin2:self.placeAdminArea2 withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-                if(succeeded) {
-                    NSLog(@"Successfully added Place!");
+        if([self isInRange]) {
+            [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            //if the user wants to make the place a spot
+            if(self.createPlace) {
+                [Place postPlace:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    if(succeeded) {
+                        NSLog(@"Successfully added Place!");
+                    }
+                }];
+            }
+            [Spot postSpot:self.formattedAddress withId:self.placeID Name:self.name Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Admin:self.adminArea Admin2:self.adminArea2 Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                if(succeeded)
+                {
+                    NSLog(@"Successfully added Spot!");
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
+                    [self.tabBarController setSelectedIndex:0];
+                    [self.navigationController popToRootViewControllerAnimated: YES];
+                }
+                else
+                {
+                    NSLog(@"ERROR: %@", error.localizedDescription);
+                    [MBProgressHUD hideHUDForView:self.view animated:YES];
                 }
             }];
         }
-        [Spot postSpot:self.formattedAddress withId:self.placeID Name:self.name Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Admin:self.adminArea Admin2:self.adminArea2 Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
-            if(succeeded)
-            {
-                NSLog(@"Successfully added Spot!");
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-                [self.tabBarController setSelectedIndex:0];
-                [self.navigationController popToRootViewControllerAnimated: YES];
-            }
-            else
-            {
-                NSLog(@"ERROR: %@", error.localizedDescription);
-                [MBProgressHUD hideHUDForView:self.view animated:YES];
-            }
-        }];
+        else {
+            UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Whoops!" message:@"Looks like the Spot you picked isn't in the Place you picked." preferredStyle:(UIAlertControllerStyleAlert)];
+            
+            // create a cancel action
+            UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action)
+            {}];
+            // add the cancel action to the alertController
+            [alert addAction:okAction];
+            [self presentViewController:alert animated:YES completion:^{
+                // nothing happens when view controller is done presenting
+            }];
+        }
     }
     else {
         NSString* message = @"";
