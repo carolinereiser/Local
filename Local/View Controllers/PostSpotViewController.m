@@ -199,7 +199,9 @@ didFailAutocompleteWithError:(NSError *)error {
 
 - (IBAction)post:(id)sender {
     //make sure user added a spot
-    self.place = [Place setPlace:self.placeFormattedAddress withId:self.placePlaceID Image:self.images[0] Latitude:self.placeLatitude Longitude:self.placeLongitude City:self.placeCity Country:self.placeCountry Admin:self.placeAdminArea Admin2:self.placeAdminArea2];
+    if(self.createPlace) {
+        self.place = [Place setPlace:self.placeFormattedAddress withId:self.placePlaceID Image:self.images[0] Latitude:self.placeLatitude Longitude:self.placeLongitude City:self.placeCity Country:self.placeCountry Admin:self.placeAdminArea Admin2:self.placeAdminArea2];
+    }
     if([self.placeID isKindOfClass:[NSString class]] && ((self.createPlace && [self.placePlaceID isKindOfClass:[NSString class]]) || !self.createPlace))
     {
         if([self isInRange]) {
