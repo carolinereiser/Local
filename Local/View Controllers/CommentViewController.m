@@ -129,6 +129,8 @@
                 [self.spot saveInBackgroundWithBlock:^(BOOL succeeded, NSError * _Nullable error) {
                     if(succeeded) {
                         [self getCommentCount];
+                        NSIndexPath* ipath = [NSIndexPath indexPathForRow:(self.comments.count -1) inSection:0];
+                        [self.tableView scrollToRowAtIndexPath: ipath atScrollPosition: UITableViewScrollPositionTop animated: YES];
                     }
                 }];
             }
@@ -144,8 +146,15 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     CommentCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"CommentCell"];
-    cell.profilePic.file = self.comments[indexPath.row][@"user"][@"profilePic"];
-    [cell.profilePic loadInBackground];
+    cell.comment.attributedText = nil;
+    if(self.comments[indexPath.row][@"user"][@"profilePic"]) {
+        cell.profilePic.file = self.comments[indexPath.row][@"user"][@"profilePic"];
+        [cell.profilePic loadInBackground];
+    }
+    else {
+        cell.profilePic.image = [UIImage systemImageNamed:@"person.circle.fill"];
+    }
+
     NSString* username = self.comments[indexPath.row][@"user"][@"username"];
     NSString* string = [NSString stringWithFormat:@"%@ %@", username, self.comments[indexPath.row][@"text"]];
     NSMutableAttributedString* displayString = [[NSMutableAttributedString alloc]initWithString:string];
