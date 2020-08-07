@@ -3468,25 +3468,38 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What's your address?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9c-iI-W2W">
-                                <rect key="frame" x="81.5" y="261" width="251" height="33"/>
+                                <rect key="frame" x="81.5" y="324.5" width="251" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="27"/>
                                 <color key="textColor" red="0.99215686270000003" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is to let other users know that spots you post close to your address are &quot;certified local&quot; spots." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BZe-hl-e2Y">
-                                <rect key="frame" x="30" y="302" width="354" height="36"/>
+                                <rect key="frame" x="30" y="365.5" width="354" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="thin" pointSize="15"/>
                                 <color key="textColor" red="0.99215686270000003" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Address Added" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dkt-Z1-Dia">
-                                <rect key="frame" x="128" y="382" width="158" height="23"/>
+                                <rect key="frame" x="128" y="436.5" width="158" height="23"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="19"/>
                                 <color key="textColor" red="0.99215686270000003" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-r6-1WO">
+                                <rect key="frame" x="179.5" y="756" width="55" height="37"/>
+                                <color key="pageIndicatorTintColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="currentPageIndicatorTintColor" red="0.18039215689999999" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </pageControl>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.seal.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Jb5-7I-vWm">
+                                <rect key="frame" x="157.5" y="227.5" width="99" height="90"/>
+                                <color key="tintColor" red="1" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="88.5" id="iqX-eR-fPm"/>
+                                    <constraint firstAttribute="width" constant="99" id="mE1-3e-C3E"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qht-De-wc5">
-                                <rect key="frame" x="75" y="450" width="108" height="35"/>
+                                <rect key="frame" x="66" y="505" width="108" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Add address">
                                     <color key="titleColor" red="1" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3496,7 +3509,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YGg-dF-9or">
-                                <rect key="frame" x="271" y="450" width="69" height="35"/>
+                                <rect key="frame" x="262" y="505" width="69" height="35"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" red="1" green="0.62352941179999999" blue="0.10980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -3505,31 +3518,28 @@
                                     <action selector="confirmAddress:" destination="fZL-VN-Hey" eventType="touchUpInside" id="7m9-z1-I6B"/>
                                 </connections>
                             </button>
-                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="4" currentPage="2" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-r6-1WO">
-                                <rect key="frame" x="179.5" y="756" width="55" height="37"/>
-                                <color key="pageIndicatorTintColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="0.18039215689999999" green="0.76862745099999996" blue="0.71372549019999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.086274509799999996" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="qht-De-wc5" firstAttribute="top" secondItem="dkt-Z1-Dia" secondAttribute="bottom" constant="45" id="23w-HR-39w"/>
-                            <constraint firstItem="Qvw-Tj-nEs" firstAttribute="trailing" secondItem="BZe-hl-e2Y" secondAttribute="trailing" constant="30" id="93C-Kf-TGy"/>
-                            <constraint firstItem="qht-De-wc5" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" constant="-78" id="EuQ-sF-qbR"/>
-                            <constraint firstItem="BZe-hl-e2Y" firstAttribute="leading" secondItem="Qvw-Tj-nEs" secondAttribute="leading" constant="30" id="GQd-xJ-XVb"/>
+                            <constraint firstItem="v9c-iI-W2W" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" id="1nI-rf-v5B"/>
+                            <constraint firstItem="BZe-hl-e2Y" firstAttribute="top" secondItem="v9c-iI-W2W" secondAttribute="bottom" constant="8" id="7vj-g7-lg5"/>
+                            <constraint firstItem="qht-De-wc5" firstAttribute="top" secondItem="dkt-Z1-Dia" secondAttribute="bottom" constant="45.5" id="CBr-tO-rjp"/>
+                            <constraint firstItem="YGg-dF-9or" firstAttribute="top" secondItem="dkt-Z1-Dia" secondAttribute="bottom" constant="45.5" id="EwJ-K4-1sN"/>
+                            <constraint firstItem="dkt-Z1-Dia" firstAttribute="top" secondItem="BZe-hl-e2Y" secondAttribute="bottom" constant="35" id="Gyv-z5-m95"/>
+                            <constraint firstItem="v9c-iI-W2W" firstAttribute="top" secondItem="Jb5-7I-vWm" secondAttribute="bottom" constant="8" id="IOt-vN-OcV"/>
+                            <constraint firstItem="YGg-dF-9or" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" constant="89.5" id="IPA-6v-PaO"/>
                             <constraint firstItem="xxk-aH-EYS" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" constant="-43.5" id="Ivn-X9-kD2"/>
                             <constraint firstItem="jWq-s0-lGw" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" constant="47.5" id="PAT-kp-ycQ"/>
-                            <constraint firstItem="YGg-dF-9or" firstAttribute="top" secondItem="dkt-Z1-Dia" secondAttribute="bottom" constant="45" id="PJc-r8-ddC"/>
                             <constraint firstItem="Qvw-Tj-nEs" firstAttribute="bottom" secondItem="jWq-s0-lGw" secondAttribute="bottom" constant="34" id="SWi-oH-ViY"/>
+                            <constraint firstItem="dkt-Z1-Dia" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" id="T3w-pR-Rih"/>
                             <constraint firstItem="Qvw-Tj-nEs" firstAttribute="bottom" secondItem="xxk-aH-EYS" secondAttribute="bottom" constant="34" id="WMH-hk-Ip6"/>
-                            <constraint firstItem="v9c-iI-W2W" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" id="X2z-Uk-vwc"/>
-                            <constraint firstItem="BZe-hl-e2Y" firstAttribute="top" secondItem="v9c-iI-W2W" secondAttribute="bottom" constant="8" id="Xjo-5B-sMU"/>
-                            <constraint firstItem="dkt-Z1-Dia" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" id="amB-o8-5KG"/>
-                            <constraint firstItem="YGg-dF-9or" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" constant="98.5" id="bj8-lg-8eI"/>
-                            <constraint firstItem="dkt-Z1-Dia" firstAttribute="top" secondItem="BZe-hl-e2Y" secondAttribute="bottom" constant="44" id="gXn-oK-gXk"/>
+                            <constraint firstItem="BZe-hl-e2Y" firstAttribute="leading" secondItem="Qvw-Tj-nEs" secondAttribute="leading" constant="30" id="agk-v4-3Sk"/>
                             <constraint firstItem="jWq-s0-lGw" firstAttribute="top" secondItem="gnB-r6-1WO" secondAttribute="bottom" id="gtu-Xo-hDr"/>
-                            <constraint firstItem="v9c-iI-W2W" firstAttribute="top" secondItem="Qvw-Tj-nEs" secondAttribute="top" constant="217" id="hz4-LT-9ep"/>
                             <constraint firstItem="gnB-r6-1WO" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" id="mt6-d9-bpR"/>
+                            <constraint firstItem="dkt-Z1-Dia" firstAttribute="centerY" secondItem="76H-gW-S05" secondAttribute="centerY" id="pms-5k-CIK"/>
+                            <constraint firstItem="qht-De-wc5" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" constant="-87" id="q8e-o2-Xlc"/>
+                            <constraint firstItem="Qvw-Tj-nEs" firstAttribute="trailing" secondItem="BZe-hl-e2Y" secondAttribute="trailing" constant="30" id="xU2-f2-YVx"/>
+                            <constraint firstItem="Jb5-7I-vWm" firstAttribute="centerX" secondItem="76H-gW-S05" secondAttribute="centerX" id="y3n-DY-4QN"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qvw-Tj-nEs"/>
                     </view>
