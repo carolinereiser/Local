@@ -120,8 +120,13 @@
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     SearchResultCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"SearchResultCell" forIndexPath:indexPath];
     if([self.segmentedControl selectedSegmentIndex] == 0) {
-        cell.profilePic.file = self.results[indexPath.row][@"profilePic"];
-        [cell.profilePic loadInBackground];
+        if(self.results[indexPath.row][@"profilePic"]) {
+            cell.profilePic.file = self.results[indexPath.row][@"profilePic"];
+            [cell.profilePic loadInBackground];
+        }
+        else {
+            cell.profilePic.image = [UIImage systemImageNamed:@"person.circle.fill"];
+        }
         cell.username.text = [NSString stringWithFormat:@"%@", self.results[indexPath.row][@"username"]];
         PFQuery *query = [PFQuery queryWithClassName:@"Following"];
         [query whereKey:@"user" equalTo:[PFUser currentUser]];
