@@ -29,9 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSNumber* commentCount;
 @property (nonatomic, strong) NSNumber* saveCount;
 @property (nonatomic, strong) NSNumber* shareCount;
+@property (nonatomic, strong) NSString* adminArea;
 
 + (BOOL)checkLatitude:(PFGeoPoint*)loc1;
-+ (void)postSpot:(NSString*)spot withId:(NSString*)placeID Name:(NSString*)name Image:(NSArray<UIImage *> *)images Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Caption:(NSString*)caption Place:(Place*)place withCompletion: (PFBooleanResultBlock  _Nullable)completion;
++ (void)postSpot:(NSString*)spot withId:(NSString*)placeID Name:(NSString*)name Image:(NSArray<UIImage *> *)images Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Admin:(NSString*)admin Caption:(NSString*)caption Place:(Place*)place withCompletion: (PFBooleanResultBlock  _Nullable)completion;
 
 @end
 

@@ -17,12 +17,13 @@
 @dynamic user;
 @dynamic city;
 @dynamic country;
+@dynamic adminArea;
 
 + (nonnull NSString *)parseClassName {
     return @"Place";
 }
 
-+ (void)postPlace:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country withCompletion: (PFBooleanResultBlock  _Nullable)completion
++ (void)postPlace:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Admin:(NSString*)admin withCompletion: (PFBooleanResultBlock  _Nullable)completion
 {
     Place* newPlace = [Place new];
     newPlace.image = [self getPFFileFromImage:image];
@@ -33,11 +34,12 @@
     newPlace.user = [PFUser currentUser];
     newPlace.city = city;
     newPlace.country = country;
+    newPlace.adminArea = admin;
     
     [newPlace saveInBackgroundWithBlock: completion];
 }
 
-+ (Place*)postPlaceFromSpot:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country withCompletion: (PFBooleanResultBlock  _Nullable)completion
++ (Place*)postPlaceFromSpot:(NSString*)place withId:(NSString*)placeID Image:(UIImage * _Nullable)image Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Admin:(NSString*)admin withCompletion: (PFBooleanResultBlock  _Nullable)completion
 {
     Place* newPlace = [Place new];
     newPlace.image = [self getPFFileFromImage:image];
@@ -48,6 +50,7 @@
     newPlace.user = [PFUser currentUser];
     newPlace.city = city;
     newPlace.country = country;
+    newPlace.adminArea = admin;
     
     [newPlace saveInBackgroundWithBlock: completion];
     return newPlace;

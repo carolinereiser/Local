@@ -31,6 +31,8 @@
 @property (nonatomic, weak) NSString* placeCity;
 @property (nonatomic, strong) NSString* placeCountry;
 @property (strong, nonatomic) NSString* placeName;
+@property (nonatomic, weak) NSString* adminArea;
+@property (nonatomic, weak) NSString* placeAdminArea;
 
 @end
 
@@ -55,12 +57,16 @@
         self.placePlaceID = place.placeID;
         self.placeFormattedAddress = place.formattedAddress;
         self.placeAddress.text = self.placeFormattedAddress;
+        NSLog(@"TYPE (place): %@", place.types);
         for (int i = 0; i < [place.addressComponents count]; i++)
         {
-            NSLog(@"name %@ = type %@", place.addressComponents[i].name, place.addressComponents[i].types[0]);
+            NSLog(@"ADDRESS COMPONENT (place): %@ ... types: %@", place.addressComponents[i], place.addressComponents[i].types);
             if([place.addressComponents[i].types[0] isEqualToString:@"locality"])
             {
                 self.placeCity = place.addressComponents[i].name;
+            }
+            else if([place.addressComponents[i].types[0] isEqualToString:@"administrative_area_level_1"]) {
+                self.placeAdminArea = place.addressComponents[i].name;
             }
             else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
             {
@@ -76,12 +82,15 @@
         self.formattedAddress = place.formattedAddress;
         self.address.text = self.formattedAddress;
         self.name = place.name;
-        
         for (int i = 0; i < [place.addressComponents count]; i++)
         {
+            NSLog(@"ADDRESS COMPONENT (spot): %@ ... types: %@", place.addressComponents[i], place.addressComponents[i].types);
             if([place.addressComponents[i].types[0] isEqualToString:@"locality"])
             {
                 self.city = place.addressComponents[i].name;
+            }
+            else if([place.addressComponents[i].types[0] isEqualToString:@"administrative_area_level_1"]) {
+                self.adminArea = place.addressComponents[i].name;
             }
             else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
             {
@@ -147,13 +156,13 @@ didFailAutocompleteWithError:(NSError *)error {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         //if the user wants to make the place a spot
         if(self.createPlace) {
-            self.place = [Place postPlaceFromSpot:self.placeFormattedAddress withId:self.placePlaceID Image:self.images[0] Latitude:self.placeLatitude Longitude:self.placeLongitude City:self.placeCity Country:self.placeCountry withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            self.place = [Place postPlaceFromSpot:self.placeFormattedAddress withId:self.placePlaceID Image:self.images[0] Latitude:self.placeLatitude Longitude:self.placeLongitude City:self.placeCity Country:self.placeCountry Admin:self.placeAdminArea withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if(succeeded) {
                     NSLog(@"Successfully added Place!");
                 }
             }];
         }
-        [Spot postSpot:self.formattedAddress withId:self.placeID Name:self.name Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        [Spot postSpot:self.formattedAddress withId:self.placeID Name:self.name Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Admin:self.adminArea Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded)
             {
                 NSLog(@"Successfully added Spot!");
