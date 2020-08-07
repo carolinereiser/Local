@@ -27,12 +27,13 @@
 @dynamic commentCount;
 @dynamic saveCount;
 @dynamic adminArea;
+@dynamic adminArea2;
 
 + (nonnull NSString *)parseClassName {
     return @"Spot";
 }
 
-+ (void)postSpot:(NSString*)spot withId:(NSString*)placeID Name:(NSString*)name Image:(NSArray<UIImage *> *)images Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Admin:(NSString*)admin Caption:(NSString*)caption Place:(Place*)place withCompletion: (PFBooleanResultBlock  _Nullable)completion
++ (void)postSpot:(NSString*)spot withId:(NSString*)placeID Name:(NSString*)name Image:(NSArray<UIImage *> *)images Latitude:(double)lat Longitude:(double)lng City:(NSString*)city Country:(NSString*)country Admin:(NSString*)admin Admin2:(NSString*)admin2 Caption:(NSString*)caption Place:(Place*)place withCompletion: (PFBooleanResultBlock  _Nullable)completion
 {
     Spot* newSpot = [Spot new];    
     
@@ -47,6 +48,7 @@
     newSpot.city = city;
     newSpot.country = country;
     newSpot.adminArea = admin;
+    newSpot.adminArea2 = admin2;
     newSpot.spotDescription = caption;
     newSpot.place = place;
     newSpot.likeCount = @(0);

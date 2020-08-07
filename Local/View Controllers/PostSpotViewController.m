@@ -18,7 +18,7 @@
 @property (nonatomic) double longitude;
 @property (nonatomic, strong) NSString* formattedAddress;
 @property (nonatomic, strong) NSString* placeID;
-@property (nonatomic, weak) NSString* city;
+@property (nonatomic, strong) NSString* city;
 @property (nonatomic, strong) NSString* country;
 @property (weak, nonatomic) IBOutlet UITextView *caption;
 @property (strong, nonatomic) NSString* name;
@@ -28,11 +28,13 @@
 @property (nonatomic) double placeLongitude;
 @property (nonatomic, strong) NSString* placeFormattedAddress;
 @property (nonatomic, strong) NSString* placePlaceID;
-@property (nonatomic, weak) NSString* placeCity;
+@property (nonatomic, strong) NSString* placeCity;
 @property (nonatomic, strong) NSString* placeCountry;
 @property (strong, nonatomic) NSString* placeName;
-@property (nonatomic, weak) NSString* adminArea;
-@property (nonatomic, weak) NSString* placeAdminArea;
+@property (nonatomic, strong) NSString* adminArea;
+@property (nonatomic, strong) NSString* placeAdminArea;
+@property (nonatomic, strong) NSString* adminArea2;
+@property (nonatomic, strong) NSString* placeAdminArea2;
 
 @end
 
@@ -52,6 +54,12 @@
 - (void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
     if(self.forPlace) {
         self.forPlace = NO;
+        //reset
+        self.placeCity = nil;
+        self.placeAdminArea = nil;
+        self.placeAdminArea2 = nil;
+        self.placeCountry = nil;
+        
         self.placeLatitude = place.coordinate.latitude;
         self.placeLongitude = place.coordinate.longitude;
         self.placePlaceID = place.placeID;
@@ -68,6 +76,9 @@
             else if([place.addressComponents[i].types[0] isEqualToString:@"administrative_area_level_1"]) {
                 self.placeAdminArea = place.addressComponents[i].name;
             }
+            else if([place.addressComponents[i].types[0] isEqualToString:@"administrative_area_level_2"]) {
+                self.placeAdminArea2 = place.addressComponents[i].name;
+            }
             else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
             {
                 self.placeCountry = place.addressComponents[i].name;
@@ -76,6 +87,12 @@
         [self dismissViewControllerAnimated:YES completion:nil];
     }
     else {
+        //reset
+        self.city = nil;
+        self.adminArea = nil;
+        self.adminArea2 = nil;
+        self.country = nil;
+        
         self.latitude = place.coordinate.latitude;
         self.longitude = place.coordinate.longitude;
         self.placeID = place.placeID;
@@ -91,6 +108,9 @@
             }
             else if([place.addressComponents[i].types[0] isEqualToString:@"administrative_area_level_1"]) {
                 self.adminArea = place.addressComponents[i].name;
+            }
+            else if([place.addressComponents[i].types[0] isEqualToString:@"administrative_area_level_2"]) {
+                self.adminArea2 = place.addressComponents[i].name;
             }
             else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
             {
@@ -156,13 +176,13 @@ didFailAutocompleteWithError:(NSError *)error {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         //if the user wants to make the place a spot
         if(self.createPlace) {
-            self.place = [Place postPlaceFromSpot:self.placeFormattedAddress withId:self.placePlaceID Image:self.images[0] Latitude:self.placeLatitude Longitude:self.placeLongitude City:self.placeCity Country:self.placeCountry Admin:self.placeAdminArea withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+            self.place = [Place postPlaceFromSpot:self.placeFormattedAddress withId:self.placePlaceID Image:self.images[0] Latitude:self.placeLatitude Longitude:self.placeLongitude City:self.placeCity Country:self.placeCountry Admin:self.placeAdminArea Admin2:self.placeAdminArea2 withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                 if(succeeded) {
                     NSLog(@"Successfully added Place!");
                 }
             }];
         }
-        [Spot postSpot:self.formattedAddress withId:self.placeID Name:self.name Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Admin:self.adminArea Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+        [Spot postSpot:self.formattedAddress withId:self.placeID Name:self.name Image:self.images Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Admin:self.adminArea Admin2:self.adminArea2 Caption:self.caption.text Place:self.place withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
             if(succeeded)
             {
                 NSLog(@"Successfully added Spot!");

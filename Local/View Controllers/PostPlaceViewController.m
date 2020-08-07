@@ -21,6 +21,7 @@
 @property (nonatomic, strong) NSString* city;
 @property (nonatomic, strong) NSString* country;
 @property (nonatomic, strong) NSString* adminArea;
+@property (nonatomic, strong) NSString* adminArea2;
 
 @end
 
@@ -65,7 +66,7 @@
                 //the user hasn't posted the place...post it
                 else
                 {
-                    [Place postPlace:self.formattedAddress withId:self.placeID Image:self.picture.image Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Admin:self.adminArea withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
+                    [Place postPlace:self.formattedAddress withId:self.placeID Image:self.picture.image Latitude:self.latitude Longitude:self.longitude City:self.city Country:self.country Admin:self.adminArea Admin2:self.adminArea2 withCompletion:^(BOOL succeeded, NSError * _Nullable error) {
                         if(succeeded)
                         {
                             NSLog(@"Successfully added Place!");
@@ -120,6 +121,12 @@
 }
 
 - (void)viewController:(GMSAutocompleteViewController *)viewController didAutocompleteWithPlace:(GMSPlace *)place {
+    //reset
+    self.city = nil;
+    self.adminArea = nil;
+    self.adminArea2 = nil;
+    self.country = nil;
+    
     self.latitude = place.coordinate.latitude;
     self.longitude = place.coordinate.longitude;
     self.placeID = place.placeID;
@@ -135,6 +142,9 @@
         }
         else if([place.addressComponents[i].types[0] isEqualToString:@"administrative_area_level_1"]) {
             self.adminArea = place.addressComponents[i].name;
+        }
+        else if([place.addressComponents[i].types[0] isEqualToString:@"administrative_area_level_2"]) {
+            self.adminArea2 = place.addressComponents[i].name;
         }
         else if([place.addressComponents[i].types[0] isEqualToString:@"country"])
         {
