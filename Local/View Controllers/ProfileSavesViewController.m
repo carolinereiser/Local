@@ -44,7 +44,7 @@
 
     self.username.text = [NSString stringWithFormat:@"@%@", self.user.username];
     
-    self.collectionView.frame = self.view.frame;
+    self.collectionView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width - 10, self.view.frame.size.height);
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout *)self.collectionView.collectionViewLayout;
 
     layout.minimumInteritemSpacing = 5;
