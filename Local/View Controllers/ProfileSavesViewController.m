@@ -30,6 +30,8 @@
     self.collectionView.emptyDataSetSource = self;
     self.collectionView.emptyDataSetDelegate = self;
     
+    self.collectionView.layer.maskedCorners = kCALayerMinXMinYCorner | kCALayerMaxXMinYCorner;
+    
     self.navigationItem.title = @"Saves";
     
     [self fetchSaves];
@@ -41,7 +43,7 @@
     else {
         self.profilePic.image = [UIImage systemImageNamed:@"person.circle.fill"];
     }
-
+    
     self.username.text = [NSString stringWithFormat:@"@%@", self.user.username];
     
     self.collectionView.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width - 10, self.view.frame.size.height);
