@@ -26,6 +26,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.segmentedControl.selectedSegmentTintColor = [UIColor colorWithRed: 1.00 green: 0.62 blue: 0.11 alpha: 1.00];
+    
     self.searchBar.delegate = self;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;

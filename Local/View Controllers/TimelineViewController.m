@@ -28,6 +28,8 @@
     // Do any additional setup after loading the view.
     self.timelineView.alpha = 1;
     self.mapView.alpha = 0;
+    self.segmentedControl.backgroundColor = [UIColor whiteColor];
+    self.segmentedControl.selectedSegmentTintColor = [UIColor colorWithRed: 1.00 green: 0.62 blue: 0.11 alpha: 1.00];
 }
 
 - (void)viewDidAppear:(BOOL)animated {

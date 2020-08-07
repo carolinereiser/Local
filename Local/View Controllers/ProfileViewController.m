@@ -31,6 +31,9 @@
     self.posts.alpha = 1;
     self.saves.alpha = 0;
     
+    self.segmentedControl.backgroundColor = [UIColor whiteColor];
+    self.segmentedControl.selectedSegmentTintColor = [UIColor colorWithRed: 1.00 green: 0.62 blue: 0.11 alpha: 1.00];
+    
     
     if(!self.user) {
         self.user = [PFUser currentUser];
@@ -50,6 +53,11 @@
         self.posts.alpha = 1;
         self.map.alpha = 0;
         self.saves.alpha = 0;
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+        self.tabBarController.tabBar.tintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+        self.tabBarController.tabBar.unselectedItemTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
     }
     else if([sender selectedSegmentIndex] == 1) {
         self.posts.alpha = 0;
@@ -62,6 +70,11 @@
         self.posts.alpha = 0;
         self.map.alpha = 0;
         self.saves.alpha = 1;
+        self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        self.tabBarController.tabBar.barTintColor = [UIColor whiteColor];
+        self.tabBarController.tabBar.tintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
+        self.tabBarController.tabBar.unselectedItemTintColor = [UIColor colorWithRed: 0.00 green: 0.09 blue: 0.15 alpha: 1.00];
     }
 }
 

@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UIView *map;
 @property (weak, nonatomic) IBOutlet UIView *posts;
 @property (weak, nonatomic) IBOutlet UIView *saves;
+@property (strong, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 
 @property (strong, nonatomic) PFUser* user;
 
