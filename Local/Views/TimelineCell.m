@@ -100,11 +100,31 @@
     }
     imageView.file = self.images[index];
     [imageView loadInBackground];
+    [view bringSubviewToFront:self.heartPopup];
+    [view sendSubviewToBack:imageView];
     return imageView;
 }
 
 - (IBAction)didLike:(id)sender {
     [self like];
+}
+
+- (void) animateLike {
+    [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        self.heartPopup.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        self.heartPopup.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1f delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            self.heartPopup.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+                self.heartPopup.transform = CGAffineTransformMakeScale(1.3, 1.3);
+                self.heartPopup.alpha = 0.0;
+            } completion:^(BOOL finished) {
+                self.heartPopup.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            }];
+        }];
+    }];
 }
 
 - (void)like {
@@ -139,6 +159,7 @@
                 [self refreshData];
             }
             else {
+                [self animateLike];
                 PFObject *like = [PFObject objectWithClassName:@"Likes"];
                 like[@"user"] = [PFUser currentUser];
                 like[@"spot"] = self.spot;

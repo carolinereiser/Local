@@ -40,6 +40,13 @@
     [self isLiked];
     [self isSaved];
     
+    if(self.spot.isCertified) {
+        self.certifiedView.alpha = 1;
+    }
+    else {
+        self.certifiedView.alpha = 0;
+    }
+    
     //double tap to like
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapToLike:)];
     tapGesture.numberOfTapsRequired = 2;
@@ -126,6 +133,24 @@
     [self like];
 }
 
+- (void) animateLike {
+    [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+        self.heartPopup.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        self.heartPopup.alpha = 1.0;
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1f delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+            self.heartPopup.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:0.3f delay:0 options:UIViewAnimationOptionAllowUserInteraction animations:^{
+                self.heartPopup.transform = CGAffineTransformMakeScale(1.3, 1.3);
+                self.heartPopup.alpha = 0.0;
+            } completion:^(BOOL finished) {
+                self.heartPopup.transform = CGAffineTransformMakeScale(1.0, 1.0);
+            }];
+        }];
+    }];
+}
+
 - (void)like {
     PFQuery *query = [PFQuery queryWithClassName:@"Likes"];
     [query whereKey:@"user" equalTo:[PFUser currentUser]];
@@ -158,6 +183,7 @@
                 [self refreshData];
             }
             else {
+                [self animateLike];
                 PFObject *like = [PFObject objectWithClassName:@"Likes"];
                 like[@"user"] = [PFUser currentUser];
                 like[@"spot"] = self.spot;
