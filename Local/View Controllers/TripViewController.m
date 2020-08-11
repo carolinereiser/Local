@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    UIFont *font = [UIFont boldSystemFontOfSize:12.0f];
+    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    [self.segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
 }
 
 /*
