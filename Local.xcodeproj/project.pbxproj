@@ -27,6 +27,9 @@
 		580EAE8D24D4A8EF000CBFD4 /* ChangeBioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8C24D4A8EF000CBFD4 /* ChangeBioViewController.m */; };
 		580EAE9024D4A9C7000CBFD4 /* ChangeUsernameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE8F24D4A9C7000CBFD4 /* ChangeUsernameViewController.m */; };
 		580EAE9324D4AA99000CBFD4 /* ChangeNameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580EAE9224D4AA99000CBFD4 /* ChangeNameViewController.m */; };
+		5890C3F924E321B4007B10F9 /* ParentItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5890C3F824E321B4007B10F9 /* ParentItineraryViewController.m */; };
+		5890C3FC24E321C2007B10F9 /* ItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5890C3FB24E321C2007B10F9 /* ItineraryViewController.m */; };
+		5890C3FF24E321CE007B10F9 /* SpotsItineraryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5890C3FE24E321CE007B10F9 /* SpotsItineraryViewController.m */; };
 		58A33E8024BF666100A40188 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E7F24BF666100A40188 /* AppDelegate.m */; };
 		58A33E8324BF666100A40188 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 58A33E8224BF666100A40188 /* SceneDelegate.m */; };
 		58A33E8924BF666100A40188 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58A33E8724BF666100A40188 /* Main.storyboard */; };
@@ -119,6 +122,12 @@
 		580EAE8F24D4A9C7000CBFD4 /* ChangeUsernameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeUsernameViewController.m; sourceTree = "<group>"; };
 		580EAE9124D4AA99000CBFD4 /* ChangeNameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChangeNameViewController.h; sourceTree = "<group>"; };
 		580EAE9224D4AA99000CBFD4 /* ChangeNameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChangeNameViewController.m; sourceTree = "<group>"; };
+		5890C3F724E321B4007B10F9 /* ParentItineraryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParentItineraryViewController.h; sourceTree = "<group>"; };
+		5890C3F824E321B4007B10F9 /* ParentItineraryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentItineraryViewController.m; sourceTree = "<group>"; };
+		5890C3FA24E321C2007B10F9 /* ItineraryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ItineraryViewController.h; sourceTree = "<group>"; };
+		5890C3FB24E321C2007B10F9 /* ItineraryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ItineraryViewController.m; sourceTree = "<group>"; };
+		5890C3FD24E321CE007B10F9 /* SpotsItineraryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SpotsItineraryViewController.h; sourceTree = "<group>"; };
+		5890C3FE24E321CE007B10F9 /* SpotsItineraryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpotsItineraryViewController.m; sourceTree = "<group>"; };
 		58A33E7B24BF666100A40188 /* Local.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Local.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A33E7E24BF666100A40188 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		58A33E7F24BF666100A40188 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -343,6 +352,12 @@
 				58B3A10424D87B6300A87320 /* SignUpPlaceViewController.m */,
 				58CE114524E30B8F0080DCA5 /* TripViewController.h */,
 				58CE114624E30B8F0080DCA5 /* TripViewController.m */,
+				5890C3F724E321B4007B10F9 /* ParentItineraryViewController.h */,
+				5890C3F824E321B4007B10F9 /* ParentItineraryViewController.m */,
+				5890C3FA24E321C2007B10F9 /* ItineraryViewController.h */,
+				5890C3FB24E321C2007B10F9 /* ItineraryViewController.m */,
+				5890C3FD24E321CE007B10F9 /* SpotsItineraryViewController.h */,
+				5890C3FE24E321CE007B10F9 /* SpotsItineraryViewController.m */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -673,9 +688,11 @@
 			files = (
 				5802F2A124C215A5007128EA /* SpotPicturePickerViewController.m in Sources */,
 				580EAE5724D0A548000CBFD4 /* ActivityViewController.m in Sources */,
+				5890C3F924E321B4007B10F9 /* ParentItineraryViewController.m in Sources */,
 				58ACBDD624CF4DDD00066301 /* SearchResultCell.m in Sources */,
 				58A33EB624BF684B00A40188 /* SignUpViewController.m in Sources */,
 				5802F29E24C2150A007128EA /* SpotPostCell.m in Sources */,
+				5890C3FF24E321CE007B10F9 /* SpotsItineraryViewController.m in Sources */,
 				58ACBDDC24CF522D00066301 /* SearchViewController.m in Sources */,
 				580EAE5A24D0A574000CBFD4 /* ActivityCell.m in Sources */,
 				58A33EB924BF685600A40188 /* LogInViewController.m in Sources */,
@@ -698,6 +715,7 @@
 				58CE114724E30B8F0080DCA5 /* TripViewController.m in Sources */,
 				5802F2AA24C25F25007128EA /* PostSpotViewController.m in Sources */,
 				58ACBDE224CF6CC100066301 /* CommentCell.m in Sources */,
+				5890C3FC24E321C2007B10F9 /* ItineraryViewController.m in Sources */,
 				58ACBDB524C6466900066301 /* TimelineViewController.m in Sources */,
 				580EAE5424D09DBD000CBFD4 /* PlaceViewController.m in Sources */,
 				58ACBDC724CA001E00066301 /* PersonalMapViewController.m in Sources */,
