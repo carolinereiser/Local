@@ -330,7 +330,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qk4-g4-bfb"/>
                     <connections>
+                        <outlet property="itineraryView" destination="K9Y-I3-piE" id="0De-hJ-WM0"/>
                         <outlet property="segmentedControl" destination="I0P-uJ-0yp" id="hS9-9h-v3o"/>
+                        <outlet property="spotsView" destination="ODX-1t-2wt" id="5uQ-Bn-d1K"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2JU-Ud-QAo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -376,8 +378,8 @@
                                     <action selector="selectPlace:" destination="YY9-ck-Tz4" eventType="touchUpInside" id="Zgf-KK-Fmz"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmk-Ao-FOJ">
-                                <rect key="frame" x="159" y="143" width="97" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mmk-Ao-FOJ">
+                                <rect key="frame" x="20" y="143" width="347" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" red="0.99215686270000003" green="1" blue="0.98823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -466,7 +468,7 @@
                         <outlet property="locationLabel" destination="Mmk-Ao-FOJ" id="DO5-Qj-l91"/>
                         <outlet property="segmentedControl" destination="LW0-FN-Gtw" id="OaP-Ze-NUj"/>
                         <outlet property="slider" destination="yk5-C1-gcc" id="zPQ-vo-e7x"/>
-                        <segue destination="foa-lY-RDA" kind="show" id="eAC-zm-5or"/>
+                        <segue destination="foa-lY-RDA" kind="show" identifier="itinerarySegue" id="eAC-zm-5or"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oi3-pD-yUR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -10,6 +10,9 @@
 
 @interface ParentItineraryViewController ()
 
+@property (weak, nonatomic) IBOutlet UIView *itineraryView;
+@property (weak, nonatomic) IBOutlet UIView *spotsView;
+
 @end
 
 @implementation ParentItineraryViewController
@@ -17,9 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.spotsView.alpha = 0;
+    self.itineraryView.alpha = 1;
 }
 
 - (IBAction)switchView:(id)sender {
+    if([sender selectedSegmentIndex] == 0) {
+        self.itineraryView.alpha = 1;
+        self.spotsView.alpha = 0;
+    }
+    else {
+        self.itineraryView.alpha = 0;
+        self.spotsView.alpha = 1;
+    }
 }
 
 /*
