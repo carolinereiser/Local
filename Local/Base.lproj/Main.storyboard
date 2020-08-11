@@ -302,6 +302,22 @@
             </objects>
             <point key="canvasLocation" x="-1194.2028985507247" y="-340.17857142857139"/>
         </scene>
+        <!--Trip View Controller-->
+        <scene sceneID="V5m-Rj-e3Q">
+            <objects>
+                <viewController modalPresentationStyle="fullScreen" id="YY9-ck-Tz4" customClass="TripViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bvB-7U-bPl">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.086274509799999996" blue="0.1529411765" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="kf4-p2-aVJ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="d3q-Vc-s6h"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oi3-pD-yUR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1475" y="1744"/>
+        </scene>
         <!--Timeline View Controller-->
         <scene sceneID="X0C-OM-7CX">
             <objects>
@@ -338,6 +354,11 @@
                         <viewLayoutGuide key="safeArea" id="Stg-5p-att"/>
                     </view>
                     <navigationItem key="navigationItem" id="QIg-dK-jGG">
+                        <barButtonItem key="rightBarButtonItem" image="airplane" catalog="system" id="GMJ-IX-LQv">
+                            <connections>
+                                <segue destination="YY9-ck-Tz4" kind="show" id="WL8-B6-qJD"/>
+                            </connections>
+                        </barButtonItem>
                         <connections>
                             <outlet property="titleView" destination="Gf7-xk-8Vr" id="cBj-2O-U72"/>
                         </connections>
@@ -3780,6 +3801,7 @@
         <segue reference="Txg-lj-bp7"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="airplane" catalog="system" width="128" height="115"/>
         <image name="bell" catalog="system" width="128" height="124"/>
         <image name="bell.fill" catalog="system" width="128" height="124"/>
         <image name="bookmark.fill" catalog="system" width="112" height="128"/>
