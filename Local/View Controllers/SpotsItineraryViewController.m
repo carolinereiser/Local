@@ -8,12 +8,14 @@
 
 #import "Spot.h"
 #import "SpotsItineraryViewController.h"
+#import "TimelineCell.h"
 
 @import Parse;
 
-@interface SpotsItineraryViewController ()
+@interface SpotsItineraryViewController () <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray<Spot *> *spots;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -22,6 +24,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    if(self.adminArea2) {
+        self.titleLabel.text = [NSString stringWithFormat:@"Spots in %@", self.adminArea2];
+    }
+    else if(self.adminArea) {
+        self.titleLabel.text = [NSString stringWithFormat:@"Spots in %@", self.adminArea];
+    }
+    else if(self.country) {
+        self.titleLabel.text = [NSString stringWithFormat:@"Spots in %@", self.country];
+    }
+    
     [self fetchSpots];
 }
 
@@ -42,12 +57,27 @@
         if(spots) {
             self.spots = spots;
             NSLog (@"%@", self.spots);
+            [self.tableView reloadData];
         }
         else {
             NSLog(@"%@", error.localizedDescription);
         }
     }];
+}
 
+- (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
+    TimelineCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"TimelineCell" forIndexPath:indexPath];
+    
+    Spot* spot = self.spots[indexPath.row];
+    [cell setSpot:spot];
+    cell.profileButton.tag = indexPath.row;
+    cell.commentButton.tag = indexPath.row;
+    
+    return cell;
+}
+
+- (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.spots.count;
 }
 /*
 #pragma mark - Navigation

@@ -19,6 +19,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString* country;
 @property (nonatomic, strong) NSString* adminArea;
 @property (nonatomic, strong) NSString* adminArea2;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 
 @end
 
