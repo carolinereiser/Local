@@ -16,6 +16,7 @@
 @interface SpotsItineraryViewController () <UITableViewDelegate, UITableViewDataSource, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
 @property (nonatomic, strong) NSArray<Spot *> *spots;
+@property (nonatomic, strong) NSArray<Spot *> *sortedSpots;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -57,11 +58,16 @@
         [query whereKey:@"country" equalTo:self.country];
     }
     [query includeKey:@"user"];
-    [query orderByDescending:@"createdAt"];
+    [query includeKey:@"createdAt"];
+    [query includeKey:@"updatedAt"];
+    [query includeKey:@"likeCount"];
+    [query includeKey:@"saveCount"];
+    [query includeKey:@"commentCount"];
     [query findObjectsInBackgroundWithBlock:^(NSArray * _Nullable spots, NSError * _Nullable error) {
         if(spots) {
             self.spots = spots;
             NSLog (@"%@", self.spots);
+            [self rankSpots];
             [self.tableView reloadData];
         }
         else {
@@ -70,10 +76,28 @@
     }];
 }
 
+- (void) rankSpots {
+    for(int i =0; i<self.spots.count; i++) {
+        int saves = [self.spots[i].saveCount intValue];
+        int comments = [self.spots[i].commentCount intValue];
+        int likes = [self.spots[i].likeCount intValue];
+        //NSTimeInterval timeSinceCreated = [self.spots[i].createdAt timeIntervalSinceNow];
+        double rank = 2*likes + (1.3*saves) + (0.5*comments);
+        self.spots[i].rank = rank;
+    }
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"rank" ascending:NO];
+    self.sortedSpots = [self.spots sortedArrayUsingDescriptors:@[sortDescriptor]];
+    
+    for(int i =0; i<self.sortedSpots.count; i++) {
+        
+    }
+}
+
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     TimelineCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"TimelineCell" forIndexPath:indexPath];
     
-    Spot* spot = self.spots[indexPath.row];
+    Spot* spot = self.sortedSpots[indexPath.row];
     [cell setSpot:spot];
     cell.profileButton.tag = indexPath.row;
     cell.commentButton.tag = indexPath.row;
@@ -82,7 +106,7 @@
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.spots.count;
+    return self.sortedSpots.count;
 }
 
 - (UIImage *)resizeImage:(UIImage *)image withSize:(CGSize)size {
@@ -116,13 +140,13 @@
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView {
     NSString* text = @"";
     if(self.adminArea2) {
-        text = [NSString stringWithFormat:@"Be the first to post a Spot from %@", self.adminArea2];
+        text = [NSString stringWithFormat:@"Be the first to post a Spot in %@", self.adminArea2];
     }
     else if(self.adminArea) {
-        text = [NSString stringWithFormat:@"Be the first to post a Spot from %@", self.adminArea];
+        text = [NSString stringWithFormat:@"Be the first to post a Spot in %@", self.adminArea];
     }
     else {
-        text = [NSString stringWithFormat:@"Be the first to post a Spot from %@", self.country];
+        text = [NSString stringWithFormat:@"Be the first to post a Spot in %@", self.country];
     }
     NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:15.0f],
                                  NSForegroundColorAttributeName: [UIColor systemGray6Color]};
