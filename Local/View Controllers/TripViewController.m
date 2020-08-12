@@ -77,7 +77,7 @@
     acController.delegate = self;
 
     // Specify the place data types to return.
-    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldCoordinate);
+    GMSPlaceField fields = (GMSPlaceFieldName | GMSPlaceFieldCoordinate | GMSPlaceFieldFormattedAddress | GMSPlaceFieldAddressComponents);
     acController.placeFields = fields;
 
     // Specify a filter.

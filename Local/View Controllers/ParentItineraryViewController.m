@@ -6,7 +6,9 @@
 //  Copyright © 2020 Caroline Reiser. All rights reserved.
 //
 
+#import "ItineraryViewController.h"
 #import "ParentItineraryViewController.h"
+#import "SpotsItineraryViewController.h"
 
 @interface ParentItineraryViewController ()
 
@@ -35,14 +37,22 @@
     }
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    if([[segue identifier] isEqualToString:@"spotsSegue"]) {
+        SpotsItineraryViewController *viewController = [segue destinationViewController];
+        viewController.coordinate = self.coordinate;
+        viewController.name = self.name;
+        viewController.country = self.country;
+        viewController.adminArea = self.adminArea;
+        viewController.adminArea2 = self.adminArea2;
+    }
 }
-*/
+
 
 @end
