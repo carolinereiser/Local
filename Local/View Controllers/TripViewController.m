@@ -10,6 +10,7 @@
 #import "TripViewController.h"
 
 @import GooglePlaces;
+@import TravelKit;
 
 @interface TripViewController () <GMSAutocompleteViewControllerDelegate>
 
@@ -37,16 +38,6 @@
 
 - (IBAction)selectPlace:(id)sender {
     [self showPlacePicker];
-}
-
-- (IBAction)didSlide:(id)sender {
-    int val = self.slider.value + 0.5;
-    if(val == 1) {
-        self.daysLabel.text = @"1 day";
-    }
-    else {
-        self.daysLabel.text = [NSString stringWithFormat:@"%d days", val];
-    }
 }
 
 - (IBAction)generate:(id)sender {
@@ -161,7 +152,18 @@ didFailAutocompleteWithError:(NSError *)error {
     viewController.country = self.country;
     viewController.adminArea = self.adminArea;
     viewController.adminArea2 = self.adminArea2;
+    if([self.segmentedControl selectedSegmentIndex] == 0) {
+        viewController.placeCategory = TKPlaceCategorySightseeing;
+    }
+    else if([self.segmentedControl selectedSegmentIndex] == 1) {
+        viewController.placeCategory = TKPlaceCategoryDiscovering;
+    }
+    else if([self.segmentedControl selectedSegmentIndex] == 2) {
+        viewController.placeCategory = TKPlaceCategoryRelaxing;
+    }
+    else {
+        viewController.placeCategory = TKPlaceCategoryNone;
+    } 
 }
-
 
 @end

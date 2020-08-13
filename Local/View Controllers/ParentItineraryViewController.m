@@ -52,6 +52,11 @@
         viewController.adminArea = self.adminArea;
         viewController.adminArea2 = self.adminArea2;
     }
+    else if([[segue identifier] isEqualToString:@"itinerarySegue"]) {
+        ItineraryViewController *viewController = [segue destinationViewController];
+        viewController.coordinate = self.coordinate;
+        viewController.placeCategory = self.placeCategory;
+    }
 }
 
 

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @import CoreLocation;
+@import TravelKit;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -21,7 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSString* country;
 @property (nonatomic, strong) NSString* adminArea;
 @property (nonatomic, strong) NSString* adminArea2;
-
+@property (nonatomic) enum TKPlaceCategory* placeCategory;
+ 
 @end
 
 NS_ASSUME_NONNULL_END

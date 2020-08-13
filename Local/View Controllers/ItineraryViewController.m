@@ -8,6 +8,8 @@
 
 #import "ItineraryViewController.h"
 
+@import TravelKit;
+
 @interface ItineraryViewController ()
 
 @end
@@ -17,8 +19,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-}
+    MKCoordinateRegion currRegion = MKCoordinateRegionMake(self.coordinate, MKCoordinateSpanMake(0.4, 0.4));
+    [self.mapView setRegion:currRegion animated:false];
 
+    TravelKit *kit = [TravelKit sharedKit];
+    kit.APIKey = <YOUR_API_KEY>;
+    
+    TKPlacesQuery *query = [TKPlacesQuery new];
+    TKMapRegion *region = [[TKMapRegion new] initWithCoordinateRegion:currRegion];
+    query.bounds = region;
+    query.levels = TKPlaceLevelPOI;
+    query.categories = self.placeCategory;
+    query.limit = @20;
+
+    [kit.places placesForQuery:query completion:^(NSArray<TKPlace *> * _Nullable places, NSError * _Nullable error) {
+        if(places) {
+            NSLog(@"%@", places);
+            for(int i =0; i<places.count; i++) {
+                MKPointAnnotation* annotation = [[MKPointAnnotation alloc] init];
+                annotation.coordinate = CLLocationCoordinate2DMake(places[i].location.coordinate.latitude, places[i].location.coordinate.longitude);
+                annotation.title = places[i].name;
+                
+                [self.mapView addAnnotation:annotation];
+            }
+        }
+    }];
+}
 /*
 #pragma mark - Navigation
 
